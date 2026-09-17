@@ -143,7 +143,7 @@ class AdapterBoundaryTests(unittest.TestCase):
             manifest = {"schema_version": 1, "snapshots": {"hhem-2.1": record}}
             path = root / "manifest.json"
             path.write_text(json.dumps(manifest))
-            self.assertEqual(probe_candidates._verify_snapshot(root, "hhem-2.1"), location)
+            self.assertEqual(probe_candidates._verify_snapshot(root, "hhem-2.1"), location.resolve())
             (location / "config.json").write_bytes(b"edit artifact")
             with self.assertRaisesRegex(ValueError, "artifact changed"):
                 probe_candidates._verify_snapshot(root, "hhem-2.1")
