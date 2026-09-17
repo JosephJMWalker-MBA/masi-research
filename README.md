@@ -10,12 +10,35 @@ The project is not organized around a canonical model, provider, or implementati
 
 > A dynamically composed ecology of specialized intelligence systems can outperform reliance on a single general-purpose model when the task benefits from distinct cognitive responsibilities, explicit disagreement, bounded authority, and learning from real-world outcomes.
 
-In MASI, specialization should be encoded through training objectives, data, architecture, learned state, outcome feedback, deterministic machinery, or some combination of these. Different system prompts alone do not constitute the intended end state.
+## Construction doctrine
+
+MASI's target is **specialization by construction, not specialization by subtraction**.
+
+> **Begin with the smallest cognitive ambition the system actually requires. Engineer the representation, learning objective, state, feedback, uncertainty, and interfaces specifically for that bounded responsibility. Generality belongs to the governed composition, not to each component.**
+
+A prompted or fine-tuned general-purpose model may be useful as a control, baseline, translator, tool, or transitional implementation. It is **not** presumed to be the target architecture merely because it is convenient to build.
+
+A purpose-built MASI specialist may be neural, probabilistic, Bayesian, causal, symbolic, deterministic, simulation-based, hybrid, or something else entirely. There is no requirement that it be an LLM.
+
+The full non-negotiable engineering doctrine is in [`docs/CONSTRUCTION_DOCTRINE.md`](docs/CONSTRUCTION_DOCTRINE.md).
+
+Existing AI systems are useful as:
+
+- sources of primitives worth inheriting;
+- implementations worth adapting where transparent and licensed;
+- baselines / comparators;
+- cautionary evidence about opacity, technical debt, training lineage, state failure, calibration, authority confusion, and other failure modes to engineer against.
+
+The question is not simply "which current model should fill this role?" It is also "what does this system teach us about the bounded intelligence we should build from the responsibility outward?"
 
 ## Architectural commitments
 
 - **No canonical model truth.** No module becomes authoritative merely because it occupies a named role.
-- **Interchangeability.** A responsibility may be implemented by a local model, frontier model, decision-native model, deterministic system, ensemble, simulator, or future method.
+- **Specialization by construction.** Purpose-built bounded intelligence is the target; narrowed general models are controls/transitional implementations unless evidence justifies promotion.
+- **Minimum sufficient intelligence.** Add complexity only when a measured capability deficit requires it.
+- **Generality belongs to composition.** Do not replicate broad general intelligence inside every specialist by default.
+- **Interchangeability.** A responsibility may be implemented by a local model, frontier model, decision-native model, deterministic system, ensemble, simulator, causal model, bandit, or future method.
+- **Typed semantic boundaries.** Semantically meaningful state crossing module boundaries should be named, typed, inspectable, testable, and where practical causally intervenable.
 - **Governed composition.** The system controls which capabilities participate, how they interact, when disagreement is preserved, and when escalation is required.
 - **Evidence over identity.** Module influence should be earned by measured performance, calibration, context, and outcomes rather than brand or model size.
 - **Preserved disagreement.** Consensus is not automatically truth.
@@ -46,7 +69,7 @@ masi-bus
         ↓ communication reference
 
 specialist research / external systems
-        ↓ candidate implementations
+        ↓ candidate implementations, baselines, primitives, cautions
 
 masi-research
         ↓ experiments, comparison, falsification
@@ -58,7 +81,7 @@ Existing projects may provide bounded research substrates without becoming MASI 
 
 ## Candidate implementations
 
-MASI is expected to be heterogeneous. A useful implementation may be a language model, classifier, forecaster, reward model, contextual bandit, simulator, deterministic policy, or external decision-native service.
+MASI is expected to be heterogeneous. A useful implementation may be a language model, classifier, forecaster, reward model, contextual bandit, simulator, deterministic policy, causal model, symbolic component, or external decision-native service.
 
 The working candidate registry is maintained in [`docs/CANDIDATE_IMPLEMENTATIONS.md`](docs/CANDIDATE_IMPLEMENTATIONS.md). It currently includes Telos as a candidate governance/control-plane substrate, routing baselines such as vLLM Semantic Router and RouteLLM, bounded Precision verifiers, specialist forecasting systems, ADCP-derived Empathy work, and contextual-bandit approaches to early Wisdom experiments.
 
@@ -66,17 +89,20 @@ The registry is a search surface, not a canonical fleet. Candidates must earn in
 
 ## Current phase
 
-**Phase 0 -> Phase 1 transition — bounded implementation and first executable evidence.**
+**Phase 0 -> Phase 1 transition — bounded implementation, currently paused for doctrine reconciliation.**
+
+The first Astra implementation block began before the specialization-by-construction doctrine was explicit enough in the repository. Before further implementation, the existing first-block work must be classified and reconciled against [`docs/CONSTRUCTION_DOCTRINE.md`](docs/CONSTRUCTION_DOCTRINE.md).
 
 Near-term work remains intentionally narrow:
 
-1. freeze enough of the research thesis, falsifiers, and module contracts to support code;
-2. build a thin candidate-probe layer rather than a general MASI platform;
-3. demonstrate interchangeable heterogeneous implementations through one bounded interface;
-4. complete the design gates for the first learned-specialization experiment;
-5. preserve enough provenance for independent reproduction and audit.
+1. reconcile first-block artifacts as `CONTROL_A`, `CONTROL_B`, `MASI_TARGET`, or `INFRASTRUCTURE`;
+2. freeze enough of the research thesis, falsifiers, and module contracts to support code;
+3. preserve/build a thin candidate-probe layer rather than a general MASI platform;
+4. demonstrate interchangeable heterogeneous implementations through one bounded interface;
+5. design the first specialization experiment so it can distinguish general-model controls from a purpose-built bounded target;
+6. preserve enough provenance for independent reproduction and audit.
 
-The first proposed learned-specialization experiment is `MASI-E001`: test whether a small locally specialized semantic observer can outperform its untuned local baseline, and potentially a larger general-purpose model, on a bounded Empathy-related observation task derived from ADCP-style fixtures.
+The first specialization experiment remains `MASI-E001`, but a fine-tuned local language model is now explicitly a control condition rather than the presumed target. The target is the smallest credible Empathy-observation intelligence designed from the responsibility outward.
 
 The active implementation plan is [`docs/IMPLEMENTATION_SPRINT_001.md`](docs/IMPLEMENTATION_SPRINT_001.md).
 
@@ -92,7 +118,8 @@ Useful contributions include:
 - benchmark critiques;
 - prior-art findings;
 - alternative module definitions;
-- trained specialist implementations;
+- purpose-built specialist architectures;
+- trained/adapted model controls;
 - calibration methods;
 - datasets or synthetic fixtures with clear provenance;
 - evidence that a module should be split, merged, replaced, or removed;
@@ -105,6 +132,7 @@ Please read [`CONTRIBUTING.md`](CONTRIBUTING.md) before proposing implementation
 - [`STATUS.md`](STATUS.md) — current research state and next action
 - [`AGENTS.md`](AGENTS.md) — operating and audit rules for AI-assisted work
 - [`CONTRIBUTING.md`](CONTRIBUTING.md) — contribution and evidence standards
+- [`docs/CONSTRUCTION_DOCTRINE.md`](docs/CONSTRUCTION_DOCTRINE.md) — non-negotiable specialization-by-construction doctrine
 - [`docs/RESEARCH_THESIS.md`](docs/RESEARCH_THESIS.md) — hypotheses and falsification criteria
 - [`docs/MODULES.md`](docs/MODULES.md) — candidate responsibility contracts
 - [`docs/EVALUATION.md`](docs/EVALUATION.md) — baseline and comparison rules
@@ -130,3 +158,5 @@ This repository does not relicense external material:
 MASI should not be protected from evidence.
 
 The objective is not to prove that the historical architecture was right. The objective is to discover whether modular specialized intelligence provides measurable value, under what conditions, through what mechanisms, and at what cost.
+
+A frontier or general-purpose model may help us build MASI. It must not silently become MASI's theory of cognition.
