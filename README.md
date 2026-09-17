@@ -101,6 +101,18 @@ Please read [`CONTRIBUTING.md`](CONTRIBUTING.md) before proposing implementation
 - [`docs/PRIOR_ART.md`](docs/PRIOR_ART.md) — prior-art posture and research obligations
 - [`experiments/README.md`](experiments/README.md) — experiment lifecycle and naming
 
+## Licensing and reuse
+
+MASI is published to be tested, implemented, challenged, extended, and reused. The purpose of this repository is to make the architecture operational and empirically accountable, not to restrict independent implementations.
+
+Unless otherwise noted, original code, schemas, experiment harnesses, documentation source, and other repository content are licensed under the [Apache License 2.0](LICENSE).
+
+This repository does not relicense external material:
+
+- previously published MASI defensive disclosures retain the terms attached to those publications;
+- third-party models, datasets, libraries, artifacts, and services retain their own licenses and terms;
+- contributed material must be compatible with this repository's licensing and contribution requirements.
+
 ## Research posture
 
 MASI should not be protected from evidence.
