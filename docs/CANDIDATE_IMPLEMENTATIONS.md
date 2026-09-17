@@ -3,15 +3,34 @@
 **Status:** exploratory registry  
 **Last reviewed:** 2026-09-17
 
-This document tracks candidate implementations, substrates, and baselines for MASI responsibilities. It is intentionally inclusive. Inclusion is **not** endorsement, qualification, or architectural authority.
+This document tracks candidate implementations, substrates, baselines, reusable primitives, and cautionary evidence for MASI responsibilities. It is intentionally inclusive. Inclusion is **not** endorsement, qualification, architectural authority, or evidence that the candidate should become part of the target architecture.
 
-The governing rule is:
+The governing rules are:
 
 > MASI responsibilities are stable only to the extent that experiments justify them. Implementations remain interchangeable.
 
+> **Existing AI systems are research specimens. They may reveal primitives worth inheriting, implementations worth adapting, baselines worth beating, or technical debt/failure modes worth engineering against. They do not define MASI's theory of cognition.**
+
+See [`CONSTRUCTION_DOCTRINE.md`](CONSTRUCTION_DOCTRINE.md).
+
 A candidate may be a learned model, deterministic system, simulator, statistical learner, external service, or composition of several tools. No candidate becomes canonical because it performs well once or because it currently occupies a named role.
 
-Licenses and provider terms can change. License notes below are preliminary research notes and must be re-verified before integration, redistribution, publication of benchmark results, or commercial use.
+Licenses and provider terms can change. License notes below are preliminary research notes and must be re-verified before integration, redistribution, publication of benchmark results, commercial use, or any form of architectural inspection that terms may restrict.
+
+## Candidate posture vocabulary
+
+Use these labels deliberately:
+
+- **primitive source** — demonstrates a mechanism/objective worth understanding or independently reproducing where lawful;
+- **adaptable implementation** — sufficiently bounded, transparent, and licensed to participate directly in MASI experiments;
+- **benchmark / comparator** — useful for establishing capability or cost pressure without being inherited architecturally;
+- **cautionary evidence** — exposes opacity, coupling, training-lineage debt, state failure, calibration failure, authority confusion, or another design hazard;
+- **CONTROL_A** — general-purpose model + role prompt;
+- **CONTROL_B** — general/pretrained base + role-specific adaptation/fine-tuning;
+- **MASI_TARGET** — purpose-built bounded intelligence designed from the responsibility outward;
+- **INFRASTRUCTURE** — routing, evaluation, logging, governance, transport, etc.
+
+A single system may occupy more than one posture depending on the experiment.
 
 ## Control plane and routing
 
@@ -46,74 +65,90 @@ Telos is a candidate, not a mandatory MASI dependency. A simpler governance base
 
 | Candidate | Why it matters | Initial posture |
 | --- | --- | --- |
-| [vLLM Semantic Router](https://github.com/vllm-project/semantic-router) | Programmable Mixture-of-Models routing/control layer across heterogeneous model paths; strong prior art and implementation baseline for MASI routing. | High-priority baseline / possible infrastructure reuse |
-| [RouteLLM](https://github.com/lm-sys/RouteLLM) | Learned routing strategies and local-model routing; useful scientific baseline for strong-vs-weak selection. | Baseline |
-| [Plano-Orchestrator-4B](https://huggingface.co/katanemo/Plano-Orchestrator-4B) | Specialized orchestration model that selects agents/models and sequencing. | Research comparator; verify license constraints |
-| [Arch-Router-1.5B](https://huggingface.co/katanemo/Arch-Router-1.5B) | Small learned router aligned to user-defined preferences/domains. | Research comparator; verify license constraints |
-| [Salesforce xRouter](https://huggingface.co/Salesforce/xRouter) | Learned routing with quality/cost tradeoff objective. | Research comparator; verify current noncommercial terms |
-| [Aurelio Semantic Router](https://github.com/aurelio-labs/semantic-router) | Cheap embedding-space routing baseline. | Baseline MASI should be able to beat where routing is claimed to matter |
+| [vLLM Semantic Router](https://github.com/vllm-project/semantic-router) | Programmable Mixture-of-Models routing/control layer across heterogeneous model paths; strong prior art for MASI routing. | Infrastructure baseline / possible reusable implementation |
+| [RouteLLM](https://github.com/lm-sys/RouteLLM) | Learned routing strategies and local-model routing; useful scientific baseline for strong-vs-weak selection. | Benchmark / routing primitive source |
+| [Plano-Orchestrator-4B](https://huggingface.co/katanemo/Plano-Orchestrator-4B) | Specialized orchestration model that selects agents/models and sequencing. | Comparator / cautionary licensing review |
+| [Arch-Router-1.5B](https://huggingface.co/katanemo/Arch-Router-1.5B) | Small learned router aligned to user-defined preferences/domains. | Comparator / primitive source; verify license constraints |
+| [Salesforce xRouter](https://huggingface.co/Salesforce/xRouter) | Learned routing with quality/cost tradeoff objective. | Comparator / primitive source; verify current noncommercial terms |
+| [Aurelio Semantic Router](https://github.com/aurelio-labs/semantic-router) | Cheap embedding-space routing baseline. | Baseline MASI should beat where routing is claimed to matter |
 
-## Precision candidates
+## Precision research specimens
 
-Precision should not mean "a model prompted to sound precise." Candidate implementations should be evaluated for bounded judgment, evidence support, contradiction, constraint satisfaction, abstention, calibration, or verification.
+Precision should not mean "a model prompted to sound precise." Research should identify the minimum machinery required for bounded judgment, evidence support, contradiction, constraint satisfaction, abstention, calibration, and verification.
 
-| Candidate | Candidate capability | Initial posture |
+| Candidate | What it can teach / test | Initial posture |
 | --- | --- | --- |
-| **Jev / TypeSafe AI** | Decision-native bounded outputs, scores/probabilities, fast repeated judgments. | External comparator / possible implementation; provider benchmark-publication terms must be respected |
-| [Vectara HHEM-2.1-Open](https://huggingface.co/vectara/hallucination_evaluation_model) | Evidence-premise vs generated-claim factual consistency. | High-priority local verifier; Apache-2.0 at review time |
-| [DeBERTa-v3 Tasksource NLI](https://huggingface.co/sileod/deberta-v3-base-tasksource-nli) | Entailment / contradiction / zero-shot bounded classification. | High-priority local baseline; verify current model card/license |
-| [DeBERTa-v3 large MNLI/FEVER/ANLI/WANLI](https://huggingface.co/MoritzLaurer/DeBERTa-v3-large-mnli-fever-anli-ling-wanli) | Claim support and adversarial NLI exposure. | Precision comparator; verify current model card/license |
-| [Skywork Reward V2 Qwen3 family](https://huggingface.co/Skywork/Skywork-Reward-V2-Qwen3-0.6B) | Small reward/judgment models from 0.6B upward; useful for ranking/evaluation experiments. | High-priority research candidate; Qwen3 variants Apache-2.0 at review time |
-| Custom small base-model specialist | Train directly on MASI Precision contracts rather than general chat behavior. | Intended learned-specialization path |
+| **Jev / TypeSafe AI** | Decision-native bounded outputs, scores/probabilities, repeated judgments; useful evidence that intelligence can be designed around decision primitives rather than chat. | External comparator / primitive source only within provider terms |
+| [Vectara HHEM-2.1-Open](https://huggingface.co/vectara/hallucination_evaluation_model) | Evidence-premise vs generated-claim factual consistency. | Adaptable verifier / benchmark; inspect architecture and limitations |
+| [DeBERTa-v3 Tasksource NLI](https://huggingface.co/sileod/deberta-v3-base-tasksource-nli) | Entailment / contradiction / zero-shot bounded classification. | Adaptable baseline / primitive source |
+| [DeBERTa-v3 large MNLI/FEVER/ANLI/WANLI](https://huggingface.co/MoritzLaurer/DeBERTa-v3-large-mnli-fever-anli-ling-wanli) | Claim support and adversarial NLI exposure. | Comparator / primitive source |
+| [Skywork Reward V2 Qwen3 family](https://huggingface.co/Skywork/Skywork-Reward-V2-Qwen3-0.6B) | Small reward/judgment models; useful for ranking/evaluation experiments. | Comparator / CONTROL_B-family research specimen |
+| Fine-tuned small general base | Tests whether ordinary adaptation is enough. | **CONTROL_B, not presumed target** |
 
-## Foresight candidates
+### Purpose-built Precision target direction
 
-Foresight should use domain-appropriate prediction machinery when possible rather than forcing all future-state estimation through prose generation.
+Begin from the responsibility outward: explicit evidence objects, constraints, contradiction states, uncertainty, abstention, and calibration. Candidate architectures may combine small classifiers, probabilistic models, constraint solvers, evidence graphs, monotonic models, or other bounded machinery. Complexity must be earned by measured deficits.
 
-| Candidate | Candidate capability | Initial posture |
+## Foresight research specimens
+
+Foresight should use domain-appropriate prediction machinery rather than forcing all future-state estimation through prose generation.
+
+| Candidate | What it can teach / test | Initial posture |
 | --- | --- | --- |
-| [Amazon Chronos](https://github.com/amazon-science/chronos-forecasting) | Specialized zero-shot time-series forecasting family. | High-priority quantitative Foresight candidate |
-| Chronos-Bolt family | Very small forecasting specialists; useful for testing whether tiny domain models add disproportionate value. | High-priority local candidate |
-| [Google TimesFM](https://github.com/google-research/timesfm) | Time-series foundation models with multivariate/covariate support in current generations. | High-priority comparator; version-specific weight license must be checked |
-| [Salesforce Moirai / uni2ts](https://github.com/SalesforceAIResearch/uni2ts) | Universal forecasting and Moirai-family specialists; Moirai Agent is relevant prior art for expert selection. | Research comparator; verify version-specific noncommercial terms |
-| [Phi-4-mini-reasoning](https://huggingface.co/microsoft/Phi-4-mini-reasoning) | Compact reasoning model for qualitative/scenario Foresight where a numerical forecaster is insufficient. | Candidate substrate; MIT at review time |
-| Custom small scenario specialist | Train for branch generation, conditional consequences, delayed effects, and explicit uncertainty. | Intended learned-specialization path |
+| [Amazon Chronos](https://github.com/amazon-science/chronos-forecasting) | Specialized zero-shot time-series forecasting family. | Primitive source / adaptable quantitative baseline |
+| Chronos-Bolt family | Very small forecasting specialists; tests whether tiny domain systems add disproportionate value. | Primitive source / benchmark |
+| [Google TimesFM](https://github.com/google-research/timesfm) | Time-series foundation models with multivariate/covariate support in current generations. | Comparator / primitive source; check version-specific terms |
+| [Salesforce Moirai / uni2ts](https://github.com/SalesforceAIResearch/uni2ts) | Universal forecasting and expert-selection prior art. | Comparator / primitive source; verify version-specific terms |
+| [Phi-4-mini-reasoning](https://huggingface.co/microsoft/Phi-4-mini-reasoning) | Compact general reasoning baseline for qualitative scenarios. | CONTROL_A / CONTROL_B substrate, not target by default |
+| Fine-tuned small scenario model | Tests adaptation value for qualitative future reasoning. | **CONTROL_B** |
 
-## Empathy candidates
+### Purpose-built Foresight target direction
 
-Empathy is not emotional style or agreement. Candidate implementations should represent stakeholders, burdens, agency, relationship consequences, care-sensitive observations, and uncertainty about inferred human states.
+Start from explicit world state, intervention/state-transition representation, temporal horizon, uncertainty, causal assumptions, simulation, and forecast error. Different subproblems may require different bounded mechanisms rather than one universal Foresight network.
 
-| Candidate | Candidate capability | Initial posture |
+## Empathy research specimens
+
+Empathy is not emotional style or agreement. Research should model stakeholders, burdens, agency, relationship consequences, care-sensitive observations, and uncertainty about inferred human states.
+
+| Candidate | What it can teach / test | Initial posture |
 | --- | --- | --- |
-| [Accumulated Distress Care Protocol](https://github.com/JosephJMWalker-MBA/Accumulated-Distress-Care-Protocol) derived observer | Bounded semantic observation of accumulated distress/care signals while deterministic policy remains outside the model. | Leading first custom-training substrate (`MASI-E001`) |
-| [RoBERTa GoEmotions](https://huggingface.co/SamLowe/roberta-base-go_emotions) | Multi-label emotion sensor; useful as one signal, not a complete Empathy implementation. | Small local sensor; MIT at review time |
-| [CounselReflect empathy models](https://huggingface.co/CounselReflect) | Research decomposition of empathy-related reactions/interpretations/explorations and rationale extraction. | Prior art / candidate sensors; verify individual model licenses |
-| NLI / evidence-support models | Detect when attributed motives or human states outrun textual evidence. | Cross-role Precision component inside Empathy |
-| Custom ADCP / stakeholder-impact specialist | Train against bounded observations with evidence spans, negative controls, and abstention. | Intended learned-specialization path |
+| [Accumulated Distress Care Protocol](https://github.com/JosephJMWalker-MBA/Accumulated-Distress-Care-Protocol) | Bounded observation ontology with deterministic downstream policy separated from semantic interpretation. | Leading ontology / evaluation substrate for `MASI-E001` |
+| [RoBERTa GoEmotions](https://huggingface.co/SamLowe/roberta-base-go_emotions) | Multi-label emotion sensor; demonstrates a narrow learned detector. | Primitive source / auxiliary baseline |
+| [CounselReflect empathy models](https://huggingface.co/CounselReflect) | Decomposition of empathy-related reactions/interpretations/explorations and rationale extraction. | Prior art / primitive source / comparator |
+| NLI / evidence-support models | Detect when attributed motives or states outrun evidence. | Cross-role primitive / adaptable bounded component |
+| Fine-tuned general-model semantic observer | Tests whether standard adaptation is enough. | **CONTROL_B** |
 
-## Wisdom / outcome-learning candidates
+### Purpose-built Empathy target direction
 
-The first Wisdom implementation should not be assumed to be an LLM. The core problem resembles contextual influence learning from observed consequences.
+Define the native ontology first: evidence spans, stakeholder identity, burden, agency, isolation/rupture/shame/exhaustion or other justified care concepts, unsupported inference, relationship risk, and uncertainty. Then engineer the minimum system capable of recovering and updating those concepts. Generative empathy style is not the objective.
 
-| Candidate | Candidate capability | Initial posture |
+## Wisdom / outcome-learning research specimens
+
+The first Wisdom implementation should not be assumed to be an LLM. The core problem resembles conditional influence learning from observed consequences.
+
+| Candidate | What it can teach / test | Initial posture |
 | --- | --- | --- |
-| [MABWiser](https://github.com/fidelity/mabwiser) | Contextual multi-armed bandit policies including LinUCB, LinTS, Thompson Sampling, UCB, clustering/neighborhood methods. | High-priority first Wisdom baseline; Apache-2.0 at review time |
-| [Vowpal Wabbit contextual bandits](https://vowpalwabbit.org/docs/vowpal_wabbit/python/latest/examples/contextual_bandit.html) | Online contextual-bandit learning and policy evaluation. | High-priority baseline / possible implementation |
-| [Skywork Reward V2 Qwen3](https://huggingface.co/Skywork/Skywork-Reward-V2-Qwen3-0.6B) | Generic learned preference/reward signal that can be compared with reality-grounded influence updates. | Candidate input or comparator, not presumed Wisdom itself |
-| [ArmoRM-Llama3](https://huggingface.co/RLHFlow/ArmoRM-Llama3-8B-v0.1) | Multi-objective reward modeling with learned context-dependent weighting. | Conceptual prior art / comparator; verify license and hardware fit |
-| Custom Reality-Audit learner | Learn `context x specialist x prediction x observed outcome -> conditional influence` from MASI Reality Audit records. | Intended long-horizon research path |
+| [MABWiser](https://github.com/fidelity/mabwiser) | Contextual multi-armed bandit policies. | High-priority adaptable baseline / primitive source |
+| [Vowpal Wabbit contextual bandits](https://vowpalwabbit.org/docs/vowpal_wabbit/python/latest/examples/contextual_bandit.html) | Online contextual-bandit learning and policy evaluation. | High-priority baseline / possible adaptable implementation |
+| [Skywork Reward V2 Qwen3](https://huggingface.co/Skywork/Skywork-Reward-V2-Qwen3-0.6B) | Generic learned preference/reward signal. | Comparator; not presumed Wisdom |
+| [ArmoRM-Llama3](https://huggingface.co/RLHFlow/ArmoRM-Llama3-8B-v0.1) | Multi-objective reward modeling with learned context-dependent weighting. | Conceptual prior art / comparator |
+| Generic language-model "Wisdom" fine-tune | Tests whether stylistic/general adaptation contributes anything. | CONTROL_B only unless evidence radically changes the design case |
 
-## Candidate training substrates
+### Purpose-built Wisdom target direction
 
-These are not role assignments. They are plausible open bases for creating role-compatible learned specialists.
+Begin with explicit Reality Audit records and inspectable updates over `context × specialist × prediction × confidence × observed outcome -> conditional influence`. Compare deterministic weighting, Bayesian updates, and contextual-bandit methods before introducing opaque neural complexity.
+
+## General/pretrained model substrates
+
+These are **not intended role assignments**. They are useful for `CONTROL_B`, tooling, translators, synthetic-data experiments, and upper/lower baselines.
 
 | Family | Why it is interesting | Preliminary posture |
 | --- | --- | --- |
-| **Qwen3.5 small/base checkpoints** | Small sizes, strong current open-model ecosystem, suitable for LoRA/full fine-tuning depending size. | High-priority; verify exact checkpoint license and hardware fit |
-| [IBM Granite 4.0 Micro / H-Micro](https://huggingface.co/ibm-granite/granite-4.0-micro) | Apache-2.0 compact/hybrid model family designed for practical local workloads. | High-priority substrate |
-| **SmolLM3 3B** | Small open reasoning/tool-use substrate. | Candidate; verify current checkpoint/license |
-| [Phi-4-mini-reasoning](https://huggingface.co/microsoft/Phi-4-mini-reasoning) | Compact reasoning-specialized base, MIT. | Candidate Foresight/Precision substrate |
-| **GPT-OSS-20B / larger local-capable models** | Useful upper local baseline where hardware permits, but not first fine-tuning target. | Later comparison |
+| **Qwen3.5 small/base checkpoints** | Small sizes and mature adaptation ecosystem. | CONTROL_B substrate; verify exact checkpoint license/hardware fit |
+| [IBM Granite 4.0 Micro / H-Micro](https://huggingface.co/ibm-granite/granite-4.0-micro) | Compact/hybrid model family designed for local workloads. | CONTROL_B substrate / tooling candidate |
+| **SmolLM3 3B** | Small open reasoning/tool-use substrate. | CONTROL_B / baseline candidate |
+| [Phi-4-mini-reasoning](https://huggingface.co/microsoft/Phi-4-mini-reasoning) | Compact reasoning-specialized base. | CONTROL_A/B substrate |
+| **GPT-OSS-20B / larger local-capable models** | Useful upper local baseline where hardware permits. | Comparator / tooling, not first target |
 
 ## Candidate record requirements
 
@@ -122,49 +157,66 @@ Before a candidate is integrated into an experiment, record at minimum:
 ```text
 candidate_id
 responsibility / function
+implementation_class: CONTROL_A | CONTROL_B | MASI_TARGET | INFRASTRUCTURE
+research_posture: primitive_source | adaptable | comparator | caution
 source + exact version / revision
 license + terms review date
-model class / parameter count where applicable
+model/system class + parameter count where applicable
 runtime / memory requirements
 input / output contract
 claimed strengths (source-attributed)
-known limitations
-why MASI needs it
+known limitations / architectural debt
+what MASI is trying to learn from it
 baseline it competes against
 experiment(s) in which it is authorized
-publication restrictions
+publication / inspection restrictions
 observed evidence after testing
+```
+
+For every `MASI_TARGET`, also record:
+
+```text
+bounded responsibility
+allowed inputs
+native ontology / state
+outputs
+uncertainty / abstention semantics
+learning / update signal
+transparent baseline
+capability deficit justifying each major complexity increase
 ```
 
 ## Initial fleet for implementation probing
 
-The first executable fleet should be deliberately heterogeneous and should not attempt to install every candidate at once.
+The first executable fleet remains deliberately heterogeneous, but its purpose is **measurement and architectural learning**, not fleet selection.
 
 ```text
 GOVERNANCE / CONTROL
-  Telos (candidate)
+  Telos (candidate infrastructure)
   + simple deterministic governance baseline
 
 ROUTING
-  vLLM Semantic Router and/or RouteLLM baseline
+  vLLM Semantic Router and/or RouteLLM
   + minimal deterministic router
 
-PRECISION
+PRECISION SPECIMENS
   HHEM-2.1-Open
   DeBERTa NLI
   Jev as external comparator where terms permit
 
-FORESIGHT
+FORESIGHT SPECIMENS
   Chronos or TimesFM for quantitative forecasting
-  compact reasoning model for qualitative scenarios
+  general reasoning model only as qualitative control
 
-EMPATHY
-  ADCP-derived semantic observer
-  GoEmotions as a bounded auxiliary sensor
+EMPATHY SPECIMENS
+  ADCP ontology / fixtures
+  GoEmotions / CounselReflect as narrow sensors or prior art
+  adapted general model as CONTROL_B
 
-WISDOM
-  MABWiser or Vowpal Wabbit contextual-bandit baseline
-  Reality Audit record designed before learned outcome weighting
+WISDOM SPECIMENS
+  explicit weighting
+  MABWiser / Vowpal Wabbit
+  Reality Audit record before neural complexity
 ```
 
-The point of this fleet is not to prove that these are the right models. It is to make **interchangeability executable** and begin collecting evidence about where specialized systems add value.
+The point of this fleet is to make interchangeability executable and learn what should be **built differently**. Existing model success is evidence about useful primitives or baselines; it is not proof that the final MASI specialist should inherit the same architecture.
