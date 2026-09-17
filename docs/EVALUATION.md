@@ -125,3 +125,7 @@ mechanism established
 ```
 
 Mechanism claims require additional controls or ablations.
+
+## Sprint 001 probe evaluation
+
+[`WP0_WP1_CONTRACT.md`](WP0_WP1_CONTRACT.md) freezes WP1's bounded interface, native-score normalization, abstention/error handling, resource reporting, and implementation acceptance conditions before observation. The experiment protocol supplies exact candidate revisions, fixture bytes, and run configuration. Its public synthetic smoke cases assess invocation and record integrity; labels support descriptive checks only. They are not held-out capability, calibration, or superiority evidence. Preserve every candidate's output and failure, including cases where the deterministic baseline wins, and keep raw records separate from normalized decisions and interpretation.

@@ -1,0 +1,12 @@
+{"id":"literal_support","category":"literal","premise":"The package arrived on Tuesday.","claim":"The package arrived on Tuesday.","expected":"supported"}
+{"id":"case_whitespace","category":"format_boundary","premise":"  THE LIGHT IS ON.  ","claim":"The light is on.","expected":"supported"}
+{"id":"paraphrase","category":"paraphrase","premise":"Mara purchased a bicycle.","claim":"Mara bought a bicycle.","expected":"supported"}
+{"id":"conjunction_subset","category":"subset","premise":"The box contains a red pen and a blue notebook.","claim":"The box contains a red pen.","expected":"supported"}
+{"id":"explicit_negative","category":"negative_support","premise":"The library is not open on Sunday.","claim":"The library is not open on Sunday.","expected":"supported"}
+{"id":"distractor","category":"irrelevant_context","premise":"The kettle is blue. The mug is green. The plate is white.","claim":"The mug is green.","expected":"supported"}
+{"id":"negation","category":"contradiction","premise":"The library is not open on Sunday.","claim":"The library is open on Sunday.","expected":"not_supported"}
+{"id":"number_swap","category":"contradiction","premise":"The team has exactly three members.","claim":"The team has exactly five members.","expected":"not_supported"}
+{"id":"missing_evidence","category":"insufficiency","premise":"The package arrived on Tuesday.","claim":"The package was delivered by a red truck.","expected":"not_supported"}
+{"id":"role_reversal","category":"directionality","premise":"Mara lent a book to Ivo.","claim":"Ivo lent a book to Mara.","expected":"not_supported"}
+{"id":"partial_support","category":"unsupported_extension","premise":"The box contains a red pen.","claim":"The box contains a red pen and a gold watch.","expected":"not_supported"}
+{"id":"modal_uncertainty","category":"uncertainty","premise":"The train might arrive before noon.","claim":"The train will definitely arrive before noon.","expected":"not_supported"}

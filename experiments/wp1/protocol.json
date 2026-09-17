@@ -1,0 +1,23 @@
+{
+  "protocol_id": "wp1-candidate-probe-v1",
+  "contract_version": "wp1-support-v1",
+  "responsibility": "precision.evidence_support",
+  "question": "Can unchanged calling code invoke a deterministic baseline and two heterogeneous local implementations on identical bounded premise/claim inputs while preserving native output, normalized output, failures and resource provenance?",
+  "claim_scope": "Executable interchangeability smoke test underlying H4; no capability superiority, learned-specialization or MASI system claim.",
+  "candidates": ["exact-match-v1", "hhem-2.1", "nli-deberta-small"],
+  "dataset": "fixtures.jsonl",
+  "dataset_status": "Author-created synthetic engineering fixtures; visible to implementers; not held out, not a benchmark, no training or tuning.",
+  "max_chars_per_field": 4096,
+  "max_model_input_tokens": 512,
+  "support_threshold": 0.5,
+  "mapping": "Learned score >0.5 supported; <0.5 not_supported; exactly 0.5 abstain. not_supported does not imply contradiction. Rule: stripped casefold equality supported, otherwise abstain; no numeric score.",
+  "inference": {"device": "cpu", "dtype": "float32", "threads": 1, "batch_size": 1, "seed": 0, "passes": 1, "retries": 0, "retrieval": false, "tools": false, "truncation": false, "quantization": null},
+  "resource_limits": {"model_storage_budget_bytes": 3221225472, "host_memory_requirement_bytes": 17179869184, "execution": "One candidate per process, sequential runs; no model installation beyond the three pinned model/tokenizer artifacts."},
+  "metrics": ["total fixtures", "ok/abstain/error counts", "correct count with all fixtures as denominator (abstain/error not correct)", "coverage = ok/total", "per-invocation wall latency including tokenization", "separate model load latency", "process lifetime peak RSS with platform units converted to bytes", "input tokens including model-specific formatting", "model calls and passes"],
+  "acceptance": ["All three registered implementations run with unchanged fixture runner and only candidate ID changed", "Each learned implementation completes at least one real forward pass and every fixture has an ok or explicit abstain record, with zero error records", "Raw outputs and normalized outputs are distinct, linked by hashes and complete for every fixture", "Fixtures, protocol, contract, source, model revisions and environment are recorded", "A second run under comparable conditions reproduces normalized decisions and native numerical outputs (absolute tolerance 1e-6); latency is descriptive, not an acceptance score", "Negative and boundary tests cover invalid inputs, unsupported cases, threshold, non-finite scores, missing artifacts, input limits and no overwrite"],
+  "failure_conditions": ["No real local model invocation", "Invocation errors or missing evidence", "Caller needs candidate-specific inference branching", "Silent input truncation or label leakage into inference", "Mutated frozen protocol or fixtures", "Failure to preserve native distinctions or to reproduce within tolerance"],
+  "omitted_controls": "F1/L1/L2/M1 composed-system and training controls are omitted because WP1 does not compare architectures or specialization; no outcomes, router, composition or training is implemented.",
+  "known_confounds": ["Tiny synthetic fixtures are visible and not representative", "Different pretraining, model sizes, tokenizers and task-specific formatting", "Native scores are not calibrated or comparable across candidates", "Shared numeric cutoff does not establish comparable operating points", "Sequential CPU latency and process lifetime RSS do not measure isolated hardware efficiency", "Fixture reference labels are author judgments, not independently reviewed or observed real-world outcomes"],
+  "publication": "Original synthetic fixtures and code under repository Apache-2.0; exact external model/tokenizer licenses reviewed before integration; weights and downloaded upstream code excluded from Git. No restricted external service is invoked.",
+  "stop_boundary": "WP0/WP1 only; independent audit before WP2/E001 preparation or training. Issues #1/#2 remain broader than this narrow freeze."
+}

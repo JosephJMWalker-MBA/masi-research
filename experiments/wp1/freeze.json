@@ -1,0 +1,12 @@
+{
+  "files": {
+    "docs/WP0_WP1_CONTRACT.md": "c6e3ce3d86de27b6ddeb7d25817cfd7686554bfedd8a55661ac64722b5cdef40",
+    "experiments/wp1/fixtures.jsonl": "0720d89efd21882b21330ffc709db4bddb3c9d6c0426266e817ddebedd8f8850",
+    "experiments/wp1/protocol.json": "62bd104130c1223ca4a9e20c7ba6c2254eb1c3e76a8a4785cc52a620953a3a0c",
+    "probe_candidates.py": "da4ca2e71cdd4b5730e668a8d0e72b82b49cc80a9e41feee05e6bb317f5adbf7",
+    "requirements-probe.lock": "50cb998ba127fe34751e7d120c8414467e6553707ad7be2f90633df70f9a5798"
+  },
+  "freeze_id": "wp1-support-v1",
+  "frozen_at_utc": "2026-09-17T23:53:00.301130+00:00",
+  "observation_status": "Created before any fixed-fixture candidate runs; no model outputs inspected."
+}

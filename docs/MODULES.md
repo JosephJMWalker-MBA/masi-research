@@ -187,3 +187,7 @@ Research may show that a responsibility should be:
 - or removed entirely.
 
 The architecture should follow evidence rather than preserve symmetry.
+
+## Sprint 001 implementable seam
+
+The minimum implemented responsibility is `precision.evidence_support`, governed by [`WP0_WP1_CONTRACT.md`](WP0_WP1_CONTRACT.md). That freeze defines common input/output, abstention/error/escalation semantics, unavailable confidence and assumption reporting, coexistence without consensus, and the boundary between experiment records and the existing MASI Bus reference. It also defines the minimum future Reality Audit information without implementing outcome learning. This narrow seam does not finalize Precision or the other responsibility contracts.

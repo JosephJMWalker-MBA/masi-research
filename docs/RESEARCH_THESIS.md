@@ -112,3 +112,7 @@ A falsifier is not a project failure. It tells the research program what to stop
 The historical MASI disclosures establish a conceptual lineage, not a requirement that future experiments reproduce every earlier mechanism.
 
 The architecture should become smaller, stranger, or substantially different if evidence requires it.
+
+## Sprint 001 bounded freeze
+
+[`WP0_WP1_CONTRACT.md`](WP0_WP1_CONTRACT.md) fixes the minimum thesis/control distinctions needed to implement WP1. Its H1–H7 matrix identifies the comparisons needed to separate mechanisms and preserves null-result paths. WP1 tests only a bounded executable interface underlying H4; its synthetic smoke fixtures cannot establish decomposition, learned-specialization, composition, calibration, or local-system competitiveness. Quantitative efficacy and equivalence criteria remain experiment-specific gates to freeze before any later final evaluation.
