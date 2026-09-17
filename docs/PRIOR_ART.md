@@ -17,14 +17,139 @@ libraries / packages
 -> custom implementation
 ```
 
+## Focused lineage for the construction doctrine
+
+The current MASI construction doctrine — purpose-built bounded intelligences composed into broader system-level capability — has substantial antecedents. These should be treated as engineering data, not threats.
+
+### Blackboard systems / Hearsay-II
+
+Hearsay-II and later blackboard architectures are important ancestors for heterogeneous specialist cooperation. The blackboard model separates independent knowledge sources, a shared problem state, and control/scheduling. Hearsay-II used distinct knowledge sources for tasks such as signal segmentation, phoneme identification, word hypotheses, syntax, and semantic interpretation.
+
+Useful references:
+
+- Nii, H. P. (1986), *The Blackboard Model of Problem Solving and the Evolution of Blackboard Architectures*, AI Magazine. DOI: `10.1609/aimag.v7i2.537`
+- Nii, H. P. (1986), *Blackboard Application Systems, Blackboard Systems and a Knowledge Engineering Perspective*, AI Magazine. DOI: `10.1609/aimag.v7i3.550`
+- Erman et al. (1980), *The Hearsay-II Speech-Understanding System: Integrating Knowledge to Resolve Uncertainty*.
+
+**MASI lesson:** heterogeneous expertise plus explicit shared state and separate control is old and proven enough that MASI should not reinvent it casually. The research question is what changes when the specialists are learned, interchangeable, outcome-accountable, and governed through typed semantic contracts.
+
+### Brooks / subsumption architecture
+
+Rodney Brooks' 1986 layered robot-control architecture built increasing competence from asynchronous, relatively simple task-achieving modules rather than starting with one monolithic world model. Lower-level capabilities continued operating as higher-level capability was added.
+
+Reference:
+
+- Brooks, R. A. (1986), *A Robust Layered Control System for a Mobile Robot*, IEEE Journal of Robotics and Automation, DOI: `10.1109/JRA.1986.1087032`.
+
+**MASI lesson:** build competence incrementally from bounded behavior and add complexity only as capability requires it. This is strongly aligned with the `minimum sufficient intelligence` rule, although MASI differs in governance, semantic contracts, interchangeability, and heterogeneous cognitive responsibilities.
+
+### Global Workspace / IDA / LIDA
+
+Global Workspace-inspired cognitive architectures such as IDA/LIDA use many relatively small processes/modules inside a larger integrated architecture rather than assuming cognition is one indivisible procedure.
+
+Reference:
+
+- Baars, B. J. & Franklin, S. (2007), *An architectural model of conscious and unconscious brain functions: Global Workspace Theory and IDA*, Neural Networks, DOI: `10.1016/j.neunet.2007.09.013`.
+
+**MASI lesson:** system-level cognition emerging from many bounded processes has deep prior art. MASI should study these architectures for coordination, memory, action-selection, and failure modes while avoiding unsupported anthropomorphic transfer.
+
+### Neural Module Networks and modular deep learning
+
+Neural Module Networks dynamically compose reusable learned modules rather than requiring one network to perform every subtask through one undifferentiated path. The broader modular-deep-learning literature separates computation from routing and studies local module updates, transfer, causal inference, program induction, and planning.
+
+References:
+
+- Andreas et al. (2016), *Neural Module Networks*, CVPR, DOI: `10.1109/CVPR.2016.12`.
+- Pfeiffer et al. (2023), *Modular Deep Learning*, arXiv:`2302.11529`.
+
+**MASI lesson:** learned modularity and routing are established research areas. MASI-specific work must distinguish purpose-built responsibility contracts, heterogeneous computational paradigms, governance, disagreement, and outcome-grounded influence from generic modular neural computation.
+
+### MRKL systems
+
+MRKL explicitly argues for a systems approach combining large language models with external knowledge sources, neural modules, and discrete reasoning rather than treating the language model as the whole intelligence system.
+
+Reference:
+
+- Karpas et al. (2022), *MRKL Systems: A modular, neuro-symbolic architecture that combines large language models, external knowledge sources and discrete reasoning*, arXiv:`2205.00445`.
+
+**MASI lesson:** retaining an LLM as a language/generalization component while delegating bounded work to specialists is strong prior art. MASI should not claim that idea alone. The sharper research question is whether the LLM can be treated as broad prior/proposal/translation intelligence while bounded specialists, governance, and outcome history retain independent authority.
+
+### FlexOlmo
+
+FlexOlmo independently trains domain experts and later integrates them through domain-informed routing, supporting flexible inclusion/exclusion without joint expert training.
+
+References:
+
+- Shi et al. (2025), *FlexOlmo: Open Language Models for Flexible Data Use*, arXiv:`2507.07024`.
+- Code: `https://github.com/allenai/FlexOlmo`
+
+The public implementation describes experts branched from a shared public-mix language-model expert and then trained on their respective domains.
+
+**MASI lesson:** independently trained experts, modular inclusion/removal, and routing are pre-existing modern prior art. FlexOlmo is therefore an important `CONTROL_B`-class comparison: specialization remains inside a shared language-model family rather than starting from each bounded responsibility's minimum sufficient computational form.
+
+### Concept Bottleneck Models
+
+Concept Bottleneck Models first predict human-meaningful concepts and then use those concepts for downstream prediction. Their design supports direct intervention on concept values and examination of how the final prediction changes.
+
+Reference:
+
+- Koh et al. (2020), *Concept Bottleneck Models*, ICML / PMLR 119:5338-5348, `https://proceedings.mlr.press/v119/koh20a.html`.
+
+**MASI lesson:** this is a strong construction primitive for specialists requiring explicit ontologies and causally intervenable intermediate state. MASI should also test for leakage or hidden representations that allow a supposedly explicit bottleneck to be bypassed.
+
+### Modulith (2026 convergence)
+
+Modulith publicly describes independently trained, permanently frozen specialist modules, sparse composition/routing, capability add/remove, attribution, bounded compute, and formal verification goals.
+
+Public source: `https://www.modulith.ai/`
+
+The public site identifies 2026 patent/research activity. That makes it relevant contemporary convergence, not something to ignore. This repository makes **no legal priority conclusion** from public dates alone.
+
+**MASI lesson:** independently trained frozen specialists plus routing and capability control is an active contemporary research direction. MASI must distinguish its own experimental claims through responsibility-first construction, heterogeneous computational forms, explicit governance/authority, preserved disagreement, and Reality-Audit/outcome learning rather than modularity alone.
+
+## Working synthesis
+
+The focused search suggests that the strongest MASI research question is **not** whether specialist composition is novel. It is not.
+
+The more defensible question is whether a system can combine:
+
+```text
+purpose-built bounded intelligences
++ potentially different computational paradigms
++ explicit semantic contracts
++ replaceability / interchangeability
++ general-purpose LLM capability where breadth is genuinely useful
++ external governance / authority boundaries
++ preserved disagreement and uncertainty
++ conditional influence earned from measured outcomes
+```
+
+without collapsing back into one monolithic general model or one hidden shared representation.
+
+A useful historical hypothesis is that earlier modular systems often paid a large engineering cost for representation translation, natural-language interaction, long-tail inputs, and hand-built integration glue. Modern LLMs may reduce that cost dramatically. This is **a hypothesis to test**, not an established historical explanation.
+
+That gives MASI a balanced posture:
+
+> **Do not ask specialists to reproduce generality, and do not throw away general-purpose models when they provide useful breadth, translation, hypothesis generation, or integration.**
+
+General-purpose models are components. Purpose-built specialists are components. Decision-native systems such as Jev are components. Governance, provenance, and outcome learning determine how those components may participate and how much authority they earn.
+
 ## Relevant neighboring fields
 
 At minimum, MASI experiments should remain aware of established work in:
 
+- blackboard systems and knowledge-source architectures;
+- behavior-based / subsumption robotics;
+- cognitive architectures and global-workspace systems;
+- expert systems;
 - mixture-of-experts systems;
 - ensemble learning;
 - verifier / critic models;
 - router models and learned dispatch;
+- neural module networks;
+- modular deep learning;
+- neuro-symbolic systems;
+- concept bottleneck / concept-based models;
 - multi-agent debate and deliberation;
 - tool-using agents;
 - model cascades;
@@ -37,7 +162,6 @@ At minimum, MASI experiments should remain aware of established work in:
 - simulation and planning;
 - truth-maintenance / provenance systems;
 - human-in-the-loop decision support;
-- modular / compositional machine learning;
 - outcome-based evaluation and online learning.
 
 Finding close prior art should narrow or improve MASI, not be treated as a threat.
@@ -68,6 +192,6 @@ When prior art materially changes an experiment, record:
 
 Before building substantial custom machinery, ask:
 
-> If an existing router, ensemble, MoE, verifier, bandit, simulator, or workflow already provides the relevant capability, what MASI property remains to be tested?
+> If an existing blackboard, router, ensemble, MoE, verifier, bandit, simulator, concept model, neuro-symbolic system, or workflow already provides the relevant capability, what MASI property remains to be tested?
 
 If the answer is weak, reuse the existing method and narrow MASI.
