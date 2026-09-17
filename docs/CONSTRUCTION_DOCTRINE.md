@@ -10,7 +10,7 @@ The stronger construction thesis is:
 
 This is not an optional research branch. It is the default construction doctrine for the project.
 
-A general-purpose model that is prompted or fine-tuned into a role may still be useful as a baseline, transitional implementation, tool, translator, or experimental control. It is **not** presumed to be the target architecture merely because current tooling makes it convenient.
+A general-purpose model that is prompted or fine-tuned into a role may still be useful as a baseline, transitional implementation, tool, translator, proposal generator, or experimental control. It is **not** presumed to be the target specialist architecture merely because current tooling makes it convenient.
 
 ## Specialization by construction, not subtraction
 
@@ -112,6 +112,45 @@ Examples:
 
 These examples are illustrative, not canonical implementations.
 
+## General-purpose models are components, not discarded competitors
+
+The construction doctrine is **not anti-LLM** and does not require removing general-purpose models from MASI.
+
+A useful operational framing is to treat a capable general-purpose language model as **general-purpose prior intelligence**: a broad learned instrument for answering what is plausible, commonly supported, linguistically coherent, worth proposing, or worth investigating next given its training distribution and current context.
+
+"Average intelligence" may be a useful intuition, but it should not be interpreted as a literal statistical claim that an LLM computes the average human answer. The architectural point is that its output is a broad prior or proposal, **not automatically truth, authority, forecast, diagnosis, or permission**.
+
+A general-purpose model may therefore be especially valuable for:
+
+- translating messy human language into typed problem representations;
+- translating structured specialist outputs back into human language;
+- generating candidate hypotheses, decompositions, counterexamples, and questions;
+- handling long-tail cases that fall between narrow specialists;
+- discovering potentially relevant specialists, tools, or missing information;
+- synthesizing specialist outputs while preserving provenance and disagreement;
+- providing `CONTROL_A` and `CONTROL_B` baselines;
+- helping research, code, test, and audit the MASI system itself.
+
+The LLM should usually lose authority as the problem becomes more bounded and a purpose-built instrument becomes available.
+
+A useful epistemic pattern is:
+
+```text
+messy request
+    ↓
+general-purpose prior / candidate generation
+    ↓
+purpose-built evidence, prediction, human-impact, or decision instruments
+    ↓
+explicit disagreement / correction / uncertainty
+    ↓
+governed result
+```
+
+This means an LLM can be indispensable glue without being the architecture's final epistemic authority.
+
+The same principle applies to decision-native systems such as Jev. Jev should not be discarded merely because MASI targets purpose-built specialists. Where its public/contracted interface matches a bounded responsibility, it may be a useful component, comparator, sensor, or decision instrument. It remains interchangeable and subject to provider terms; it does not become canonical by convenience.
+
 ## How existing AI should be used
 
 Existing models and systems are research specimens and engineering resources, not the default theory of cognition for MASI.
@@ -138,7 +177,7 @@ The question is not "Which current model should become MASI?"
 
 The question is:
 
-> **What does this system teach us about the bounded intelligence we need to engineer, the baseline we must beat, or the failure mode we must avoid?**
+> **What does this system teach us about the bounded intelligence we need to engineer, the baseline we must beat, the useful general capability we should retain, or the failure mode we must avoid?**
 
 ## Clean-room and legal discipline
 
@@ -160,9 +199,9 @@ A specialist that cannot be replaced without rewriting the surrounding architect
 
 ## Agent instruction
 
-Astra, Claude, GPT, or any other agent assisting this repository may use general-purpose models to research, code, critique, translate, generate fixtures, or establish baselines.
+Astra, Claude, GPT, or any other agent assisting this repository may use general-purpose models to research, code, critique, translate, generate fixtures, establish baselines, generate proposals, or bridge human language and typed system state.
 
-They must **not** silently turn the current general-purpose model ecosystem into MASI's architecture.
+They must **not** silently turn the current general-purpose model ecosystem into MASI's architecture, but they also must **not** remove useful LLM/Jev/generalist components merely to make the system appear more purpose-built.
 
 Before implementing a specialist, the agent must state:
 
@@ -180,6 +219,16 @@ implementation class: CONTROL_A | CONTROL_B | MASI_TARGET | INFRASTRUCTURE
 
 If these cannot yet be stated, implementation should stop at research/prototyping rather than hardening an accidental architecture.
 
+For any general-purpose or external decision component retained in the architecture, also state:
+
+```text
+component role:
+why breadth/generalization is useful here:
+what authority it does NOT have:
+what bounded specialist may override/correct it:
+what provenance is preserved:
+```
+
 ## Doctrine reconciliation checkpoint — required before further Sprint 001 implementation
 
 The first Astra block began before this doctrine was made explicit enough. **Do not continue new implementation work until the existing first-block artifacts have been reconciled against this document.**
@@ -192,15 +241,20 @@ At the start of the next Astra session:
 4. identify any assumption that a fine-tuned/pretrained general model is the intended final specialist;
 5. identify any hidden coupling to one model family, tokenizer, representation, provider, or training stack;
 6. identify any complexity that was added without a demonstrated capability deficit;
-7. preserve useful code, but relabel, narrow, or refactor anything whose architectural status was overstated;
-8. record the reconciliation result in GitHub before beginning the next work packet.
+7. identify any useful generalist/LLM/Jev function that should be retained as a bounded component rather than removed reflexively;
+8. preserve useful code, but relabel, narrow, or refactor anything whose architectural status was overstated;
+9. record the reconciliation result in GitHub before beginning the next work packet.
 
-The purpose is not to discard useful first-session work. It is to ensure that experimental scaffolding and general-model baselines do not become the architecture by inertia.
+The purpose is not to discard useful first-session work. It is to ensure that experimental scaffolding and general-model baselines do not become the architecture by inertia, while also preserving broad general capability where it solves a real integration problem.
 
 ## Permanent test
 
-Before accepting a major MASI implementation decision, ask:
+Before accepting a major MASI implementation decision, ask both questions:
 
 > **If today's dominant LLM architecture did not exist, would we still design this specialist this way from the responsibility outward?**
 
-If the answer is no, treat the current implementation as a baseline or transitional scaffold until evidence justifies making it part of the target architecture.
+and
+
+> **If we removed the general-purpose model entirely, what useful breadth, translation, hypothesis-generation, or long-tail capability would we now have to rebuild badly by hand?**
+
+A good MASI design should survive both tests: specialists should not be accidental narrowed LLMs, and the architecture should not discard useful general-purpose intelligence merely for ideological purity.
