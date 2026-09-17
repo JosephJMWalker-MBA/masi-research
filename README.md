@@ -16,11 +16,33 @@ MASI's target is **specialization by construction, not specialization by subtrac
 
 > **Begin with the smallest cognitive ambition the system actually requires. Engineer the representation, learning objective, state, feedback, uncertainty, and interfaces specifically for that bounded responsibility. Generality belongs to the governed composition, not to each component.**
 
-A prompted or fine-tuned general-purpose model may be useful as a control, baseline, translator, tool, or transitional implementation. It is **not** presumed to be the target architecture merely because it is convenient to build.
+A prompted or fine-tuned general-purpose model may be useful as a control, baseline, translator, tool, proposal generator, or transitional implementation. It is **not** presumed to be the target specialist architecture merely because it is convenient to build.
 
 A purpose-built MASI specialist may be neural, probabilistic, Bayesian, causal, symbolic, deterministic, simulation-based, hybrid, or something else entirely. There is no requirement that it be an LLM.
 
 The full non-negotiable engineering doctrine is in [`docs/CONSTRUCTION_DOCTRINE.md`](docs/CONSTRUCTION_DOCTRINE.md).
+
+### General-purpose intelligence is retained, not rejected
+
+MASI is not an anti-LLM architecture. A capable LLM can be treated as **general-purpose prior intelligence**: broad competence for language, translation, hypothesis generation, decomposition, synthesis, long-tail cases, and proposing what is plausible or worth investigating next.
+
+Its output is not automatically truth, authority, forecast, diagnosis, or permission. Purpose-built specialists can confirm, correct, constrain, or disagree with it. Decision-native systems such as Jev are likewise useful components where their bounded interfaces fit; they remain interchangeable rather than canonical.
+
+The working pattern is:
+
+```text
+human / messy world input
+        ↓
+general-purpose prior / translation / proposals
+        ↓
+purpose-built bounded specialists and decision instruments
+        ↓
+explicit disagreement, uncertainty, evidence, and outcome history
+        ↓
+governed result
+```
+
+This preserves the enormous practical value of LLMs without making the LLM the whole theory of cognition.
 
 Existing AI systems are useful as:
 
@@ -37,6 +59,7 @@ The question is not simply "which current model should fill this role?" It is al
 - **Specialization by construction.** Purpose-built bounded intelligence is the target; narrowed general models are controls/transitional implementations unless evidence justifies promotion.
 - **Minimum sufficient intelligence.** Add complexity only when a measured capability deficit requires it.
 - **Generality belongs to composition.** Do not replicate broad general intelligence inside every specialist by default.
+- **Generalists remain components.** LLMs and decision-native systems can provide breadth, translation, proposal generation, synthesis, or bounded judgments without becoming final epistemic or governance authority.
 - **Interchangeability.** A responsibility may be implemented by a local model, frontier model, decision-native model, deterministic system, ensemble, simulator, causal model, bandit, or future method.
 - **Typed semantic boundaries.** Semantically meaningful state crossing module boundaries should be named, typed, inspectable, testable, and where practical causally intervenable.
 - **Governed composition.** The system controls which capabilities participate, how they interact, when disagreement is preserved, and when escalation is required.
@@ -77,7 +100,9 @@ masi-research
 reproducible evidence
 ```
 
-Existing projects may provide bounded research substrates without becoming MASI dependencies. For example, the Accumulated Distress Care Protocol (ADCP) may supply part of an Empathy research track; a decision-native model such as Jev may be a useful Precision comparator; neither is canonical MASI.
+Existing projects may provide bounded research substrates without becoming MASI dependencies. For example, the Accumulated Distress Care Protocol (ADCP) may supply part of an Empathy research track; a decision-native model such as Jev may be a useful Precision comparator or bounded decision component; neither is canonical MASI.
+
+The focused prior-art record in [`docs/PRIOR_ART.md`](docs/PRIOR_ART.md) now treats blackboard systems/Hearsay-II, Brooks' subsumption architecture, Global Workspace/IDA/LIDA, Neural Module Networks, modular deep learning, MRKL, FlexOlmo, Concept Bottleneck Models, and contemporary modular-composition work as important neighboring lineages.
 
 ## Candidate implementations
 
@@ -96,11 +121,12 @@ The first Astra implementation block began before the specialization-by-construc
 Near-term work remains intentionally narrow:
 
 1. reconcile first-block artifacts as `CONTROL_A`, `CONTROL_B`, `MASI_TARGET`, or `INFRASTRUCTURE`;
-2. freeze enough of the research thesis, falsifiers, and module contracts to support code;
-3. preserve/build a thin candidate-probe layer rather than a general MASI platform;
-4. demonstrate interchangeable heterogeneous implementations through one bounded interface;
-5. design the first specialization experiment so it can distinguish general-model controls from a purpose-built bounded target;
-6. preserve enough provenance for independent reproduction and audit.
+2. preserve useful LLM/Jev/generalist work where it solves a real component responsibility without granting accidental authority;
+3. freeze enough of the research thesis, falsifiers, and module contracts to support code;
+4. preserve/build a thin candidate-probe layer rather than a general MASI platform;
+5. demonstrate interchangeable heterogeneous implementations through one bounded interface;
+6. design the first specialization experiment so it can distinguish general-model controls from a purpose-built bounded target;
+7. preserve enough provenance for independent reproduction and audit.
 
 The first specialization experiment remains `MASI-E001`, but a fine-tuned local language model is now explicitly a control condition rather than the presumed target. The target is the smallest credible Empathy-observation intelligence designed from the responsibility outward.
 
@@ -136,7 +162,7 @@ Please read [`CONTRIBUTING.md`](CONTRIBUTING.md) before proposing implementation
 - [`docs/RESEARCH_THESIS.md`](docs/RESEARCH_THESIS.md) — hypotheses and falsification criteria
 - [`docs/MODULES.md`](docs/MODULES.md) — candidate responsibility contracts
 - [`docs/EVALUATION.md`](docs/EVALUATION.md) — baseline and comparison rules
-- [`docs/PRIOR_ART.md`](docs/PRIOR_ART.md) — prior-art posture and research obligations
+- [`docs/PRIOR_ART.md`](docs/PRIOR_ART.md) — focused prior-art lineage and research obligations
 - [`docs/CANDIDATE_IMPLEMENTATIONS.md`](docs/CANDIDATE_IMPLEMENTATIONS.md) — candidate models, systems, substrates, and baselines
 - [`docs/IMPLEMENTATION_SPRINT_001.md`](docs/IMPLEMENTATION_SPRINT_001.md) — current bounded implementation plan and builder/auditor cadence
 - [`experiments/README.md`](experiments/README.md) — experiment lifecycle and naming
@@ -159,4 +185,4 @@ MASI should not be protected from evidence.
 
 The objective is not to prove that the historical architecture was right. The objective is to discover whether modular specialized intelligence provides measurable value, under what conditions, through what mechanisms, and at what cost.
 
-A frontier or general-purpose model may help us build MASI. It must not silently become MASI's theory of cognition.
+A frontier or general-purpose model may help us build and operate MASI. It must not silently become MASI's entire theory of cognition, and it should not be removed when its breadth genuinely solves a problem the specialists should not be forced to inherit.
