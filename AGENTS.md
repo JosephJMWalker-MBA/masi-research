@@ -10,9 +10,11 @@ The following is a non-negotiable project invariant:
 
 > **MASI does not begin with a general-purpose model and carve it into specialists. It begins with bounded cognitive responsibilities and engineers the smallest sufficient intelligence for each responsibility from first principles. Generality belongs to the governed composition, not to each component.**
 
-Prompted or fine-tuned general models remain useful as controls, baselines, tools, translators, or transitional implementations. They are **not** presumed to be the MASI target architecture.
+Prompted or fine-tuned general models remain useful as controls, baselines, tools, translators, proposal generators, long-tail handlers, or transitional implementations. They are **not** presumed to be the MASI target specialist architecture.
 
 Existing AI systems should be used to identify primitives worth inheriting, implementations worth adapting, benchmarks worth comparing against, and technical debt / failure modes worth engineering against. Do not silently turn the current LLM ecosystem into MASI's theory of cognition.
+
+Equally, do **not** remove an LLM, Jev, or another existing component merely to make the system look more purpose-built. A general-purpose model may be the right component when breadth, language translation, hypothesis generation, or long-tail integration is the actual responsibility. Its output should then be treated as a broad prior/proposal unless a contract explicitly grants something stronger.
 
 ### Hard stop before the next Astra implementation block
 
@@ -25,21 +27,23 @@ At the start of the next block, Astra must:
 3. identify hidden coupling to a model family, tokenizer, provider, representation, or training stack;
 4. identify any assumption that fine-tuning a pretrained general model is the intended specialist architecture;
 5. identify any complexity added without a demonstrated capability deficit;
-6. preserve useful work, but relabel, narrow, or refactor architectural claims where necessary;
-7. record the reconciliation in GitHub before continuing the active sprint.
+6. identify useful general-purpose / decision-native component functions that should remain because they solve an actual integration problem;
+7. preserve useful work, but relabel, narrow, or refactor architectural claims where necessary;
+8. record the reconciliation in GitHub before continuing the active sprint.
 
 ## Read first
 
 Before making consequential changes, read in this order:
 
 1. `docs/CONSTRUCTION_DOCTRINE.md`
-2. `README.md`
-3. `STATUS.md`
-4. `docs/RESEARCH_THESIS.md`
-5. `docs/MODULES.md`
-6. `docs/EVALUATION.md`
-7. `docs/CANDIDATE_IMPLEMENTATIONS.md`
-8. the active experiment / sprint protocol
+2. `docs/PRIOR_ART.md`
+3. `README.md`
+4. `STATUS.md`
+5. `docs/RESEARCH_THESIS.md`
+6. `docs/MODULES.md`
+7. `docs/EVALUATION.md`
+8. `docs/CANDIDATE_IMPLEMENTATIONS.md`
+9. the active experiment / sprint protocol
 
 ## Specialist implementation gate
 
@@ -61,10 +65,21 @@ If those fields cannot yet be stated, stop at research/prototyping rather than h
 
 For `MASI_TARGET`, start with the **minimum sufficient intelligence** for the responsibility. A target may be neural, symbolic, probabilistic, causal, deterministic, simulation-based, hybrid, or something else entirely. There is no requirement that a specialist be an LLM.
 
+For a retained general-purpose or external decision component, also state:
+
+```text
+component role:
+why breadth/generalization is useful here:
+what authority it does NOT have:
+what bounded specialist may correct/override it:
+what provenance is preserved:
+```
+
 ## Operating principles
 
-- **Prior art before custom implementation.** Search libraries, products, research, Agent Skills/workflows, and relevant tool capabilities before building substantial new machinery.
-- **Specialization by construction, not subtraction.** Purpose-built bounded intelligence is the target; narrowed general models are controls/transitional implementations unless evidence justifies otherwise.
+- **Prior art before custom implementation.** Search libraries, products, research, Agent Skills/workflows, and relevant tool capabilities before building substantial new machinery. Treat blackboard systems, Brooks/subsumption, cognitive architectures, modular deep learning, MRKL, FlexOlmo, concept bottlenecks, and current modular-composition work as required neighboring lineages where relevant.
+- **Specialization by construction, not subtraction.** Purpose-built bounded intelligence is the target for specialist roles; narrowed general models are controls/transitional implementations unless evidence justifies otherwise.
+- **Generalists remain legitimate components.** Use an LLM or decision-native system when its broad capability is the actual needed function; do not confuse plausible/general output with truth, authority, forecast, or permission.
 - **Role contract != model identity.** Never treat a current implementation as canonical merely because it fills a MASI responsibility.
 - **Prompting != specialization.** Prompt-only role decomposition is a valid control condition, not sufficient evidence of a specialized learned module.
 - **No complexity without a demonstrated deficit.** Add architectural complexity only when measured failure shows why the simpler system is insufficient.
@@ -125,7 +140,8 @@ The independent auditor should review the durable repository state rather than r
 8. preservation of negative or inconclusive results;
 9. accidental promotion of one implementation into authority;
 10. accidental promotion of a general-model adaptation into the target architecture;
-11. reproducibility of the claimed observation.
+11. accidental removal of useful general-purpose capability for architectural purity rather than measured reason;
+12. reproducibility of the claimed observation.
 
 An audit outcome should be one of:
 
@@ -137,7 +153,7 @@ INCONCLUSIVE
 RESEARCH_QUESTION_DEFECT
 ```
 
-The auditor should not rewrite sound implementation merely to impose preferred style.
+The auditor should not rewrite sound implementation merely to impose a preferred style.
 
 ## Architecture restraint
 
@@ -151,11 +167,13 @@ New structure should be earned by one of:
 - a safety/governance boundary;
 - evidence that an existing abstraction is inadequate.
 
-Before accepting a major design, apply the permanent construction test:
+Before accepting a major design, apply both permanent construction tests:
 
 > **If today's dominant LLM architecture did not exist, would we still design this specialist this way from the responsibility outward?**
 
-If not, treat the implementation as a baseline or transitional scaffold until evidence justifies promotion.
+> **If we removed the general-purpose model entirely, what useful breadth, translation, hypothesis-generation, or long-tail capability would we now have to rebuild badly by hand?**
+
+A good design should survive both tests.
 
 ## Claim discipline
 
