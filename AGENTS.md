@@ -11,7 +11,8 @@ Before making consequential changes, read:
 3. `docs/RESEARCH_THESIS.md`
 4. `docs/MODULES.md`
 5. `docs/EVALUATION.md`
-6. the active experiment protocol
+6. `docs/CANDIDATE_IMPLEMENTATIONS.md`
+7. the active experiment / sprint protocol
 
 ## Operating principles
 
@@ -44,6 +45,46 @@ At minimum preserve:
 - known failures;
 - acceptance criteria;
 - exact next action.
+
+## Primary-agent / independent-auditor cadence
+
+Long implementation runs should use an explicit review boundary when practical. The current operator workflow uses Astra on Ultra as the primary implementation agent and Claude as an independent auditor at approximately five-hour or work-packet boundaries. Those products are **not** architectural dependencies; the reusable rule is separation between builder and reviewer.
+
+Before handing off, the primary agent should preserve:
+
+- exact branch and commit;
+- active issue / work packet;
+- implementation decisions made;
+- files changed;
+- commands and tests executed with results;
+- evidence artifacts produced;
+- known failures and unresolved questions;
+- claims the evidence does not support;
+- exact next action.
+
+The independent auditor should review the durable repository state rather than relying on the builder's narrative alone. Audit priorities are:
+
+1. fidelity to the frozen research question and acceptance criteria;
+2. correctness and regression risk;
+3. unnecessary architecture or scope expansion;
+4. baseline fairness, leakage, contamination, and resource accounting;
+5. license/provider-term compliance;
+6. evidence/interpretation separation;
+7. preservation of negative or inconclusive results;
+8. accidental promotion of one implementation into authority;
+9. reproducibility of the claimed observation.
+
+An audit outcome should be one of:
+
+```text
+ACCEPT
+REPAIR_REQUIRED
+CLAIM_NARROWING_REQUIRED
+INCONCLUSIVE
+RESEARCH_QUESTION_DEFECT
+```
+
+The auditor should not rewrite sound implementation merely to impose preferred style.
 
 ## Architecture restraint
 
