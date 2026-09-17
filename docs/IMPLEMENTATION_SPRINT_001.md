@@ -1,13 +1,32 @@
 # Implementation Sprint 001 — From Research Foundation to Executable Evidence
 
-**Status:** active planning / execution  
+**Status:** active, but **paused pending doctrine reconciliation after Astra block 1**  
 **Started:** 2026-09-17
 
 ## Objective
 
-Use the remaining current-week high-capability agent allocation to move MASI from research scaffolding toward the **smallest executable system that can test interchangeability and learned specialization without prematurely building a general runtime**.
+Use the remaining current-week high-capability agent allocation to move MASI from research scaffolding toward the **smallest executable system that can test interchangeability, specialization, and purpose-built bounded intelligence without prematurely building a general runtime**.
 
 This sprint is not authorized to declare the MASI architecture validated. Its purpose is to create runnable seams, frozen evaluation contracts, and first evidence.
+
+The sprint is governed by [`CONSTRUCTION_DOCTRINE.md`](CONSTRUCTION_DOCTRINE.md). The target architecture is **specialization by construction**, not merely specialization by adapting general-purpose models.
+
+## Mandatory pause / reconciliation checkpoint
+
+The first Astra five-hour block began before the construction doctrine was explicit enough. **Do not begin a second implementation block until the first block has been reconciled against `docs/CONSTRUCTION_DOCTRINE.md`.**
+
+At the beginning of the next Astra session, before adding new implementation:
+
+1. read `docs/CONSTRUCTION_DOCTRINE.md` and `AGENTS.md`;
+2. inspect all first-block changes and artifacts;
+3. classify each implementation artifact as `CONTROL_A`, `CONTROL_B`, `MASI_TARGET`, or `INFRASTRUCTURE`;
+4. identify any assumption that a pretrained/fine-tuned general model is the intended end-state specialist;
+5. identify hidden coupling to one model family, tokenizer, provider, representation, or training stack;
+6. identify complexity without a demonstrated capability deficit;
+7. preserve useful scaffolding, baselines, and adapters, but narrow or relabel architectural claims where necessary;
+8. commit a short reconciliation record before moving forward.
+
+This checkpoint is not a request to throw away the first session. It prevents useful exploratory work from becoming architecture by inertia.
 
 ## Current operator workflow
 
@@ -17,7 +36,7 @@ The current working cadence is operational only; it is not part of the MASI arch
 - **Independent audit agent:** Claude at each approximately five-hour Astra boundary or major work-packet boundary.
 - **Durable system of record:** this repository, its issues, branches, PRs, tests, experiment artifacts, and status records — not any model session.
 
-The goal of switching agents is not stylistic diversity. It is to create an independent review boundary so one long-running implementation process does not silently redefine the research question, acceptance criteria, or evidence.
+The goal of switching agents is not stylistic diversity. It is to create an independent review boundary so one long-running implementation process does not silently redefine the research question, acceptance criteria, construction doctrine, or evidence.
 
 ## Handoff cycle
 
@@ -40,41 +59,65 @@ Before an Astra boundary, preserve:
 1. exact branch / commit;
 2. active issue and research question;
 3. decisions frozen during the block;
-4. files changed;
-5. tests executed and their exact results;
-6. evidence artifacts produced;
-7. known failures and unresolved questions;
-8. claims the evidence does **not** support;
-9. exact next action.
+4. implementation class for each major artifact (`CONTROL_A`, `CONTROL_B`, `MASI_TARGET`, `INFRASTRUCTURE`);
+5. files changed;
+6. tests executed and their exact results;
+7. evidence artifacts produced;
+8. known failures and unresolved questions;
+9. claims the evidence does **not** support;
+10. exact next action.
 
 Claude's audit should independently check:
 
 1. whether the implementation still answers the frozen question;
-2. whether the diff adds unnecessary architecture;
-3. whether baselines are fair and resource accounting is explicit;
-4. whether test/data leakage or benchmark contamination is plausible;
-5. whether model/provider licenses and publication terms are respected;
-6. whether evidence and interpretation are separated;
-7. whether failure/negative results have been preserved;
-8. whether any implementation has accidentally become authoritative by convention;
-9. whether the result should be accepted, repaired, narrowed, or treated as inconclusive.
+2. whether it follows the specialization-by-construction doctrine;
+3. whether a general-model baseline has silently become the target architecture;
+4. whether the diff adds unnecessary architecture;
+5. whether baselines are fair and resource accounting is explicit;
+6. whether test/data leakage or benchmark contamination is plausible;
+7. whether model/provider licenses and publication terms are respected;
+8. whether evidence and interpretation are separated;
+9. whether failure/negative results have been preserved;
+10. whether any implementation has accidentally become authoritative by convention;
+11. whether the result should be accepted, repaired, narrowed, or treated as inconclusive.
 
-An audit should not rewrite working code merely to impose a preferred style. It should identify research, correctness, reproducibility, governance, licensing, and scope defects first.
+An audit should not rewrite working code merely to impose a preferred style. It should identify research, correctness, reproducibility, governance, licensing, doctrine, and scope defects first.
 
 ## Work packets
 
+### WP-1 — Reconcile Astra block 1 against the construction doctrine
+
+**Required before all remaining work packets.**
+
+Produce a durable reconciliation note containing:
+
+```text
+first-block branch / commit:
+artifacts reviewed:
+artifact classifications:
+accidental architecture assumptions:
+hidden implementation coupling:
+unjustified complexity:
+what remains valid unchanged:
+what must be relabeled / narrowed / refactored:
+next authorized action:
+```
+
+**Exit condition:** it is clear which first-block artifacts are experimental infrastructure/baselines and which, if any, legitimately satisfy the purpose-built MASI target doctrine.
+
 ### WP0 — Freeze enough of Issues #1 and #2 to permit code
 
-Before meaningful model integration:
+Before meaningful specialist integration:
 
 - tighten the primary thesis and falsifiers;
 - define the minimum common responsibility output envelope;
 - define abstention / escalation / unsupported-assumption semantics;
 - decide what belongs in `masi-bus` versus experiment-specific records;
 - define a minimum Reality Audit record;
-- document resource-accounting requirements.
+- document resource-accounting requirements;
+- require implementation-class metadata for experimental candidates.
 
-**Exit condition:** a candidate adapter can be implemented without inventing its own incompatible semantics.
+**Exit condition:** a candidate adapter can be implemented without inventing its own incompatible semantics, while purpose-built targets remain free to use native internal representations behind the responsibility boundary.
 
 ### WP1 — Build the smallest candidate-probe layer
 
@@ -83,6 +126,7 @@ Do **not** build a generic MASI server.
 Create only enough implementation to:
 
 - register a candidate implementation by stable identifier;
+- classify it as `CONTROL_A`, `CONTROL_B`, `MASI_TARGET`, or `INFRASTRUCTURE`;
 - record source/version/license metadata;
 - invoke a local candidate through a thin adapter;
 - normalize its bounded output into the experiment contract;
@@ -92,52 +136,58 @@ Create only enough implementation to:
 
 Start with one or two local candidates, not the entire registry.
 
-Preferred first Precision probes:
+Preferred first Precision probes remain useful **as baselines/research specimens**:
 
 - HHEM-2.1-Open;
-- one NLI classifier.
-
-Preferred first deterministic control:
-
+- one NLI classifier;
 - a trivial explicit rules/baseline adapter using the same envelope.
 
-**Exit condition:** at least two interchangeable implementations can be invoked through the same bounded experiment interface without changing the calling experiment.
+These probes do not define the final Precision architecture. Their purpose is to exercise interchangeability and reveal useful primitives, baseline performance, interface pressure, and inherited limitations.
+
+**Exit condition:** at least two interchangeable implementations can be invoked through the same bounded experiment interface without changing the calling experiment, and their architectural status is explicit.
 
 ### WP2 — Prepare `MASI-E001`
 
 Use Issue #3 as the authority for the experiment.
 
-Required before training:
+Required before training or purpose-built implementation:
 
 - freeze target observation dimensions;
 - add independent-label review format;
 - freeze split logic;
 - freeze metrics;
 - add negative/boundary controls;
-- select a small trainable base model based on actual local hardware fit;
-- implement untuned-local and larger-general baseline paths;
-- preserve ADCP deterministic policy outside the learned observer.
+- preserve ADCP deterministic policy outside the learned observer;
+- define the Empathy-observer responsibility, allowed inputs, native ontology/state, outputs, uncertainty/abstention semantics, and learning signal;
+- define a transparent non-neural or minimally learned baseline;
+- define `CONTROL_A` and/or `CONTROL_B` paths where useful;
+- separately define the smallest credible `MASI_TARGET` architecture from the responsibility outward.
 
-**Exit condition:** training can begin without changing the test set or success criteria after results are visible.
+A pretrained general model may be selected for a control condition if useful and hardware-practical. It must not become the target simply because fine-tuning infrastructure already exists.
 
-### WP3 — First learned specialization
+**Exit condition:** the experiment can distinguish decomposition, general-model adaptation, and purpose-built bounded intelligence without changing the held-out test set or success criteria after results are visible.
 
-Train the smallest practical Empathy-semantic-observation specialist sufficient to test the E001 hypothesis.
+### WP3 — First specialization experiment
 
-Compare at minimum:
+The first specialization experiment should compare distinct construction approaches where practical.
+
+Minimum useful comparison:
 
 ```text
-B0 — trivial / deterministic baseline where meaningful
-L1 — untuned local base model
-S1 — same local base after specialization
-F1 — larger general-purpose baseline
+B0   transparent / deterministic baseline where meaningful
+C_A  prompted general-model control (optional if informative)
+C_B  adapted or fine-tuned general/pretrained model control
+T1   purpose-built bounded MASI target
+F1   larger general-purpose comparator where terms permit
 ```
 
-Do not claim MASI system-level superiority from this experiment. E001 tests whether learned specialization itself adds measurable value on one bounded responsibility.
+`T1` should begin with the minimum sufficient intelligence for the responsibility. Its architecture must be justified by the task ontology and measured deficits, not by current LLM convention.
+
+Do not claim MASI system-level superiority from this experiment. The first objective is to determine what kind of specialization actually adds measurable value on one bounded responsibility.
 
 ### WP4 — Heterogeneous composition smoke test
 
-Only after WP1 and E001 are sufficiently stable, construct a **minimal composed decision fixture** that can consume outputs from at least two different candidate responsibility implementations.
+Only after WP1 and the first specialization experiment are sufficiently stable, construct a **minimal composed decision fixture** that can consume outputs from at least two different candidate responsibility implementations.
 
 The goal is to test executable interchangeability and disagreement preservation — not to maximize benchmark score.
 
@@ -157,10 +207,10 @@ Telos may be evaluated as a governance/control-plane candidate here if the exper
 
 ### WP5 — Foresight and Wisdom probes
 
-These may begin in parallel only if they do not block E001.
+These may begin in parallel only if they do not block the first specialization experiment.
 
-- **Foresight:** verify that a specialized quantitative forecaster (Chronos / TimesFM / equivalent) can be invoked as a bounded MASI candidate rather than asking a language model to imitate numerical forecasting.
-- **Wisdom:** create a synthetic Reality Audit sequence and compare simple weighting, MABWiser, and/or Vowpal Wabbit before designing a learned language-model Wisdom implementation.
+- **Foresight:** use Chronos / TimesFM / equivalent as research specimens and baselines for what purpose-built forecasting intelligence can look like; do not assume the final Foresight implementation must inherit their architecture.
+- **Wisdom:** create a synthetic Reality Audit sequence and compare explicit weighting, Bayesian approaches, MABWiser, and/or Vowpal Wabbit before designing any neural Wisdom implementation.
 
 These are probes, not module finalization.
 
@@ -172,6 +222,8 @@ Each PR should state:
 
 ```text
 question
+construction doctrine fit
+implementation class
 frozen acceptance criteria
 implementation summary
 baselines
@@ -190,9 +242,11 @@ Stop and record rather than expanding scope when:
 - the experiment cannot distinguish the claimed mechanism;
 - the baseline is unfair or underspecified;
 - license/terms are unclear;
-- the selected model does not fit available hardware;
+- the selected model/system does not fit available hardware;
 - fixture labels are circular or contaminated;
 - implementation requires a new abstraction not justified by the current question;
+- complexity is being added without a measured capability deficit;
+- a general-model adaptation is drifting from control condition into target architecture without explicit evidence and approval;
 - a simpler existing component already answers the question;
 - the evidence contradicts the intended MASI claim.
 
@@ -202,9 +256,10 @@ A successful week does **not** require a full MASI system.
 
 A strong sprint outcome would be:
 
-1. thesis/contracts are sufficiently frozen to support implementation;
-2. a thin interchangeable candidate-probe layer exists;
-3. at least two heterogeneous local implementations have run through it;
-4. E001 is either ready for training or has produced its first controlled result;
-5. Astra/Claude handoffs have left auditable state in GitHub;
-6. the next experiment is obvious from evidence rather than enthusiasm.
+1. the first Astra block is reconciled against the construction doctrine;
+2. thesis/contracts are sufficiently frozen to support implementation;
+3. a thin interchangeable candidate-probe layer exists;
+4. at least two heterogeneous implementations have run through it with explicit implementation classes;
+5. the first purpose-built specialist experiment is designed or entering controlled execution;
+6. Astra/Claude handoffs have left auditable state in GitHub;
+7. the next experiment is obvious from evidence rather than enthusiasm.
