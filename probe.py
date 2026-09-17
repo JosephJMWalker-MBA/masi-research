@@ -177,6 +177,7 @@ def run_probe(candidate_id, output, model_root):
             if load_error:
                 result = unavailable("error", "candidate_load_failed")
             else:
+                model_calls = None  # Unknown until the adapter reports a completed call.
                 try:
                     # Reference labels and categories never cross the inference boundary.
                     raw["native_output"] = adapter.infer(fixture["premise"], fixture["claim"])
@@ -191,6 +192,7 @@ def run_probe(candidate_id, output, model_root):
                 except CandidateAbstention as exc:
                     raw["abstention"] = str(exc)
                     input_tokens = exc.input_tokens
+                    model_calls = 0
                     result = unavailable("abstain", str(exc))
                 except Exception as exc:
                     raw["error"] = {"type": type(exc).__name__, "message": str(exc), "stage": "infer_or_normalize"}
@@ -203,7 +205,8 @@ def run_probe(candidate_id, output, model_root):
                     result = unavailable("error", "candidate_inference_or_normalization_failed")
                     if input_tokens is not None and (type(input_tokens) is not int or input_tokens < 0):
                         input_tokens = None
-                    model_calls = None
+                    if type(model_calls) is not int or model_calls not in (0, 1):
+                        model_calls = None
             normalized = {
                 "contract_version": protocol["contract_version"], "run_id": run_id,
                 "fixture_id": fixture["id"], "candidate_id": candidate_id,

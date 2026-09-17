@@ -1,0 +1,12 @@
+{"candidate_id":"exact-match-v1","error":null,"fixture_id":"literal_support","native_output":{"exact_match":true,"input_tokens":null,"model_calls":0},"run_id":"1304391a-127c-421a-b78e-58fcde121eb1"}
+{"candidate_id":"exact-match-v1","error":null,"fixture_id":"case_whitespace","native_output":{"exact_match":true,"input_tokens":null,"model_calls":0},"run_id":"1304391a-127c-421a-b78e-58fcde121eb1"}
+{"candidate_id":"exact-match-v1","error":null,"fixture_id":"paraphrase","native_output":{"exact_match":false,"input_tokens":null,"model_calls":0},"run_id":"1304391a-127c-421a-b78e-58fcde121eb1"}
+{"candidate_id":"exact-match-v1","error":null,"fixture_id":"conjunction_subset","native_output":{"exact_match":false,"input_tokens":null,"model_calls":0},"run_id":"1304391a-127c-421a-b78e-58fcde121eb1"}
+{"candidate_id":"exact-match-v1","error":null,"fixture_id":"explicit_negative","native_output":{"exact_match":true,"input_tokens":null,"model_calls":0},"run_id":"1304391a-127c-421a-b78e-58fcde121eb1"}
+{"candidate_id":"exact-match-v1","error":null,"fixture_id":"distractor","native_output":{"exact_match":false,"input_tokens":null,"model_calls":0},"run_id":"1304391a-127c-421a-b78e-58fcde121eb1"}
+{"candidate_id":"exact-match-v1","error":null,"fixture_id":"negation","native_output":{"exact_match":false,"input_tokens":null,"model_calls":0},"run_id":"1304391a-127c-421a-b78e-58fcde121eb1"}
+{"candidate_id":"exact-match-v1","error":null,"fixture_id":"number_swap","native_output":{"exact_match":false,"input_tokens":null,"model_calls":0},"run_id":"1304391a-127c-421a-b78e-58fcde121eb1"}
+{"candidate_id":"exact-match-v1","error":null,"fixture_id":"missing_evidence","native_output":{"exact_match":false,"input_tokens":null,"model_calls":0},"run_id":"1304391a-127c-421a-b78e-58fcde121eb1"}
+{"candidate_id":"exact-match-v1","error":null,"fixture_id":"role_reversal","native_output":{"exact_match":false,"input_tokens":null,"model_calls":0},"run_id":"1304391a-127c-421a-b78e-58fcde121eb1"}
+{"candidate_id":"exact-match-v1","error":null,"fixture_id":"partial_support","native_output":{"exact_match":false,"input_tokens":null,"model_calls":0},"run_id":"1304391a-127c-421a-b78e-58fcde121eb1"}
+{"candidate_id":"exact-match-v1","error":null,"fixture_id":"modal_uncertainty","native_output":{"exact_match":false,"input_tokens":null,"model_calls":0},"run_id":"1304391a-127c-421a-b78e-58fcde121eb1"}

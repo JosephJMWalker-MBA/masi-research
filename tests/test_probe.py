@@ -305,6 +305,7 @@ class RunnerEvidenceTests(unittest.TestCase):
             self.assertEqual(original["error"]["message"], "missing pinned weights")
             self.assertEqual(result["status"], "error")
             self.assertIsNone(result["verdict"])
+
             self.assertTrue(result["escalation_requested"])
 
     def test_malformed_model_manifest_is_recorded_as_load_failure(self):
@@ -377,6 +378,10 @@ class RunnerEvidenceTests(unittest.TestCase):
             self.assertEqual(original["error"]["type"], "ValueError")
             self.assertEqual(result["status"], "error")
             self.assertIsNone(result["verdict"])
+
+        # Parsing failed after a reported completed forward pass.
+        self.assertEqual(summary["known_model_calls"], len(self.records))
+        self.assertEqual(summary["unknown_call_count_records"], 0)
 
 
 if __name__ == "__main__":

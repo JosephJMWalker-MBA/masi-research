@@ -1,0 +1,17 @@
+{
+  "candidate_id": "nli-deberta-small",
+  "claim_scope": "Executable interchangeability smoke test underlying H4; no capability superiority, learned-specialization or MASI system claim.",
+  "correct": 12,
+  "correct_denominator": 12,
+  "counts": {
+    "abstain": 0,
+    "error": 0,
+    "ok": 12
+  },
+  "coverage": 1.0,
+  "known_model_calls": 12,
+  "labels_status": "Author-created synthetic engineering fixtures; visible to implementers; not held out, not a benchmark, no training or tuning.",
+  "run_id": "f12169b8-3f7f-4dd7-a69a-ad5d4ee8f6bb",
+  "total": 12,
+  "unknown_call_count_records": 0
+}

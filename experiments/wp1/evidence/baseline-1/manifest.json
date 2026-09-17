@@ -1,0 +1,174 @@
+{
+  "artifact_sha256": {
+    "normalized.jsonl": "10dcabd771ad1c4b99a023891a3f23af6e8bab47db54470df2839df21b3d5cf7",
+    "raw.jsonl": "68346521d1ab379e36874a0ad6156d18ac7c2de4231df85ab399ab1e38b97800",
+    "summary.json": "a98ba8c3740923554998b6b57721c420c657ed6341aec1782e74fb51e3df7ea1"
+  },
+  "candidate": {
+    "candidate_id": "exact-match-v1",
+    "dtype": null,
+    "license": "Apache-2.0",
+    "license_review_date": "2026-09-17",
+    "model_class": "deterministic trimmed case-insensitive equality",
+    "parameter_count": 0,
+    "revision": "exact-match-v1",
+    "source": "repository:probe_candidates.py"
+  },
+  "candidate_id": "exact-match-v1",
+  "environment": {
+    "cpu_count": 10,
+    "device": "cpu",
+    "dtype": "float32",
+    "hardware_memory_bytes": null,
+    "hardware_memory_reason": "not measured by portable runner; see handoff host preflight",
+    "machine": "arm64",
+    "packages": {
+      "Jinja2": "3.1.6",
+      "MarkupSafe": "3.0.3",
+      "PyYAML": "6.0.3",
+      "certifi": "2026.7.22",
+      "charset-normalizer": "3.5.1",
+      "filelock": "4.0.0",
+      "fsspec": "2026.7.0",
+      "hf-xet": "1.6.0",
+      "huggingface_hub": "0.36.2",
+      "idna": "3.20",
+      "mpmath": "1.3.0",
+      "networkx": "3.6.1",
+      "numpy": "2.4.6",
+      "packaging": "26.3",
+      "pip": "26.1",
+      "protobuf": "6.33.5",
+      "regex": "2026.9.10",
+      "requests": "2.34.2",
+      "safetensors": "0.8.0",
+      "sentencepiece": "0.2.1",
+      "setuptools": "82.0.1",
+      "sympy": "1.14.0",
+      "tokenizers": "0.22.2",
+      "torch": "2.8.0",
+      "tqdm": "4.70.1",
+      "transformers": "4.57.6",
+      "typing_extensions": "4.16.0",
+      "urllib3": "2.8.0"
+    },
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "python": "3.11.15",
+    "quantization": null,
+    "threads": 1
+  },
+  "finished_at": "2026-09-17T23:54:47.118298+00:00",
+  "freeze": {
+    "files": {
+      "docs/WP0_WP1_CONTRACT.md": "c6e3ce3d86de27b6ddeb7d25817cfd7686554bfedd8a55661ac64722b5cdef40",
+      "experiments/wp1/fixtures.jsonl": "0720d89efd21882b21330ffc709db4bddb3c9d6c0426266e817ddebedd8f8850",
+      "experiments/wp1/protocol.json": "62bd104130c1223ca4a9e20c7ba6c2254eb1c3e76a8a4785cc52a620953a3a0c",
+      "probe_candidates.py": "da4ca2e71cdd4b5730e668a8d0e72b82b49cc80a9e41feee05e6bb317f5adbf7",
+      "requirements-probe.lock": "50cb998ba127fe34751e7d120c8414467e6553707ad7be2f90633df70f9a5798"
+    },
+    "freeze_id": "wp1-support-v1",
+    "frozen_at_utc": "2026-09-17T23:53:00.301130+00:00",
+    "observation_status": "Created before any fixed-fixture candidate runs; no model outputs inspected."
+  },
+  "git": {
+    "branch": "codex/wp0-wp1-candidate-probe",
+    "commit": "5888d2c4d805655f6b5e97adcb536b4abb1d0a5f",
+    "status_porcelain": ""
+  },
+  "load_error": null,
+  "protocol": {
+    "acceptance": [
+      "All three registered implementations run with unchanged fixture runner and only candidate ID changed",
+      "Each learned implementation completes at least one real forward pass and every fixture has an ok or explicit abstain record, with zero error records",
+      "Raw outputs and normalized outputs are distinct, linked by hashes and complete for every fixture",
+      "Fixtures, protocol, contract, source, model revisions and environment are recorded",
+      "A second run under comparable conditions reproduces normalized decisions and native numerical outputs (absolute tolerance 1e-6); latency is descriptive, not an acceptance score",
+      "Negative and boundary tests cover invalid inputs, unsupported cases, threshold, non-finite scores, missing artifacts, input limits and no overwrite"
+    ],
+    "candidates": [
+      "exact-match-v1",
+      "hhem-2.1",
+      "nli-deberta-small"
+    ],
+    "claim_scope": "Executable interchangeability smoke test underlying H4; no capability superiority, learned-specialization or MASI system claim.",
+    "contract_version": "wp1-support-v1",
+    "dataset": "fixtures.jsonl",
+    "dataset_status": "Author-created synthetic engineering fixtures; visible to implementers; not held out, not a benchmark, no training or tuning.",
+    "failure_conditions": [
+      "No real local model invocation",
+      "Invocation errors or missing evidence",
+      "Caller needs candidate-specific inference branching",
+      "Silent input truncation or label leakage into inference",
+      "Mutated frozen protocol or fixtures",
+      "Failure to preserve native distinctions or to reproduce within tolerance"
+    ],
+    "inference": {
+      "batch_size": 1,
+      "device": "cpu",
+      "dtype": "float32",
+      "passes": 1,
+      "quantization": null,
+      "retries": 0,
+      "retrieval": false,
+      "seed": 0,
+      "threads": 1,
+      "tools": false,
+      "truncation": false
+    },
+    "known_confounds": [
+      "Tiny synthetic fixtures are visible and not representative",
+      "Different pretraining, model sizes, tokenizers and task-specific formatting",
+      "Native scores are not calibrated or comparable across candidates",
+      "Shared numeric cutoff does not establish comparable operating points",
+      "Sequential CPU latency and process lifetime RSS do not measure isolated hardware efficiency",
+      "Fixture reference labels are author judgments, not independently reviewed or observed real-world outcomes"
+    ],
+    "mapping": "Learned score >0.5 supported; <0.5 not_supported; exactly 0.5 abstain. not_supported does not imply contradiction. Rule: stripped casefold equality supported, otherwise abstain; no numeric score.",
+    "max_chars_per_field": 4096,
+    "max_model_input_tokens": 512,
+    "metrics": [
+      "total fixtures",
+      "ok/abstain/error counts",
+      "correct count with all fixtures as denominator (abstain/error not correct)",
+      "coverage = ok/total",
+      "per-invocation wall latency including tokenization",
+      "separate model load latency",
+      "process lifetime peak RSS with platform units converted to bytes",
+      "input tokens including model-specific formatting",
+      "model calls and passes"
+    ],
+    "omitted_controls": "F1/L1/L2/M1 composed-system and training controls are omitted because WP1 does not compare architectures or specialization; no outcomes, router, composition or training is implemented.",
+    "protocol_id": "wp1-candidate-probe-v1",
+    "publication": "Original synthetic fixtures and code under repository Apache-2.0; exact external model/tokenizer licenses reviewed before integration; weights and downloaded upstream code excluded from Git. No restricted external service is invoked.",
+    "question": "Can unchanged calling code invoke a deterministic baseline and two heterogeneous local implementations on identical bounded premise/claim inputs while preserving native output, normalized output, failures and resource provenance?",
+    "resource_limits": {
+      "execution": "One candidate per process, sequential runs; no model installation beyond the three pinned model/tokenizer artifacts.",
+      "host_memory_requirement_bytes": 17179869184,
+      "model_storage_budget_bytes": 3221225472
+    },
+    "responsibility": "precision.evidence_support",
+    "stop_boundary": "WP0/WP1 only; independent audit before WP2/E001 preparation or training. Issues #1/#2 remain broader than this narrow freeze.",
+    "support_threshold": 0.5
+  },
+  "resources": {
+    "api_cost": 0,
+    "api_cost_currency": "USD",
+    "api_cost_scope": "no external inference",
+    "model_load_seconds": 5.749985575675964e-06,
+    "output_tokens": null,
+    "output_tokens_reason": "classification, not generation",
+    "passes_per_fixture": 1,
+    "peak_process_rss_bytes": 27148288,
+    "retries": 0,
+    "retrieval_calls": 0,
+    "rss_scope": "process lifetime high-water RSS including imports, load and inference",
+    "tool_calls": 0
+  },
+  "run_id": "1304391a-127c-421a-b78e-58fcde121eb1",
+  "source_sha256": {
+    "probe.py": "7190972fda6939b8e19001938455ff2d1456a307f3cd86f1c6446024b143b74f",
+    "probe_candidates.py": "da4ca2e71cdd4b5730e668a8d0e72b82b49cc80a9e41feee05e6bb317f5adbf7"
+  },
+  "started_at": "2026-09-17T23:54:47.069208+00:00",
+  "state": "completed"
+}
