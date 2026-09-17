@@ -56,19 +56,29 @@ reproducible evidence
 
 Existing projects may provide bounded research substrates without becoming MASI dependencies. For example, the Accumulated Distress Care Protocol (ADCP) may supply part of an Empathy research track; a decision-native model such as Jev may be a useful Precision comparator; neither is canonical MASI.
 
+## Candidate implementations
+
+MASI is expected to be heterogeneous. A useful implementation may be a language model, classifier, forecaster, reward model, contextual bandit, simulator, deterministic policy, or external decision-native service.
+
+The working candidate registry is maintained in [`docs/CANDIDATE_IMPLEMENTATIONS.md`](docs/CANDIDATE_IMPLEMENTATIONS.md). It currently includes Telos as a candidate governance/control-plane substrate, routing baselines such as vLLM Semantic Router and RouteLLM, bounded Precision verifiers, specialist forecasting systems, ADCP-derived Empathy work, and contextual-bandit approaches to early Wisdom experiments.
+
+The registry is a search surface, not a canonical fleet. Candidates must earn inclusion in experiments through fit, licensing, reproducibility, hardware practicality, and evidence.
+
 ## Current phase
 
-**Phase 0 — research foundation and first falsifiable experiment.**
+**Phase 0 -> Phase 1 transition — bounded implementation and first executable evidence.**
 
-Near-term work is intentionally narrow:
+Near-term work remains intentionally narrow:
 
-1. freeze the research thesis and falsifiers;
-2. define implementation-independent module contracts;
-3. define fair baselines and evaluation rules;
-4. design the first small learned-specialization experiment;
-5. preserve enough provenance for independent reproduction.
+1. freeze enough of the research thesis, falsifiers, and module contracts to support code;
+2. build a thin candidate-probe layer rather than a general MASI platform;
+3. demonstrate interchangeable heterogeneous implementations through one bounded interface;
+4. complete the design gates for the first learned-specialization experiment;
+5. preserve enough provenance for independent reproduction and audit.
 
-The first proposed experiment is `MASI-E001`: test whether a small locally specialized semantic observer can outperform its untuned local baseline, and potentially a larger general-purpose model, on a bounded Empathy-related observation task derived from ADCP-style fixtures.
+The first proposed learned-specialization experiment is `MASI-E001`: test whether a small locally specialized semantic observer can outperform its untuned local baseline, and potentially a larger general-purpose model, on a bounded Empathy-related observation task derived from ADCP-style fixtures.
+
+The active implementation plan is [`docs/IMPLEMENTATION_SPRINT_001.md`](docs/IMPLEMENTATION_SPRINT_001.md).
 
 ## How to contribute
 
@@ -93,12 +103,14 @@ Please read [`CONTRIBUTING.md`](CONTRIBUTING.md) before proposing implementation
 ## Repository map
 
 - [`STATUS.md`](STATUS.md) — current research state and next action
-- [`AGENTS.md`](AGENTS.md) — operating rules for AI-assisted work
+- [`AGENTS.md`](AGENTS.md) — operating and audit rules for AI-assisted work
 - [`CONTRIBUTING.md`](CONTRIBUTING.md) — contribution and evidence standards
 - [`docs/RESEARCH_THESIS.md`](docs/RESEARCH_THESIS.md) — hypotheses and falsification criteria
 - [`docs/MODULES.md`](docs/MODULES.md) — candidate responsibility contracts
 - [`docs/EVALUATION.md`](docs/EVALUATION.md) — baseline and comparison rules
 - [`docs/PRIOR_ART.md`](docs/PRIOR_ART.md) — prior-art posture and research obligations
+- [`docs/CANDIDATE_IMPLEMENTATIONS.md`](docs/CANDIDATE_IMPLEMENTATIONS.md) — candidate models, systems, substrates, and baselines
+- [`docs/IMPLEMENTATION_SPRINT_001.md`](docs/IMPLEMENTATION_SPRINT_001.md) — current bounded implementation plan and builder/auditor cadence
 - [`experiments/README.md`](experiments/README.md) — experiment lifecycle and naming
 
 ## Licensing and reuse
