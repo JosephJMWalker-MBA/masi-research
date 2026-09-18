@@ -540,7 +540,7 @@ A person may be materially affected by MASI without contributing code and still 
 
 Funding, code contribution, technical expertise, model ownership, or repository maintenance should not silently become universal governance standing.
 
-The separate participation compact defines what public repository participation means. This document concerns the deeper constitutional theory of how MASI itself may eventually be governed.
+Public repository participation rules should remain distinct from this deeper constitutional theory of how MASI itself may eventually be governed.
 
 ## Current research obligations
 
