@@ -24,7 +24,7 @@ The documentation-only R1–R7 reconciliation was independently re-checked in [A
 
 The doctrine-reconciliation hold is therefore cleared for the next **operator-authorized** work packet. This is not blanket authorization for WP2, E001, training, new candidates, runtime expansion, or merging the frozen builder packet.
 
-The current authorized next packet is the WP0 research-gate work recorded in `STATUS.md` and `docs/IMPLEMENTATION_SPRINT_001.md`: tighten/freeze enough of Issues #1 and #2 to make later implementation claims falsifiable without hardening accidental architecture.
+The WP0 research gates have now been independently accepted in Audit Addendum C and merged. The current authorized next packet is **E001 protocol binding only** under Issue #3: freeze the experiment-specific task, ontology, inputs, labels, controls, metrics/margins, split logic, resource budgets, uncertainty/abstention semantics, negative/adversarial cases, and target design constraints needed for preregistration. **No E001 implementation, training, model run, dataset finalization by observation, runtime expansion, or builder-branch merge is authorized by this packet.**
 
 ## Epistemic integrity gate
 
