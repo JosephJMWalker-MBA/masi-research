@@ -1,6 +1,6 @@
 # WP0 research gates — 2026-09-18
 
-**Status: documentation freeze submitted for independent Claude audit; not yet accepted.** This packet supplies design gates for Issues #1/#2, not an executable contract or permission to begin an experiment.
+**Status: independently accepted in Audit Addendum C for the bounded purpose of enabling design of the next experiment.** This packet supplies design gates for Issues #1/#2; it is not an executable contract or permission to begin an experiment.
 
 ## Authority and preserved state
 
@@ -11,7 +11,7 @@
 
 ## Decision and issue coverage
 
-**Can the next experiment be designed without inventing thesis, boundary, outcome-record or resource rules during implementation? Yes, at the design-gate level, subject to this packet's independent audit.** The invariants below are frozen for review. Task-specific bindings must be resolved in a separately authorized protocol before implementation; final assets/revisions must be frozen before final observation. Documentation readiness is neither execution readiness nor empirical validation.
+**Can the next experiment be designed without inventing thesis, boundary, outcome-record or resource rules during implementation? Yes, at the design-gate level.** Audit Addendum C independently accepted that conclusion. The invariants below are accepted as governing design gates. Task-specific bindings must still be resolved in a separately authorized protocol before implementation; final assets/revisions must be frozen before final observation. Documentation readiness is neither execution readiness nor empirical validation.
 
 | Requirement | Decision frozen in this packet | Governing detail |
 | --- | --- | --- |
@@ -23,7 +23,7 @@
 | #1/#2 credible resource comparison | Required observations, missingness reasons, scope/units, failed-attempt accounting and limits on comparability. | [Resource minimum](EVALUATION.md#resource-accounting) |
 | E1 future-contract decision | Independent reference tables/checks required for claim-critical deterministic semantics; frozen rubric/independent assessment for non-deterministic quality. No WP1 repair. | [E1 decision](EVALUATION.md#independent-reference-checks--e1-decision) |
 
-Issue #1 is addressed at research-gate granularity, not by choosing a benchmark. Issue #2 is addressed at semantic-contract granularity, not by implementing all four responsibilities or a transport. Issue acceptance/closure remains an operator/auditor disposition; no issue state is changed here.
+Issue #1 is accepted at research-gate granularity, not by choosing a benchmark. Issue #2 is accepted at semantic-contract granularity, not by implementing all four responsibilities or a transport. Issue closure remains an operator repository-state action; task-specific protocol work belongs to later bounded packets.
 
 ## MASI Bus ownership and gaps
 
@@ -75,7 +75,7 @@ Established concepts plus linked records suffice. No custom schema package, runt
 - **Reality Audit application:** target/horizon, outcome sources, availability rules, correspondence/error metric and treatment of missing/censored evidence. The record can preserve these facts but cannot by itself identify causal benefit or remove selection bias.
 - **Transport and reference checks:** serialization and any needed Bus compatibility proposal remain unimplemented; experiment-specific independent expected cases and reviewers must be bound before final observation.
 
-The smallest blocker to implementation is a **separately authorized, audited bounded protocol that binds these choices**, after this WP0 audit. It is not a need for more general MASI architecture. No capability deficit has been established that would justify learned complexity.
+The smallest blocker to implementation is a **separately authorized, audited bounded protocol that binds these choices** under the accepted WP0 gates. It is not a need for more general MASI architecture. No capability deficit has been established that would justify learned complexity.
 
 ## Handoff and checks
 
@@ -106,4 +106,4 @@ A supporting same-family reader reviewed request coverage and identified two dra
 
 No model tests or stored-evidence verifiers were run in this documentation packet. No historical WP1 test/verifier result is claimed as a fresh check.
 
-**Exact proposed next action:** independent Claude audit of this branch's documentation diff against `8de8bbdf956cd41d94c8dc1758b71f07f2b9b8e6`: check Issue #1/#2 coverage, doctrine fidelity, Bus ownership/gap accuracy, resource comparability, E1 independence requirements, frozen versus provisional decisions, and absence of code/evidence changes. Record an audit disposition. Do not reopen WP1, start WP2/E001/K001, merge the builder branch or infer implementation authority from this packet. Stop here for that audit and subsequent operator decision.
+**Audit disposition:** Audit Addendum C returned `ACCEPT` for the bounded purpose of enabling design of the next experiment. **Exact next operator decision:** whether to authorize one protocol-binding packet for a single named experiment. That packet must bind the task-specific choices above and be independently audited before implementation. Do not reopen WP1, start WP2/E001/K001, merge the builder branch or infer implementation authority from WP0 acceptance.

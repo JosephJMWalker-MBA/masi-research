@@ -1,9 +1,9 @@
 # Implementation Sprint 001 — From Research Foundation to Executable Evidence
 
-**Status:** active; **WP1 accepted only as narrowed; WP0 documentation frozen for independent audit**
+**Status:** active; **WP1 accepted only as narrowed; WP0 research gates accepted for bounded experiment design**  
 **Started:** 2026-09-17
 
-**Current audit checkpoint:** WP1 was observed on the frozen builder branch `81adfff`; the first independent [Claude audit](AUDIT_WP0_WP1_2026-09-17.md) returned `CLAIM_NARROWING_REQUIRED`. Astra's documentation-only [R1–R7 reconciliation](RECONCILIATION_WP1_R1_R7.md) was independently re-checked in Audit Addendum B and received `ACCEPT`. **WP1 is accepted only as narrowed.** The builder code/evidence remain pinned at `81adfff` and are not merged by that acceptance.
+**Current audit checkpoint:** WP1 was observed on the frozen builder branch `81adfff`; the first independent [Claude audit](AUDIT_WP0_WP1_2026-09-17.md) returned `CLAIM_NARROWING_REQUIRED`. Astra's documentation-only [R1–R7 reconciliation](RECONCILIATION_WP1_R1_R7.md) was independently re-checked in Audit Addendum B and received `ACCEPT`. **WP1 is accepted only as narrowed.** Audit Addendum C subsequently accepted the WP0 research gates only for bounded experiment design. The builder code/evidence remain pinned at `81adfff` and are not merged by either acceptance.
 
 The observed invocation result is limited to three pre-registered implementations: an `INFRASTRUCTURE`/B0 floor and two externally adapted `CONTROL_B`-class specimens. Invocation is uniform, but normalization is caller-resident and candidate-keyed; the broader contract's caller-branch condition holds only for invocation, not normalization. No open-set, cross-paradigm or purpose-built-target interchangeability is established, and no capability deficit justifying learned complexity was shown. See the [narrowed results](../experiments/wp1/RESULTS.md). The frozen WP1-local thesis matrix does not close Issue #1's thesis-freeze deliverable under current H2A/H2B doctrine.
 
@@ -104,11 +104,11 @@ next authorized action:
 
 **Exit condition:** it is clear which first-block artifacts are experimental infrastructure/baselines and which, if any, legitimately satisfy the purpose-built MASI target doctrine.
 
-For this packet, the [implementation-class record](../experiments/wp1/IMPLEMENTATION_CLASSES.md) identifies no `MASI_TARGET` or `CONTROL_A`. Audit Addendum B accepted R1–R7, so WP-1 is complete **only as narrowed**. E1's independent-reference-check recommendation remains a future-contract lesson, not a WP1 repair. The next authorized packet is WP0 below; WP2/E001 and builder-branch merging remain separately unauthorized.
+For this packet, the [implementation-class record](../experiments/wp1/IMPLEMENTATION_CLASSES.md) identifies no `MASI_TARGET` or `CONTROL_A`. Audit Addendum B accepted R1–R7, so WP-1 is complete **only as narrowed**. E1's independent-reference-check recommendation remains a future-contract lesson, not a WP1 repair. WP0 below is now independently accepted for bounded experiment design; any next protocol packet still requires separate operator authorization and audit before implementation.
 
 ### WP0 — Freeze enough of Issues #1 and #2 to design the next bounded experiment
 
-**Packet submitted; independent audit pending.** The [WP0 research-gates record](WP0_RESEARCH_GATES.md) binds the decisions below against main `8de8bbd`. This is a documentation freeze, not execution authorization. The downstream packets remain a roadmap requiring separate authorization.
+**Accepted for bounded experiment design.** Audit Addendum C accepted the [WP0 research-gates record](WP0_RESEARCH_GATES.md) against governing main `8de8bbd`. This remains a documentation/design gate, not execution authorization. The downstream packets remain a roadmap requiring separate authorization.
 
 Before meaningful specialist integration:
 
@@ -120,7 +120,7 @@ Before meaningful specialist integration:
 - document resource-accounting requirements;
 - require implementation-class metadata for experimental candidates.
 
-**Exit condition:** after independent acceptance, the next experiment can be designed using fixed thesis/control, semantic-boundary, outcome-record and resource-comparison rules. A separately authorized protocol must bind task-specific semantics, competent controls, metrics/margins, budgets and independent checks before implementation; purpose-built targets retain native internal representations. No candidate adapter is implemented by this packet. E1 is resolved as a future-contract requirement for independent reference tables/checks, never a WP1 repair.
+**Exit condition: met at gate level.** The next experiment can now be designed using fixed thesis/control, semantic-boundary, outcome-record and resource-comparison rules. A separately authorized protocol must still bind task-specific semantics, an operational definition of competent controls, metrics/margins, budgets, applicable energy measurement or explicit non-measurement, adversarial-integrity-case inclusion, and independent checks before implementation; purpose-built targets retain native internal representations. No candidate adapter is implemented by this packet. E1 is resolved as a future-contract requirement for independent reference tables/checks, never a WP1 repair.
 
 ### WP1 — Build the smallest candidate-probe layer
 

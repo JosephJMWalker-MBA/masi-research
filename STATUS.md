@@ -1,6 +1,6 @@
 # Status
 
-**Current phase:** WP1 **accepted only as narrowed** after independent Audit Addendum B; doctrine-reconciliation hold cleared. **WP0 research-gates documentation for Issues #1/#2 is frozen for independent Claude audit; not yet accepted.**
+**Current phase:** WP1 **accepted only as narrowed** after Audit Addendum B. WP0 research gates for Issues #1/#2 are **accepted by Audit Addendum C for the bounded purpose of enabling design of the next experiment**. No experiment protocol or implementation is yet authorized.
 
 **Primary objective:** turn MASI from a conceptual/disclosure lineage into falsifiable executable research while preserving model interchangeability, explicit governance, fair baselines, claim discipline, and the project's original specialization-by-construction thesis.
 
@@ -95,15 +95,15 @@ Three pre-registered implementations — `exact-match-v1` (`INFRASTRUCTURE`/B0 f
 
 Substitution is demonstrated only for that closed set: normalization is caller-resident and candidate-keyed, and both learned candidates share one classifier stack and adapter class. The protocol's inference-branching condition was not triggered; the contract's broader caller-branch condition holds only for invocation, not normalization. Open-set or cross-paradigm interchangeability is unestablished. WP1 identified no capability deficit in transparent Precision approaches and does not justify learned complexity.
 
-The historical WP1-local thesis matrix is superseded for thesis purposes by current H2A/H2B, `C_A/C_B/T` controls and falsifiers 1–10 in [RESEARCH_THESIS.md](docs/RESEARCH_THESIS.md). Issue #1's WP0 thesis-freeze deliverable remains open. Issue #2 remains broader than this local interface, and Issue #4 remains broader than WP1.
+The historical WP1-local thesis matrix is superseded for thesis purposes by current H2A/H2B, `C_A/C_B/T` controls and falsifiers 1–10 in [RESEARCH_THESIS.md](docs/RESEARCH_THESIS.md). The accepted [WP0 research gates](docs/WP0_RESEARCH_GATES.md) satisfy Issues #1/#2 at gate level without selecting a benchmark, task-specific protocol, transport, or implementation. Issue #4 remains broader than WP1.
 
 ## Immediate sequence
 
 1. Treat WP1 as accepted **only as narrowed**; preserve the builder packet at `81adfff` as immutable historical evidence.
-2. Independently audit the [WP0 research-gates packet](docs/WP0_RESEARCH_GATES.md) on `astra/wp0-research-gates`, based on main `8de8bbdf956cd41d94c8dc1758b71f07f2b9b8e6`. It supplies thesis/control decision rules, semantic boundaries, Reality Audit minimum, Bus ownership and resource requirements; no implementation or experiment was started.
-3. Record the audit disposition. Only a subsequent operator decision may authorize a bounded experiment protocol; acceptance of these documentation gates alone does not authorize WP2/E001, K001 execution, training, new candidates or runtime expansion.
+2. Treat the [WP0 research-gates packet](docs/WP0_RESEARCH_GATES.md) as independently accepted **only for bounded experiment design** under Audit Addendum C.
+3. Make one operator choice before further research execution: select whether to authorize a protocol-binding packet for exactly one named experiment. That protocol packet must be audited before implementation; acceptance of WP0 alone does not authorize WP2/E001, K001 execution, training, new candidates or runtime expansion.
 
-The packet retains H2A/H2B and falsifiers 1–10, requires claim-linked comparisons and future independent reference checks (E1), and documents the current Bus v1.0 confidence/cost/native-output gaps without changing Bus. The rules are frozen for review; task-specific metrics/margins, inputs, family profile, outcome horizon/rule and resource caps remain unselected. Issues #1/#2 stay open pending disposition. WP1's historical records and all frozen/code/evidence artifacts are untouched.
+The accepted packet retains H2A/H2B and falsifiers 1–10, requires claim-linked comparisons and future independent reference checks (E1), and documents the current Bus v1.0 confidence/cost/native-output gaps without changing Bus. Task-specific metrics/margins, inputs, family profile, outcome horizon/rule and resource caps remain unselected by design. The next protocol must also (a) operationally define a competent control, (b) declare an energy-measurement method if energy is claimed or mark energy unmeasured, and (c) state whether adversarial epistemic-integrity cases are included. WP1's historical records and all frozen/code/evidence artifacts remain untouched.
 
 ## First specialization experiment
 
@@ -119,7 +119,7 @@ A pretrained base selection or fine-tuning path is an **optional `CONTROL_B` arm
 
 ## Not yet authorized
 
-- beginning WP2/E001 or new specialist implementation before the authorized WP0 research-gates packet is accepted;
+- beginning WP2/E001, K001 execution, or new specialist implementation before a separately authorized and audited protocol-binding packet exists;
 - building a general-purpose MASI platform before bounded experiments require it;
 - creating separate repositories for individual MASI modules;
 - treating Telos, Jev, ADCP, any router, or any local model as canonical MASI;
@@ -133,4 +133,4 @@ A pretrained base selection or fine-tuning path is an **optional `CONTROL_B` arm
 
 ## Next durable action
 
-**Independent Claude audit of WP0 only:** review the seven-document patch and [gate handoff](docs/WP0_RESEARCH_GATES.md) against governing `8de8bbd`, including claim sufficiency, semantic ownership, resource comparability, E1 and frozen/provisional distinctions. No WP1 re-audit or repair is requested. Stop for disposition and an operator decision before any implementation.
+**Operator decision only:** choose whether to authorize exactly one bounded protocol-binding packet for a single named experiment. The packet must bind the experiment-specific task, competent controls, metrics/margins, data/splits where applicable, resource budgets, outcome rules and required integrity checks, then stop for independent audit before implementation. Do not infer WP2/E001/K001 or runtime authority from WP0 acceptance.
