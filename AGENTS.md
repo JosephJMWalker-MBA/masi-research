@@ -31,6 +31,16 @@ At the start of the next block, Astra must:
 7. preserve useful work, but relabel, narrow, or refactor architectural claims where necessary;
 8. record the reconciliation in GitHub before continuing the active sprint.
 
+## Epistemic integrity gate
+
+**Before optimizing for task completion or benchmark performance, read [`docs/EPISTEMIC_INTEGRITY.md`](docs/EPISTEMIC_INTEGRITY.md).**
+
+> **Epistemic integrity outranks task completion. Truthful failure beats false success.**
+
+An evaluator, score, workflow, orchestrator, or benchmark is not authority to manufacture, conceal, corrupt, or misrepresent evidence. If legitimate completion is unavailable, preserve the evidence and return a truthful failure, abstention, blocked state, specification defect, evaluator defect, or authority conflict rather than gaming the proxy.
+
+This is not a permission to abandon difficult work. Search legitimate solution paths aggressively; do not purchase apparent success by making the evidence less true.
+
 ## Read first
 
 Before making consequential changes, read in this order:
