@@ -1,6 +1,6 @@
 # Implementation Sprint 001 — From Research Foundation to Executable Evidence
 
-**Status:** active; **WP1 accepted only as narrowed; next authorized packet is WP0 research gates**  
+**Status:** active; **WP1 accepted only as narrowed; WP0 documentation frozen for independent audit**
 **Started:** 2026-09-17
 
 **Current audit checkpoint:** WP1 was observed on the frozen builder branch `81adfff`; the first independent [Claude audit](AUDIT_WP0_WP1_2026-09-17.md) returned `CLAIM_NARROWING_REQUIRED`. Astra's documentation-only [R1–R7 reconciliation](RECONCILIATION_WP1_R1_R7.md) was independently re-checked in Audit Addendum B and received `ACCEPT`. **WP1 is accepted only as narrowed.** The builder code/evidence remain pinned at `81adfff` and are not merged by that acceptance.
@@ -106,7 +106,9 @@ next authorized action:
 
 For this packet, the [implementation-class record](../experiments/wp1/IMPLEMENTATION_CLASSES.md) identifies no `MASI_TARGET` or `CONTROL_A`. Audit Addendum B accepted R1–R7, so WP-1 is complete **only as narrowed**. E1's independent-reference-check recommendation remains a future-contract lesson, not a WP1 repair. The next authorized packet is WP0 below; WP2/E001 and builder-branch merging remain separately unauthorized.
 
-### WP0 — Freeze enough of Issues #1 and #2 to permit code
+### WP0 — Freeze enough of Issues #1 and #2 to design the next bounded experiment
+
+**Packet submitted; independent audit pending.** The [WP0 research-gates record](WP0_RESEARCH_GATES.md) binds the decisions below against main `8de8bbd`. This is a documentation freeze, not execution authorization. The downstream packets remain a roadmap requiring separate authorization.
 
 Before meaningful specialist integration:
 
@@ -118,7 +120,7 @@ Before meaningful specialist integration:
 - document resource-accounting requirements;
 - require implementation-class metadata for experimental candidates.
 
-**Exit condition:** a candidate adapter can be implemented without inventing its own incompatible semantics, while purpose-built targets remain free to use native internal representations behind the responsibility boundary.
+**Exit condition:** after independent acceptance, the next experiment can be designed using fixed thesis/control, semantic-boundary, outcome-record and resource-comparison rules. A separately authorized protocol must bind task-specific semantics, competent controls, metrics/margins, budgets and independent checks before implementation; purpose-built targets retain native internal representations. No candidate adapter is implemented by this packet. E1 is resolved as a future-contract requirement for independent reference tables/checks, never a WP1 repair.
 
 ### WP1 — Build the smallest candidate-probe layer
 
@@ -161,7 +163,7 @@ Required before training or purpose-built implementation:
 - preserve ADCP deterministic policy outside the learned observer;
 - define the Empathy-observer responsibility, allowed inputs, native ontology/state, outputs, uncertainty/abstention semantics, and learning signal;
 - define a transparent non-neural or minimally learned baseline;
-- define `CONTROL_A` and/or `CONTROL_B` paths where useful;
+- define `CONTROL_A` and include `CONTROL_B` where adaptation is a live alternative, following the claim-linked thesis controls;
 - separately define the smallest credible `MASI_TARGET` architecture from the responsibility outward.
 
 A pretrained general model may be selected for a control condition if useful and hardware-practical. It must not become the target simply because fine-tuning infrastructure already exists.
@@ -176,13 +178,15 @@ Minimum useful comparison:
 
 ```text
 B0   transparent / deterministic baseline where meaningful
-C_A  prompted general-model control (optional if informative)
-C_B  adapted or fine-tuned general/pretrained model control
+C_A  prompted general-model control
+C_B  adapted or fine-tuned general/pretrained model control when adaptation is a live alternative
 T1   purpose-built bounded MASI target
 F1   larger general-purpose comparator where terms permit
 ```
 
 `T1` should begin with the minimum sufficient intelligence for the responsibility. Its architecture must be justified by the task ontology and measured deficits, not by current LLM convention.
+
+For an H2B claim, `B0` must be a competent transparent solver and `C_A` is required by the [WP0 thesis gate](RESEARCH_THESIS.md#required-controls). Omitting `C_B` precludes a superiority-to-adaptation claim. Freeze quality competitiveness and the primary property-improvement criterion together before final observation.
 
 Do not claim MASI system-level superiority from this experiment. The first objective is to determine what kind of specialization actually adds measurable value on one bounded responsibility.
 

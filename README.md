@@ -114,25 +114,17 @@ The registry is a search surface, not a canonical fleet. Candidates must earn in
 
 ## Current phase
 
-**Phase 0 -> Phase 1 transition — bounded implementation, currently paused for doctrine reconciliation.**
+**WP1 accepted only as narrowed; WP0 research-gates documentation submitted for independent audit.**
 
-The first Astra implementation block began before the specialization-by-construction doctrine was explicit enough in the repository. Before further implementation, the existing first-block work must be classified and reconciled against [`docs/CONSTRUCTION_DOCTRINE.md`](docs/CONSTRUCTION_DOCTRINE.md).
+The first Astra implementation block began before the specialization-by-construction doctrine was explicit enough in the repository. Its classification and reconciliation against [`docs/CONSTRUCTION_DOCTRINE.md`](docs/CONSTRUCTION_DOCTRINE.md) are complete; the remaining gates concern future work.
 
 **WP1 audit checkpoint:** Claude's [independent audit](docs/AUDIT_WP0_WP1_2026-09-17.md) of the frozen builder packet `81adfff` initially returned `CLAIM_NARROWING_REQUIRED`. Astra's documentation-only [R1–R7 reconciliation](docs/RECONCILIATION_WP1_R1_R7.md) was then independently re-checked in Audit Addendum B and received `ACCEPT`. **WP1 is accepted only as narrowed.** The reconciliation does not merge the builder's code, frozen files, or evidence; the immutable builder packet remains pinned at `81adfff`.
 
 The observed result is uniform invocation of a **closed, pre-registered set**: an `INFRASTRUCTURE`/B0 equality floor and two externally adapted pretrained transformer classifiers (`CONTROL_B`-class specimens), repeated bit-identically on one host. Normalization remains caller-resident and candidate-keyed. The protocol's inference-branching condition was not triggered; the broader contract's caller-branch condition holds only for invocation, not normalization. Neither arbitrary new implementations, purpose-built targets nor cross-paradigm interchangeability were demonstrated. [Results](experiments/wp1/RESULTS.md) record no capability deficit justifying learned complexity; Issue #1's thesis-freeze deliverable remains open under H2A/H2B doctrine.
 
-Near-term work remains intentionally narrow:
+The [WP0 research-gates packet](docs/WP0_RESEARCH_GATES.md) now records claim-linked controls, the minimum semantic responsibility boundary, Reality Audit record, current MASI Bus ownership/gaps, resource observations and the future independent-reference-check requirement. H2A/H2B and existing falsifiers are retained. These are documentation gates pending independent Claude audit, not demonstrated implementation conformance or permission to start an experiment.
 
-The sprint now returns to the unfinished **WP0 research gates**: freeze enough of Issues #1 and #2 to make later implementation claims falsifiable, including the minimum responsibility envelope, Reality Audit record, and resource-accounting requirements. WP2/E001, training, new candidates, and runtime expansion still require separate authorization after those gates are accepted.
-
-1. reconcile first-block artifacts as `CONTROL_A`, `CONTROL_B`, `MASI_TARGET`, or `INFRASTRUCTURE`;
-2. preserve useful LLM/Jev/generalist work where it solves a real component responsibility without granting accidental authority;
-3. freeze enough of the research thesis, falsifiers, and module contracts to support code;
-4. preserve/build a thin candidate-probe layer rather than a general MASI platform;
-5. demonstrate interchangeable heterogeneous implementations through one bounded interface;
-6. design the first specialization experiment so it can distinguish general-model controls from a purpose-built bounded target;
-7. preserve enough provenance for independent reproduction and audit.
+The next action is that audit. A later authorized protocol must bind the task, metrics/margins, competent controls, family-specific semantics and budgets before implementation. WP2/E001, K001 execution, training, new candidates and runtime expansion remain unauthorized.
 
 The first specialization experiment remains `MASI-E001`, but a fine-tuned local language model is now explicitly a control condition rather than the presumed target. The target is the smallest credible Empathy-observation intelligence designed from the responsibility outward.
 
@@ -168,6 +160,7 @@ Please read [`CONTRIBUTING.md`](CONTRIBUTING.md) before proposing implementation
 - [`docs/RESEARCH_THESIS.md`](docs/RESEARCH_THESIS.md) — hypotheses and falsification criteria
 - [`docs/MODULES.md`](docs/MODULES.md) — candidate responsibility contracts
 - [`docs/EVALUATION.md`](docs/EVALUATION.md) — baseline and comparison rules
+- [`docs/WP0_RESEARCH_GATES.md`](docs/WP0_RESEARCH_GATES.md) — bounded WP0 decisions, Bus ownership, provisional choices and audit handoff
 - [`docs/PRIOR_ART.md`](docs/PRIOR_ART.md) — focused prior-art lineage and research obligations
 - [`docs/CANDIDATE_IMPLEMENTATIONS.md`](docs/CANDIDATE_IMPLEMENTATIONS.md) — candidate models, systems, substrates, and baselines
 - [`docs/IMPLEMENTATION_SPRINT_001.md`](docs/IMPLEMENTATION_SPRINT_001.md) — current bounded implementation plan and builder/auditor cadence
