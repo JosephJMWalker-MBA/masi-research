@@ -104,6 +104,123 @@ Standing, authority, and limits should be explicitly justified.
 
 This applies to humans and machines from the beginning. Machine participation is not treated as a future concession granted by default-human sovereignty, and machine capability alone does not create universal authority.
 
+## Constitutional integrity, not ideological purity
+
+The system should protect the integrity of its governing constraints without protecting any preferred ideology, contributor, model family, institution, or current consensus from challenge.
+
+More perspectives do **not** adulterate MASI.
+
+Disagreement does **not** adulterate MASI.
+
+Correction does **not** adulterate MASI.
+
+A perspective that exposes a defect in the current constitution is evidence that the constitution may need to improve.
+
+The relevant corruption is process-level:
+
+- hidden authority escalation;
+- fabricated standing;
+- suppressed evidence;
+- perspective-model poisoning;
+- capture of amendment or audit mechanisms;
+- converting resources into undeclared constitutional power;
+- bypassing action boundaries;
+- erasing provenance;
+- making temporary authority permanent without authorization;
+- allowing information to masquerade as permission.
+
+The objective is therefore **constitutional integrity under continuous plural challenge**, not ideological purity.
+
+## Information, capability, and authority are distinct
+
+A core governance boundary is:
+
+> **Information may inform governance without thereby authorizing action.**
+
+A perspective may report consequences, values, evidence, fears, forecasts, objections, or corrections.
+
+A specialist may generate a recommendation.
+
+A machine may discover an inconsistency.
+
+A contributor may propose a change.
+
+A funder may provide resources.
+
+None of those events, by themselves, authorize an action.
+
+MASI should preserve at least three distinct layers:
+
+```text
+INFORMATION
+what a perspective, model, observation, or source contributes
+
+CAPABILITY
+what a participant or component is technically able to do
+
+AUTHORITY
+what the governance system permits it to do
+```
+
+Capability must not silently become authority.
+
+Information must not silently become authority.
+
+Authority must have an explicit source, scope, and limit.
+
+## Governance trust boundaries
+
+Governance should eventually be enforced through architectural boundaries rather than relying only on participants to remember constitutional prose.
+
+Working boundary model:
+
+```text
+PERSPECTIVE / EVIDENCE BOUNDARY
+what may inform the system
+
+AUTHORITY BOUNDARY
+what permissions actually exist and where they came from
+
+CAPABILITY / TOOL BOUNDARY
+what operations a participant can access
+
+ACTION BOUNDARY
+what may actually change system or external state
+
+MEMORY / PROVENANCE BOUNDARY
+what may become durable governing state
+```
+
+A reasoning component may propose an action without being authorized to execute it.
+
+A perspective update may alter the model of that perspective without automatically altering the constitution.
+
+An experiment may change what the system believes about a claim without automatically changing what actions the system is permitted to take.
+
+A tool result may inform a decision without granting the tool or its output new authority.
+
+The more consequential the action, the stronger and more explicit the action boundary should be.
+
+## No self-granted authority
+
+> **No participant may grant itself authority merely because it can describe, request, simulate, recommend, or technically execute an action.**
+
+This applies to:
+
+- humans;
+- machines;
+- maintainers;
+- specialists;
+- orchestrators;
+- auditors;
+- funders;
+- work pools;
+- perspective models;
+- external tools.
+
+If the system cannot reconstruct the source of an authority grant, the grant should not be presumed valid.
+
+
 ## College of Perspectives — working theory
 
 The current working theory is a **College of Perspectives**.
@@ -334,6 +451,128 @@ The work itself is not something the system is trying to avoid.
 
 The purpose is to make consequential unfinished work visible.
 
+## Work-pool contracts
+
+A work pool should not receive undefined autonomy merely because the underlying work is valuable.
+
+Each substantial work allocation should eventually be expressible as a bounded contract containing at least:
+
+```text
+question / objective
+authority source
+perspectives implicated
+allowed inputs
+allowed capabilities / tools
+resource envelope
+data-access boundary
+action boundary
+success / learning criteria
+termination conditions
+required evidence
+return state
+```
+
+The return state does not need to be success.
+
+A valid work pool may return:
+
+```text
+SUPPORTED
+REFUTED
+PARTIALLY_RESOLVED
+INCONCLUSIVE
+BLOCKED
+SPECIFICATION_DEFECT
+NEW_PERSPECTIVE_REQUIRED
+NEW_WORK_IDENTIFIED
+```
+
+Reaching a resource or time boundary should preserve the work frontier rather than encouraging endless execution until a preferred answer appears.
+
+Unused resources may be returned to the parent pool. Exhausted resources do not authorize a work pool to take more.
+
+## Authority conservation and non-escalation
+
+Resources can be subdivided.
+
+Tasks can be delegated.
+
+Authority cannot be silently enlarged through delegation.
+
+> **No participant may delegate, manufacture, or infer authority beyond the authority explicitly granted to it.**
+
+If a parent process is authorized only to investigate a disagreement, a child process created by that investigation does not thereby gain authority to:
+
+- redefine constitutional standing;
+- amend governance rules;
+- change unrelated perspective models;
+- expand its own tool access;
+- convert temporary access into permanent access;
+- execute an external action outside the investigation;
+- allocate authority the parent did not possess.
+
+Authority should be typed rather than represented as one fungible scalar.
+
+For example:
+
+```text
+compute_budget
+money_budget
+data_read
+data_write
+tool_use
+perspective_update
+model_admission
+action_execution
+constitutional_amendment
+```
+
+may all be separate grants.
+
+More of one does not imply more of another.
+
+In particular:
+
+```text
+more money        != more constitutional standing
+more compute      != more constitutional standing
+more copies       != more constitutional standing
+better benchmark  != more constitutional standing
+temporary access  != permanent authority
+```
+
+Some constitutional authorities may ultimately be non-delegable except through the amendment process itself.
+
+## Least-authority principle
+
+Governance authority should be activated only within the responsibility for which it was justified.
+
+A participant with legitimate authority in one domain should not carry that authority automatically into another.
+
+Examples:
+
+```text
+scientific replication authority
+!= cultural interpretation authority
+
+perspective self-correction authority
+!= authority to rewrite another perspective
+
+technical maintenance authority
+!= constitutional amendment authority
+
+forecasting skill
+!= deployment authority
+
+funding capacity
+!= evidence authority
+```
+
+This is the governance analogue of least privilege.
+
+The objective is not to minimize useful participation. It is to minimize unjustified authority expansion while allowing information and capability to flow where they are useful.
+
+
 ## Intelligence and work
 
 A more capable intelligence system should not be defined by having no work left to do.
@@ -435,6 +674,149 @@ Potential capture surfaces include:
 
 Governance design should therefore assume that any concentrated mechanism may itself become a target.
 
+## Governance threat model — initial map
+
+The working theory now has enough structure to identify concrete capture and corruption vectors.
+
+These are not assumed to be exhaustive.
+
+### 1. Authority confusion
+
+**Failure:** information, recommendation, model output, funding, ownership, or technical capability is treated as if it were authorization.
+
+**Design response:** explicit authority provenance and action boundaries.
+
+### 2. Perspective-model poisoning
+
+**Failure:** a perspective model is altered so that it no longer faithfully represents the perspective, while the altered model is still presented as authoritative.
+
+Possible mechanisms include:
+
+- outsider overwrite;
+- selective omission;
+- suppression of internal minorities;
+- fabricated consensus;
+- stale models presented as current;
+- adversarial updates;
+- untraceable summarization.
+
+**Design response:** corrigibility, append-only provenance where practical, counter-perspective challenge, version history, and direct correction by perspective-holders where possible.
+
+### 3. Sybil / identity multiplication
+
+**Failure:** a participant manufactures apparent plurality by creating many accounts, organizations, agents, or machine copies.
+
+**Design response:** standing attaches to justified perspective and evidence, not raw identity count.
+
+### 4. Machine monoculture capture
+
+**Failure:** many apparently separate machine voices share the same model family, training assumptions, provider, prompt scaffold, or upstream data and are mistaken for independent perspectives.
+
+**Design response:** record architecture/training/provider provenance and measure substantive independence rather than counting model instances.
+
+### 5. Perspective-taxonomy capture
+
+**Failure:** control over the definition, splitting, merging, or naming of perspectives determines outcomes before deliberation begins.
+
+**Design response:** make taxonomy itself contestable, versioned, and subject to perspective discovery and counter-perspective review.
+
+### 6. Resource capture
+
+**Failure:** wealth, compute ownership, infrastructure, or institutional scale converts into disproportionate constitutional authority or suppresses work that threatens the resource-holder.
+
+**Design response:** separate resource contribution from standing and make work allocation auditable.
+
+### 7. Work-pool capture
+
+**Failure:** a participant controls which unresolved questions receive resources, starving inconvenient disagreements or indefinitely funding favorable ones.
+
+**Design response:** preserve the backlog of surfaced work, expose allocation criteria, bound contracts, and audit resource decisions.
+
+### 8. Evaluator capture
+
+**Failure:** a participant controls both the behavior being evaluated and the success metric, allowing proxy gaming or success-shaped evidence.
+
+**Design response:** independent evaluation paths, explicit success semantics, negative-result preservation, and separation between evaluator and authority source.
+
+### 9. Delegation escalation
+
+**Failure:** a delegated task or subagent acquires greater authority than its parent or converts temporary permission into durable authority.
+
+**Design response:** typed authority grants, explicit inheritance rules, expiration, and non-escalation checks.
+
+### 10. Capability / tool escalation
+
+**Failure:** access to a tool or technical capability is interpreted as permission to use it for any available action.
+
+**Design response:** separate capability from action authorization and enforce least-authority tool boundaries.
+
+### 11. Action-boundary bypass
+
+**Failure:** a participant can directly alter system or external state without passing the relevant governance checks.
+
+**Design response:** externalize consequential action authorization from the reasoning component wherever practical.
+
+### 12. Memory / provenance poisoning
+
+**Failure:** untrusted information becomes durable governing memory, constitutional precedent, or perspective state without a justified write path.
+
+**Design response:** distinguish read/inform privileges from durable-write authority; record source and epistemic status.
+
+### 13. Audit capture
+
+**Failure:** the same authority can act, define the audit standard, suppress audit evidence, and certify itself.
+
+**Design response:** independent audit capability, durable evidence, and authority to challenge the auditor.
+
+### 14. Amendment capture
+
+**Failure:** a temporary coalition changes the rules by which future legitimacy, power, or participation is allocated.
+
+**Design response:** treat constitutional amendment as a distinct authority class with stronger consequence and non-dispossession review than ordinary decisions.
+
+### 15. Emergency-power capture
+
+**Failure:** exceptional authority granted for urgent conditions becomes permanent, self-renewing, or usable outside its triggering condition.
+
+**Design response:** explicit triggers, scope, expiration, review, and automatic reversion.
+
+### 16. Semantic capture
+
+**Failure:** changing definitions — such as "power", "harm", "perspective", "safety", "consent", or "success" — silently changes the constitution while appearing to preserve its text.
+
+**Design response:** version important terms, preserve contested definitions, and treat semantic changes with constitutional consequence as amendments.
+
+### 17. Omission capture
+
+**Failure:** a perspective or consequence never reaches deliberation because nobody with existing access has incentive to surface it.
+
+**Design response:** perspective discovery is an active obligation, not passive openness.
+
+### 18. Capture of capture detection
+
+**Failure:** the mechanism that decides whether capture occurred is itself controlled by the suspected captor.
+
+**Design response:** multiple independent detection paths, preserved evidence, counter-review, and no single irreversible capture oracle.
+
+## Integrity invariant for threat design
+
+The threat model should not be used to suppress disagreement in the name of protecting governance.
+
+> **A dissenting perspective is not an attack merely because it challenges current rules.**
+
+The system should distinguish:
+
+```text
+challenge to the constitution
+from
+unauthorized bypass of the constitution
+```
+
+The first may be necessary for improvement.
+
+The second is a governance-integrity failure.
+
+
 ## No representative is the perspective
 
 Representative systems can become capture targets and can create unequal voice even when representation begins fairly.
@@ -474,11 +856,14 @@ A future formal decision procedure should preserve at least these tests:
 3. **Model corrigibility:** can those perspectives challenge the representation attributed to them?
 4. **Consequence visibility:** are likely gains, losses, uncertainties, and externalities explicit?
 5. **Non-dispossession:** does strengthening one perspective require weakening another perspective's legitimate power?
-6. **Capture resistance:** can the decision mechanism be manipulated through identity multiplication, representation control, funding, incumbency, or model ownership?
-7. **Evidence integrity:** can disagreement, abstention, negative evidence, and uncertainty survive the process?
-8. **Future work:** what unresolved work becomes visible because of the decision?
-9. **Auditability:** can the reasoning, evidence, updates, and authority path be reconstructed?
-10. **Revisability:** can later evidence change the result without erasing history?
+6. **Authority provenance:** what explicit grant authorizes the action, and is that grant still valid?
+7. **Non-escalation:** has information, capability, delegation, funding, or temporary access been converted into authority it did not originally possess?
+8. **Capture resistance:** can the decision mechanism be manipulated through identity multiplication, representation control, funding, incumbency, model ownership, evaluator control, or work-pool allocation?
+9. **Evidence integrity:** can disagreement, abstention, negative evidence, and uncertainty survive the process?
+10. **Action boundary:** can the proposed change occur only after the relevant governance checks, or can a participant bypass them?
+11. **Future work:** what unresolved work becomes visible because of the decision?
+12. **Auditability:** can the reasoning, evidence, updates, authority grants, and action path be reconstructed?
+13. **Revisability:** can later evidence change the result without erasing history?
 
 A formal constitution may add stronger or different tests.
 
@@ -557,6 +942,8 @@ Priority work includes:
 - test whether "true power" can be operationalized without hiding coercion behind terminology;
 - identify real cases of irreducible scarcity;
 - study governance-capture mechanisms;
+- develop adversarial tests for the initial governance threat map;
+- test authority-confusion, delegation-escalation, work-pool-capture, action-boundary, evaluator-capture, amendment-capture, and provenance-poisoning cases;
 - design update/provenance rules for perspective models;
 - determine how future and non-self-articulating perspectives can be modeled without pretending consent;
 - determine how machine perspectives can participate without allowing cheap replication to manufacture standing;
@@ -586,6 +973,10 @@ The current theory can be summarized as:
 > **No governance action is valid if increasing the legitimate power of one perspective requires decreasing the legitimate power of even one other perspective.**
 
 > **The College of Perspectives models perspectives rather than appointing people or machines to become those perspectives.**
+
+> **Information may inform governance without thereby authorizing action.**
+
+> **No participant may delegate, manufacture, or infer authority beyond the authority explicitly granted to it.**
 
 > **Perspective models remain corrigible by actual perspectives, evidence, internal disagreement, and counter-perspectives.**
 
