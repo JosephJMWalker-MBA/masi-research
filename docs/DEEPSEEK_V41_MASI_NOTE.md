@@ -258,6 +258,74 @@ Possible benefit dimensions remain:
 
 If those advantages do not materialize under controlled comparison, MASI should narrow accordingly.
 
+## State placement as an empirically calibratable system property
+
+DeepSeek's KV-cache work also suggests a broader systems question for MASI.
+
+A composed intelligence system may eventually need to determine not only **which component should participate**, but also **which state associated with that component must remain active, which can be compressed or reindexed, which can be reconstructed, and which can be externalized to slower retrieval**.
+
+Candidate state classes might include:
+
+```text
+HOT
+immediately active
+
+WARM
+compressed / indexed / frequently reused
+
+RECONSTRUCTIBLE
+replayed or recomputed when needed
+
+COLD
+persistent but slower
+
+EXTERNAL
+retrieval / source systems outside active model state
+```
+
+These are not proposed MASI canonical types.
+
+The research point is that component contribution and state residency may be **empirically calibratable** through intervention rather than selected only by intuition.
+
+A future bounded experiment could ask:
+
+```text
+Which component/state materially changes the result?
+Which is redundant under this task family?
+Which can be reconstructed from cheaper retained state?
+Which can move out of the hot path?
+Which appears behaviorally redundant but carries unique provenance?
+What failure appears when the state is removed or compressed?
+```
+
+This extends the minimum-sufficient-intelligence principle into a minimum-sufficient-active-state question.
+
+### Semantic preservation boundary
+
+Resource optimization must not silently redefine epistemic standing.
+
+```text
+hot != authoritative
+cold != unimportant
+frequently retrieved != true
+compressed != equivalent
+cached != governing
+reconstructed != originally observed
+summarized != source evidence
+```
+
+A transformation that preserves benchmark behavior may still erase uncertainty, provenance, disagreement, or historical evidence.
+
+Therefore any future MASI state-placement experiment should measure both:
+
+```text
+computational preservation
+and
+semantic / epistemic preservation
+```
+
+This is a research pressure only. It does not authorize runtime or memory-hierarchy implementation.
+
 ## Research implications
 
 DeepSeek-V4.1-Flash strengthens several research obligations:
