@@ -1,6 +1,6 @@
 # MASI-E001 annotation rubric — speaker observation, v1.0
 
-- **Status:** frozen with protocol `e001-protocol-v1.0`, pending independent audit. It is not yet used for any annotation.
+- **Status:** frozen with protocol `e001-protocol-v1.1`, pending a second fresh independent audit. The rubric text is unchanged from v1.0; only this status line was updated. It is not yet used for any annotation.
 - **Audience:** writers, annotators, the adjudicator and every experimental arm. The `CONTROL_A` prompt must contain §1–§5 verbatim.
 - **Blinding rule:** this rubric deliberately names no downstream care protocol, stage, threshold, score or model. Annotators must not be shown any such material while labeling.
 
