@@ -87,7 +87,7 @@ Precision should not mean "a model prompted to sound precise." Research should i
 
 ### WP1 record reconciled with the independent audit — R1 / R6
 
-This note records only implementations already observed in the frozen builder packet `81adfff`; it registers no new candidate and imports no code or evidence. The [audit](AUDIT_WP0_WP1_2026-09-17.md) returned `CLAIM_NARROWING_REQUIRED`, and the doctrine hold remains pending a scoped Claude re-check.
+This note records only implementations already observed in the frozen builder packet `81adfff`; it registers no new candidate and imports no code or evidence. The first [audit](AUDIT_WP0_WP1_2026-09-17.md) returned `CLAIM_NARROWING_REQUIRED`; Audit Addendum B then accepted the R1–R7 narrowing. **WP1 is accepted only as narrowed.**
 
 | Existing WP1 implementation | What was exercised | Audited implementation class / research posture |
 | --- | --- | --- |
