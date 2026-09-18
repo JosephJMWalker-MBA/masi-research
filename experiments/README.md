@@ -12,7 +12,7 @@ MASI-E###
 
 Examples:
 
-- `MASI-E001` — first learned-specialization experiment
+- `MASI-E001` — first specialization-by-construction experiment (Empathy speaker observation)
 - `MASI-E002` — next independently scoped experiment
 
 Do not encode success claims into experiment names.
@@ -71,23 +71,33 @@ Use explicit result language:
 
 Do not rename a failed result as a successful "exploration" after the fact.
 
-## MASI-E001 candidate
+## MASI-E001
 
-**Working title:** Empathy semantic-observation specialist
+**Title:** Empathy speaker-observation specialist — purpose-built target versus general-model controls.
 
-**Question:** Can a small locally specialized model infer a bounded evidence-grounded observation vector more reliably than the same untuned local base model, and how does it compare with a larger general-purpose baseline?
+**Status:** the preregistered protocol [`e001/PROTOCOL.md`](e001/PROTOCOL.md) (`e001-protocol-v1.1`) is a **repaired freeze** awaiting a second fresh independent audit. It is **not accepted and not authorized for execution**. No data, labels, model runs or results exist.
 
-The first candidate substrate is ADCP-style conversational observation because the downstream policy can remain deterministic while the learned model is evaluated only on semantic observation.
+**History:** v1.0 was audited [`REPAIR_REQUIRED`](https://github.com/JosephJMWalker-MBA/masi-research/pull/17#issuecomment-5735626914). Repairs R1–R7 are recorded in protocol §27.
 
-Before implementation, E001 still requires:
+**Question** ([Issue #3](https://github.com/JosephJMWalker-MBA/masi-research/issues/3)): can a purpose-built bounded intelligence, designed from the Empathy-observation responsibility outward, infer an evidence-grounded observation state competitively with general-model controls while providing stronger inspectability, state discipline, uncertainty handling, efficiency, or failure localization?
 
-- a frozen target observation schema;
-- an independent labeling procedure that avoids simply encoding known thresholds;
-- dataset provenance and privacy rules;
-- negative and boundary cases;
-- model-family selection;
-- resource limits suitable for local execution;
-- a scoring plan that distinguishes exact observation recovery from downstream stage agreement;
-- a decision on whether any external comparator's performance may legally be published.
+**Primary claim:** H2B. It is a conjunctive decision:
 
-No training should begin until those decisions are durable.
+- **quality:** the target `T` is non-inferior to the competent controls `B0`, `C_A` and `C_B` on evidenced-concern quality, observation-state quality and recall;
+- **property:** `T` improves evidence-verified claim precision over `C_A` and `C_B` by a superiority margin of at least 0.10, with the lower confidence bound above the margin.
+
+The state-quality component can be narrowed only by a preregistered reliability gate that is evaluated before implementation.
+
+**H2A** is not confirmatory. A fine-tuned model is a `CONTROL_B` arm, **not** the presumed target.
+
+**Target construction:** a transparent first rung, `T0`. Learned complexity (`T1`, `T2`) may be added only when a preregistered development-data deficit is shown.
+
+**Substrate:** ADCP supplies ontology concepts. ADCP stages, thresholds, severities and fixture labels are **not** imported (see protocol §3).
+
+**Companion documents:**
+
+- [`e001/ANNOTATION_RUBRIC.md`](e001/ANNOTATION_RUBRIC.md): the shared task definition;
+- [`e001/REFERENCE_CASES.md`](e001/REFERENCE_CASES.md): the E1 independent reference checks;
+- [`e001/PROTOCOL_MANIFEST.json`](e001/PROTOCOL_MANIFEST.json): preregistration facts.
+
+**Next action:** a second fresh independent audit of the repaired protocol. No implementation, annotation, training or inference takes place until that audit is accepted **and** the operator separately authorizes execution.
