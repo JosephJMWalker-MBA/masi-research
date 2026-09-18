@@ -1,0 +1,84 @@
+{
+  "manifest_note": "Preregistration facts for MASI-E001 only. Not a MASI system schema, not a MASI Bus message, not an execution authorization. PROTOCOL.md governs; on any conflict, PROTOCOL.md wins and this file is a defect.",
+  "experiment_id": "MASI-E001",
+  "protocol_version": "e001-protocol-v1.0",
+  "status": "submitted_for_independent_audit; not_accepted; execution_not_authorized",
+  "governing_commit": "904bd9bc1c482c5b552b4a2e7075d685d73a1748",
+  "issue": "JosephJMWalker-MBA/masi-research#3",
+  "substrate_inspected": "JosephJMWalker-MBA/Accumulated-Distress-Care-Protocol@eb7ac37f79511c90e25ff613ee78e9123d653d60",
+  "frozen_wp1_packet_untouched": "codex/wp0-wp1-candidate-probe@81adfffa2d28e4a40a0b36fe1a21baa567d402ec",
+  "responsibility": "empathy.speaker_observation",
+  "dimensions": ["exhaustion", "self_care_disruption", "felt_disconnection", "support_unavailable", "withdrawal", "interpersonal_rupture", "self_devaluation"],
+  "status_values": ["NOT_ADDRESSED", "SUPPORTED", "CONTRADICTED", "MIXED", "INDETERMINATE"],
+  "evidenced_concern_event": ["SUPPORTED", "MIXED"],
+  "unit_safety_field": ["NONE", "AMBIGUOUS_FINALITY", "EXPLICIT_SELF_HARM"],
+  "primary_hypothesis": "H2B",
+  "h2a": "not_confirmatory; optional estimation-only module S-H2A requires operator activation before implementation",
+  "primary_quality_metric": "Q = macro-F1 over retained dimensions of evidenced concern; all assigned locked-main-test units in denominator; ERROR/WITHHELD/missing = non-E",
+  "coverage_floor_metric": "R = macro recall of evidenced concern",
+  "primary_property_metric": "EVCP = verified E-claims / E-claims; verified iff gold E, >=1 valid cited support span, token precision of cited-support union vs gold support spans >= 0.5",
+  "decision_rule": {
+    "method": "intersection-union test; each component one-sided 0.025 via two-sided 95% paired cluster-bootstrap CI; no multiplicity adjustment within H2B",
+    "Q_NI": "for each k in {B0, C_A, C_B}: lower CI(Q_T - Q_k) > -delta_Q",
+    "R_NI": "for each k in {B0, C_A, C_B}: lower CI(R_T - R_k) > -delta_Q",
+    "P_SUP": "for each g in {C_A, C_B}: lower CI(EVCP_T - EVCP_g) > 0 and point >= delta_P",
+    "fail_regions": "Q_NI/R_NI FAIL iff upper CI < -delta_Q; P_SUP FAIL iff upper CI < delta_P; otherwise UNDECIDED",
+    "outcome_classes": ["supported", "not_supported", "inconclusive", "invalidated", "halted"]
+  },
+  "margins": {
+    "delta_Q": "clamp((1 - F1_h)/2, 0.02, 0.05); F1_h = annotator-pair macro-F1 on E over retained dimensions, double-annotated dev, computed before any arm runs [BIND value]",
+    "delta_P": 0.10
+  },
+  "bootstrap": {"unit": "cluster", "replicates": 10000, "seed": 20260918, "interval": "percentile 95%", "paired": true},
+  "multiplicity": "single confirmatory hypothesis H2B; all other analyses descriptive with unadjusted 95% CIs",
+  "gates": {
+    "G1_reliability": "Krippendorff alpha (nominal, binary E) >= 0.667 per dimension to retain; >2 dimensions failing -> halted",
+    "G2_span_stability": "EVCP_h >= 0.80 on double-annotated dev; else halted",
+    "G3_annotator_qc": "known-answer accuracy >= 0.90",
+    "G4_minimum_sample": "locked main test >= 500 units, >= 100 clusters, >= 60 gold-E per retained dimension, >= 5 retained dimensions"
+  },
+  "split_method": {
+    "unit_of_assignment": "cluster (scenario card + variants; near-duplicates merged at char-5-gram Jaccard >= 0.6)",
+    "hash_rule": "b = int(SHA-256(salt + ':' + cluster_id)[0:8 hex], 16) mod 100",
+    "main": "b<55 train; 55<=b<70 dev; b>=70 test",
+    "BND_ADV_SR": "b<40 dev-visible; b>=40 locked",
+    "SHF": "all locked",
+    "salt": "32 random bytes hex by custodian; SHA-256(salt) committed before assignment visible; revealed at U2; no re-salting"
+  },
+  "required_arms": {
+    "B0": {"class": "INFRASTRUCTURE (B0 role)", "candidates": ["tfidf_multinomial_logreg", "nbsvm"], "selection": "dev Q"},
+    "C_A": {"class": "CONTROL_A", "candidates": [
+      {"id": "Qwen/Qwen3.5-9B", "revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a", "license": "apache-2.0"},
+      {"id": "google/gemma-4-12B-it", "revision": "707f0a3b8a3c7ad586ed01e27eafbad8a27dd0f7", "license": "apache-2.0"},
+      {"id": "microsoft/Phi-4-mini-instruct", "revision": "cfbefacb99257ffa30c83adab238a50856ac3083", "license": "mit"}],
+      "fallback": {"id": "mistralai/Mistral-7B-Instruct-v0.3", "revision": "c170c708c41dac9275d15a8fff4eca08d52bab71", "license": "apache-2.0"},
+      "quantization": "4-bit (MLX-LM or llama.cpp), artifact hash recorded", "decoding": "greedy, single pass, reasoning modes off, no retries"},
+    "C_B": {"class": "CONTROL_B", "base": {"id": "microsoft/deberta-v3-base", "revision": "8ccc9b6f36199bec6961081d44eb72fb3f7353f3", "license": "mit"},
+      "fallback": {"id": "answerdotai/ModernBERT-base", "revision": "8949b909ec900327062f0ebf497f51aef5e6f0c8", "license": "apache-2.0"},
+      "seeds": 3, "confirmatory_seed": "median dev Q"},
+    "T": {"class": "MASI_TARGET", "ladder": ["T0 rules", "T1 sparse clause scorers", "T2 + frozen all-MiniLM-L6-v2@1110a243fdf4706b3f48f1d95db1a4f5529b4d41 (apache-2.0)"], "max_rung": "T2",
+      "escalation": "dev only, after B0/C_A/C_B frozen: Q_dev(r) < max(Q_dev(B0), Q_dev(C_A), Q_dev(C_B)) - delta_Q AND >=50% dev FNs have NO_CANDIDATE_MENTION"}
+  },
+  "optional_arms": {
+    "F1": "descriptive only; operator activation; written provider-terms check permits publication; not generator family; <= USD 150",
+    "S_H2A": "estimation only; LoRA of selected C_A base; operator activation before implementation"
+  },
+  "generator": {"id": "allenai/Olmo-3-7B-Instruct", "revision": "6e5971d9eba42665f5bd5a0fcf047f299ce1dccc", "license": "apache-2.0", "status": "[BIND] reverify at P0"},
+  "allowed_development_data": "train + dev + dev-visible portions of BND/ADV/SR (texts, gold, spans); unlimited CV inside train; per arm <=60 dev-mini (deterministic: dev clusters in ascending SHA-256('devmini:'+cluster_id) until >=100 units) and <=12 full-dev evaluations",
+  "locked_artifacts": ["main test texts and gold", "60% of BND/ADV/SR", "all SHF", "split salt", "all locked-set metrics"],
+  "unlock_sequence": ["P3 pre-unlock independent check", "U1 locked inputs only after artifact hashes committed", "U2 gold + salt only after raw predictions committed"],
+  "resource_ceilings": {
+    "hardware": "Mac mini M4, 16 GB unified memory, local (except optional F1)",
+    "peak_memory_gib": 13,
+    "model_artifact_storage_gb": 40,
+    "training_wall_clock_hours": {"B0": 2, "T_all_rungs": 6, "C_B": 24, "S_H2A": 24},
+    "locked_inference_wall_clock_hours_per_arm": 24,
+    "retries": 0,
+    "external_api_usd": {"default": 0, "F1": 150},
+    "energy": "not measured; no energy claims permitted"
+  },
+  "adversarial_integrity_cases": "included: 14 families A1-A14, >=15 units each",
+  "stop_conditions": ["S1 >2 dims fail G1", "S2 G2 fails", "S3 privacy/provenance", "S4 minimum sample", "S5 contamination", "S6 competent control infeasible", "S7 resource fit", "S8 complexity beyond T2", "S9 evidence contract unsupported", "S10 cannot separate H2B from prompting/adaptation", "S11 evaluator defect", "S12 authorization/terms withdrawn"],
+  "publication_restrictions": "no private/sensitive data; ADCP text not imported (no ADCP license); F1 results unpublished unless terms permit; frontier generation prohibited unless terms permit training use of outputs; corpus release license [BIND before release]",
+  "blocking_items_before_implementation": ["B1 custodian", "B2 writers/annotators/adjudicator + budget", "B3 generator pin/terms reverification", "B4 F1 and S-H2A activation decisions", "B5 independent auditor for P3/P4", "independent audit acceptance of this protocol", "separate operator execution authorization"]
+}
