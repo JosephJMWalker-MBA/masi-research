@@ -1,9 +1,9 @@
 # Implementation Sprint 001 — From Research Foundation to Executable Evidence
 
-**Status:** active, but **paused pending doctrine reconciliation after Astra block 1**  
+**Status:** active; **WP1 accepted only as narrowed; next authorized packet is WP0 research gates**  
 **Started:** 2026-09-17
 
-**Current audit checkpoint:** WP1 was observed on the frozen builder branch `81adfff`; the independent [Claude audit](AUDIT_WP0_WP1_2026-09-17.md) returned `CLAIM_NARROWING_REQUIRED`. The documentation-only [R1–R7 reconciliation](RECONCILIATION_WP1_R1_R7.md) is based on current `main` at `a0ac9fe9cd400a6c03d6543d5b79f651bf89a3a5`. The doctrine hold remains pending a scoped Claude re-check; publication alone does not satisfy WP-1 or authorize further implementation.
+**Current audit checkpoint:** WP1 was observed on the frozen builder branch `81adfff`; the first independent [Claude audit](AUDIT_WP0_WP1_2026-09-17.md) returned `CLAIM_NARROWING_REQUIRED`. Astra's documentation-only [R1–R7 reconciliation](RECONCILIATION_WP1_R1_R7.md) was independently re-checked in Audit Addendum B and received `ACCEPT`. **WP1 is accepted only as narrowed.** The builder code/evidence remain pinned at `81adfff` and are not merged by that acceptance.
 
 The observed invocation result is limited to three pre-registered implementations: an `INFRASTRUCTURE`/B0 floor and two externally adapted `CONTROL_B`-class specimens. Invocation is uniform, but normalization is caller-resident and candidate-keyed; the broader contract's caller-branch condition holds only for invocation, not normalization. No open-set, cross-paradigm or purpose-built-target interchangeability is established, and no capability deficit justifying learned complexity was shown. See the [narrowed results](../experiments/wp1/RESULTS.md). The frozen WP1-local thesis matrix does not close Issue #1's thesis-freeze deliverable under current H2A/H2B doctrine.
 
@@ -15,22 +15,17 @@ This sprint is not authorized to declare the MASI architecture validated. Its pu
 
 The sprint is governed by [`CONSTRUCTION_DOCTRINE.md`](CONSTRUCTION_DOCTRINE.md). The target architecture is **specialization by construction**, not merely specialization by adapting general-purpose models.
 
-## Mandatory pause / reconciliation checkpoint
+## Completed WP-1 reconciliation checkpoint
 
-The first Astra five-hour block began before the construction doctrine was explicit enough. **Do not begin a second implementation block until the first block has been reconciled against `docs/CONSTRUCTION_DOCTRINE.md`.**
+The first Astra five-hour block began before the construction doctrine was explicit enough. The required doctrine reconciliation has now been completed, independently audited, and accepted only as narrowed.
 
-At the beginning of the next Astra session, before adding new implementation:
+The durable record is:
 
-1. read `docs/CONSTRUCTION_DOCTRINE.md` and `AGENTS.md`;
-2. inspect all first-block changes and artifacts;
-3. classify each implementation artifact as `CONTROL_A`, `CONTROL_B`, `MASI_TARGET`, or `INFRASTRUCTURE`;
-4. identify any assumption that a pretrained/fine-tuned general model is the intended end-state specialist;
-5. identify hidden coupling to one model family, tokenizer, provider, representation, or training stack;
-6. identify complexity without a demonstrated capability deficit;
-7. preserve useful scaffolding, baselines, and adapters, but narrow or relabel architectural claims where necessary;
-8. commit a short reconciliation record before moving forward.
+- frozen builder packet: `codex/wp0-wp1-candidate-probe @ 81adfff`;
+- reconciliation: [`RECONCILIATION_WP1_R1_R7.md`](RECONCILIATION_WP1_R1_R7.md);
+- independent acceptance: [Audit Addendum B](AUDIT_WP0_WP1_2026-09-17.md).
 
-This checkpoint is not a request to throw away the first session. It prevents useful exploratory work from becoming architecture by inertia.
+No `MASI_TARGET` or `CONTROL_A` was tested. The accepted result is closed-set uniform invocation with caller-resident, candidate-keyed normalization and same-host repeatability. The equality rule remains a floor, not a competitive transparent Precision baseline; no capability deficit justifying learned complexity was demonstrated.
 
 ## Current operator workflow
 
@@ -109,7 +104,7 @@ next authorized action:
 
 **Exit condition:** it is clear which first-block artifacts are experimental infrastructure/baselines and which, if any, legitimately satisfy the purpose-built MASI target doctrine.
 
-For this packet, the [implementation-class record](../experiments/wp1/IMPLEMENTATION_CLASSES.md) identifies no `MASI_TARGET` or `CONTROL_A`. The next authorized action is the scoped Claude re-check of R1–R7, including the appended historical handoff errata. E1's independent-reference-check recommendation belongs to a separately authorized next contract; it is not a WP1 repair. WP2 and merging remain unauthorized by this reconciliation.
+For this packet, the [implementation-class record](../experiments/wp1/IMPLEMENTATION_CLASSES.md) identifies no `MASI_TARGET` or `CONTROL_A`. Audit Addendum B accepted R1–R7, so WP-1 is complete **only as narrowed**. E1's independent-reference-check recommendation remains a future-contract lesson, not a WP1 repair. The next authorized packet is WP0 below; WP2/E001 and builder-branch merging remain separately unauthorized.
 
 ### WP0 — Freeze enough of Issues #1 and #2 to permit code
 
