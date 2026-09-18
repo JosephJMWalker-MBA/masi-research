@@ -101,7 +101,7 @@ The historical WP1-local thesis matrix is superseded for thesis purposes by curr
 
 1. Treat WP1 as accepted **only as narrowed**; preserve the builder packet at `81adfff` as immutable historical evidence.
 2. Treat the [WP0 research-gates packet](docs/WP0_RESEARCH_GATES.md) as independently accepted **only for bounded experiment design** under Audit Addendum C.
-3. Make one operator choice before further research execution: select whether to authorize a protocol-binding packet for exactly one named experiment. That protocol packet must be audited before implementation; acceptance of WP0 alone does not authorize WP2/E001, K001 execution, training, new candidates or runtime expansion.
+3. **Authorize MASI-E001 as the single named experiment for a protocol-binding packet.** The packet is design/preregistration only and must stop for independent audit before any implementation, training, model run, runtime expansion, or final-result observation.
 
 The accepted packet retains H2A/H2B and falsifiers 1–10, requires claim-linked comparisons and future independent reference checks (E1), and documents the current Bus v1.0 confidence/cost/native-output gaps without changing Bus. Task-specific metrics/margins, inputs, family profile, outcome horizon/rule and resource caps remain unselected by design. The next protocol must also (a) operationally define a competent control, (b) declare an energy-measurement method if energy is claimed or mark energy unmeasured, and (c) state whether adversarial epistemic-integrity cases are included. WP1's historical records and all frozen/code/evidence artifacts remain untouched.
 
@@ -115,11 +115,11 @@ Revised research pressure:
 
 ADCP remains useful because it separates human-authored observations from deterministic downstream policy. E001 targets the observation layer only; it must not train a model to imitate ADCP's policy thresholds.
 
-A pretrained base selection or fine-tuning path is an **optional `CONTROL_B` arm**. The target remains purpose-built bounded Empathy-observation intelligence designed from the responsibility outward. No E001 preparation, base selection, labeling, split freezing, implementation or training is authorized by R1–R7.
+A pretrained base selection or fine-tuning path is an **optional `CONTROL_B` arm**. The target remains purpose-built bounded Empathy-observation intelligence designed from the responsibility outward. **E001 protocol preparation is now authorized**, including bounded prior-art review, ontology/task definition, labeling procedure, candidate/control eligibility rules, split logic, metrics/margins, resource budgets and target design constraints. Implementation, training, inference runs and final evaluation remain unauthorized until that protocol is independently audited and separately authorized.
 
 ## Not yet authorized
 
-- beginning WP2/E001, K001 execution, or new specialist implementation before a separately authorized and audited protocol-binding packet exists;
+- beginning E001 implementation/training/model runs before the authorized E001 protocol-binding packet is independently audited and separately approved for execution;
 - building a general-purpose MASI platform before bounded experiments require it;
 - creating separate repositories for individual MASI modules;
 - treating Telos, Jev, ADCP, any router, or any local model as canonical MASI;
@@ -133,4 +133,4 @@ A pretrained base selection or fine-tuning path is an **optional `CONTROL_B` arm
 
 ## Next durable action
 
-**Operator decision only:** choose whether to authorize exactly one bounded protocol-binding packet for a single named experiment. The packet must bind the experiment-specific task, competent controls, metrics/margins, data/splits where applicable, resource budgets, outcome rules and required integrity checks, then stop for independent audit before implementation. Do not infer WP2/E001/K001 or runtime authority from WP0 acceptance.
+**Authorized next durable action:** author the bounded **MASI-E001 protocol-binding packet** under Issue #3. Freeze the experiment-specific responsibility/task, ontology/state, allowed inputs, labeling/provenance rules, competent controls, candidate eligibility, split logic, metrics/margins, uncertainty/abstention semantics, negative/adversarial cases, resource budgets, outcome rules where applicable, and the smallest credible `MASI_TARGET` design constraints. Then stop for independent audit. Do not implement, train, run models, finalize outcomes, expand runtime infrastructure, or infer broader WP2/K001 authority.
