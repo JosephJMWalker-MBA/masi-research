@@ -798,6 +798,12 @@ Possible mechanisms include:
 
 **Design response:** multiple independent detection paths, preserved evidence, counter-review, and no single irreversible capture oracle.
 
+### 19. Stewardship capture
+
+**Failure:** valuable stewardship activity — perspective discovery, maintenance, recruitment, audit, or long-term contribution — is converted into privileged constitutional authority or a right to appoint successors.
+
+**Design response:** define stewardship as open behavior rather than office; separate contribution from authority; distribute stewardship capacity; reject founder, maintainer, or successor exceptions.
+
 ## Integrity invariant for threat design
 
 The threat model should not be used to suppress disagreement in the name of protecting governance.
@@ -948,17 +954,117 @@ Priority work includes:
 - determine how future and non-self-articulating perspectives can be modeled without pretending consent;
 - determine how machine perspectives can participate without allowing cheap replication to manufacture standing;
 - test whether work-pool allocation can itself be captured;
+- test whether stewardship activity can become an undeclared path to constitutional authority;
+- test how the system behaves when a founder, maintainer, or highly active steward is absent without creating a successor office;
 - identify conditions under which unresolved disagreement should block an action versus simply create future work.
 
-## Stewardship posture
+## Stewardship is a behavior, not an office
 
 The current task is not to declare the College of Perspectives complete.
 
 It is to make the model more realistic.
 
-That means actively finding more perspectives, inviting correction, preserving counter-perspectives, and allowing the theory to change when those perspectives expose defects.
+That means actively finding more perspectives, inviting correction, preserving counter-perspectives, surfacing capture risks, and allowing the theory to change when those perspectives expose defects.
+
+> **Stewardship is the voluntary work of increasing the system's capacity to perceive, correct, and include perspectives beyond one's own.**
+
+Stewardship is **not** a constitutional office.
+
+There is no presumed role of:
+
+```text
+sole steward
+founder-steward
+chief steward
+successor steward
+final interpreter
+guardian above the governance
+```
+
+Creating such a role would place a government above the governance.
+
+A participant stewards MASI when they help the system:
+
+- discover a materially missing perspective;
+- bring in people or systems capable of correcting the current model;
+- preserve disagreement rather than erase it;
+- improve perspective fidelity;
+- expose a capture path;
+- protect evidence and provenance;
+- identify unfinished work;
+- make the system more corrigible;
+- reduce dependence on any one participant's worldview.
+
+This behavior is open to any participant.
+
+> **Stewardship confers no additional constitutional authority.**
+
+Doing more stewardship work does not create:
+
+- extra standing;
+- a stronger vote;
+- amendment authority;
+- ownership of a perspective;
+- permanent interpretive privilege;
+- a right to appoint a successor;
+- sovereignty over the College of Perspectives.
+
+A participant may be highly valuable to the system without becoming constitutionally superior to it.
+
+### No founder exception
+
+The originator of MASI is subject to the same rule.
+
+Founding the architecture, maintaining the repository, contributing substantial work, or recruiting perspectives does not create a permanent governance office.
+
+The founder may steward the system by bringing in perspectives beyond his own, but that activity does not make the founder the authority over those perspectives or the final authority over governance.
+
+The governance model should therefore not depend on either of these assumptions:
+
+```text
+the founder remains the sole steward
+or
+the founder chooses the person who replaces him
+```
+
+Both would recreate a higher-order government outside the College of Perspectives.
+
+### Continuity without succession
+
+The relevant continuity question is not:
+
+> Who replaces the founder?
+
+It is:
+
+> **Can stewardship remain distributed enough that the system continues discovering missing perspectives, correcting itself, preserving integrity, and surfacing work even when any particular participant is absent?**
+
+Continuity should emerge from many participants being able to perform stewardship behaviors rather than from inheritance of a privileged role.
+
+A healthy system should become progressively less dependent on any one participant while allowing every participant, including the founder, to continue contributing fully.
+
+### Stewardship capture
+
+Because stewardship itself can become socially influential, the system should treat attempts to convert stewardship into authority as a capture vector.
+
+Examples include:
+
+- "I brought this perspective in, therefore I speak for it."
+- "I maintain the repository, therefore I decide the constitution."
+- "I found the defect, therefore I control the repair."
+- "I recruited the community, therefore I own its standing."
+- "I have stewarded the project longest, therefore I appoint my successor."
+- "The system depends on me, therefore my preferences outrank the governance process."
+
+These claims may describe contribution, leverage, or dependence.
+
+They do not, by themselves, establish legitimate authority.
+
+The preferred remedy is not to make a valuable steward smaller. It is to make the system stronger around them by increasing independent stewardship capacity and reducing single-participant dependency.
 
 > **A governance system that cannot be corrected by perspectives it failed to imagine is not yet plural governance.**
+
+> **A governance system that requires a privileged steward above itself is not yet self-governing.**
 
 ## Working constitutional core
 
@@ -987,5 +1093,9 @@ The current theory can be summarized as:
 > **The system should seek positive-sum increases in capability and convert material unknowns into explicit work.**
 
 > **The set of perspectives is never presumed complete.**
+
+> **Stewardship is a behavior open to any participant; it is not an office and grants no sovereignty over the system.**
+
+> **There is no founder or successor exception to the governance.**
 
 These are working principles to test, not a claim that the final governance architecture has been solved.
