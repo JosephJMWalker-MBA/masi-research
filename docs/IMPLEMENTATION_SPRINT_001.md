@@ -151,7 +151,7 @@ These probes do not define the final Precision architecture. Their purpose is to
 
 ### WP2 — Prepare `MASI-E001`
 
-Use Issue #3 as the authority for the experiment.
+**Protocol-binding packet authorized; implementation remains blocked pending independent audit.** Use Issue #3 as the authority for the experiment.
 
 Required before training or purpose-built implementation:
 
@@ -165,6 +165,8 @@ Required before training or purpose-built implementation:
 - define a transparent non-neural or minimally learned baseline;
 - define `CONTROL_A` and include `CONTROL_B` where adaptation is a live alternative, following the claim-linked thesis controls;
 - separately define the smallest credible `MASI_TARGET` architecture from the responsibility outward.
+
+The current authorization covers **only** protocol/preregistration work. It may include bounded prior-art review and control/candidate eligibility analysis needed to freeze the protocol, but it must not train, fine-tune, run inference, create final observed results, harden runtime infrastructure, or silently select an architecture because tooling already exists. The protocol must also carry forward Audit Addendum C's non-blocking requirements: operationally define a competent control; declare an energy measurement method if energy is claimed (otherwise mark energy unmeasured); and state whether adversarial epistemic-integrity cases are included.
 
 A pretrained general model may be selected for a control condition if useful and hardware-practical. It must not become the target simply because fine-tuning infrastructure already exists.
 
