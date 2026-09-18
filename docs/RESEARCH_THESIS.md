@@ -88,9 +88,19 @@ A composed local MASI system equals or exceeds a substantially larger frontier-m
 
 This is the strongest near-term system-level hypothesis and should not be claimed from a narrow or favorable fixture set.
 
+## WP0 claim and decision gate
+
+This documentation packet tests no performance hypothesis. **H7 is the strongest system-level claim under investigation and remains untested.** H2A/H2B and falsifiers 1–10 are sufficient; their names and scope are retained. They distinguish adaptation from construction, while H1/H3/H5/H6 distinguish decomposition, composition, routing and feedback. These mechanisms can interact, so support for one does not establish the others.
+
+For a later authorized specialist experiment, **H2B is the primary construction claim**: the purpose-built system must both meet a preregistered quality requirement relative to competent controls and materially improve a declared primary property. Freeze the comparison arm, quality metric and non-inferiority/superiority margin, property metric and minimum improvement, coverage requirement, uncertainty method and multiplicity policy before final observation. Do not select whichever property happens to improve after seeing results. Inspectability requires an operational test, such as correct semantic intervention or failure localization, not merely more fields or a longer rationale.
+
+H2A separately requires the exact unadapted-base comparison. An interface-only experiment may instead target a bounded H4 claim. This gate does not choose the next experiment, start E001/K001, or require a learned target: a competent transparent system satisfying the responsibility is a valid result, and supplies no reason to add complexity.
+
+Before implementation, the next authorized protocol must bind its primary claim, task family, allowed evidence, controls, metrics/margins, resource allowances, evaluation/sample plan, uncertainty and stop rules to these gates. Before final observation it must freeze the actual evaluation assets, system revisions and independent checks. Open experiment-specific values are listed in [WP0_RESEARCH_GATES.md](WP0_RESEARCH_GATES.md); a missing claim-critical control blocks that claim.
+
 ## Required controls
 
-Where relevant, experiments should distinguish at least:
+Later composed-system experiments must include the applicable local conditions below. **H7 requires all four**, including a publishable or otherwise lawfully reportable `F1` comparison; absent that comparison, narrow to a local claim.
 
 ```text
 F1  frontier monolith
@@ -99,7 +109,7 @@ L2  local ensemble / simple aggregation
 M1  local MASI composition
 ```
 
-For specialist-construction experiments, also distinguish where practical:
+For specialist-construction experiments, distinguish:
 
 ```text
 C_A  prompted general-model control
@@ -107,7 +117,7 @@ C_B  adapted / fine-tuned general-model control
 T    purpose-built MASI target
 ```
 
-Later experiments may add:
+Additional conditions become mandatory when their mechanism is claimed:
 
 ```text
 F2  frontier model under the same MASI protocol
@@ -115,7 +125,33 @@ M2  MASI with learned/dynamic routing
 M3  MASI with outcome-grounded influence adaptation
 ```
 
-These controls separate model capability from architecture, extra inference passes, routing, adaptation, and purpose-built specialization.
+The following contrasts are mandatory for the corresponding attribution. One arm may satisfy multiple control roles if declared in advance; a speculative full factorial is not required.
+
+| Claimed mechanism | Minimum contrast and conditions | Limit if missing |
+| --- | --- | --- |
+| H1 decomposition | Same base and evidence: role decomposition versus monolith, including an equivalent extra-pass monolith under the declared resource allowance. | Roles versus one call cannot isolate decomposition. |
+| H2A adaptation | Adapted implementation versus its exact unadapted base; disclose prompts, development data/effort and inference resources. | Unrelated pretrained specimens establish no adaptation effect. |
+| H2B construction | Competent transparent `B0`, prompted `C_A`, purpose-built `T`; include `C_B` when adaptation is a live alternative. Apply the conjunctive decision rule above. | Omitted `C_B` forbids a superiority-to-adaptation claim. A deliberately weak floor cannot establish a capability deficit. |
+| H3 composition | Strongest applicable standalone constituent, simple aggregation `L2`, and governed composition `M1`, using the same constituents and information; hold constituent outputs fixed for the policy contrast. | Final accuracy alone does not distinguish composition policy from stronger components or extra calls. |
+| H4 interchangeability | Fixed semantic contract and consumers; preregistered substitutions with independently checked semantic conformance. | State the tested set, computational families and allowed adapter changes. Uniform invocation alone is insufficient. |
+| H5 routing | Same candidate set/information: always-on composition, simple fixed routing, proposed dynamic routing `M2`. | Count routing/escalation overhead; an oracle route is only a diagnostic ceiling. |
+| H6 outcome feedback | Same chronological history: no update, established simple update/calibration, proposed update `M3`. | No later evidence may enter earlier decisions; action selection and missing outcomes limit attribution. |
+| H7 competitiveness | `F1/L1/L2/M1`, equal evidence/tool access, extra-pass controls and the resource rules in [EVALUATION.md](EVALUATION.md). | Unknown frontier size forbids a demonstrated “substantially larger” claim; incomparable resources forbid an efficiency attribution. |
+
+A composed-system claim also needs a monolithic `L1` control, even if a constituent is strongest. Include prompted-role composition when attributing gains to specialist identity; use `F2` when attributing a frontier comparison to that identity rather than the MASI protocol. If a necessary arm is infeasible or restricted, narrow the claim before execution rather than treating its omission as a favorable result. Same-model sampling/aggregation is an established simpler explanation; see [Self-Consistency](https://arxiv.org/abs/2203.11171v4).
+
+Governance benefit requires authority/conflict/failure-preservation cases and a policy contrast over the same component outputs. Any relaxed-policy control belongs in a bounded offline evaluation, never an unauthorized real action. General task accuracy does not establish governance benefit.
+
+## Confounds that the protocol must control or retain as limits
+
+- Training lineage, contamination, visible author-created fixtures, weak baselines and unequal development effort.
+- Different evidence, context, retrieval/tools, passes, retries, translation or normalization that supplies hidden candidate advantages.
+- Shared runner/evaluator logic, judge identity bias, circular labels and evaluator defects.
+- Selective abstention, excluded failures, best-seed selection, post hoc endpoints and correlated repeats counted as independent cases.
+- Outcome delay, censoring, action selection, unobserved counterfactuals and post-decision evidence leakage.
+- Different hardware, cache state, numerical precision, concurrency or unknown provider resources.
+
+Keep unsuccessful runs, unresolved disagreements and missing observations visible. A control that cannot remove a confound must narrow the resulting claim.
 
 ## Strong falsifiers
 
@@ -133,6 +169,14 @@ MASI should be narrowed or rejected if repeated well-controlled experiments show
 10. **Existing systems solve the problem more simply.** Established routing, mixture-of-experts, ensemble, bandit, verifier, or multi-agent methods reproduce the desired properties without MASI-specific machinery.
 
 A falsifier is not a project failure. It tells the research program what to stop building.
+
+For each experiment, preregister which falsifier its contrasts can address. Falsifiers 1–4 and 10 select simpler explanations; 5 limits generalization; 6 limits substitution; 7 can defeat operational usefulness despite a score gain; 8 removes a feedback-value claim; 9 permits revising or removing responsibilities. An adequately measured simpler-system win narrows or rejects the tested mechanism within that domain. Repeated controlled failures across preregistered task families narrow the broader MASI claim; a single narrow failure does not reject every possible composition.
+
+A null result leaves a claim unsupported; it establishes equivalence only if the design and uncertainty bounds support that conclusion. Missing critical controls, insufficient precision or integrity defects yield an inconclusive or defective evaluation. Do not rescue a failed primary claim by switching mechanisms or secondary endpoints after observation.
+
+## Current nonclaims
+
+Neither WP0 documentation nor accepted-as-narrowed WP1 establishes MASI efficacy, purpose-built specialization, open-set/cross-paradigm interchangeability, calibration, generalization, composition or governance benefit, or a capability deficit justifying learned complexity. A common contract is a design constraint, not evidence that any implementation satisfies it. H1–H7 remain empirical questions.
 
 ## Measurement principles
 

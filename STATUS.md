@@ -1,6 +1,6 @@
 # Status
 
-**Current phase:** WP1 **accepted only as narrowed** after independent Audit Addendum B; doctrine-reconciliation hold cleared. **Next authorized packet: WP0 research gates for Issues #1 and #2.**
+**Current phase:** WP1 **accepted only as narrowed** after independent Audit Addendum B; doctrine-reconciliation hold cleared. **WP0 research-gates documentation for Issues #1/#2 is frozen for independent Claude audit; not yet accepted.**
 
 **Primary objective:** turn MASI from a conceptual/disclosure lineage into falsifiable executable research while preserving model interchangeability, explicit governance, fair baselines, claim discipline, and the project's original specialization-by-construction thesis.
 
@@ -100,8 +100,10 @@ The historical WP1-local thesis matrix is superseded for thesis purposes by curr
 ## Immediate sequence
 
 1. Treat WP1 as accepted **only as narrowed**; preserve the builder packet at `81adfff` as immutable historical evidence.
-2. Run one bounded **WP0 research-gates packet** addressing Issues #1 and #2: thesis/falsifier freeze, minimum responsibility envelope, abstain/escalate/unsupported-assumption semantics, minimum Reality Audit record, MASI Bus ownership boundary, and resource-accounting fields.
-3. Stop for independent audit of that packet before authorizing WP2/E001, training, new candidates, or runtime expansion.
+2. Independently audit the [WP0 research-gates packet](docs/WP0_RESEARCH_GATES.md) on `astra/wp0-research-gates`, based on main `8de8bbdf956cd41d94c8dc1758b71f07f2b9b8e6`. It supplies thesis/control decision rules, semantic boundaries, Reality Audit minimum, Bus ownership and resource requirements; no implementation or experiment was started.
+3. Record the audit disposition. Only a subsequent operator decision may authorize a bounded experiment protocol; acceptance of these documentation gates alone does not authorize WP2/E001, K001 execution, training, new candidates or runtime expansion.
+
+The packet retains H2A/H2B and falsifiers 1–10, requires claim-linked comparisons and future independent reference checks (E1), and documents the current Bus v1.0 confidence/cost/native-output gaps without changing Bus. The rules are frozen for review; task-specific metrics/margins, inputs, family profile, outcome horizon/rule and resource caps remain unselected. Issues #1/#2 stay open pending disposition. WP1's historical records and all frozen/code/evidence artifacts are untouched.
 
 ## First specialization experiment
 
@@ -131,4 +133,4 @@ A pretrained base selection or fine-tuning path is an **optional `CONTROL_B` arm
 
 ## Next durable action
 
-**WP0 only:** Astra should tighten/freeze enough of Issues #1 and #2 to make the next implementation claim falsifiable. Prefer documentation/contracts over runtime work. Define the minimum common responsibility envelope, abstain/escalate/unsupported-assumption semantics, Reality Audit minimum, MASI Bus versus experiment-record ownership, and resource-accounting fields. Preserve E1 as a future-contract lesson. Stop for Claude audit before WP2/E001.
+**Independent Claude audit of WP0 only:** review the seven-document patch and [gate handoff](docs/WP0_RESEARCH_GATES.md) against governing `8de8bbd`, including claim sufficiency, semantic ownership, resource comparability, E1 and frozen/provisional distinctions. No WP1 re-audit or repair is requested. Stop for disposition and an operator decision before any implementation.
