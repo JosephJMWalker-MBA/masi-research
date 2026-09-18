@@ -1,6 +1,6 @@
 # Status
 
-**Current phase:** WP1 observed; independent audit: `CLAIM_NARROWING_REQUIRED`, pending acceptance of documentation narrowing; **paused for construction-doctrine reconciliation**.
+**Current phase:** WP1 **accepted only as narrowed** after independent Audit Addendum B; doctrine-reconciliation hold cleared. **Next authorized packet: WP0 research gates for Issues #1 and #2.**
 
 **Primary objective:** turn MASI from a conceptual/disclosure lineage into falsifiable executable research while preserving model interchangeability, explicit governance, fair baselines, claim discipline, and the project's original specialization-by-construction thesis.
 
@@ -25,15 +25,17 @@ MASI_TARGET    purpose-built bounded intelligence designed from the responsibili
 INFRASTRUCTURE supporting routing, logging, evaluation, governance, transport, etc.
 ```
 
-## Immediate hold
+## WP1 acceptance checkpoint
 
-The first Astra block began before the doctrine was explicit enough. Claude's [independent audit](docs/AUDIT_WP0_WP1_2026-09-17.md) found that the later freeze and runs still used the older branch governance. Implementation and evidence survived audit; the required corrections are documentation-only R1–R7.
+The first Astra block began before the doctrine was explicit enough. Claude's [independent audit](docs/AUDIT_WP0_WP1_2026-09-17.md) found that the later freeze and runs still used the older branch governance. Implementation and evidence survived audit; the required corrections were documentation-only R1–R7.
 
-**Do not begin the next Astra implementation block until WP-1 in `docs/IMPLEMENTATION_SPRINT_001.md` is complete.**
+Astra recorded the [R1–R7 reconciliation](docs/RECONCILIATION_WP1_R1_R7.md), including implementation classes, superseded thesis/E001 framing, the absence of a demonstrated capability deficit, closed-set invocation limits, and the historical validation erratum.
 
-The [R1–R7 reconciliation](docs/RECONCILIATION_WP1_R1_R7.md) records classes, superseded thesis/E001 framing, the absence of a demonstrated capability deficit, closed-set invocation limits and the historical validation erratum. It is submitted for a **scoped Claude re-check**, not accepted merely by publication. No implementation or evidence repair is authorized.
+Claude's scoped re-check, preserved as **Audit Addendum B**, returned `ACCEPT`.
 
-This is a correction of architectural interpretation, not a presumption that the first block should be discarded.
+> **WP1 is accepted only as narrowed.**
+
+The construction-doctrine reconciliation hold is therefore cleared. This does **not** merge the frozen builder packet or authorize WP2, E001, training, new candidates, or runtime expansion. The next work packet is separately bounded below.
 
 ## Current decisions
 
@@ -85,7 +87,7 @@ next Astra block
 
 GitHub is the durable state boundary. No model session is the system of record.
 
-The current packet is **WP-1 documentation reconciliation only**. The frozen builder artifact remains `codex/wp0-wp1-candidate-probe @ 81adfff`; its code and evidence are not merged into this branch.
+WP1 is complete **as narrowed**. The frozen builder artifact remains `codex/wp0-wp1-candidate-probe @ 81adfff`; its code and evidence are still not merged into `main`.
 
 ## Observed WP1 scope
 
@@ -97,9 +99,9 @@ The historical WP1-local thesis matrix is superseded for thesis purposes by curr
 
 ## Immediate sequence
 
-1. Complete the scoped Claude re-check of R1–R7 against governing `main` at `a0ac9fe9cd400a6c03d6543d5b79f651bf89a3a5` and the unchanged builder artifact at `81adfff`.
-2. Record the auditor's disposition. `CLAIM_NARROWING_REQUIRED` and the implementation hold remain until that check accepts the narrowing.
-3. Stop. WP2/E001 preparation, training, new candidates, runtime changes and merging any branch require separate operator authorization.
+1. Treat WP1 as accepted **only as narrowed**; preserve the builder packet at `81adfff` as immutable historical evidence.
+2. Run one bounded **WP0 research-gates packet** addressing Issues #1 and #2: thesis/falsifier freeze, minimum responsibility envelope, abstain/escalate/unsupported-assumption semantics, minimum Reality Audit record, MASI Bus ownership boundary, and resource-accounting fields.
+3. Stop for independent audit of that packet before authorizing WP2/E001, training, new candidates, or runtime expansion.
 
 ## First specialization experiment
 
@@ -115,7 +117,7 @@ A pretrained base selection or fine-tuning path is an **optional `CONTROL_B` arm
 
 ## Not yet authorized
 
-- beginning a second Astra implementation block before WP-1 doctrine reconciliation is recorded;
+- beginning WP2/E001 or new specialist implementation before the authorized WP0 research-gates packet is accepted;
 - building a general-purpose MASI platform before bounded experiments require it;
 - creating separate repositories for individual MASI modules;
 - treating Telos, Jev, ADCP, any router, or any local model as canonical MASI;
@@ -129,4 +131,4 @@ A pretrained base selection or fine-tuning path is an **optional `CONTROL_B` arm
 
 ## Next durable action
 
-**WP-1 only:** scoped Claude re-check of the [R1–R7 documentation reconciliation](docs/RECONCILIATION_WP1_R1_R7.md). Verify the documentation-only diff, historical annotations, unchanged frozen/code/evidence files and both existing evidence-verifier results. E1 remains a next-contract lesson, not a WP1 repair. Do not proceed to WP2.
+**WP0 only:** Astra should tighten/freeze enough of Issues #1 and #2 to make the next implementation claim falsifiable. Prefer documentation/contracts over runtime work. Define the minimum common responsibility envelope, abstain/escalate/unsupported-assumption semantics, Reality Audit minimum, MASI Bus versus experiment-record ownership, and resource-accounting fields. Preserve E1 as a future-contract lesson. Stop for Claude audit before WP2/E001.

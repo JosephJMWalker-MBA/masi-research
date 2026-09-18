@@ -16,20 +16,15 @@ Existing AI systems should be used to identify primitives worth inheriting, impl
 
 Equally, do **not** remove an LLM, Jev, or another existing component merely to make the system look more purpose-built. A general-purpose model may be the right component when breadth, language translation, hypothesis generation, or long-tail integration is the actual responsibility. Its output should then be treated as a broad prior/proposal unless a contract explicitly grants something stronger.
 
-### Hard stop before the next Astra implementation block
+### WP1 reconciliation accepted — next work remains bounded
 
-The first Astra block began before this doctrine was explicit enough. **Do not begin new implementation work until the first-block artifacts have been reconciled against `docs/CONSTRUCTION_DOCTRINE.md`.**
+The first Astra block began before this doctrine was explicit enough. That checkpoint is now complete.
 
-At the start of the next block, Astra must:
+The documentation-only R1–R7 reconciliation was independently re-checked in [Audit Addendum B](docs/AUDIT_WP0_WP1_2026-09-17.md) and received `ACCEPT`. **WP1 is accepted only as narrowed.**
 
-1. inspect the first-block diff/artifacts;
-2. classify each implementation as `CONTROL_A`, `CONTROL_B`, `MASI_TARGET`, or `INFRASTRUCTURE`;
-3. identify hidden coupling to a model family, tokenizer, provider, representation, or training stack;
-4. identify any assumption that fine-tuning a pretrained general model is the intended specialist architecture;
-5. identify any complexity added without a demonstrated capability deficit;
-6. identify useful general-purpose / decision-native component functions that should remain because they solve an actual integration problem;
-7. preserve useful work, but relabel, narrow, or refactor architectural claims where necessary;
-8. record the reconciliation in GitHub before continuing the active sprint.
+The doctrine-reconciliation hold is therefore cleared for the next **operator-authorized** work packet. This is not blanket authorization for WP2, E001, training, new candidates, runtime expansion, or merging the frozen builder packet.
+
+The current authorized next packet is the WP0 research-gate work recorded in `STATUS.md` and `docs/IMPLEMENTATION_SPRINT_001.md`: tighten/freeze enough of Issues #1 and #2 to make later implementation claims falsifiable without hardening accidental architecture.
 
 ## Epistemic integrity gate
 
