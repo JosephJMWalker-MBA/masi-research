@@ -124,7 +124,7 @@ The observed result is uniform invocation of a **closed, pre-registered set**: a
 
 The [WP0 research-gates packet](docs/WP0_RESEARCH_GATES.md) records claim-linked controls, the minimum semantic responsibility boundary, Reality Audit record, current MASI Bus ownership/gaps, resource observations and the future independent-reference-check requirement. H2A/H2B and existing falsifiers are retained. Audit Addendum C independently accepted these gates **only for the bounded purpose of enabling design of the next experiment**; this is not demonstrated implementation conformance or permission to start an experiment.
 
-The next operator decision is whether to authorize exactly one protocol-binding packet for a single named experiment. That packet must bind the task, metrics/margins, competent controls, family-specific semantics, budgets and applicable integrity checks, then stop for independent audit before implementation. WP2/E001, K001 execution, training, new candidates and runtime expansion remain unauthorized until such an explicit decision.
+The operator has selected **MASI-E001** as the first named experiment for a protocol-binding packet. The authorized work is design/preregistration only: bind the task, metrics/margins, competent controls, family-specific semantics, budgets and applicable integrity checks, then stop for independent audit before implementation. E001 implementation/training, K001 execution, new runtime work and builder-branch merging remain unauthorized.
 
 The first specialization experiment remains `MASI-E001`, but a fine-tuned local language model is now explicitly a control condition rather than the presumed target. The target is the smallest credible Empathy-observation intelligence designed from the responsibility outward.
 
