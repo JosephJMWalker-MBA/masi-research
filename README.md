@@ -118,7 +118,13 @@ The registry is a search surface, not a canonical fleet. Candidates must earn in
 
 The first Astra implementation block began before the specialization-by-construction doctrine was explicit enough in the repository. Before further implementation, the existing first-block work must be classified and reconciled against [`docs/CONSTRUCTION_DOCTRINE.md`](docs/CONSTRUCTION_DOCTRINE.md).
 
+**WP1 audit checkpoint:** Claude's [independent audit](docs/AUDIT_WP0_WP1_2026-09-17.md) of the frozen builder packet `81adfff` returned `CLAIM_NARROWING_REQUIRED`. This branch records the documentation-only [R1–R7 reconciliation](docs/RECONCILIATION_WP1_R1_R7.md) against current `main`; the hold remains until a scoped Claude re-check. No code, frozen files or evidence are merged by this reconciliation.
+
+The observed result is uniform invocation of a **closed, pre-registered set**: an `INFRASTRUCTURE`/B0 equality floor and two externally adapted pretrained transformer classifiers (`CONTROL_B`-class specimens), repeated bit-identically on one host. Normalization remains caller-resident and candidate-keyed. The protocol's inference-branching condition was not triggered; the broader contract's caller-branch condition holds only for invocation, not normalization. Neither arbitrary new implementations, purpose-built targets nor cross-paradigm interchangeability were demonstrated. [Results](experiments/wp1/RESULTS.md) record no capability deficit justifying learned complexity; Issue #1's thesis-freeze deliverable remains open under H2A/H2B doctrine.
+
 Near-term work remains intentionally narrow:
+
+The following remains the sprint's broader sequence; this packet authorizes only R1–R7 documentation narrowing and a scoped Claude re-check. Later implementation and E001 work require separate authorization.
 
 1. reconcile first-block artifacts as `CONTROL_A`, `CONTROL_B`, `MASI_TARGET`, or `INFRASTRUCTURE`;
 2. preserve useful LLM/Jev/generalist work where it solves a real component responsibility without granting accidental authority;

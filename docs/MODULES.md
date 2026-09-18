@@ -187,3 +187,7 @@ Research may show that a responsibility should be:
 - or removed entirely.
 
 The architecture should follow evidence rather than preserve symmetry.
+
+## Historical WP1 interface boundary
+
+The [frozen `wp1-support-v1` contract at `81adfff`](https://github.com/JosephJMWalker-MBA/masi-research/blob/81adfffa2d28e4a40a0b36fe1a21baa567d402ec/docs/WP0_WP1_CONTRACT.md) defines the historical probe's envelope, uncertainty, failure, MASI Bus boundary and documentation-only Reality Audit minimum. It remains a WP1-local interface, not the general Precision contract or a current thesis freeze. The [R1 class record](../experiments/wp1/IMPLEMENTATION_CLASSES.md) identifies an `INFRASTRUCTURE`/B0 floor and two externally adapted `CONTROL_B`-class specimens; no `MASI_TARGET` was observed. Caller-resident candidate-keyed normalization limits the observation to a closed set. Current [RESEARCH_THESIS.md](RESEARCH_THESIS.md) governs H2A/H2B and construction controls; code and frozen files remain unchanged.

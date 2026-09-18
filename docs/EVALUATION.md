@@ -125,3 +125,9 @@ mechanism established
 ```
 
 Mechanism claims require additional controls or ablations.
+
+## Historical WP1 evaluation boundary
+
+The [frozen WP1 contract at `81adfff`](https://github.com/JosephJMWalker-MBA/masi-research/blob/81adfffa2d28e4a40a0b36fe1a21baa567d402ec/docs/WP0_WP1_CONTRACT.md) records local support/abstention semantics, raw-output separation and descriptive resource accounting. Its scope is the audited closed candidate set; it is not a thesis freeze or general capability evaluation. The [reconciled results](../experiments/wp1/RESULTS.md) state the current limits. Current [RESEARCH_THESIS.md](RESEARCH_THESIS.md), including H2A/H2B, `C_A/C_B/T` and falsifiers 1–10, governs thesis interpretation. No code or evidence is imported by this crosslink.
+
+Audit E1 is a **next-contract lesson only**: WP1's verifier shares normalization and hashing helpers with the runner, so it is an integrity/drift check rather than independent validation of those helpers. A separately authorized future contract may add an independent reference check. R1–R7 authorize no evaluator repair or new experiment.

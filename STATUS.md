@@ -1,6 +1,6 @@
 # Status
 
-**Current phase:** Phase 0 -> Phase 1 transition — bounded implementation, **paused for construction-doctrine reconciliation**
+**Current phase:** WP1 observed; independent audit: `CLAIM_NARROWING_REQUIRED`, pending acceptance of documentation narrowing; **paused for construction-doctrine reconciliation**.
 
 **Primary objective:** turn MASI from a conceptual/disclosure lineage into falsifiable executable research while preserving model interchangeability, explicit governance, fair baselines, claim discipline, and the project's original specialization-by-construction thesis.
 
@@ -27,11 +27,11 @@ INFRASTRUCTURE supporting routing, logging, evaluation, governance, transport, e
 
 ## Immediate hold
 
-The first Astra five-hour block completed before the construction doctrine was explicit enough in the repository instructions.
+The first Astra block began before the doctrine was explicit enough. Claude's [independent audit](docs/AUDIT_WP0_WP1_2026-09-17.md) found that the later freeze and runs still used the older branch governance. Implementation and evidence survived audit; the required corrections are documentation-only R1–R7.
 
 **Do not begin the next Astra implementation block until WP-1 in `docs/IMPLEMENTATION_SPRINT_001.md` is complete.**
 
-The next session must first reconcile the existing first-block work against the doctrine, classify artifacts, identify accidental coupling/architecture assumptions, and record what remains valid versus what must be narrowed, relabeled, or refactored.
+The [R1–R7 reconciliation](docs/RECONCILIATION_WP1_R1_R7.md) records classes, superseded thesis/E001 framing, the absence of a demonstrated capability deficit, closed-set invocation limits and the historical validation erratum. It is submitted for a **scoped Claude re-check**, not accepted merely by publication. No implementation or evidence repair is authorized.
 
 This is a correction of architectural interpretation, not a presumption that the first block should be discarded.
 
@@ -85,16 +85,21 @@ next Astra block
 
 GitHub is the durable state boundary. No model session is the system of record.
 
-The next Astra block begins with **WP-1 doctrine reconciliation**, not new implementation.
+The current packet is **WP-1 documentation reconciliation only**. The frozen builder artifact remains `codex/wp0-wp1-candidate-probe @ 81adfff`; its code and evidence are not merged into this branch.
+
+## Observed WP1 scope
+
+Three pre-registered implementations — `exact-match-v1` (`INFRASTRUCTURE`/B0 floor), `hhem-2.1` and `nli-deberta-small` (externally adapted `CONTROL_B`-class specimens) — used uniform invocation by changing the candidate identifier and reproduced bit-identically on one host. The probe and adapters are `INFRASTRUCTURE`; no `CONTROL_A` or `MASI_TARGET` was tested. See [implementation classes](experiments/wp1/IMPLEMENTATION_CLASSES.md).
+
+Substitution is demonstrated only for that closed set: normalization is caller-resident and candidate-keyed, and both learned candidates share one classifier stack and adapter class. The protocol's inference-branching condition was not triggered; the contract's broader caller-branch condition holds only for invocation, not normalization. Open-set or cross-paradigm interchangeability is unestablished. WP1 identified no capability deficit in transparent Precision approaches and does not justify learned complexity.
+
+The historical WP1-local thesis matrix is superseded for thesis purposes by current H2A/H2B, `C_A/C_B/T` controls and falsifiers 1–10 in [RESEARCH_THESIS.md](docs/RESEARCH_THESIS.md). Issue #1's WP0 thesis-freeze deliverable remains open. Issue #2 remains broader than this local interface, and Issue #4 remains broader than WP1.
 
 ## Immediate sequence
 
-1. Complete WP-1: reconcile Astra block 1 against `CONSTRUCTION_DOCTRINE.md`.
-2. Close enough of Issues #1 and #2 to freeze the thesis, common responsibility envelope, and Reality Audit minimum.
-3. Preserve/build only the smallest candidate-probe layer needed to invoke interchangeable local implementations through one bounded experiment interface.
-4. Run heterogeneous research specimens/baselines through that interface while keeping their architectural class explicit.
-5. Redesign/freeze `MASI-E001` so it can distinguish general-model controls from a purpose-built bounded Empathy target.
-6. Attempt a minimal heterogeneous composition smoke test only after individual candidate behavior is observable.
+1. Complete the scoped Claude re-check of R1–R7 against governing `main` at `a0ac9fe9cd400a6c03d6543d5b79f651bf89a3a5` and the unchanged builder artifact at `81adfff`.
+2. Record the auditor's disposition. `CLAIM_NARROWING_REQUIRED` and the implementation hold remain until that check accepts the narrowing.
+3. Stop. WP2/E001 preparation, training, new candidates, runtime changes and merging any branch require separate operator authorization.
 
 ## First specialization experiment
 
@@ -106,7 +111,7 @@ Revised research pressure:
 
 ADCP remains useful because it separates human-authored observations from deterministic downstream policy. E001 targets the observation layer only; it must not train a model to imitate ADCP's policy thresholds.
 
-A fine-tuned local language model may remain a `CONTROL_B` condition. It should not be assumed to be the final Empathy architecture.
+A pretrained base selection or fine-tuning path is an **optional `CONTROL_B` arm**. The target remains purpose-built bounded Empathy-observation intelligence designed from the responsibility outward. No E001 preparation, base selection, labeling, split freezing, implementation or training is authorized by R1–R7.
 
 ## Not yet authorized
 
@@ -124,4 +129,4 @@ A fine-tuned local language model may remain a `CONTROL_B` condition. It should 
 
 ## Next durable action
 
-**WP-1 only:** Astra should pull the latest repository state, read `docs/CONSTRUCTION_DOCTRINE.md` and `AGENTS.md`, inspect its first five-hour block, classify the artifacts, record the reconciliation, and stop there for audit if the architectural impact is material.
+**WP-1 only:** scoped Claude re-check of the [R1–R7 documentation reconciliation](docs/RECONCILIATION_WP1_R1_R7.md). Verify the documentation-only diff, historical annotations, unchanged frozen/code/evidence files and both existing evidence-verifier results. E1 remains a next-contract lesson, not a WP1 repair. Do not proceed to WP2.

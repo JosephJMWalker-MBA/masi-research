@@ -85,6 +85,22 @@ Precision should not mean "a model prompted to sound precise." Research should i
 | [Skywork Reward V2 Qwen3 family](https://huggingface.co/Skywork/Skywork-Reward-V2-Qwen3-0.6B) | Small reward/judgment models; useful for ranking/evaluation experiments. | Comparator / CONTROL_B-family research specimen |
 | Fine-tuned small general base | Tests whether ordinary adaptation is enough. | **CONTROL_B, not presumed target** |
 
+### WP1 record reconciled with the independent audit — R1 / R6
+
+This note records only implementations already observed in the frozen builder packet `81adfff`; it registers no new candidate and imports no code or evidence. The [audit](AUDIT_WP0_WP1_2026-09-17.md) returned `CLAIM_NARROWING_REQUIRED`, and the doctrine hold remains pending a scoped Claude re-check.
+
+| Existing WP1 implementation | What was exercised | Audited implementation class / research posture |
+| --- | --- | --- |
+| `exact-match-v1` | Trimmed casefold equality; otherwise abstention | `INFRASTRUCTURE` / B0 evaluation floor; deliberately non-competitive, not a minimal Precision target |
+| `hhem-2.1` / HHEM-2.1-Open | Pretrained FLAN-T5-based factual-consistency classifier | Externally adapted `CONTROL_B`-class research specimen / adaptable verifier and comparator; adapter is `INFRASTRUCTURE` |
+| `nli-deberta-small` / `tasksource/deberta-small-long-nli` | Pretrained DeBERTa-v3-small NLI classifier | Externally adapted `CONTROL_B`-class research specimen / adaptable baseline and primitive source; adapter is `INFRASTRUCTURE` |
+
+The `sileod/deberta-v3-base-tasksource-nli` entry above remains the historical discovery entry. WP1 used its recommended successor `tasksource/deberta-small-long-nli`, as verified in the audit; this note reconciles that existing substitution with the current registry format rather than silently replacing the registry's lineage. Exact frozen revisions and observations remain in the [builder packet](https://github.com/JosephJMWalker-MBA/masi-research/tree/81adfffa2d28e4a40a0b36fe1a21baa567d402ec).
+
+The [complete classification record](../experiments/wp1/IMPLEMENTATION_CLASSES.md) distinguishes wrappers from models. Neither specimen is a MASI-built control or H2A evidence: no same-base comparison was performed. No `CONTROL_A` or `MASI_TARGET` was observed. Model-card license declarations do not establish complete training-data lineage or dataset licensing, which remain unreviewed in this packet.
+
+The demonstrated scope is uniform invocation of this closed registered set on one host. Normalization remains caller-resident and candidate-keyed; architecture/objective differences within a shared HF/PyTorch classifier stack do not establish arbitrary or cross-paradigm substitution. WP1 establishes no capability deficit of transparent Precision methods and does not justify learned complexity. The [results](../experiments/wp1/RESULTS.md) and current H2A/H2B thesis govern interpretation; all broader candidates and target directions below remain exploratory.
+
 ### Purpose-built Precision target direction
 
 Begin from the responsibility outward: explicit evidence objects, constraints, contradiction states, uncertainty, abstention, and calibration. Candidate architectures may combine small classifiers, probabilistic models, constraint solvers, evidence graphs, monotonic models, or other bounded machinery. Complexity must be earned by measured deficits.
