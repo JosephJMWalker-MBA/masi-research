@@ -1,6 +1,6 @@
 # WP1 candidate probe
 
-**Documentation reconciliation only.** This README is brought forward from `codex/wp0-wp1-candidate-probe @ 81adfff` onto current `main` at `a0ac9fe9cd400a6c03d6543d5b79f651bf89a3a5`. Builder code, frozen files and evidence remain solely in the pinned packet and are not merged here. The [independent audit](../../docs/AUDIT_WP0_WP1_2026-09-17.md) requires claim narrowing; implementation remains on hold pending a scoped Claude re-check of R1–R7.
+**Documentation reconciliation only.** This README was brought forward from `codex/wp0-wp1-candidate-probe @ 81adfff` during the R1–R7 reconciliation. Builder code, frozen files and evidence remain solely in the pinned packet and are not merged here. The first [independent audit](../../docs/AUDIT_WP0_WP1_2026-09-17.md) required claim narrowing; Audit Addendum B accepted that narrowing. **WP1 is accepted only as narrowed.**
 
 **Observed scope (R5):** three pre-registered implementations — an `INFRASTRUCTURE`/B0 equality floor and two externally adapted pretrained transformer classifiers (`CONTROL_B`-class specimens) — used uniform invocation by changing only the candidate identifier and reproduced bit-identically on one host. Normalization is caller-resident and candidate-keyed. This demonstrates selection within the closed registered set, not arbitrary new implementations or purpose-built targets with different ontologies. The protocol's inference-branching condition was not triggered; the contract's broader caller-branch condition holds only for invocation, not normalization. Heterogeneity is limited to architecture/objective within one shared stack and adapter class. See [classes](IMPLEMENTATION_CLASSES.md) and [narrowed results](RESULTS.md).
 
@@ -24,7 +24,7 @@ The deterministic rule is deliberately weak: stripped casefold equality yields s
 
 ## Reproduce
 
-The commands below are retained instructions for a separate checkout of the pinned builder packet, where the referenced code exists. They are historical reproduction instructions, **not authorization to run inference during R1–R7 or the scoped re-check**. This documentation-only checkout cannot execute them. The scoped re-check may run the existing read-only evidence verifier against an unchanged builder export; it must not invoke models.
+The commands below are retained instructions for a separate checkout of the pinned builder packet, where the referenced code exists. They are historical reproduction instructions, not evidence that the code has been merged into `main`. During R1–R7 and the scoped re-check they were not authorization to run new inference; the auditor used the existing read-only evidence verifier against an unchanged builder export without invoking models.
 
 Validated environment is Python 3.11 on Apple arm64. Other environments remain unverified. From the repository root:
 
@@ -63,6 +63,6 @@ Verify the retained final run set without downloading or invoking models:
 python3 scripts/verify_probe_evidence.py --evidence experiments/wp1/evidence/accounting-repair
 ```
 
-The initial six-run set remains at `experiments/wp1/evidence` in the pinned builder packet; the final set repeats the same frozen experiment after a resource-accounting repair. No real-world action or outcome is measured here. Broader Issues #1/#2 and E001 remain open. E001 targets purpose-built Empathy-observation intelligence; base selection/fine-tuning is only an optional `CONTROL_B` arm, with no E001 work authorized here. See [results](RESULTS.md) and the appended corrections in the [historical handoff](../../docs/HANDOFF_WP1_2026-09-17.md). The exact next action is a scoped Claude re-check, not WP2.
+The initial six-run set remains at `experiments/wp1/evidence` in the pinned builder packet; the final set repeats the same frozen experiment after a resource-accounting repair. No real-world action or outcome is measured here. Broader Issues #1/#2 and E001 remain open. E001 targets purpose-built Empathy-observation intelligence; base selection/fine-tuning is only an optional `CONTROL_B` arm, with no E001 work authorized here. See [results](RESULTS.md) and the appended corrections in the [historical handoff](../../docs/HANDOFF_WP1_2026-09-17.md). The next authorized work is the bounded WP0 research-gates packet, not WP2.
 
 E1 remains a next-contract lesson: the existing verifier shares runner helpers and is not an independent check of their logic. A separately authorized future contract may add a reference check; WP1 code and evidence stay unchanged.
