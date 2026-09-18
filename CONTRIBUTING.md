@@ -2,6 +2,10 @@
 
 MASI Research is an open research program, not a feature-collection project.
 
+Before contributing substantial work, read [`PARTICIPATION.md`](PARTICIPATION.md). It defines what participation in this public research program means, what it does **not** confer, how contribution decisions relate to repository authority, and the practical expectations around licensing, attribution, reuse, sponsorship, and forking.
+
+This document answers the narrower question: **what makes a contribution scientifically and operationally useful?**
+
 Contributions should help answer a research question, strengthen a baseline, preserve evidence, reproduce a result, expose a confound, or falsify an assumption.
 
 ## Good contributions
@@ -37,6 +41,8 @@ Implementation should enter this repository because an accepted experiment or re
 6. Preserve configuration, model identity, data identity, environment, logs, and result artifacts where practical.
 7. Separate observations from interpretations.
 8. Report negative and inconclusive results without rewriting the original criteria.
+
+For substantial work, scope should be legible before major effort is invested. A contributor should be able to tell what question is being answered, what evidence will be reviewed, and what acceptance would and would not mean.
 
 ## Module contributions
 
@@ -82,6 +88,14 @@ Human-state or care-related research must preserve the distinction between obser
 Strong criticism is welcome when it attacks the claim, method, evidence, baseline, or architecture rather than the contributor.
 
 A contribution that demonstrates MASI is unnecessary, inferior, overcomplicated, or incorrectly decomposed is valuable if the evidence supports it.
+
+## Participation and governance boundary
+
+A contribution can be scientifically valuable without conferring governance authority.
+
+Repository merge permissions, scientific support for a claim, architectural stewardship, and any future commercial authority are distinct questions. See [`PARTICIPATION.md`](PARTICIPATION.md) for the current participation compact.
+
+The long-term governance model is intentionally not defined by this file.
 
 ## Pull requests
 
