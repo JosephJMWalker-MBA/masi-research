@@ -155,3 +155,9 @@ The historical MASI disclosures establish a conceptual lineage, not a requiremen
 The architecture should become smaller, stranger, more heterogeneous, or substantially different if evidence requires it.
 
 A frontier or general-purpose model may help build MASI, but it must not silently become MASI's theory of cognition.
+
+## WP1-local matrix supersession — R2
+
+The historical [WP0/WP1 interface contract at `81adfff`](https://github.com/JosephJMWalker-MBA/masi-research/blob/81adfffa2d28e4a40a0b36fe1a21baa567d402ec/docs/WP0_WP1_CONTRACT.md) remains frozen. Its H1–H7 matrix is WP1-local and **superseded for thesis purposes** by this governing document's H2A/H2B distinction, `C_A/C_B/T` controls and falsifiers 1–10. The old builder crosslink's claim that the matrix fixed the minimum thesis/control distinctions does not hold under current doctrine. Issue #1's WP0 thesis-freeze deliverable remains open.
+
+The [reconciled WP1 result](../experiments/wp1/RESULTS.md) demonstrates only uniform invocation within a closed pre-registered set, with caller-resident candidate-keyed normalization and same-host repeatability. It establishes no H1–H7 effect, including H2A or H2B. Externally adapted `CONTROL_B` specimens without a same-base comparison are not adaptation-value evidence; no `MASI_TARGET` was tested. The equality floor is not a competitive transparent Precision baseline, so WP1 establishes no capability deficit justifying learned complexity. The [audit outcome](AUDIT_WP0_WP1_2026-09-17.md) remains `CLAIM_NARROWING_REQUIRED` pending a scoped re-check of documentation only.

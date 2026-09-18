@@ -3,6 +3,10 @@
 **Status:** active, but **paused pending doctrine reconciliation after Astra block 1**  
 **Started:** 2026-09-17
 
+**Current audit checkpoint:** WP1 was observed on the frozen builder branch `81adfff`; the independent [Claude audit](AUDIT_WP0_WP1_2026-09-17.md) returned `CLAIM_NARROWING_REQUIRED`. The documentation-only [R1–R7 reconciliation](RECONCILIATION_WP1_R1_R7.md) is based on current `main` at `a0ac9fe9cd400a6c03d6543d5b79f651bf89a3a5`. The doctrine hold remains pending a scoped Claude re-check; publication alone does not satisfy WP-1 or authorize further implementation.
+
+The observed invocation result is limited to three pre-registered implementations: an `INFRASTRUCTURE`/B0 floor and two externally adapted `CONTROL_B`-class specimens. Invocation is uniform, but normalization is caller-resident and candidate-keyed; the broader contract's caller-branch condition holds only for invocation, not normalization. No open-set, cross-paradigm or purpose-built-target interchangeability is established, and no capability deficit justifying learned complexity was shown. See the [narrowed results](../experiments/wp1/RESULTS.md). The frozen WP1-local thesis matrix does not close Issue #1's thesis-freeze deliverable under current H2A/H2B doctrine.
+
 ## Objective
 
 Use the remaining current-week high-capability agent allocation to move MASI from research scaffolding toward the **smallest executable system that can test interchangeability, specialization, and purpose-built bounded intelligence without prematurely building a general runtime**.
@@ -104,6 +108,8 @@ next authorized action:
 ```
 
 **Exit condition:** it is clear which first-block artifacts are experimental infrastructure/baselines and which, if any, legitimately satisfy the purpose-built MASI target doctrine.
+
+For this packet, the [implementation-class record](../experiments/wp1/IMPLEMENTATION_CLASSES.md) identifies no `MASI_TARGET` or `CONTROL_A`. The next authorized action is the scoped Claude re-check of R1–R7, including the appended historical handoff errata. E1's independent-reference-check recommendation belongs to a separately authorized next contract; it is not a WP1 repair. WP2 and merging remain unauthorized by this reconciliation.
 
 ### WP0 — Freeze enough of Issues #1 and #2 to permit code
 
