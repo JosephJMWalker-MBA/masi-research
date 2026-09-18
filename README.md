@@ -68,6 +68,8 @@ The registry is a search surface, not a canonical fleet. Candidates must earn in
 
 **Phase 0 -> Phase 1 transition — bounded implementation and first executable evidence.**
 
+WP0's minimum contract is now frozen and WP1's [local candidate probe](experiments/wp1/README.md) has run a deterministic baseline, HHEM and DeBERTa NLI through the same bounded interface. Repeated native outputs matched exactly on 12 visible synthetic fixtures. See [results and limits](experiments/wp1/RESULTS.md) and the [audit handoff](docs/HANDOFF_WP1_2026-09-17.md). Independent audit is pending; this is no system-level MASI efficacy claim.
+
 Near-term work remains intentionally narrow:
 
 1. freeze enough of the research thesis, falsifiers, and module contracts to support code;

@@ -1,0 +1,6 @@
+{
+  "comparison": "initial source versus accounting repair, same fixtures and models",
+  "max_absolute_native_difference": 0,
+  "verdicts_identical": true,
+  "runs_compared": 6
+}

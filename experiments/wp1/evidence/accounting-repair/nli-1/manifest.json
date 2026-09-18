@@ -1,0 +1,274 @@
+{
+  "artifact_sha256": {
+    "normalized.jsonl": "64e352fdb6edfe933631e296991e35b693fc2fcba17968b5bdf48fe5e6d7b59e",
+    "raw.jsonl": "8c66c459a2a7d1324f17c1b1d77e1acf64cdf025fbec60047d893700f5afcfb2",
+    "summary.json": "df2e2c8cff41dce9104c83f2fe9fd74a24027a91511cad736bb6ec7c98b0accc"
+  },
+  "candidate": {
+    "candidate_id": "nli-deberta-small",
+    "dtype": "float32",
+    "license": "Apache-2.0",
+    "license_review_date": "2026-09-17",
+    "model_class": "DebertaV2ForSequenceClassification / DeBERTa v3 small NLI",
+    "parameter_count": 141897219,
+    "revision": "9a77395d4d3751be9e2a69c4ae318491d9b3fffb",
+    "source": "https://huggingface.co/tasksource/deberta-small-long-nli"
+  },
+  "candidate_id": "nli-deberta-small",
+  "environment": {
+    "cpu_count": 10,
+    "device": "cpu",
+    "dtype": "float32",
+    "hardware_memory_bytes": null,
+    "hardware_memory_reason": "not measured by portable runner; see handoff host preflight",
+    "machine": "arm64",
+    "packages": {
+      "Jinja2": "3.1.6",
+      "MarkupSafe": "3.0.3",
+      "PyYAML": "6.0.3",
+      "certifi": "2026.7.22",
+      "charset-normalizer": "3.5.1",
+      "filelock": "4.0.0",
+      "fsspec": "2026.7.0",
+      "hf-xet": "1.6.0",
+      "huggingface_hub": "0.36.2",
+      "idna": "3.20",
+      "mpmath": "1.3.0",
+      "networkx": "3.6.1",
+      "numpy": "2.4.6",
+      "packaging": "26.3",
+      "pip": "26.1",
+      "protobuf": "6.33.5",
+      "regex": "2026.9.10",
+      "requests": "2.34.2",
+      "safetensors": "0.8.0",
+      "sentencepiece": "0.2.1",
+      "setuptools": "82.0.1",
+      "sympy": "1.14.0",
+      "tokenizers": "0.22.2",
+      "torch": "2.8.0",
+      "tqdm": "4.70.1",
+      "transformers": "4.57.6",
+      "typing_extensions": "4.16.0",
+      "urllib3": "2.8.0"
+    },
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "python": "3.11.15",
+    "quantization": null,
+    "threads": 1
+  },
+  "finished_at": "2026-09-17T23:58:20.534198+00:00",
+  "freeze": {
+    "files": {
+      "docs/WP0_WP1_CONTRACT.md": "c6e3ce3d86de27b6ddeb7d25817cfd7686554bfedd8a55661ac64722b5cdef40",
+      "experiments/wp1/fixtures.jsonl": "0720d89efd21882b21330ffc709db4bddb3c9d6c0426266e817ddebedd8f8850",
+      "experiments/wp1/protocol.json": "62bd104130c1223ca4a9e20c7ba6c2254eb1c3e76a8a4785cc52a620953a3a0c",
+      "probe_candidates.py": "da4ca2e71cdd4b5730e668a8d0e72b82b49cc80a9e41feee05e6bb317f5adbf7",
+      "requirements-probe.lock": "50cb998ba127fe34751e7d120c8414467e6553707ad7be2f90633df70f9a5798"
+    },
+    "freeze_id": "wp1-support-v1",
+    "frozen_at_utc": "2026-09-17T23:53:00.301130+00:00",
+    "observation_status": "Created before any fixed-fixture candidate runs; no model outputs inspected."
+  },
+  "git": {
+    "branch": "codex/wp0-wp1-candidate-probe",
+    "commit": "7adfeb9ef5ce928d0ba1568d33d3702694d2f63f",
+    "status_porcelain": "?? experiments/wp1/evidence/accounting-repair/"
+  },
+  "load_error": null,
+  "model_artifacts": {
+    "prepared_at_utc": "2026-09-17T18:37:22.615543+00:00",
+    "schema_version": 1,
+    "snapshots": {
+      "flan-t5-base": {
+        "files": {
+          "README.md": {
+            "sha256": "b6fb54f6831f3677f537cdb83d6f822e8705d203c605a9ec4c8192bda5a89828",
+            "size_bytes": 13377
+          },
+          "config.json": {
+            "sha256": "7c1853dbfa0e4aac093eb109a358b6ab25fe86b7c15185a91322f0ed26f0f940",
+            "size_bytes": 1404
+          },
+          "special_tokens_map.json": {
+            "sha256": "5c87151ef0f72a99d1f766a4c418bd2a1f90aaa30a8e22fe5eca9641daebb64f",
+            "size_bytes": 2201
+          },
+          "spiece.model": {
+            "sha256": "d60acb128cf7b7f2536e8f38a5b18a05535c9e14c7a355904270e15b0945ea86",
+            "size_bytes": 791656
+          },
+          "tokenizer.json": {
+            "sha256": "fe2ebbbbde2985be723e0ce18217853e4020c5e9d35bd07be2c27ab9d3ead57a",
+            "size_bytes": 2424064
+          },
+          "tokenizer_config.json": {
+            "sha256": "4c55124402e4ce48c7125d04b9af152a125eda9e7c80829f8f99f2ec69f3f68d",
+            "size_bytes": 2537
+          }
+        },
+        "repo_id": "google/flan-t5-base",
+        "revision": "7bcac572ce56db69c1ea7c8af255c5d7c9672fc2"
+      },
+      "hhem-2.1": {
+        "files": {
+          "README.md": {
+            "sha256": "e191ee1c170dab99edfbfab03c8168fe1389003229588676825ef5ec140c6ade",
+            "size_bytes": 15325
+          },
+          "config.json": {
+            "sha256": "773139fe764fe20e146ab14e627b188ccafae35f93cf6f5258dc6c237016b870",
+            "size_bytes": 389
+          },
+          "configuration_hhem_v2.py": {
+            "sha256": "ec57fe344e3104d0d4a99b13d893529aac1e2bd69e83c2814235baf37cdcacc7",
+            "size_bytes": 760
+          },
+          "model.safetensors": {
+            "sha256": "634de18a38cf1e991c1acd0f7a9e0d30f7ea187fba42bb4798f862d3edd31e72",
+            "size_bytes": 438535352
+          },
+          "modeling_hhem_v2.py": {
+            "sha256": "fcc9cfcee513cc08eb46eac21f1acb498b122572fb35a7dec4d85fae45cb9bba",
+            "size_bytes": 2683
+          }
+        },
+        "repo_id": "vectara/hallucination_evaluation_model",
+        "revision": "8e4a2e6e96c708cc76c2344f7e4757df2515292c"
+      },
+      "nli-deberta-small": {
+        "files": {
+          "README.md": {
+            "sha256": "1ec318b613531555a82b23c5898342cc4b160c85d1a758c3b7208b3fc209007a",
+            "size_bytes": 10942
+          },
+          "added_tokens.json": {
+            "sha256": "dc046d04c9b0ada7ae6f1dc89c465801799acdf0c9a6aab8c15a1b2d5ca4e91f",
+            "size_bytes": 23
+          },
+          "config.json": {
+            "sha256": "02840a52954942f5e6d487b2562a466ecb41a0f388e91678c061e1825f3772ee",
+            "size_bytes": 19141
+          },
+          "model.safetensors": {
+            "sha256": "9af30c7ad7235a2054300bc2df1d98149ad6008dd1ef06212be8b32b5d1b3458",
+            "size_bytes": 567601628
+          },
+          "special_tokens_map.json": {
+            "sha256": "9463f61e1b109a8eb4688b829260d7c6b1e6dff04c98ff7269bb89e2b92369b9",
+            "size_bytes": 286
+          },
+          "spm.model": {
+            "sha256": "c679fbf93643d19aab7ee10c0b99e460bdbc02fedf34b92b05af343b4af586fd",
+            "size_bytes": 2464616
+          },
+          "tokenizer.json": {
+            "sha256": "acc5aff95a1beb48778f3aa96674ebf6b55f506b2dac28faeeceb6a815e86806",
+            "size_bytes": 8656891
+          },
+          "tokenizer_config.json": {
+            "sha256": "557b3d33d3f41b81ad769244e506549e98a1857d41dd58160aacd4d98d710b5a",
+            "size_bytes": 1284
+          }
+        },
+        "repo_id": "tasksource/deberta-small-long-nli",
+        "revision": "9a77395d4d3751be9e2a69c4ae318491d9b3fffb"
+      }
+    }
+  },
+  "protocol": {
+    "acceptance": [
+      "All three registered implementations run with unchanged fixture runner and only candidate ID changed",
+      "Each learned implementation completes at least one real forward pass and every fixture has an ok or explicit abstain record, with zero error records",
+      "Raw outputs and normalized outputs are distinct, linked by hashes and complete for every fixture",
+      "Fixtures, protocol, contract, source, model revisions and environment are recorded",
+      "A second run under comparable conditions reproduces normalized decisions and native numerical outputs (absolute tolerance 1e-6); latency is descriptive, not an acceptance score",
+      "Negative and boundary tests cover invalid inputs, unsupported cases, threshold, non-finite scores, missing artifacts, input limits and no overwrite"
+    ],
+    "candidates": [
+      "exact-match-v1",
+      "hhem-2.1",
+      "nli-deberta-small"
+    ],
+    "claim_scope": "Executable interchangeability smoke test underlying H4; no capability superiority, learned-specialization or MASI system claim.",
+    "contract_version": "wp1-support-v1",
+    "dataset": "fixtures.jsonl",
+    "dataset_status": "Author-created synthetic engineering fixtures; visible to implementers; not held out, not a benchmark, no training or tuning.",
+    "failure_conditions": [
+      "No real local model invocation",
+      "Invocation errors or missing evidence",
+      "Caller needs candidate-specific inference branching",
+      "Silent input truncation or label leakage into inference",
+      "Mutated frozen protocol or fixtures",
+      "Failure to preserve native distinctions or to reproduce within tolerance"
+    ],
+    "inference": {
+      "batch_size": 1,
+      "device": "cpu",
+      "dtype": "float32",
+      "passes": 1,
+      "quantization": null,
+      "retries": 0,
+      "retrieval": false,
+      "seed": 0,
+      "threads": 1,
+      "tools": false,
+      "truncation": false
+    },
+    "known_confounds": [
+      "Tiny synthetic fixtures are visible and not representative",
+      "Different pretraining, model sizes, tokenizers and task-specific formatting",
+      "Native scores are not calibrated or comparable across candidates",
+      "Shared numeric cutoff does not establish comparable operating points",
+      "Sequential CPU latency and process lifetime RSS do not measure isolated hardware efficiency",
+      "Fixture reference labels are author judgments, not independently reviewed or observed real-world outcomes"
+    ],
+    "mapping": "Learned score >0.5 supported; <0.5 not_supported; exactly 0.5 abstain. not_supported does not imply contradiction. Rule: stripped casefold equality supported, otherwise abstain; no numeric score.",
+    "max_chars_per_field": 4096,
+    "max_model_input_tokens": 512,
+    "metrics": [
+      "total fixtures",
+      "ok/abstain/error counts",
+      "correct count with all fixtures as denominator (abstain/error not correct)",
+      "coverage = ok/total",
+      "per-invocation wall latency including tokenization",
+      "separate model load latency",
+      "process lifetime peak RSS with platform units converted to bytes",
+      "input tokens including model-specific formatting",
+      "model calls and passes"
+    ],
+    "omitted_controls": "F1/L1/L2/M1 composed-system and training controls are omitted because WP1 does not compare architectures or specialization; no outcomes, router, composition or training is implemented.",
+    "protocol_id": "wp1-candidate-probe-v1",
+    "publication": "Original synthetic fixtures and code under repository Apache-2.0; exact external model/tokenizer licenses reviewed before integration; weights and downloaded upstream code excluded from Git. No restricted external service is invoked.",
+    "question": "Can unchanged calling code invoke a deterministic baseline and two heterogeneous local implementations on identical bounded premise/claim inputs while preserving native output, normalized output, failures and resource provenance?",
+    "resource_limits": {
+      "execution": "One candidate per process, sequential runs; no model installation beyond the three pinned model/tokenizer artifacts.",
+      "host_memory_requirement_bytes": 17179869184,
+      "model_storage_budget_bytes": 3221225472
+    },
+    "responsibility": "precision.evidence_support",
+    "stop_boundary": "WP0/WP1 only; independent audit before WP2/E001 preparation or training. Issues #1/#2 remain broader than this narrow freeze.",
+    "support_threshold": 0.5
+  },
+  "resources": {
+    "api_cost": 0,
+    "api_cost_currency": "USD",
+    "api_cost_scope": "no external inference",
+    "model_load_seconds": 1.8258067090064287,
+    "output_tokens": null,
+    "output_tokens_reason": "classification, not generation",
+    "passes_per_fixture": 1,
+    "peak_process_rss_bytes": 983334912,
+    "retries": 0,
+    "retrieval_calls": 0,
+    "rss_scope": "process lifetime high-water RSS including imports, load and inference",
+    "tool_calls": 0
+  },
+  "run_id": "25213a57-ef8c-4876-b9a6-cc7e1c70886e",
+  "source_sha256": {
+    "probe.py": "8a806f5c30f1fc82bd8ac011597c6961acebb40725a13275e4f3e66d5fe72307",
+    "probe_candidates.py": "da4ca2e71cdd4b5730e668a8d0e72b82b49cc80a9e41feee05e6bb317f5adbf7"
+  },
+  "started_at": "2026-09-17T23:58:18.425568+00:00",
+  "state": "completed"
+}

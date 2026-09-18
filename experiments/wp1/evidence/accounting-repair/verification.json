@@ -1,0 +1,29 @@
+{
+  "freeze_id": "wp1-support-v1",
+  "pairs": [
+    {
+      "candidate_id": "exact-match-v1",
+      "fixtures_per_run": 12,
+      "max_absolute_native_difference": 0,
+      "normalized_decisions_identical": true
+    },
+    {
+      "candidate_id": "hhem-2.1",
+      "fixtures_per_run": 12,
+      "max_absolute_native_difference": 0,
+      "normalized_decisions_identical": true
+    },
+    {
+      "candidate_id": "nli-deberta-small",
+      "fixtures_per_run": 12,
+      "max_absolute_native_difference": 0,
+      "normalized_decisions_identical": true
+    }
+  ],
+  "result": "pass",
+  "run_count": 6,
+  "source_sha256": {
+    "probe.py": "8a806f5c30f1fc82bd8ac011597c6961acebb40725a13275e4f3e66d5fe72307",
+    "probe_candidates.py": "da4ca2e71cdd4b5730e668a8d0e72b82b49cc80a9e41feee05e6bb317f5adbf7"
+  }
+}

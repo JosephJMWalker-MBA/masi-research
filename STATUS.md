@@ -1,6 +1,6 @@
 # Status
 
-**Current phase:** Phase 0 -> Phase 1 transition — bounded implementation
+**Current phase:** WP0 minimum frozen; WP1 implemented and locally observed; independent audit pending
 
 **Primary objective:** turn MASI from a conceptual/disclosure lineage into falsifiable executable research while preserving model interchangeability, explicit governance, fair baselines, and claim discipline.
 
@@ -50,11 +50,18 @@ GitHub is the durable state boundary. No model session is the system of record.
 
 ## Immediate sequence
 
-1. Close enough of Issues #1 and #2 to freeze the thesis, common responsibility envelope, and Reality Audit minimum.
-2. Build the smallest candidate-probe layer needed to invoke interchangeable local implementations through one bounded experiment interface.
-3. Run at least two heterogeneous local candidates through that interface, starting with Precision-friendly probes where practical.
-4. Complete `MASI-E001` design gates and begin the first learned specialization only after split/metrics/controls are frozen.
-5. Attempt a minimal heterogeneous composition smoke test only after individual candidate behavior is observable.
+1. Independently audit the [WP1 handoff](docs/HANDOFF_WP1_2026-09-17.md), frozen contract and retained evidence.
+2. Accept, repair, narrow, or mark the bounded result inconclusive before further work packets.
+3. Only in a separately authorized packet, complete `MASI-E001` design gates; training remains gated on frozen splits, labels, metrics and controls.
+4. Composition, routing and outcome learning remain later experiments.
+
+## Observed WP0 / WP1 checkpoint
+
+The [bounded contract](docs/WP0_WP1_CONTRACT.md) freezes only enough of Issues #1/#2 to implement WP1. It defines support, abstention/error, native score meaning, a documentation-only Reality Audit minimum, and the MASI Bus boundary without a new transport schema.
+
+The [probe](experiments/wp1/README.md) runs a deterministic exact-match baseline, HHEM-2.1 and a compact DeBERTa NLI candidate through one fixed interface. Two runs per implementation reproduced native outputs exactly; the accounting-repaired source was rerun with the same result. Raw outputs, normalized records, hashes, resources and original observations are preserved. All 22 unit tests pass. [Results and limits](experiments/wp1/RESULTS.md) support only a bounded interchangeability seam, not efficacy or system-level MASI claims.
+
+The formal independent Claude audit is pending. Issues #1, #2 and #4 have not been closed. No E001 training, generic runtime, router, composition or outcome learner was built.
 
 ## First learned-specialization experiment
 
@@ -79,4 +86,4 @@ The first candidate substrate is the Accumulated Distress Care Protocol (ADCP), 
 
 ## Next durable action
 
-Work from `IMPLEMENTATION_SPRINT_001.md`: freeze WP0, then implement WP1's thin candidate-probe layer. Use Issues #1–#3 as the current research gates and preserve each Astra/Claude handoff in commits, PRs, tests, and issue records.
+Use [HANDOFF_WP1_2026-09-17.md](docs/HANDOFF_WP1_2026-09-17.md) for exact commits, commands, evidence, unknowns and the independent audit request. Review WP0/WP1 before authorizing a new work packet. Keep Issues #1–#3 as broader research gates.

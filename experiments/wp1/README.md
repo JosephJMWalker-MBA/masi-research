@@ -49,4 +49,10 @@ The freeze manifest hashes the contract, protocol, fixtures and candidate source
 
 An interrupted run may leave `state: started` and partial rows; it is not complete and must not be overwritten. Process peak RSS includes imports/model load and is not incremental per-call memory. Wall times are descriptive local measurements; setup, tokenization and model sizes differ. Energy and amortized cost are unmeasured; zero external inference charges do not mean zero resource cost.
 
-No real-world action or outcome is measured here. Broader Issues #1/#2 and E001 remain open. See the eventual results and handoff for observed evidence and the exact next action.
+Verify the retained final run set without downloading or invoking models:
+
+```sh
+python3 scripts/verify_probe_evidence.py --evidence experiments/wp1/evidence/accounting-repair
+```
+
+The initial six-run set remains at `experiments/wp1/evidence`; the final set repeats the same frozen experiment after a resource-accounting repair. No real-world action or outcome is measured here. Broader Issues #1/#2 and E001 remain open. See [results](RESULTS.md) and the [handoff](../../docs/HANDOFF_WP1_2026-09-17.md) for observed evidence and the exact next action.

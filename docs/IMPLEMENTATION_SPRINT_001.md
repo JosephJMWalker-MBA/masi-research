@@ -3,6 +3,8 @@
 **Status:** active planning / execution  
 **Started:** 2026-09-17
 
+**Checkpoint (2026-09-17):** WP0 minimum frozen; WP1 implemented, tested and locally reproduced. [Results](../experiments/wp1/RESULTS.md) and [exact handoff](HANDOFF_WP1_2026-09-17.md) preserve scope and evidence. Independent audit is pending. WP2–WP5 have not started in this packet.
+
 ## Objective
 
 Use the remaining current-week high-capability agent allocation to move MASI from research scaffolding toward the **smallest executable system that can test interchangeability and learned specialization without prematurely building a general runtime**.

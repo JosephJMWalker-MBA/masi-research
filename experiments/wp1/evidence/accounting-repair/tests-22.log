@@ -1,0 +1,27 @@
+test_changed_artifacts_and_wrong_revision_are_rejected (test_probe.AdapterBoundaryTests.test_changed_artifacts_and_wrong_revision_are_rejected) ... ok
+test_exact_rule_is_deterministic_and_bounded (test_probe.AdapterBoundaryTests.test_exact_rule_is_deterministic_and_bounded) ... ok
+test_missing_local_artifacts_fail_before_loading_model (test_probe.AdapterBoundaryTests.test_missing_local_artifacts_fail_before_loading_model) ... ok
+test_over_limit_input_abstains_without_truncation_or_forward_pass (test_probe.AdapterBoundaryTests.test_over_limit_input_abstains_without_truncation_or_forward_pass) ... ok
+test_unknown_candidate_is_rejected (test_probe.AdapterBoundaryTests.test_unknown_candidate_is_rejected) ... ok
+test_accepts_bounded_inputs_without_rewriting_evidence (test_probe.FixtureContractTests.test_accepts_bounded_inputs_without_rewriting_evidence) ... ok
+test_load_preserves_order_and_content (test_probe.FixtureContractTests.test_load_preserves_order_and_content) ... ok
+test_load_rejects_duplicate_identity (test_probe.FixtureContractTests.test_load_rejects_duplicate_identity) ... ok
+test_rejects_missing_extra_empty_and_nonstring_fields (test_probe.FixtureContractTests.test_rejects_missing_extra_empty_and_nonstring_fields) ... ok
+test_rejects_unusable_evidence_and_undefined_labels (test_probe.FixtureContractTests.test_rejects_unusable_evidence_and_undefined_labels) ... ok
+test_freeze_detects_changes_before_candidate_load_or_output_creation (test_probe.FreezeIntegrityTests.test_freeze_detects_changes_before_candidate_load_or_output_creation) ... ok
+test_exact_rule_does_not_infer_negative_or_fabricate_score (test_probe.NormalizationTests.test_exact_rule_does_not_infer_negative_or_fabricate_score) ... ok
+test_invalid_scores_fail_instead_of_becoming_verdicts (test_probe.NormalizationTests.test_invalid_scores_fail_instead_of_becoming_verdicts) ... ok
+test_learned_boundary_is_abstention_and_direction_is_explicit (test_probe.NormalizationTests.test_learned_boundary_is_abstention_and_direction_is_explicit) ... ok
+test_abstention_preserves_available_token_count_and_zero_model_calls (test_probe.RunnerEvidenceTests.test_abstention_preserves_available_token_count_and_zero_model_calls) ... ok
+test_all_candidates_share_caller_and_receive_only_two_evidence_strings (test_probe.RunnerEvidenceTests.test_all_candidates_share_caller_and_receive_only_two_evidence_strings) ... ok
+test_existing_output_is_not_overwritten_or_loaded (test_probe.RunnerEvidenceTests.test_existing_output_is_not_overwritten_or_loaded) ... ok
+test_inference_failure_is_preserved_and_later_fixtures_still_run (test_probe.RunnerEvidenceTests.test_inference_failure_is_preserved_and_later_fixtures_still_run) ... ok
+test_invalid_resource_values_are_preserved_as_errors (test_probe.RunnerEvidenceTests.test_invalid_resource_values_are_preserved_as_errors) ... ok
+test_load_failure_has_complete_error_records_and_failing_exit_status (test_probe.RunnerEvidenceTests.test_load_failure_has_complete_error_records_and_failing_exit_status) ... ok
+test_malformed_model_manifest_is_recorded_as_load_failure (test_probe.RunnerEvidenceTests.test_malformed_model_manifest_is_recorded_as_load_failure) ... ok
+test_nonfinite_native_values_become_errors_without_invalid_json (test_probe.RunnerEvidenceTests.test_nonfinite_native_values_become_errors_without_invalid_json) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 0.168s
+
+OK

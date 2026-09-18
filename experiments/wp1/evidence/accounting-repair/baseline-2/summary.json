@@ -1,0 +1,17 @@
+{
+  "candidate_id": "exact-match-v1",
+  "claim_scope": "Executable interchangeability smoke test underlying H4; no capability superiority, learned-specialization or MASI system claim.",
+  "correct": 3,
+  "correct_denominator": 12,
+  "counts": {
+    "abstain": 9,
+    "error": 0,
+    "ok": 3
+  },
+  "coverage": 0.25,
+  "known_model_calls": 0,
+  "labels_status": "Author-created synthetic engineering fixtures; visible to implementers; not held out, not a benchmark, no training or tuning.",
+  "run_id": "7dd2d89a-a643-4068-972c-177884ccaac8",
+  "total": 12,
+  "unknown_call_count_records": 0
+}

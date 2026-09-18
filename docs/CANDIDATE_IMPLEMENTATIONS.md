@@ -168,3 +168,9 @@ WISDOM
 ```
 
 The point of this fleet is not to prove that these are the right models. It is to make **interchangeability executable** and begin collecting evidence about where specialized systems add value.
+
+## WP1 bounded integration checkpoint — 2026-09-17
+
+Only `exact-match-v1`, `hhem-2.1` and `nli-deberta-small` are integrated in the fixed [WP1 probe](../experiments/wp1/README.md). Exact model revisions, source/license review dates and model classes are in `probe_candidates.py`; downloaded file hashes and measured parameter counts are in each retained run manifest. The compact `tasksource/deberta-small-long-nli` replaces the registry's deprecated `sileod` candidate for this probe following its model-card recommendation.
+
+All three are authorized only for the WP1 premise/claim support interface, competing against the same deterministic rule and visible synthetic references. They were observed and locally repeated, with [resource measurements and explicit limitations](../experiments/wp1/RESULTS.md). No weights are redistributed; reviewed pinned artifacts declare Apache-2.0. This does not qualify any implementation as canonical, calibrated, independently validated, or ready for broader MASI responsibilities.
