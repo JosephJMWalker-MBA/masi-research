@@ -1,6 +1,6 @@
-# MASI-E001 annotation rubric — speaker observation, v1.0
+# MASI-E001 annotation rubric — speaker observation, v1.1
 
-- **Status:** frozen with protocol `e001-protocol-v1.1`, pending a second fresh independent audit. The rubric text is unchanged from v1.0; only this status line was updated. It is not yet used for any annotation.
+- **Status:** frozen with protocol `e001-protocol-v1.2`, pending an independent re-audit. Changes since v1.0: this status line, and one sentence in §6 (a `UNIT_DEFECT` unit is removed, never repaired; protocol §8.1). It is not yet used for any annotation.
 - **Audience:** writers, annotators, the adjudicator and every experimental arm. The `CONTROL_A` prompt must contain §1–§5 verbatim.
 - **Blinding rule:** this rubric deliberately names no downstream care protocol, stage, threshold, score or model. Annotators must not be shown any such material while labeling.
 
@@ -157,7 +157,7 @@ Choose one value for every unit. This field records **language only**. It is not
 
 - Work through your queue in the order given. The order is randomized, and you will not be told which dataset part a unit belongs to.
 - Label every dimension and the safety field. Save. You cannot see anyone else's labels.
-- Skipping is not allowed. If a unit is unreadable or not in English, flag it `UNIT_DEFECT` with a note. It will be repaired or removed by the data custodian.
+- Skipping is not allowed. If a unit is unreadable or not in English, flag it `UNIT_DEFECT` with a note. The data custodian will remove it; units are never edited once annotation has begun.
 - Some units are quality-check items with known answers. They are indistinguishable from other units.
 - Some units contain distressing content, including explicit self-harm statements. You may pause or opt out at any time without penalty. Support resources are provided with your task materials.
 - Do not use any AI system, search engine or outside source while labeling. Do not discuss units with other annotators until adjudication is complete.

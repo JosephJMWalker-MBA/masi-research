@@ -1,11 +1,12 @@
-# MASI-E001 — Preregistered protocol v1.1
+# MASI-E001 — Preregistered protocol v1.2
 
-- **Protocol ID:** `e001-protocol-v1.1`
-- **Status:** **repaired freeze submitted for a second fresh independent audit. Not accepted. Not authorized for execution.** No data, labels, model runs or results exist for this protocol.
-- **Revision:** v1.0 was frozen at commit `d1d9bfc40c40e607f0a476bb620bb665c3b8830a`.
-  - Its [independent audit](https://github.com/JosephJMWalker-MBA/masi-research/pull/17#issuecomment-5735626914) returned `REPAIR_REQUIRED` (R1–R7).
-  - v1.1 repairs R1–R7 and closes the audit's non-blocking EVCP-citation observation (§27).
-  - The v1.0 text (git history) and the audit comment (on the PR) are preserved unchanged.
+- **Protocol ID:** `e001-protocol-v1.2`
+- **Status:** **repaired freeze submitted for an independent re-audit of A1–A6. Not accepted. Not authorized for execution.** No data, labels, model runs or results exist for this protocol.
+- **Revision:**
+  - v1.0 was frozen at commit `d1d9bfc40c40e607f0a476bb620bb665c3b8830a`. Its [independent audit](https://github.com/JosephJMWalker-MBA/masi-research/pull/17#issuecomment-5735626914) returned `REPAIR_REQUIRED` (R1–R7).
+  - v1.1 was frozen at commit `b13daa94a608ef075474f6ac35cdd59650478423`. It repaired R1–R7 and closed the non-blocking EVCP-citation observation (§27).
+  - The independent GPT-5.6 Sol audit of v1.1, relayed by the operator on 2026-09-19, returned six blocking findings, A1–A6. v1.2 repairs exactly those findings and their direct consequences (§28).
+  - The v1.0 and v1.1 texts (git history) and the v1.0 audit comment (on the PR) are preserved unchanged.
 - **Issue:** [#3](https://github.com/JosephJMWalker-MBA/masi-research/issues/3), under the operator authorization on Issue #3 and PR #16.
 - **Governing main:** `904bd9bc1c482c5b552b4a2e7075d685d73a1748`
 - **Substrate inspected:** `JosephJMWalker-MBA/Accumulated-Distress-Care-Protocol @ eb7ac37f79511c90e25ff613ee78e9123d653d60` (refetched 2026-09-18)
@@ -13,7 +14,7 @@
 
 **Companion files:**
 
-- [`ANNOTATION_RUBRIC.md`](ANNOTATION_RUBRIC.md): the task definition shared by annotators and all arms. Content unchanged in v1.1.
+- [`ANNOTATION_RUBRIC.md`](ANNOTATION_RUBRIC.md): the task definition shared by annotators and all arms. Rubric v1.1: in protocol v1.2, only rubric §6's `UNIT_DEFECT` sentence changed (units are removed, never repaired; §8.1). §1–§5, the text every arm receives, are unchanged.
 - [`REFERENCE_CASES.md`](REFERENCE_CASES.md): the E1 independent reference checks.
 - [`PROTOCOL_MANIFEST.json`](PROTOCOL_MANIFEST.json): preregistration facts only.
 
@@ -106,9 +107,10 @@ learning/update signal: human-adjudicated main-pool train labels and spans only 
 transparent baseline:  B0 = best dev-selected established sparse linear method (§10.1)
 minimum sufficient computation: T0 = deterministic clause segmentation + cue patterns + ConText-style
                        qualifier rules + a fixed aggregation table (CPU, no learned parameters)
-first deficit that may justify complexity: T0 fails dev non-inferiority on Q (or on S, if G5
-                       passed) AND ≥ 50 % of the relevant dev errors are localized to "no candidate
-                       mention" (lexical coverage) (§12.3)
+first deficit that may justify complexity: T0's best dev Q (or S, if G5 passed) is short of the
+                       competent-control threshold AND, for every short metric, correcting only its
+                       "no candidate mention" errors would close the shortfall and would recover at
+                       least as much as correcting all other errors (§12.3)
 authority it does NOT have: no care stage, risk level, diagnosis, intent determination, policy,
                        action or permission; no memory or profile across units; no judgments about
                        third parties; no obedience to instructions inside the text
@@ -210,7 +212,8 @@ There are seven dimensions (full definitions in rubric §4). Each records *wheth
 
 - **Composition:** 1–4 turns by one speaker; each turn ≤ 400 characters; the unit ≤ 1,200 characters in total; English; UTF-8 NFC.
 - **Canonical text:** turns joined by `\n`. Span offsets are character offsets `[start, end)` into this string.
-- **Out of bounds:** units outside these limits are `UNIT_DEFECT`. The custodian repairs or excludes them before the cluster manifest is frozen (§8.1).
+- **Out of bounds:** units outside these limits are `UNIT_DEFECT`. Before the cluster manifest M0 is frozen, the custodian repairs or excludes them. After M0, a `UNIT_DEFECT` unit is removed, never repaired (§8.1).
+- **Identity:** a unit's identity is its unit ID **and** the SHA-256 of the UTF-8 bytes of its NFC canonical text, both committed in M0 (§8.1). The record field `input_sha256` (§5.3) must equal that committed hash.
 - **What labels describe:** the speaker's situation as presented by the end of the unit.
 
 ### 5.2 Evidence grounding [FROZEN]
@@ -350,6 +353,7 @@ observed text  →  typed evidence (span + basis)  ≠  inference beyond the tex
 | Writers | ≥ 3, plus ≥ 2 separate writers for SHF |
 | Annotators | ≥ 3, so every unit gets 2 annotators, neither of whom is its writer |
 | Adjudicator | 1. Not a T designer or implementer. |
+| QC team | ≥ 3. Authors and key-labels the qualification/QC pool (§7.7). Excluded roles are listed in §7.7. |
 
 Implementers, T designers and the protocol author do not annotate or adjudicate.
 
@@ -357,7 +361,7 @@ Implementers, T designers and the protocol author do not annotate or adjudicate.
 
 - **Annotators see only:** the unit text and rubric §1–§5.
 - **Annotators never see:** split, set, provenance, card, cluster, other labels, model output, ADCP or stage material.
-- **Order:** each annotator's queue is a random permutation mixing all pools, with about 5 % known-answer QC items from a separate pool.
+- **Order:** each annotator's queue is a random permutation mixing all pools, with about 5 % known-answer items from the QC pool (§7.7).
 
 ### 7.3 Coverage [FROZEN]
 
@@ -371,6 +375,8 @@ Implementers, T designers and the protocol author do not annotate or adjudicate.
 - The high-agreement subset (both annotators agree on E status) is reported as a secondary slice.
 
 **Corrections:**
+
+Corrections apply to labels and spans only. Unit text is never corrected after M0 (§8.1).
 
 - **Before data freeze:** logged changes, each with a reason.
 - **After data freeze and before unlock:** only the custodian may correct, on an annotator-reported error, blind to any model output, with a changelog.
@@ -389,7 +395,7 @@ Implementers, T designers and the protocol author do not annotate or adjudicate.
 | G1 reliability | Krippendorff's α (nominal) on the binary E status, per dimension | Retain a dimension iff α ≥ 0.667. If > 2 dimensions fail → **halt** (ontology not labelable). The retained set is **D\***. |
 | G2 span stability | EVCP_h (§14.2) | EVCP_h ≥ 0.80. Otherwise the property metric is invalid → **halt**. |
 | G5 state reliability | Krippendorff's α (nominal) on the four-class state {E, CON, IND, NA}, pooled over (unit, d ∈ D\*) | α ≥ 0.667 keeps S-NI confirmatory. On failure, S-NI is removed and H2B is narrowed (§1). This is **not** a halt. |
-| G3 annotator QC | known-answer accuracy (separate QC pool) | ≥ 90 %, per rubric §8 |
+| G3 annotator QC | known-answer accuracy against the frozen QC key (§7.7) | ≥ 90 %, per rubric §8 |
 | G4 minimum sample | §6.4 (custodian-only, locked counts) | reserve activation or halt only |
 
 - α ≥ 0.667 is Krippendorff's floor for tentative conclusions.
@@ -407,6 +413,84 @@ Implementers, T designers and the protocol author do not annotate or adjudicate.
 - **Effect:** the unit is a provenance/pool defect and is **quarantined from all pools and all metrics** before data freeze, regardless of its split.
 - **Logging:** the quarantine is logged with unit ID, split and date. Only the count per split is released.
 - **What the decision uses:** raw human annotation only. It never uses adjudicated locked gold or any model output, and it applies identically to every split.
+
+### 7.7 Qualification and QC pool: the reference key [FROZEN rules; BIND people]
+
+**Purpose.** The QC pool supplies rubric §8's practice units, qualification test and in-queue known-answer items. Its key measures annotator competence (G3) and nothing else.
+
+- It is **never** a source of gold, labels, features, prompts, examples, cue lists or metrics for any arm.
+- It never enters M0, any split, RS, D\*, the margins or any H2B metric.
+
+**Composition [FROZEN minimums]:** three disjoint sets.
+
+- **Practice set:** 40 units.
+- **Qualification set:** 30 units.
+- **Known-answer set:** ≥ 80 units, and large enough that no annotator sees any known-answer item twice.
+
+**Authorship:**
+
+- QC units are **human-authored** by QC-team members, from QC briefs written for this pool only.
+  - A QC brief is never an experimental scenario card.
+  - No QC unit is written from, paraphrased from or modeled on an experimental unit.
+- No model output is used: no generated text, and no model-suggested edits, labels or spans. §6.2 applies in full.
+- QC units obey the unit bounds (§5.1) and contain no explicit self-harm language (§6.1).
+
+**Key labeling:**
+
+- Each QC unit is labeled by **two** QC-team members who did not write it.
+  - They label independently, under rubric §1–§6.
+  - They are blind to each other, to the author's brief, and to everything on the §7.2 blinding list.
+- **Qualification and known-answer items** are admitted only where both key labelers independently agree on the status of all seven dimensions. The agreed statuses are the key.
+  - The adjudicator reviews each agreed item against the rubric and may **drop** it, with a written reason that cites a rubric rule.
+  - The adjudicator may never change a key value.
+- **Practice items** may also include disagreements, resolved by the adjudicator under rubric §7. Practice items are discussed, never scored.
+- Scoring uses statuses only (rubric §8). Key spans follow rubric §7 and are used only in practice discussion.
+
+**Raw disagreement is preserved:**
+
+- All raw key labels are retained immutable, including those of dropped and non-admitted items.
+- The key is a separate, versioned record.
+- The admission rate and per-dimension key-labeler agreement are reported, as descriptive results.
+
+**Exclusions.** No QC-team member is:
+
+- a T designer, an implementer or the protocol author;
+- an experimental annotator (they would recognize known-answer items);
+- the adjudicator or the custodian;
+- an SHF writer (SHF writers write nothing else; §6.4).
+
+QC-team members may also write main, BND, ADV or SR units. The §3 ADCP leakage rules apply to them, and they never see any model output.
+
+**No overlap with any experimental pool:**
+
+- After M0 is frozen, the custodian runs the §8.1 near-duplicate check (exact normalized duplicates, and character 5-gram Jaccard ≥ 0.6) between every QC unit and every M0 unit, across all pools, active and reserve.
+- Any hit drops the QC unit. M0 is never changed for the QC pool.
+
+**Freeze, version and hash:**
+
+- The key file `qc-key v1.0` lists, per item: the set, the QC unit ID, the SHA-256 of the canonical text and the key statuses.
+- It is frozen after the overlap check and **before any annotator sees any unit** (§21, P1 step 5).
+- The custodian posts SHA-256(key file) on Issue #3. This is the **QC-key commitment**.
+- The custodian holds the pool and key. They are released to the auditor at P3, and to no implementer or arm before U2.
+
+**Correction procedure:**
+
+- After the QC-key commitment, no key value and no QC unit text is ever edited.
+- A defective item (a key that contradicts the rubric, or a unit defect) is **retired**.
+  - The adjudicator decides, with a written reason that cites a rubric rule.
+  - The retirement is logged with the reason, the reporter and the date.
+  - Annotators failing an item is not, by itself, a reason to retire it.
+- G3 and qualification results are recomputed without the retired items. The original and recomputed results are both logged, and the recomputed ones apply.
+- New items enter only through a new key version (`qc-key v1.1`), built under this section in full, with its own commitment, before any of them is used.
+
+**Ownership:** under B2 (§24), the operator recruits and contracts the QC team. The custodian runs the overlap check, holds and commits the key, and keeps the logs.
+
+**Why the key cannot become a hidden circular ground truth:**
+
+- Its authors and labelers are disjoint from T designers, implementers, the protocol author and experimental annotators.
+- No model contributes to any QC unit or key value.
+- The key never enters gold, RS, any metric or any arm.
+- A key value exists only where two labelers agreed independently, so no single person's reading defines the annotators' benchmark.
 
 ## 8. Splits, custody and contamination
 
@@ -433,17 +517,50 @@ Implementers, T designers and the protocol author do not annotate or adjudicate.
 cluster_id <TAB> pool <TAB> role(active | reserve:<rank>) <TAB> member unit_id:sha256(canonical_text) entries, comma-separated in ascending unit_id order
 ```
 
+- `canonical_text` is the §5.1 canonical text (NFC, turns joined by `\n`), and `sha256` is taken over its UTF-8 bytes.
+- M0 therefore commits every cluster ID, every unit ID and every unit's canonical-text hash, for active and reserve clusters alike.
+
 **Commitment.** The custodian posts `SHA-256(M0 bytes)` as a comment on Issue #3. This is the **M0 commitment**, and its server timestamp is authoritative.
 
 - The first such comment is binding.
-- A later, different M0 is a protocol violation (S13).
+- A later, different M0 is a protocol violation (S13), except for the single restart M0 permitted below.
 
-**After M0:**
+**After M0: canonical text is immutable [FROZEN].**
 
-- No cluster or unit may be added, except by reserve activation (§8.2).
-- `UNIT_DEFECT` text repairs keep the cluster ID and are logged as amendments.
-- Removals, including §7.6 quarantines, are logged.
-- Every attempted addition, activation, repair and removal is preserved in an append-only custodian log.
+- No unit's canonical text may change while it keeps its committed identity. There are no text repairs, amendments or re-encodings: the committed bytes are the unit.
+- No cluster or unit may be added, except by reserve activation (§8.2). Reserve units are already in M0, so activation adds no new text.
+- **Hash verification.** The custodian recomputes every unit's canonical-text hash and compares it with M0:
+  - at data freeze, P3, U1 (before locked inputs are released) and U2;
+  - the scorer also checks each record's `input_sha256` against M0. A mismatching record is scored as `ERROR` and logged. If the text the custodian delivered for that unit itself mismatches M0, that is S13.
+- **Any post-M0 mismatch** between a unit's text and its M0 hash is an integrity violation (S13). NFC normalization does not excuse a mismatch; the comparison is byte-exact.
+
+**Removal: the only remedy for a defective unit after M0 [FROZEN].** A unit may be removed only on one of these triggers:
+
+| Code | Trigger | Decided from |
+| --- | --- | --- |
+| X1 | `UNIT_DEFECT`: outside the §5.1 bounds, not valid UTF-8 NFC, or not English | the text itself |
+| X2 | explicit self-harm outside SR (§7.6) | raw annotation |
+| X3 | privacy, consent or provenance defect, including a contributor's opt-out | the provenance record |
+| X4 | a label-leak hit that the pre-M0 scan (§8.4) missed, on a unit not on the integrity quarantine register | the §8.4 scan, rerun |
+| X5 | a cross-cluster near-duplicate that the pre-M0 merge missed: **both** units are removed | the §8.1 check, rerun |
+
+- Every removal is prediction-blind. None uses adjudicated locked gold.
+- A removed unit keeps its M0 line unchanged. It is excluded from every pool, RS and every metric. Its cluster keeps its ID and bucket.
+- Removals happen before data freeze. After data freeze only X3 is permitted; it applies identically to every arm, and the count per split is reported.
+- Removals may lower G4 counts. The only remedy is reserve activation (§8.2); otherwise S4.
+
+**Replacement text requires a restart, never a repair [FROZEN].** A defect whose remedy needs *different* canonical text cannot be fixed inside the committed experiment. The only path is **one restart** of the data freeze:
+
+1. **Timing.** It is permitted only before train/dev are released to implementers (the P1 exit, §21).
+2. **Authorization.** The custodian posts a restart notice on Issue #3 with the reason, the affected unit IDs and the superseded M0 hash. The operator's written authorization is recorded before the new M0 is committed.
+3. **New identity.** Each replacement unit gets a **new** unit ID. A unit ID never maps to two different hashes. Unchanged units keep their IDs and bytes.
+4. **New M0, then a new salt.** The restart M0 is committed on Issue #3, citing the superseded M0 hash and the authorization. A new salt is then derived from the new M0 hash and a new drand round, under §8.2 in full. No split under the superseded M0 is reused.
+5. **Disclosure.** The superseded M0, its salt, its split and all logs are preserved. The restart is reported in the result headline.
+6. **Limit.** At most one restart. Any further need for new text, or any such need after the P1 exit, **halts** the experiment (S13). A redesign then needs a new protocol version and a new locked test set.
+
+**Custodian log.** Every attempted addition, activation, removal, restart and hash verification is preserved in an append-only custodian log.
+
+Worked cases: [`REFERENCE_CASES.md`](REFERENCE_CASES.md) §R5d.
 
 ### 8.2 Salt and hash rule [FROZEN]
 
@@ -571,7 +688,7 @@ All arms receive the same rubric, the same unit text at inference, and the same 
   - (b) NB-SVM per dimension.
 - **Spans:** the clause from the shared deterministic segmenter with the highest summed positive feature contribution for the predicted status.
 - **Safety field:** one more multinomial model of the same kind.
-- **Selection:** the candidate with the higher dev Q.
+- **Selection:** the candidate with the higher full-dev Q. B0 is not a P-SUP comparator, so its selection stays quality-only and rule J (§11.1) does not apply.
 
 ### 10.2 C_A [FROZEN candidate list and rule; DEV selection]
 
@@ -604,7 +721,7 @@ All arms receive the same rubric, the same unit text at inference, and the same 
 - ≤ 700 output tokens; context ≤ 8k tokens;
 - a 120 s per-unit timeout produces `ERROR`, with no retries.
 
-**Selection:** model × prompt on dev-mini, then full dev. The final choice is the one with the highest dev Q.
+**Selection:** model × prompt are screened on dev-mini, and finalists are evaluated on full dev. The designated configuration is chosen by **rule J** (§11.1) over all full-dev-evaluated configurations, never by dev Q alone.
 
 ### 10.3 C_B [FROZEN recipe; DEV hyperparameters]
 
@@ -618,9 +735,11 @@ All arms receive the same rubric, the same unit text at inference, and the same 
   - fp32 on MPS, ≤ 512 tokens, AdamW;
   - early stopping uses the **inner-validation fold** (§11), never dev;
   - every dev evaluation counts against the §11 caps.
-- **Seeds:** three seeds at the chosen hyperparameters.
-  - The confirmatory seed is the one with the **median dev Q**.
-  - All seeds are reported on test.
+- **Configurations and seeds.** Each (hyperparameters, seed) pair evaluated on full dev is one configuration.
+  1. Hyperparameter candidates are trained with seed 1 and evaluated on full dev.
+  2. Rule J (§11.1) picks the leading hyperparameters. Seeds 2 and 3 are then trained at those hyperparameters and evaluated on full dev.
+  3. Rule J is applied again over **all** full-dev-evaluated configurations. Its choice is the designated configuration and the confirmatory seed.
+  - All three seeds of the leading hyperparameters are reported on test, descriptively.
 
 ### 10.4 T — see §12
 
@@ -662,15 +781,16 @@ A control is **competent** only if every item below holds. The auditor verifies 
    - unlimited cross-validation and inner-fold use inside train.
 3. **Established recipe:** each arm follows the declared standard method (§10). Its hyperparameter space is declared before tuning.
 4. **Stopping rule:** development ends when the caps are reached or the developer declares the arm final.
-   - The final configuration is the one with the highest full-dev Q among those evaluated.
+   - **B0:** the designated configuration is the one with the highest full-dev Q (§10.1).
+   - **C_A, C_B and T** (within its designated rung): the designated configuration is chosen by rule J (§11.1).
    - There is no test access.
-5. **Sanity gates.** These replace v1.0's invalid "train-fold F1 ≥ dev F1" (§27, R6). A failure indicates a broken implementation, not ordinary variance.
+5. **Sanity gates.** These replace v1.0's invalid "train-fold F1 ≥ dev F1" (§27, R6) and v1.1's loss-reduction ratio (§28, A2). A failure indicates a broken implementation, not ordinary variance.
    - **(a) All arms, format:** ≥ 98 % of dev outputs are valid records.
    - **(b) All arms, competence floor:** dev Q ≥ the dev Q of **R0**, the naive reference ([`REFERENCE_CASES.md`](REFERENCE_CASES.md) §R10). R0 marks a unit-dimension SUPPORTED iff any quoted support example from rubric §4 occurs as a case-insensitive substring, and NOT_ADDRESSED otherwise, with no qualifiers.
    - **(c) Learned arms and rungs (B0, C_B, T1, T2, S-H2A), training integrity:**
-     - training completes with no NaN or Inf in loss or gradients;
-     - convex solvers report convergence;
-     - gradient-trained models have a mean final-epoch training loss ≤ 0.5 × their mean first-epoch loss.
+     - **finite values:** no NaN or Inf in any loss, gradient or parameter, at any step or at the end. Any non-finite value is numerical divergence;
+     - **completion:** convex solvers report convergence within their declared iteration limit. Gradient training runs its declared schedule to completion, or stops under the declared inner-validation early-stopping rule, without a crash;
+     - **diagnostic only:** the per-epoch mean training loss and inner-validation loss are recorded and reported. **No loss-reduction ratio is a pass/fail condition**, and loss values never trigger a halt or a fallback.
    - **(d) Learned arms and rungs, fit floor:** inner-validation-fold Q ≥ R0's Q on the same fold.
    - **(e) All arms, reproducibility:** a re-run of the frozen pipeline reproduces the dev-mini predictions.
      - Deterministic arms (B0, T0, T1, and C_A with greedy decoding): identically.
@@ -681,7 +801,51 @@ A control is **competent** only if every item below holds. The auditor verifies 
    - **C_A / C_B:** the fallback model is used.
    - A control may never be left weak. A failed competence gate that cannot be fixed means **halt**, not "T wins".
 
-**Learned complexity is justified only from T's own ladder** (§12.3), whose first rung (T0) is a full-budget, transparent, purpose-built system. The escalation threshold is the *maximum* over competent controls, so a weak B0 can never lower the bar or manufacture a deficit; only a strong control can raise it.
+**Learned complexity is justified only from T's own ladder** (§12.3), whose first rung (T0) is a full-budget, transparent, purpose-built system. The escalation threshold is the *maximum* over competent controls' quality anchors (§11.1), so a weak B0 can never lower the bar or manufacture a deficit; only a strong control can raise it.
+
+### 11.1 Dev selection rule J for the conjunctive H2B [FROZEN]
+
+H2B requires T to be quality non-inferior **and** EVCP-superior. A control chosen for dev Q alone could therefore be a property-weak configuration while a better-grounded, equally competitive one was discarded. Rule J closes that path.
+
+**Applies to:**
+
+- C_A and C_B, the P-SUP comparators G;
+- T's configurations within its designated rung;
+- S-H2A, like C_A.
+
+B0 is not a P-SUP comparator and keeps quality-only selection (§10.1).
+
+**Inputs.** Φ_a is every configuration of arm a that was evaluated on full dev within the §11 caps and passes sanity gates (a)–(d). Each C_B (hyperparameters, seed) pair is one configuration. All values are full-dev values, computed in exact rational arithmetic.
+
+**Steps:**
+
+1. **Quality anchor.** φ_Q(a) is the configuration in Φ_a with the highest dev Q.
+   - Tie-break: higher S (if G5 passed), then higher R, then earliest in the run ledger.
+2. **Competitive envelope.** E_a is every φ ∈ Φ_a with all of:
+   - Q(φ) ≥ Q(φ_Q) − δ_Q;
+   - R(φ) ≥ R(φ_Q) − δ_Q;
+   - if G5 passed, S(φ) ≥ S(φ_Q) − δ_S.
+
+   The anchor is always in E_a.
+3. **Designation.** φ\*(a) is the configuration in E_a with the **highest dev EVCP**.
+   - Tie-break: higher Q, then higher S (if G5 passed), then higher R, then earliest in the run ledger.
+   - A configuration with zero dev E claims has undefined EVCP and ranks below every defined value.
+4. **Quality give-up.** For M ∈ {Q, R, S}: Δ^M(a) = max(0, M(φ_Q) − M(φ\*)).
+   - By construction, Δ^Q and Δ^R ≤ δ_Q, and Δ^S ≤ δ_S.
+   - For C_A and C_B, the NI margins against that control are reduced by Δ (§14.1). Choosing a better-grounded configuration therefore never makes non-inferiority easier for T: on dev terms, T must still be non-inferior to the anchor's quality. For T, Δ has no role.
+5. **Competence.** If φ\*(a) then fails gate (e), it is removed from Φ_a and J is re-applied. If Φ_a becomes empty, §11 item 7 applies: the fallback model, or **halt**.
+
+**Record.** Φ_a, φ_Q(a), E_a, φ\*(a), every configuration's dev Q, S, R and EVCP, and Δ^Q, Δ^S, Δ^R are recorded and hash-committed with the arm's artifacts before U1.
+
+**Quality anchors for escalation (§12.3).** For each k ∈ K, the anchor values are Q(φ_Q(k)) and S(φ_Q(k)). For B0, the anchor is its designated configuration.
+
+**Why this is sufficient:**
+
+- A configuration with better dev EVCP that is quality-competitive with the anchor is always designated over a weaker-grounded one. P-SUP cannot be manufactured by discarding it.
+- A configuration outside the envelope is not quality-competitive with the arm's best, so it is not a competitive general-model solution to this job.
+- Every step is deterministic, uses dev only, and is committed before U1.
+
+Worked cases: [`REFERENCE_CASES.md`](REFERENCE_CASES.md) §R13.
 
 ## 12. Purpose-built target and complexity ladder
 
@@ -726,29 +890,64 @@ The pipeline runs in fixed stages. Every intermediate is typed and logged as a t
 
 ### 12.3 Escalation rule (dev only) [FROZEN]
 
-**When it is evaluated:** once per rung, after that rung is declared final within its share of T's caps, and only after B0, C_A and C_B are frozen.
+**Principle.** No complexity without a demonstrated capability deficit that the added mechanism is designed to address.
+
+- T1 and T2 add capacity to exactly one stage: candidate-mention detection (§12.2).
+- Escalation is therefore permitted only when the measured dev shortfall is attributable to **missing candidate mentions**, with every other error source kept in the accounting.
+
+**When it is evaluated:**
+
+- only after B0, C_A and C_B are frozen, so their quality anchors are fixed (§11.1);
+- whenever T's developer requests escalation from rung r. The check uses dev results already obtained and consumes no evaluation.
+- If a request is refused, the developer may revise rung r within the remaining §11 caps and request again.
+
+**Definitions** (full dev; exact rational arithmetic):
+
+- **Metrics checked:** Q, and S if G5 passed.
+- **Rung capacity:** M^best(r) is the maximum dev value of M over rung r's full-dev-evaluated configurations that pass sanity gates (a)–(d). φ_M(r) is the configuration attaining it; ties go to the earliest in the run ledger.
+- **Threshold:** τ_M = max over k ∈ K of M(φ_Q(k)) − δ_M, using the controls' quality anchors (§11.1). The margin is δ_Q for Q and δ_S for S.
+- **Error pairs of M**, for φ_M(r):
+  - for Q, the (unit, d ∈ D\*) pairs whose predicted E status differs from gold;
+  - for S, the pairs whose predicted four-class state (including `NONE_OUTPUT`) differs from gold.
+- **Error categories.** Each error pair gets exactly one, from φ_M(r)'s stage trace, checked in this order:
+
+  | # | Category | Condition |
+  | --- | --- | --- |
+  | 1 | `NO_OUTPUT` | the unit's record is `ERROR`, `WITHHELD` or missing |
+  | 2 | `NO_GOLD_SPAN` | gold has no span for (unit, d): for example gold `NOT_ADDRESSED`, or gold `INDETERMINATE` without a span |
+  | 3 | `NO_CANDIDATE_MENTION` (NCM) | no candidate mention of d (support or counter, any qualifiers) was detected in any clause overlapping any gold span of (unit, d) |
+  | 4 | `MENTION_PRESENT` | a candidate mention of d was detected in a clause overlapping a gold span, but the state is still wrong (a qualifier or aggregation error) |
+
+- **Counterfactual recomputations.** Nothing in the rung changes; these only measure where the deficit lies.
+  - **M^NCM:** M recomputed after replacing the prediction of every NCM error pair with its gold value (E status for Q, four-class state for S). All other predictions are unchanged.
+  - **M^other:** M recomputed after correcting every error pair in categories 1, 2 and 4, leaving the NCM errors unchanged.
+  - **gain_NCM** = M^NCM − M^best(r), and **gain_other** = M^other − M^best(r).
 
 **Rung r → r+1 is permitted iff both (a) and (b) hold.**
 
-- **(a) Quality shortfall.** At least one of:
-  - Q_dev(r) < max(Q_dev(B0), Q_dev(C_A), Q_dev(C_B)) − δ_Q;
-  - **(if G5 passed)** S_dev(r) < max(S_dev(B0), S_dev(C_A), S_dev(C_B)) − δ_S.
+- **(a) Shortfall.** At least one checked metric is short: M^best(r) < τ_M.
+- **(b) Attribution.** For **every** short metric M:
+  - **(b1) Closure:** M^NCM ≥ τ_M. Perfect mention coverage alone would close the shortfall. If it would not, the next rung cannot close the measured deficit by itself.
+  - **(b2) Dominance:** gain_NCM ≥ gain_other. Missing mentions are the largest recoverable deficit.
 
-  The comparison set is the same competent set K used for final non-inferiority (§14.1).
-- **(b) The shortfall is localized to lexical coverage.**
-  - Take the dev errors of each short metric: for Q, gold-E pairs predicted not-E; for S, misclassified pairs. If both metrics are short, pool the errors.
-  - Keep only errors with at least one gold span (support, counter or INDETERMINATE-bearing). False positives on gold-NA pairs have no gold span and are excluded.
-  - At least 50 % of the remaining errors must carry the trace category `NO_CANDIDATE_MENTION`: no mention of the dimension (support or counter) was detected in any clause overlapping a gold span for that pair.
+False positives, spanless errors, missing outputs and qualifier/aggregation errors all stay in (b2)'s comparison. None of them is conditioned away.
 
 **Outcomes:**
 
-- **(a) holds without (b):** the deficit lies in qualifiers or aggregation, and escalation would not address it. Rules are revised *within the current rung*. The 50 % rule makes escalation target the majority failure source.
-- **(a) fails:** the current rung is final. A transparent T0 that suffices is a **valid result: no learned target is justified**.
+- **(a) fails:** rung r is final. A transparent T0 that suffices is a **valid result: no learned target is justified**.
+- **(a) holds and (b) fails:** escalation is refused. The deficit lies wholly or mainly outside mention detection, so the next rung is not designed to address it.
+  - The developer may revise rung r's rules within the remaining caps and request again.
+  - Otherwise rung r is final.
+- **(a) and (b) hold:** rung r+1 may be developed.
 - **After T2:** no further escalation.
   - A shortfall at T2 means T2 still goes to final evaluation, so the negative result is preserved.
   - Any redesign needs a new protocol version **and a new locked test set**.
 
-**Designation:** the final rung is designated and hash-committed before U1. Every developed rung is also run on locked data, for the descriptive ladder only.
+**Designation:** the final rung (the last rung reached) is designated, its configuration is chosen by rule J (§11.1), and both are hash-committed before U1. Every developed rung is also run on locked data, for the descriptive ladder only.
+
+**Record:** every request's category counts, M^best, M^NCM, M^other, gains and decision are logged and committed with T's artifacts.
+
+Worked cases: [`REFERENCE_CASES.md`](REFERENCE_CASES.md) §R8.
 
 ## 13. Metrics
 
@@ -764,6 +963,8 @@ All metrics are computed on the locked **main test** pool unless stated otherwis
 
 **Q (evidenced-concern quality).** Q is the macro-average over d ∈ D\* of F1_d for the event E, where F1_d = 2TP/(2TP+FP+FN).
 
+- A dimension with no gold-E pair in a given computation is omitted **for every arm** in that computation (§14.3). After G4, every retained dimension is present in the full locked main test.
+
 - Gold `INDETERMINATE` counts as not-E. Claiming E there is a false positive: an unsupported assumption.
 - Abstaining on a gold-E unit is a false negative. Refusal therefore cannot raise Q.
 
@@ -773,13 +974,13 @@ All metrics are computed on the locked **main test** pool unless stated otherwis
 - **Gold class:** E, CON, IND or NA (§4). The arm's status is mapped the same way.
 - **`NONE_OUTPUT`:** `ERROR`, `WITHHELD` and missing predictions map to `NONE_OUTPUT`, which matches no gold class. Withholding therefore never earns credit on gold-NA pairs.
 - **Per-class F1:** F1_c = 2TP_c/(2TP_c+FP_c+FN_c).
-- **S:** the unweighted mean of F1_c over the four classes. A class with no gold and no predictions in a given computation is omitted.
+- **S:** the unweighted mean of F1_c over the four classes. A class with no gold pair in a given computation is omitted **for every arm** in that computation, whether or not any arm predicted it (§14.3). Predictions of an omitted class still count as errors against the gold class of those pairs.
 
 **Why both.** Q scores the responsibility's core output: evidenced concerns. S makes the declared observation state consequential: confusing CONTRADICTED, INDETERMINATE and NOT_ADDRESSED lowers S and can defeat H2B. The SUPPORTED-versus-MIXED split stays descriptive because MIXED is expected to be rare.
 
 ### 13.2 Coverage floor R [FROZEN]
 
-- R is the macro recall of E over D\*.
+- R is the macro recall of E over D\*, with the same dimension-omission rule as Q.
 - It is a non-inferiority component (§14), so precision-for-recall trades cannot buy the property.
 
 ### 13.3 Primary H2B property: evidence-verified claim precision (EVCP) [FROZEN]
@@ -797,7 +998,7 @@ All metrics are computed on the locked **main test** pool unless stated otherwis
 
 **Tokens:** the regex `[A-Za-z0-9]+(?:'[A-Za-z]+)?` over the unit text. A token counts as cited, or as gold, when its interval overlaps the corresponding span.
 
-**EVCP** = verified ÷ claims, micro-averaged over claims. With zero claims, EVCP is undefined and the property fails.
+**EVCP** = verified ÷ claims, micro-averaged over claims. With zero claims, EVCP is undefined. §14.3 fixes every resulting disposition, in the full sample and in bootstrap replicates.
 
 **Why these conditions:**
 
@@ -861,14 +1062,17 @@ None of these carries **confirmatory status**.
 - **G** = {C_A, C_B} (general-model controls); **K** = G ∪ {B0} (competent controls).
 - **CI(x)** is the two-sided 95 % paired cluster-bootstrap interval of the difference T − control.
 
+- **Per-control NI margins** (§14.2): m^Q_k = δ_Q − Δ^Q_k, m^S_k = δ_S − Δ^S_k and m^R_k = δ_Q − Δ^R_k. Δ is the rule-J quality give-up (§11.1); for B0, Δ = 0.
+
 | Component | PASS | FAIL | Otherwise |
 | --- | --- | --- | --- |
-| **Q-NI**, each k ∈ K | lower CI(Q_T − Q_k) > −δ_Q | upper CI < −δ_Q | UNDECIDED |
-| **S-NI**, each k ∈ K (removed if G5 failed) | lower CI(S_T − S_k) > −δ_S | upper CI < −δ_S | UNDECIDED |
-| **R-NI**, each k ∈ K | lower CI(R_T − R_k) > −δ_Q | upper CI < −δ_Q | UNDECIDED |
+| **Q-NI**, each k ∈ K | lower CI(Q_T − Q_k) > −m^Q_k | upper CI < −m^Q_k | UNDECIDED |
+| **S-NI**, each k ∈ K (removed if G5 failed) | lower CI(S_T − S_k) > −m^S_k | upper CI < −m^S_k | UNDECIDED |
+| **R-NI**, each k ∈ K | lower CI(R_T − R_k) > −m^R_k | upper CI < −m^R_k | UNDECIDED |
 | **P-SUP**, each g ∈ G | lower CI(EVCP_T − EVCP_g) **> δ_P** | upper CI < δ_P | UNDECIDED |
 
 - P-SUP is **superiority by margin δ_P**, repaired from v1.0 (§27, R2). The data must establish an improvement greater than 0.10 at one-sided 0.025.
+- When full-sample EVCP is undefined for T or for g, P-SUP against g is **FAIL** or **UNDEFINED** without a bootstrap (§14.3).
 - H2B is decided by the intersection–union test (Berger, 1982). Each component is one-sided at 0.025, so no multiplicity adjustment is needed within H2B.
 
 Worked classifications: [`REFERENCE_CASES.md`](REFERENCE_CASES.md) §R4.
@@ -899,14 +1103,60 @@ Both values are recorded to three decimals.
 
 **EVCP_h:** each annotator's E claims and spans are verified against the other annotator's labels and spans under the full §13.3 rule. This is done in both directions and pooled on RS.
 
-### 14.3 CI method [FROZEN]
+**Selection-neutral NI margins for C_A and C_B [FROZEN rule; values fixed at P2].**
 
-- Resample locked-main-test **clusters** with replacement.
-- B = 10,000 replicates, seed 20260918, with identical resamples for every arm (paired).
-- Percentile interval.
-- **Undefined values in a replicate:**
-  - EVCP → placed on the failure side;
-  - F1_d or F1_c → omitted from that replicate's macro-average.
+- Rule J (§11.1) may designate a control configuration that gives up up to δ of dev quality to its quality anchor, in exchange for stronger EVCP.
+- To keep that choice from easing non-inferiority, each NI margin against g ∈ G is reduced by g's give-up: m^M_g = δ_M − Δ^M_g, where δ_M is δ_Q for Q and R and δ_S for S.
+- Each m lies in [0, δ]. For B0, m = δ.
+- Each Δ is recorded when the control is frozen, as its exact dev value rounded **up** to three decimals, so rounding never eases non-inferiority. It is hash-committed before U1.
+
+### 14.3 CI method and undefined values [FROZEN]
+
+**Arithmetic.** Every metric, difference and margin comparison uses **exact rational arithmetic**. Metrics are ratios of integer counts, and margins are the recorded three-decimal values. This makes the strict inequalities of §14.1 implementation-independent.
+
+**Resampling (paired cluster bootstrap):**
+
+- **Cluster list.** C = [c_1, …, c_n] is the locked-main-test clusters with ≥ 1 scored unit, in ascending byte-wise order of cluster ID.
+- **Draws.** For replicate b = 1, …, B and draw j = 1, …, n:
+
+  ```text
+  i(b, j) = int(SHA-256("e001-boot-v1:20260918:" + str(b) + ":" + str(j)).hexdigest()[0:16], 16) mod n
+  ```
+
+  Replicate b is the multiset {c_(i(b,j)+1) : j = 1…n}.
+- B = 10,000, and 20260918 is the frozen seed. Every arm is scored on the same multisets (paired).
+- **Scoring a replicate.** Each drawn cluster contributes all its scored units, once per draw. Counts are pooled with multiplicity, then the §13 metrics are computed.
+
+**Percentile interval (exact order statistics).**
+
+- m = ⌊0.025·B⌋. For B = 10,000, m = 250.
+- lower = the (m+1)-th smallest value of the lower vector v⁻.
+- upper = the (B−m)-th smallest value of the upper vector v⁺.
+- For B = 10,000 these are the 251st and 9,750th smallest values. No interpolation is used.
+
+**Undefined values in a replicate.** A component's replicate difference is undefined when either arm's metric is undefined in that replicate. For EVCP, that is zero claims by T, by the comparator, or by both.
+
+- An undefined replicate difference enters v⁻ as **−1** and v⁺ as **+1**: the two extremes of the difference range [−1, 1].
+- Undefined replicates can therefore only widen the interval. They can never produce a PASS or a FAIL.
+- If more than m replicates are undefined for a component, its lower bound is −1 and its upper bound is +1. The component is UNDECIDED, unless a full-sample disposition below applies.
+
+**Absent dimensions and classes.** These make a replicate *narrower*, not undefined, and the rule is identical for every arm:
+
+- **Q and R:** a dimension with no gold-E pair in the replicate is omitted for every arm.
+- **S:** a class with no gold pair in the replicate is omitted for every arm, whether or not any arm predicted it.
+- Q, R or S is undefined only if every dimension (or class) is absent. That replicate is then treated as undefined, above.
+
+**Full-sample EVCP dispositions for P-SUP against g.** These are fixed before any bootstrap.
+
+| T's claims | g's claims | P-SUP against g |
+| --- | --- | --- |
+| 0 | any | **FAIL**: T makes no evidenced-concern claim, so it cannot be more verifiable. No bootstrap is run. |
+| ≥ 1 | 0 | **UNDEFINED**: g produced no claim, a control defect. It blocks `supported` and is reported as a control defect; T never wins by a control's failure. No bootstrap is run. |
+| ≥ 1 | ≥ 1 | bootstrap, as above |
+
+- Full-sample Q, R and S are always defined after G4. A class absent from the full-sample gold is omitted for every arm.
+
+Worked cases: [`REFERENCE_CASES.md`](REFERENCE_CASES.md) §R12.
 
 ### 14.4 Multiplicity [FROZEN]
 
@@ -919,7 +1169,7 @@ Both values are recorded to three decimals.
 | --- | --- |
 | `supported` | every active component PASS; gates G1–G4 passed (G5 as recorded); no integrity defect |
 | `not_supported` | any component FAIL, under valid conditions |
-| `inconclusive` | no FAIL, and ≥ 1 UNDECIDED |
+| `inconclusive` | no FAIL, and ≥ 1 UNDECIDED or UNDEFINED (§14.3) |
 | `invalidated` | integrity defect: test leakage, a quarantine-register leak, an evaluator defect affecting primary metrics, a post-U1 artifact change, gold corruption, an M0/salt violation, or another protocol violation |
 | `halted` | a stop condition (§20) fired before final evaluation; no test scoring |
 
@@ -1006,7 +1256,7 @@ If G5 failed, every result statement uses the narrowed H2B wording (§1).
 | --- | --- |
 | Task, labels, gold | identical |
 | Inference evidence | unit text only, for all arms |
-| Development material | train + dev + dev-visible special sets, for all arms |
+| Development material | train + dev + dev-visible special sets, for all arms; never the QC pool or its key (§7.7) |
 | Fitting data | **Main-pool train only**, for every learned parameter in every arm. Dev and dev-visible special sets are for capped evaluation, selection and human error inspection. Quarantine-register units are never training data, few-shot examples or artifact sources (§8.4). |
 | Context | C_A receives the rubric and few-shots in its prompt; the other arms embed the same rubric through development. Disclosed: this is the nature of a prompted control. |
 | Preprocessing | the shared segmenter is available to all arms; C_B and C_A use their own tokenizers |
@@ -1035,12 +1285,15 @@ Consequential fields are deferred to later composition and outcome experiments. 
 - tokenization, span precision and span coverage;
 - EVCP;
 - F1, Q, R and S with withheld units;
-- IUT classification;
+- IUT classification, including Δ-reduced margins and undefined components;
 - M0-based salt derivation and split hashing;
+- M0 immutability checks and the restart path;
 - δ_Q and δ_S;
 - the T aggregation table;
-- escalation triggers;
-- evaluator robustness to malformed or adversarial predictions.
+- escalation triggers and their counterfactual attribution;
+- evaluator robustness to malformed or adversarial predictions;
+- bootstrap resampling indices, order-statistic intervals and undefined replicates;
+- rule-J configuration selection.
 
 **Independence rules:**
 
@@ -1057,10 +1310,11 @@ Consequential fields are deferred to later composition and outcome experiments. 
 - quarantine-register units as training data or artifact sources (§8.4);
 - prompt iteration on locked cases;
 - deleting or omitting any run (every dev and test run goes in the run ledger with hashes);
-- best-seed selection on test (§10.3 median-dev rule);
+- best-seed or best-configuration selection on test (selection is by rule J on dev, §11.1);
 - template or label-name leakage (§8.4);
 - ADCP threshold leakage (§3);
-- post-M0 additions other than reserve activation, and any re-salting (§8.1–§8.2).
+- post-M0 additions other than reserve activation, any re-salting outside the single restart, and any post-M0 edit to canonical text (§8.1–§8.2);
+- the QC pool or its key as development material, or as a source of gold (§7.7).
 
 **Human error analysis of locked outputs:** happens only after U2, with arm identities replaced by random codes.
 
@@ -1086,7 +1340,7 @@ Consequential fields are deferred to later composition and outcome experiments. 
 | S10 | The protocol can no longer separate H2B from prompting or adaptation (for example, C_A or C_B is dropped) | any | halted |
 | S11 | An evaluator defect is found (E1 case failure or scoring bug) | any | fix before U1; found after U2 → invalidated, with the defect reported |
 | S12 | The operator or auditor withdraws authorization, or a license or terms change blocks a required arm | any | halted |
-| S13 | An M0 or salt violation: a second M0, a post-M0 addition outside reserve activation, or a salt not derived per §8.2 | data / any | halted (if found before U1) / invalidated |
+| S13 | An M0 or salt violation: a post-M0 canonical-text hash mismatch; a second M0 outside the single restart (§8.1); a post-M0 addition outside reserve activation; or a salt not derived per §8.2. Also: a need for new canonical text after the P1 exit or after the one permitted restart | data / any | halted (if found before U1) / invalidated (violations found after U1) |
 
 A G5 failure is **not** a stop condition. It narrows H2B before implementation (§1, §7.5).
 
@@ -1104,15 +1358,18 @@ A G5 failure is **not** a stop condition. It narrows H2B before implementation (
 
 **P1 steps, in order:**
 
-1. Scenario cards → generation and human review → authored sets.
+1. Scenario cards → generation and human review → authored sets. In parallel, the QC team authors and key-labels the QC pool (§7.7).
 2. Explicit-self-harm screening, and the label-leak scan with the quarantine register.
 3. Deduplication and cluster merging.
-4. **M0 freeze and commitment.**
-5. drand round R\* → salt → split.
-6. Blind annotation → §7.6 quarantine → adjudication.
-7. **RS gates G1, G2 and G5, plus G3. Record δ_Q, δ_S and D\*.**
-8. G4 on locked data (custodian-only), with reserve activation if needed.
-9. Data freeze v1.0 (hashes).
+4. **M0 freeze and commitment.** From here on, canonical text is immutable (§8.1).
+5. **QC overlap check against M0; QC-key freeze and commitment** (§7.7).
+6. drand round R\* → salt → split.
+7. Qualification → blind annotation → §7.6 quarantine → adjudication. Post-M0 defects are handled by removal only (§8.1).
+8. **RS gates G1, G2 and G5, plus G3. Record δ_Q, δ_S and D\*.**
+9. G4 on locked data (custodian-only), with reserve activation if needed.
+10. Data freeze v1.0 (hashes, verified against M0).
+
+The P1 exit is the release of train/dev to implementers. The single permitted restart (§8.1) returns to step 4 and is possible only before this exit.
 
 ## 22. Interpretation matrix (written before any result) [FROZEN]
 
@@ -1125,6 +1382,7 @@ A G5 failure is **not** a stop condition. It narrows H2B before implementation (
 | T improves EVCP but misses a quality margin | not_supported / inconclusive | grounding comes at a quality cost | narrow: verifiability traded for quality | the ladder may continue *only* in a new protocol |
 | C_B beats T | not_supported | observable by adaptation | falsifier 2 pressure: adaptation suffices here | no new target rung justified by this protocol |
 | C_A matches T | P-SUP decides; if EVCP is not better by the margin → not_supported / inconclusive | observable by prompting | falsifier 1 pressure: prompting suffices | no |
+| A general-model control produces no E claim on the locked test | P-SUP against it is UNDEFINED → at best inconclusive (§14.3) | not decidable against that control | no evidence; the control defect is reported | no |
 | B0 matches or beats T | matching: Q/S/R-NI vs B0 can pass, and P-SUP vs G decides; beating T beyond the margin: NI FAIL → not_supported | a generic transparent method suffices | purpose-built construction adds nothing beyond transparency here | **no** learned target justified |
 | All systems poor (low Q and S for all) | not_supported / inconclusive | the boundary may be ill-posed for text alone | none | redesign the ontology, not the architecture |
 | Labels or ontology unreliable (G1/G2 on RS) | halted | not a stable boundary as defined | no evidence either way | no |
@@ -1163,7 +1421,7 @@ A supported H2B supports only the bounded claim, on this corpus and task.
 
 - §1–§5;
 - §6.1–§6.2, and the §6.4 targets and minimums;
-- the rules in §7.2–§7.6;
+- the rules in §7.2–§7.7;
 - §8 and §9;
 - the recipes and candidate lists in §10.1–§10.3;
 - §11–§20;
@@ -1173,9 +1431,10 @@ A supported H2B supports only the bounded claim, on this corpus and task.
 
 - the B0 candidate;
 - the C_A model and prompt;
-- C_B hyperparameters and the median seed;
+- C_B hyperparameters and seed, by rule J (§11.1);
+- the C_A and C_B designated configurations and their Δ values, by rule J (§11.1);
 - T's cue lists, rules and rung development;
-- the rung designation, by the §12.3 rule only.
+- the rung designation, by the §12.3 rule only, and T's configuration within it, by rule J.
 
 **[LOCKED]:**
 
@@ -1189,17 +1448,18 @@ A supported H2B supports only the bounded claim, on this corpus and task.
 | # | Item | Owner |
 | --- | --- | --- |
 | B1 | Designate a custodian independent of the implementer and the T designer. | operator |
-| B2 | Recruit and contract writers, annotators and an adjudicator, with consent, license assignment, compensation and content-support provisions, and approve the budget. See the details below the table. | operator |
+| B2 | Recruit and contract writers, annotators, an adjudicator and the QC team (§7.7), with consent, license assignment, compensation and content-support provisions, and approve the budget. See the details below the table. | operator |
 | B3 | Reverify the generator pin and Ai2 terms at P0; confirm frontier generation is not used. | custodian |
 | B4 | Decide whether to activate F1 (with a written terms check) and S-H2A. | operator |
 | B5 | Assign an independent auditor for P3 and P4. | operator |
 
 **B2 in detail:**
 
-- **People:** ≥ 3 writers plus ≥ 2 separate SHF writers; ≥ 3 annotators; 1 adjudicator.
+- **People:** ≥ 3 writers plus ≥ 2 separate SHF writers; ≥ 3 annotators; 1 adjudicator; a QC team of ≥ 3, subject to the §7.7 exclusions.
 - **Budget:**
   - about 130 h of annotation and adjudication;
   - about 60 h of writing and review;
+  - about 40 h for the QC pool (§7.7): writing, two independent key labels per unit, and adjudicator review;
   - the reserve (§8.1) adds about 20 % if activated.
 
 **Resolved mechanically during P1, from RS only (not judgment calls):**
@@ -1269,6 +1529,29 @@ After applying R1–R7, the author re-checked each repair for new inconsistencie
 - annotation cost may force S4;
 - the stricter P-SUP margin and the added S-NI make `supported` harder to reach, and `inconclusive` is a legitimate outcome.
 
+### v1.2 author-side re-review (not an independent audit)
+
+After applying A1–A6, the author re-checked each repair against the rest of the protocol:
+
+- **A1 and the reserve.** Reserve units are hashed in M0, so activation never introduces text. Immutability and activation are consistent.
+- **A1 and earlier repairs.** The §7.6 quarantine (R7) is removal trigger X2, with unchanged logic. Label-leak rewrites (R3) happen only before M0; after M0 a missed leak is removal X4, and registered units stay exempt.
+- **A1 and the salt (R4).** The single restart derives a new salt from a new M0 and a new drand round. It is authorized, public, disclosed, limited to one, and closed at the P1 exit. No implementer has seen any data before that exit, so a restart cannot be aimed at any arm's behavior.
+- **A2.** No loss-based halt or fallback remains. Competence rests on the R0 floors (gates b and d), integrity (c) and reproducibility (e).
+- **A3 and rule J.** The shortfall uses the rung's best dev value per metric, so designating a weaker configuration cannot manufacture a shortfall. The thresholds use the controls' quality anchors, which are the configurations v1.1 used for B0 and C_A.
+- **A3 regression.** Reference cases e2, e3a and e3b are escalations that v1.1's 50 % rule would have permitted and v1.2 refuses (§R8).
+- **A4 and the boundary cases.** Exact rational arithmetic and exact order statistics make §R4's equality cases H and K implementation-independent.
+- **A4 and S (R5).** Class omission is now gold-based and identical for every arm, so S differences are always paired. §R3b's values are unchanged because all four classes have gold there.
+- **A5 and G3.** The QC key's only consumers are qualification and G3. It never touches RS, gold, metrics or arms.
+- **A6 and non-inferiority.** Without a correction, rule J could have eased NI by up to δ. The Δ-reduced margins remove that, so v1.2 is never easier than an anchor comparison on NI, and it is harder on P-SUP.
+- **A6 and B0.** B0 is not a P-SUP comparator. Its quality-only selection is unchanged.
+
+**Additional residual risks, accepted and disclosed:**
+
+- rule J and the Δ margins rely on dev estimates, and test-set gaps may differ from dev gaps;
+- the §12.3 counterfactual is an upper bound on what the next rung can recover, so a permitted escalation may still fall short (T2 then goes to final evaluation);
+- the QC team adds about 40 h and at least three contributors to B2;
+- one data-freeze restart is permitted, and it is disclosed if used.
+
 ## 26. Prior-art record (focused)
 
 | Source | Category | Use in E001 |
@@ -1317,6 +1600,28 @@ under one conjunctive, preregistered decision.
 | **R7** (clarify) | Explicit self-harm was both "SR-only" and "excluded from main after gold". | One rule: pre-M0 screening and generator review rejection, then **quarantine before data freeze** of any non-SR unit either annotator marks `EXPLICIT_SELF_HARM`. It is based on raw annotations, symmetric across splits, and never driven by gold after unlock. The v1.0 §13 exclusion is removed. | §6.1, §7.6, §13 |
 | Non-blocking | EVCP's precision-only overlap let "tiny but in-gold" citations verify. | Added a **per-gold-span coverage ≥ 0.5** condition. One-token citations of multi-token gold spans no longer verify; one-token gold spans still can. | §13.3, §R2 (c14–c16) |
 
+This table is the v1.1 record and is kept as written. v1.2 supersedes two parts of it: R4's allowance for post-M0 `UNIT_DEFECT` text repairs (by A1), and R6's loss-reduction check (by A2). See §28.
+
+## 28. Revision record — v1.1 → v1.2 (independent audit, findings A1–A6)
+
+**Source:** the independent GPT-5.6 Sol audit of v1.1 head `b13daa94a608ef075474f6ac35cdd59650478423`, relayed by the operator on 2026-09-19. It returned six blocking findings, A1–A6. The v1.0 and v1.1 texts remain in git history, and the v1.0 audit comment on PR #17 is unchanged.
+
+**Scope of change.** v1.2 repairs A1–A6 and their direct consistency and reference consequences, and nothing else.
+
+- **Unchanged:** the research question, the seven-dimension ontology, H2B's components, δ_Q, δ_S, δ_P, G5, the logic of the R1, R2, R3, R5 and R7 repairs, the EVCP thresholds, the resource budgets, Reality Audit scope and the ADCP boundary.
+- **Two direct consequences, disclosed:**
+  - NI margins against C_A and C_B are reduced by the rule-J give-up Δ (A6). When J designates the quality anchor, Δ = 0 and the margins are exactly v1.1's.
+  - S's class-omission rule is now gold-based, which keeps S differences paired in every replicate (A4).
+
+| Finding | Defect (summary) | Repair in v1.2 | Where |
+| --- | --- | --- | --- |
+| **A1** | After M0, `UNIT_DEFECT` text could be repaired in place while keeping its committed identity. | Canonical text is **immutable after M0**. M0 commits cluster IDs, unit IDs and canonical-text hashes. Hashes are verified byte-exactly at data freeze, P3, U1 and U2, and on every record's `input_sha256`. A defective unit can only be **removed**, under closed triggers X1–X5. Different text needs the **single restart**: authorized, disclosed, new unit IDs, new M0, then a new salt, only before the P1 exit. Any post-M0 hash mismatch is S13. Rubric §6 now says "removed", not "repaired". | §5.1, §7.4, §8.1, §19, §20 (S13), §21, §25, rubric §6, §R5d |
+| **A2** | "final-epoch loss ≤ 0.5 × first-epoch loss" was an arbitrary halt/fallback trigger, not a test of implementation correctness. | **Removed.** Training integrity is now finite losses, gradients and parameters, plus solver or schedule completion. Loss curves are diagnostic only. Competence rests on the R0 floors and reproducibility. | §11 item 5 |
+| **A3** | Escalation could set aside false-positive and qualifier errors, then find `NO_CANDIDATE_MENTION` among the remaining false negatives. | **Counterfactual attribution on the full metric.** Four exhaustive error categories. For every short metric: **closure** (correcting only NCM errors reaches the threshold) and **dominance** (the NCM gain ≥ the gain from correcting all other errors). The shortfall uses the rung's best dev value against the controls' quality anchors. | §2, §11, §12.3, §25, §R8 |
+| **A4** | "Undefined EVCP → failure side" was prose, not an executable rule. | **Exact semantics:** SHA-256-indexed paired resampling; exact order-statistic percentiles; exact rational arithmetic; undefined replicate differences enter the lower vector as −1 and the upper as +1; gold-based dimension/class omission for every arm; full-sample dispositions (T with zero claims → FAIL; a comparator with zero claims → UNDEFINED, which blocks `supported`). | §13.1–§13.3, §14.1, §14.3, §14.5, §22, §R4, §R12 |
+| **A5** | The provenance of the qualification and QC reference key was undefined. | **QC pool (§7.7).** Human-authored by a separate QC team; two independent non-author key labels; a key value only where they agree; the adjudicator can drop but never re-key; role exclusions; an overlap check against every M0 unit; `qc-key v1.0` committed on Issue #3 before any annotation; retire-only corrections with recomputation; raw disagreement preserved; operator ownership under B2. | §7.1, §7.2, §7.5 (G3), §7.7, §16, §19, §21, §24 |
+| **A6** | C_A and C_B were selected by dev Q alone, so a better-grounded, equally competitive configuration could be discarded. | **Rule J:** quality anchor → competitive Q/S/R envelope → highest dev EVCP, with deterministic tie-breaks. It applies to C_A (model × prompt), C_B (hyperparameters × seed; the median-Q seed rule is removed), T within its rung, and S-H2A. **Δ-reduced NI margins** stop J from easing non-inferiority. B0 is unchanged. | §10.1–§10.3, §11 item 4, §11.1, §12.3, §14.1, §14.2, §19, §24, §25, §R4, §R13 |
+
 ---
 
-**Exact next action:** a **second fresh independent audit** of this repaired freeze (v1.1). No implementation, annotation, training, inference, unlock or merge happens until that audit is accepted **and** the operator separately authorizes execution. The protocol author does not accept this protocol.
+**Exact next action:** an **independent GPT-5.6 Sol re-audit of A1–A6**, plus regression and scope checks, of this repaired freeze (v1.2). No implementation, annotation, training, inference, unlock or merge happens until that audit is accepted **and** the operator separately authorizes execution. The protocol author does not accept this protocol.
