@@ -1,13 +1,14 @@
-# MASI-E001 — Preregistered protocol v1.3
+# MASI-E001 — Preregistered protocol v1.4
 
-- **Protocol ID:** `e001-protocol-v1.3`
-- **Status:** **repaired freeze submitted for final independent verification of A1 and A6. Not accepted. Not authorized for execution.** No data, labels, model runs or results exist for this protocol.
+- **Protocol ID:** `e001-protocol-v1.4`
+- **Status:** **repaired freeze submitted for independent verification of the A1 restart-replacement screening. Not accepted. Not authorized for execution.** No data, labels, model runs or results exist for this protocol.
 - **Revision:**
   - v1.0 was frozen at commit `d1d9bfc40c40e607f0a476bb620bb665c3b8830a`. Its [independent audit](https://github.com/JosephJMWalker-MBA/masi-research/pull/17#issuecomment-5735626914) returned `REPAIR_REQUIRED` (R1–R7).
   - v1.1 was frozen at commit `b13daa94a608ef075474f6ac35cdd59650478423`. It repaired R1–R7 and closed the non-blocking EVCP-citation observation (§27).
   - The independent GPT-5.6 Sol audit of v1.1, relayed by the operator on 2026-09-19, returned six blocking findings, A1–A6. v1.2 repaired them (§28).
   - v1.2 was frozen at commit `00783025e65ead1acc6da5b2183040fc576411ed`. Its independent re-audit returned `REPAIR_REQUIRED`: A2–A5 pass; A1 and A6 remain blocking. v1.3 repairs only A1 and A6 and their direct consequences (§29).
-  - The v1.0, v1.1 and v1.2 texts (git history) and the v1.0 audit comment (on the PR) are preserved unchanged.
+  - v1.3 was frozen at commit `3c68dafd1284afa0f33e48dcbaec4c2544dc340a`. Its final independent verification returned `REPAIR_REQUIRED`: A6 and the A2–A5 regression pass, and A1's second-draw defect is closed. One narrow A1 defect remained: restart replacement units bypassed the pre-M0 construction checks. v1.4 repairs only that (§30).
+  - The v1.0–v1.3 texts (git history) and the v1.0 audit comment (on the PR) are preserved unchanged.
 - **Issue:** [#3](https://github.com/JosephJMWalker-MBA/masi-research/issues/3), under the operator authorization on Issue #3 and PR #16.
 - **Governing main:** `904bd9bc1c482c5b552b4a2e7075d685d73a1748`
 - **Substrate inspected:** `JosephJMWalker-MBA/Accumulated-Distress-Care-Protocol @ eb7ac37f79511c90e25ff613ee78e9123d653d60` (refetched 2026-09-18)
@@ -560,11 +561,21 @@ cluster_id <TAB> pool <TAB> role(active | reserve:<rank>) <TAB> member unit_id:s
 **Restart procedure:**
 
 1. **Irrevocable notice.** The custodian posts on Issue #3 the reason, the affected unit IDs, the superseded M0 hash and the operator's written authorization. From that moment the original M0 is superseded permanently. Its salt is never derived or used, even after its round becomes public.
-2. **Scope.** The restart M0 differs from the superseded M0 only in the units the notice lists. Each listed unit is removed, or replaced by a unit with a **new** unit ID. A unit ID never maps to two different hashes. All other units keep their IDs and bytes.
-3. **New M0, then a new salt.** The restart M0 is committed on Issue #3, citing the notice. Its salt comes from a new round R\*, the first round released ≥ the restart M0 commitment + 24 h, under §8.2 in full.
-4. **QC overlap.** The §7.7 overlap check is rerun against the new units. A hit retires the QC item.
-5. **Disclosure.** The superseded M0, the notice and all logs are preserved. The restart is reported in the result headline.
-6. **Limit.** At most one restart.
+2. **Scope.** The restart M0 differs from the superseded M0 only in the units the notice lists. Each listed unit is removed, or replaced, in the same cluster, by a unit with a **new** unit ID. A unit ID never maps to two different hashes. All other units keep their IDs and bytes.
+3. **Replacement screening.** Before the restart M0 is committed, every replacement unit must pass the same frozen pre-M0 checks as an original unit:
+   - the §5.1 unit bounds;
+   - the §6.1–§6.3 construction, provenance and review rules, including explicit-self-harm screening;
+   - the §8.4 label-leak scan, with quarantine-register handling exactly as for an original unit;
+   - the §8.1 exact-duplicate and near-duplicate checks (character 5-gram Jaccard ≥ 0.6) against the **entire unchanged corpus**, active and reserve, every pool, and against the other replacements.
+
+   A replacement that fails a check is rejected. It never enters the restart M0.
+   - If passing the checks would require changing any unit or cluster the notice does not list (for example, a cluster merge), the replacement is **not permitted**. Unlisted units and clusters are never restructured.
+   - The listed unit is then removed, or replaced by different text that passes every check, or the experiment **halts**.
+   - Every screening result is kept in the custodian log.
+4. **New M0, then a new salt.** The restart M0 is committed on Issue #3, citing the notice. Its salt comes from a new round R\*, the first round released ≥ the restart M0 commitment + 24 h, under §8.2 in full.
+5. **QC overlap.** The §7.7 overlap check is rerun against the new units. A hit retires the QC item.
+6. **Disclosure.** The superseded M0, the notice and all logs are preserved. The restart is reported in the result headline.
+7. **Limit.** At most one restart.
 
 **After the salt round is released** (the original R\*, or the restart's R\*), there is **no in-protocol re-randomization**:
 
@@ -1357,7 +1368,7 @@ Consequential fields are deferred to later composition and outcome experiments. 
 | S10 | The protocol can no longer separate H2B from prompting or adaptation (for example, C_A or C_B is dropped) | any | halted |
 | S11 | An evaluator defect is found (E1 case failure or scoring bug) | any | fix before U1; found after U2 → invalidated, with the defect reported |
 | S12 | The operator or auditor withdraws authorization, or a license or terms change blocks a required arm | any | halted |
-| S13 | An M0 or salt violation: a post-M0 canonical-text hash mismatch; a second M0 outside the single pre-salt restart (§8.1); a restart notice not strictly before the original R\* release; a post-M0 addition outside reserve activation; or a salt not derived per §8.2. Also: a defect that removal cannot handle, or a need for new canonical text, after the salt round is released | data / any | halted (if found before U1) / invalidated (violations found after U1) |
+| S13 | An M0 or salt violation: a post-M0 canonical-text hash mismatch; a second M0 outside the single pre-salt restart (§8.1); a restart notice not strictly before the original R\* release; a restart M0 that changes an unlisted unit or cluster, or includes a replacement that did not pass §8.1 replacement screening; a post-M0 addition outside reserve activation; or a salt not derived per §8.2. Also: a defect that removal cannot handle, or a need for new canonical text, after the salt round is released | data / any | halted (if found before U1) / invalidated (violations found after U1) |
 
 A G5 failure is **not** a stop condition. It narrows H2B before implementation (§1, §7.5).
 
@@ -1386,7 +1397,7 @@ A G5 failure is **not** a stop condition. It narrows H2B before implementation (
 9. G4 on locked data (custodian-only), with reserve activation if needed.
 10. Data freeze v1.0 (hashes, verified against M0).
 
-The P1 exit is the release of train/dev to implementers. The single permitted restart (§8.1) returns to step 4. Its notice must precede the release of the original R\* (step 6). After that release there is no re-randomization: removal or halt only.
+The P1 exit is the release of train/dev to implementers. The single permitted restart (§8.1) reruns steps 1–3 for the listed replacement units only: construction and review; screening and the label-leak scan; and duplicate checks against the whole unchanged corpus. It then returns to step 4. Its notice must precede the release of the original R\* (step 6). After that release there is no re-randomization: removal or halt only.
 
 ## 22. Interpretation matrix (written before any result) [FROZEN]
 
@@ -1586,6 +1597,15 @@ After repairing A1 and A6, the author re-checked both repairs against the rest o
 - a designated set adds locked main-test runs, which may exhaust an arm's locked-inference cap (S7);
 - the restart window is short (at least 24 h), so a defect found later can only be removed or halt the experiment.
 
+### v1.4 author-side re-review (not an independent audit)
+
+After adding restart-replacement screening, the author re-checked it against the rest of the protocol:
+
+- **Same discipline as original units.** A replacement now passes every pre-M0 check an original unit passes: bounds, construction and review, explicit-self-harm screening, the label-leak scan with register handling, and exact and near-duplicate checks. The QC overlap check was already rerun.
+- **Notice scope is preserved.** A replacement that would force a merge, or any change to an unlisted unit or cluster, is refused rather than accommodated. The irrevocable notice therefore still bounds everything the restart M0 can change.
+- **No new randomization channel.** Screening happens before the restart M0 is committed, and its salt comes from a round at least 24 h after that commitment, so rejecting or substituting a replacement cannot target any split.
+- **Enforcement.** A restart M0 containing an unscreened replacement, or changing an unlisted unit or cluster, is S13.
+
 ## 26. Prior-art record (focused)
 
 | Source | Category | Use in E001 |
@@ -1672,6 +1692,24 @@ This table is the v1.2 record and is kept as written. v1.3 supersedes two parts 
 | **A1** | The single restart was permitted until the P1 exit. By then the first salt, split, annotation, RS gates, G5 and G4 counts could be known, so a second partition could be drawn after seeing the first. | The restart notice must be committed **strictly before the original R\* is released**, while no salt can exist. The notice is irrevocable, and the restart M0 may differ only in the listed units. After the salt round is released there is **no in-protocol re-randomization**: a defect means removal (X1–X5) or halt, and new text needs a new protocol version with a genuinely new locked test set. | §8.1, §7.7, §19, §20 (S13), §21, §25, §R5d |
 | **A6** | Rule J anchored the S and R envelope to the Q-best configuration's own S and R, so an S- or R-strong configuration could be displaced by an S- or R-weak one. The Δ correction did not catch this (Δ^S = 0 in the counterexample). | **Independent per-metric anchors:** Q ≥ Q^max − δ_Q, R ≥ R^max − δ_Q, S ≥ S^max − δ_S, then the highest dev EVCP. **An empty envelope** (a genuine tradeoff) designates a **set** of per-metric-competitive configurations, each a comparator facing every component, within the existing caps. B0 uses the same rule with dev Q as its criterion. Escalation thresholds use the designated configurations. **Δ margins removed.** | §10.1–§10.3, §11 item 4, §11, §11.1, §12.3, §14.1, §14.2, §24, §25, §R4, §R8, §R13 |
 
+This table is the v1.3 record and is kept as written. v1.4 adds replacement screening to its A1 restart procedure. See §30.
+
+## 30. Revision record — v1.3 → v1.4 (final verification: A1 restart replacements)
+
+**Source:** the final independent GPT-5.6 Sol verification of v1.3 head `3c68dafd1284afa0f33e48dcbaec4c2544dc340a`, relayed by the operator on 2026-09-19.
+
+- **Disposition:** `REPAIR_REQUIRED`.
+- **Closed:** A6, the A1 second-randomization defect, and the A2–A5 regression.
+- **Open:** one narrow A1 defect.
+
+The v1.0–v1.3 texts remain in git history, and the v1.0 audit comment on PR #17 is unchanged.
+
+**Scope of change.** v1.4 repairs only that A1 defect, with its reference and manifest consequences. Nothing else changes substantively. A2–A6 are not reopened.
+
+| Finding | Verification defect (summary) | Repair in v1.4 | Where |
+| --- | --- | --- | --- |
+| **A1** (restart replacements) | A restart returned to P1 step 4, so replacement units skipped the pre-M0 screening, label-leak and duplicate checks (steps 2–3). A replacement could carry a label leak, or become a near-duplicate of an unchanged unit, whose merge would touch clusters the notice never listed. | **Replacement screening** (§8.1, restart step 3). Every replacement must pass the §5.1 bounds, the §6.1–§6.3 construction and self-harm rules, the §8.4 label-leak scan with register handling, and the §8.1 exact and near-duplicate checks against the entire unchanged corpus, all before the restart M0 is committed. A replacement that would require changing any unlisted unit or cluster is **not permitted**: the listed unit is removed, replaced by text that passes, or the experiment halts. P1 now reruns steps 1–3 for replacements. S13 covers violations. | §8.1, §20 (S13), §21, §25, §R5d (d10, d11) |
+
 ---
 
-**Exact next action:** **final independent GPT-5.6 Sol verification of A1 and A6**, plus regression and scope checks, of this repaired freeze (v1.3). No implementation, annotation, training, inference, unlock or merge happens until that audit is accepted **and** the operator separately authorizes execution. The protocol author does not accept this protocol.
+**Exact next action:** **independent GPT-5.6 Sol verification of the replacement-unit screening path**, the two new R5d cases, and a scope regression of this repaired freeze (v1.4). No implementation, annotation, training, inference, unlock or merge happens until that audit is accepted **and** the operator separately authorizes execution. The protocol author does not accept this protocol.

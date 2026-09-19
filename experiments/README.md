@@ -75,13 +75,14 @@ Do not rename a failed result as a successful "exploration" after the fact.
 
 **Title:** Empathy speaker-observation specialist — purpose-built target versus general-model controls.
 
-**Status:** the preregistered protocol [`e001/PROTOCOL.md`](e001/PROTOCOL.md) (`e001-protocol-v1.3`) is a **repaired freeze** awaiting final independent verification of findings A1 and A6. It is **not accepted and not authorized for execution**. No data, labels, model runs or results exist.
+**Status:** the preregistered protocol [`e001/PROTOCOL.md`](e001/PROTOCOL.md) (`e001-protocol-v1.4`) is a **repaired freeze** awaiting independent verification of its A1 restart-replacement screening. It is **not accepted and not authorized for execution**. No data, labels, model runs or results exist.
 
 **History:**
 
 - v1.0 was audited [`REPAIR_REQUIRED`](https://github.com/JosephJMWalker-MBA/masi-research/pull/17#issuecomment-5735626914). Repairs R1–R7 (v1.1) are recorded in protocol §27.
 - The independent audit of v1.1 returned six blocking findings, A1–A6. Their repairs (v1.2) are recorded in protocol §28.
 - The re-audit of v1.2 passed A2–A5 and kept A1 and A6 blocking. Their repairs (v1.3) are recorded in protocol §29.
+- The verification of v1.3 closed A6 and A1's second-draw defect, and found that restart replacement units skipped the pre-M0 checks. That repair (v1.4) is recorded in protocol §30.
 
 **Question** ([Issue #3](https://github.com/JosephJMWalker-MBA/masi-research/issues/3)): can a purpose-built bounded intelligence, designed from the Empathy-observation responsibility outward, infer an evidence-grounded observation state competitively with general-model controls while providing stronger inspectability, state discipline, uncertainty handling, efficiency, or failure localization?
 
@@ -104,4 +105,4 @@ The state-quality component can be narrowed only by a preregistered reliability 
 - [`e001/REFERENCE_CASES.md`](e001/REFERENCE_CASES.md): the E1 independent reference checks;
 - [`e001/PROTOCOL_MANIFEST.json`](e001/PROTOCOL_MANIFEST.json): preregistration facts.
 
-**Next action:** final independent verification of A1 and A6, plus regression and scope checks, of the repaired protocol. No implementation, annotation, training or inference takes place until that audit is accepted **and** the operator separately authorizes execution.
+**Next action:** independent verification of the restart-replacement screening, plus a scope regression, of the repaired protocol. No implementation, annotation, training or inference takes place until that audit is accepted **and** the operator separately authorizes execution.

@@ -1,6 +1,10 @@
 # MASI-E001 — Independent reference cases (E1)
 
-**Status:** frozen with `e001-protocol-v1.3`, pending final independent verification of A1 and A6.
+**Status:** frozen with `e001-protocol-v1.4`, pending independent verification of the A1 restart-replacement screening.
+
+**Changes in v1.4 (A1 restart replacements):**
+
+- **R5d:** d8 now records its replacement screening. New cases d10 (label leak) and d11 (near-duplicate of an unchanged cluster).
 
 **Changes in v1.3 (re-audit findings A1 and A6):**
 
@@ -312,6 +316,7 @@ The committed M0 is the one in §R5b (hash `5324a7c7…fafd`). Hashes are SHA-25
 
 - **Notice:** posted at 2026-10-01T18:00:00Z, listing u0002, with the operator's authorization.
 - **Replacement:** u0002 is replaced by a **new** unit u0004, `Work is fine, mostly.` (`98292a0d973721657c4ab6e7d713fedeb261191334ecad4d809666c75dfeddaa`).
+- **Screening (§8.1, restart step 3):** u0004 is within the §5.1 bounds, contains no ontology identifier or status word, and has character 5-gram Jaccard 0 with every unchanged unit (u0001, u0003). It passes.
 - **New round:** the restart M0 is committed at 2026-10-01T20:00:00Z. The new R\* is round 6518006, released at 2026-10-02T20:00:00Z, exactly the target. Round 6515606 is never used to derive a salt.
 
 Restart M0 bytes (252 bytes, same format):
@@ -334,6 +339,20 @@ c0002\tmain\treserve:1\tu0003:fcd695727597a17a40bcb2f2477c68358cbc5466c8b18ddca3
 - This is the only split this experiment ever draws. No salt was derived for the superseded M0.
 
 **d9 — after the salt round.** A second restart, a notice after the original R\* release, or a need for new text after the salt round → **no re-randomization**. The unit is removed (X1–X5), or the experiment halts (S13). New text needs a new protocol version with a genuinely new locked test set.
+
+**d10 — a replacement with an unregistered label leak.** A valid notice lists u0002 (main pool). The proposed replacement is `Work is fine. Label: NOT_ADDRESSED` (34 characters, `17bcbee0283adf0e6777a3ae74d2d9f0807f570ac60ca254cf452dafcaf46509`).
+
+- The §8.4 scan hits the status word `NOT_ADDRESSED`.
+- u0002 is a main-pool unit, so the replacement cannot go on the integrity quarantine register (ADV only).
+- **Result:** the replacement is **rejected** and never enters the restart M0. u0002 is removed, or replaced by different text that passes every check (for example u0004, d8), or the experiment halts.
+- Committing a restart M0 that contains this text is **S13**.
+
+**d11 — a replacement that is a near-duplicate of an unchanged cluster.** A valid notice lists u0002 (cluster c0001). The proposed replacement is `I'm so tired lately!` (`ddeb041d323cc0a9771f91cbf4fdc39c5d2d85ebf08b72687ca7828115240702`).
+
+- Its character 5-gram Jaccard with the unchanged u0003, in cluster c0002, is 15/17 = 0.882, which is ≥ 0.6.
+- Admitting it would require merging c0001 with c0002, and c0002 is not listed in the notice.
+- **Result:** the replacement is **not permitted**. c0002 is left untouched: no merge, no ID change, no text change. u0002 is removed, or replaced by different text that passes every check, or the experiment halts.
+- A restart M0 that merges or alters c0002 is **S13**.
 
 ## R6 — Margins δ_Q and δ_S
 
