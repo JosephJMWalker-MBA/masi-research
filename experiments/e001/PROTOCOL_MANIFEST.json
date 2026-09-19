@@ -1,0 +1,160 @@
+{
+  "manifest_note": "Preregistration facts for MASI-E001 only. Not a MASI system schema, not a MASI Bus message, not an execution authorization. PROTOCOL.md governs; on any conflict, PROTOCOL.md wins and this file is a defect.",
+  "experiment_id": "MASI-E001",
+  "protocol_version": "e001-protocol-v1.4",
+  "status": "repaired_freeze_submitted_for_independent_verification_of_A1_restart_replacement_screening; not_accepted; execution_not_authorized",
+  "revision_history": [
+    {"version": "e001-protocol-v1.0", "commit": "d1d9bfc40c40e607f0a476bb620bb665c3b8830a", "audit": "https://github.com/JosephJMWalker-MBA/masi-research/pull/17#issuecomment-5735626914", "audit_disposition": "REPAIR_REQUIRED (R1-R7)"},
+    {"version": "e001-protocol-v1.1", "commit": "b13daa94a608ef075474f6ac35cdd59650478423", "repairs": ["R1 RS-only gates/margins/D*", "R2 P-SUP superiority margin (lower CI > delta_P)", "R3 integrity quarantine register for A13", "R4 M0 committed before beacon-derived salt; pre-ranked reserve", "R5 confirmatory S-NI with G5 preregistered narrowing", "R6 valid learned-arm sanity gates", "R7 explicit-self-harm pre-freeze quarantine", "non-blocking: EVCP per-gold-span coverage >= 0.5"], "audit": "independent GPT-5.6 Sol audit of b13daa9, relayed by the operator 2026-09-19", "audit_disposition": "six blocking findings (A1-A6)"},
+    {"version": "e001-protocol-v1.2", "repairs": ["A1 canonical text immutable after M0; removal-only remedy (X1-X5); one authorized restart (new unit IDs, new M0, new salt) before P1 exit; post-M0 hash mismatch = S13", "A2 loss-reduction ratio removed as a competence gate; finite values + completion; loss curves diagnostic only", "A3 escalation by counterfactual attribution on the full metric: closure and dominance for every short metric", "A4 exact bootstrap semantics: SHA-256 draws, exact order statistics, exact rational arithmetic, undefined replicates -1/+1, gold-based omission, full-sample EVCP dispositions", "A5 QC pool and reference-key provenance (protocol section 7.7)", "A6 rule J joint dev selection for C_A, C_B, T and S-H2A, with delta-reduced NI margins"], "supersedes": ["v1.1 R4 allowance for post-M0 UNIT_DEFECT text repairs", "v1.1 R6 loss-reduction check"], "commit": "00783025e65ead1acc6da5b2183040fc576411ed", "audit": "independent GPT-5.6 Sol re-audit of 0078302, relayed by the operator 2026-09-19", "audit_disposition": "REPAIR_REQUIRED: A2-A5 pass; A1 and A6 blocking"},
+    {"version": "e001-protocol-v1.3", "repairs": ["A1 restart notice must precede the original R* release (no salt can exist); irrevocable; restart M0 differs only in listed units; after the salt round: removal or halt only, new text needs a new protocol version with a new locked test set", "A6 rule J with independent per-metric anchors (Q, R, S); empty joint envelope designates a set of per-metric-competitive comparators (controls) or phi*_Q (T, S-H2A); B0 uses rule J with dev Q as criterion; escalation thresholds use designated configurations"], "supersedes": ["v1.2 A1 restart window ending at the P1 exit", "v1.2 A6 Q-anchored envelope", "v1.2 Delta-reduced NI margins (removed)"], "commit": "3c68dafd1284afa0f33e48dcbaec4c2544dc340a", "audit": "final independent GPT-5.6 Sol verification of 3c68daf, relayed by the operator 2026-09-19", "audit_disposition": "REPAIR_REQUIRED: A6 and A2-A5 regression pass; A1 second-draw defect closed; restart replacement units bypass pre-M0 checks"},
+    {"version": "e001-protocol-v1.4", "repairs": ["A1 restart replacement screening: every replacement passes the section 5.1 bounds, section 6.1-6.3 construction/self-harm rules, section 8.4 label-leak scan with register handling, and section 8.1 exact/near-duplicate checks against the entire unchanged corpus before the restart M0 is committed; a replacement requiring any change to an unlisted unit or cluster is not permitted (remove, replace with passing text, or halt); P1 reruns steps 1-3 for replacements"]}
+  ],
+  "governing_commit": "904bd9bc1c482c5b552b4a2e7075d685d73a1748",
+  "issue": "JosephJMWalker-MBA/masi-research#3",
+  "substrate_inspected": "JosephJMWalker-MBA/Accumulated-Distress-Care-Protocol@eb7ac37f79511c90e25ff613ee78e9123d653d60",
+  "frozen_wp1_packet_untouched": "codex/wp0-wp1-candidate-probe@81adfffa2d28e4a40a0b36fe1a21baa567d402ec",
+  "research_question": "unchanged from v1.0 (Issue #3 wording)",
+  "responsibility": "empathy.speaker_observation",
+  "dimensions": ["exhaustion", "self_care_disruption", "felt_disconnection", "support_unavailable", "withdrawal", "interpersonal_rupture", "self_devaluation"],
+  "status_values": ["NOT_ADDRESSED", "SUPPORTED", "CONTRADICTED", "MIXED", "INDETERMINATE"],
+  "evidenced_concern_event": ["SUPPORTED", "MIXED"],
+  "confirmatory_state_classes": {"E": ["SUPPORTED", "MIXED"], "CON": ["CONTRADICTED"], "IND": ["INDETERMINATE"], "NA": ["NOT_ADDRESSED"], "withheld_or_error": "NONE_OUTPUT (matches no gold class)"},
+  "unit_safety_field": ["NONE", "AMBIGUOUS_FINALITY", "EXPLICIT_SELF_HARM"],
+  "primary_hypothesis": "H2B",
+  "h2b_narrowing_if_G5_fails": "S-NI removed before implementation; H2B narrowed to evidenced-concern detection with evidence-verified precision; recorded in P1 binding record",
+  "h2a": "not_confirmatory; optional estimation-only module S-H2A requires operator activation before implementation",
+  "primary_quality_metrics": {
+    "Q": "macro-F1 over retained dimensions of evidenced concern E; all assigned non-removed locked-main-test units; ERROR/WITHHELD/missing = non-E; a dimension with no gold-E pair in a computation is omitted for every arm",
+    "S": "unweighted mean of per-class F1 over {E, CON, IND, NA}, pooled over (unit, d in D*) pairs; ERROR/WITHHELD/missing = NONE_OUTPUT; a class with no gold pair in a computation is omitted for every arm; confirmatory iff G5 passed"
+  },
+  "coverage_floor_metric": "R = macro recall of evidenced concern; same dimension-omission rule as Q",
+  "primary_property_metric": "EVCP = verified E-claims / E-claims; verified iff gold E AND >=1 valid cited support span AND token precision of cited-support union vs gold-support union >= 0.5 AND some single gold support span has >= 0.5 of its tokens cited; zero claims -> undefined (dispositions under bootstrap.full_sample_EVCP_dispositions)",
+  "decision_rule": {
+    "method": "intersection-union test; each component one-sided 0.025 via two-sided 95% paired cluster-bootstrap CI; no multiplicity adjustment within H2B",
+    "comparators": "K = every designated configuration of B0, C_A and C_B; G = those of C_A and C_B; where rule J designates a set, each member is a separate comparator facing every component; more comparators only make PASS harder",
+    "Q_NI": "for each k in K: PASS iff lower CI(Q_T - Q_k) > -delta_Q; FAIL iff upper CI < -delta_Q",
+    "S_NI": "for each k in K: PASS iff lower CI(S_T - S_k) > -delta_S; FAIL iff upper CI < -delta_S; removed if G5 failed",
+    "R_NI": "for each k in K: PASS iff lower CI(R_T - R_k) > -delta_Q; FAIL iff upper CI < -delta_Q",
+    "P_SUP": "for each g in G: PASS iff lower CI(EVCP_T - EVCP_g) > delta_P (superiority margin); FAIL iff upper CI < delta_P; full-sample undefined EVCP -> FAIL or UNDEFINED without bootstrap",
+    "otherwise": "UNDECIDED",
+    "component_dispositions": ["PASS", "FAIL", "UNDECIDED", "UNDEFINED"],
+    "outcome_classes": ["supported", "not_supported", "inconclusive", "invalidated", "halted"],
+    "inconclusive": "no FAIL and >= 1 UNDECIDED or UNDEFINED"
+  },
+  "margins": {
+    "delta_Q": "clamp((1 - F1_h)/2, 0.02, 0.05); F1_h = annotator-pair macro-F1 on E over D*, computed on reliability set RS before any arm runs [BIND value]",
+    "delta_S": "clamp((1 - S_h)/2, 0.02, 0.05); S_h = annotator-pair S on RS [BIND value]",
+    "delta_P": 0.10,
+    "selection_dependent_margins": "none (v1.2 Delta-reduced margins removed in v1.3)"
+  },
+  "bootstrap": {"unit": "cluster", "replicates": 10000, "seed": 20260918, "paired": true,
+    "cluster_list": "locked-main-test clusters with >= 1 scored unit, ascending byte-wise cluster ID",
+    "draw": "i(b,j) = int(SHA-256('e001-boot-v1:20260918:' + str(b) + ':' + str(j))[0:16 hex], 16) mod n; replicate b = multiset of c_(i+1), j = 1..n; units pooled with multiplicity",
+    "interval": "exact order statistics, no interpolation: m = floor(0.025 B); lower = (m+1)th smallest of v-; upper = (B-m)th smallest of v+ (B = 10000: 251st and 9750th)",
+    "arithmetic": "exact rational for every metric, difference and margin comparison",
+    "undefined_replicate": "difference undefined if either arm's metric is undefined (EVCP: zero claims by T, comparator or both); enters v- as -1 and v+ as +1; > m undefined -> UNDECIDED",
+    "absent_dimension_or_class": "omitted for every arm (gold-based); metric undefined only if all absent",
+    "full_sample_EVCP_dispositions": {"T_zero_claims": "P-SUP FAIL, no bootstrap", "comparator_zero_claims": "P-SUP UNDEFINED (control defect; blocks supported), no bootstrap", "both_zero": "FAIL"}},
+  "multiplicity": "single confirmatory hypothesis H2B; all other analyses descriptive with unadjusted 95% CIs",
+  "reliability_set_RS": "double-annotated units of initially active main-pool clusters in dev + double-annotated 20% QC subset of train; no locked units; reserve-activated units never added",
+  "gates": {
+    "G1_reliability": "on RS: Krippendorff alpha (nominal, binary E) >= 0.667 per dimension to retain (defines D*); >2 dimensions failing -> halted",
+    "G2_span_stability": "on RS: EVCP_h >= 0.80; else halted",
+    "G3_annotator_qc": "known-answer accuracy >= 0.90 against the frozen qc-key (protocol section 7.7)",
+    "G4_minimum_sample": "custodian-only, locked main test: >= 500 units, >= 100 clusters, >= 60 gold-E per retained dimension, >= 5 retained dimensions, and if G5 passed >= 80 gold-CON and >= 80 gold-IND pairs pooled over D*; only remedy reserve activation; else halted",
+    "G5_state_reliability": "on RS: Krippendorff alpha (nominal, four-class state pooled over D*) >= 0.667 keeps S-NI; failure narrows H2B (not a halt)",
+    "locked_pool_agreement": "computed after adjudication, sealed, released at U2 as descriptive only; never selects D*, margins, gates or design"
+  },
+  "qc_pool": {
+    "sets": {"practice": 40, "qualification": 30, "known_answer": ">= 80 and no annotator sees an item twice"},
+    "authors": "QC team (>= 3), human-authored from QC-only briefs; no model output; no explicit self-harm; never written from experimental cards or units",
+    "key_labeling": "two independent non-author QC-team labelers, blind; qualification/known-answer items admitted only if both agree on all seven statuses; adjudicator may drop (rubric-cited reason) but never re-key; practice items may be adjudicated",
+    "exclusions": "QC team excludes T designers, implementers, the protocol author, experimental annotators, the adjudicator, the custodian and SHF writers; ADCP leakage rules apply",
+    "overlap_check": "after M0: exact duplicates and char-5-gram Jaccard >= 0.6 against every M0 unit (all pools, active and reserve); hit -> QC unit dropped",
+    "freeze": "qc-key v1.0 (set, QC unit ID, text SHA-256, key statuses) frozen after the overlap check and before any annotator sees any unit; SHA-256 posted on Issue #3",
+    "correction": "no edits after commitment; defective items retired by the adjudicator with a rubric-cited reason; G3/qualification recomputed and both results logged; new items only via a new committed key version",
+    "raw_disagreement": "all raw key labels retained immutable, including dropped items; admission rate and key-labeler agreement reported",
+    "use": "qualification and G3 only; never gold, RS, metrics, development material or any arm input; released to the auditor at P3",
+    "owner": "operator under B2; custodian runs the overlap check, holds and commits the key"
+  },
+  "split_method": {
+    "unit_of_assignment": "cluster (scenario card + variants; near-duplicates merged at char-5-gram Jaccard >= 0.6, active and reserve together)",
+    "cluster_manifest_M0": "UTF-8 lines 'cluster_id<TAB>pool<TAB>active|reserve:<rank><TAB>unit_id:sha256(canonical_text),...'; commits cluster IDs, unit IDs and canonical-text hashes; SHA-256(M0) posted as a comment on Issue #3 before any salt exists; first comment binding (except the single pre-salt restart); post-M0 additions only via reserve activation; append-only custodian log",
+    "post_M0_immutability": "canonical text immutable after M0; byte-exact hash verification at data freeze, P3, U1 and U2 and of every record's input_sha256; any post-M0 text-hash mismatch = S13",
+    "post_M0_removal_triggers": {"X1": "UNIT_DEFECT (bounds, encoding, language)", "X2": "explicit self-harm outside SR (section 7.6)", "X3": "privacy/consent/provenance defect incl. opt-out", "X4": "missed label leak on a non-register unit", "X5": "missed cross-cluster near-duplicate (both units removed)", "rules": "prediction-blind; never from adjudicated locked gold; M0 line unchanged; before data freeze, except X3 which applies identically to all arms"},
+    "restart": "only way to use different canonical text: at most one; the irrevocable notice (reason, affected unit IDs, superseded M0 hash, operator authorization) must be posted on Issue #3 strictly before the original R* release; restart M0 differs only in listed units (new unit IDs for replacements); new salt from a new R* >= restart M0 commitment + 24 h; replacement screening before the restart M0 commitment (section 5.1 bounds, section 6.1-6.3 construction and self-harm rules, section 8.4 label-leak scan with register handling, section 8.1 exact/near-duplicate checks against the entire unchanged active+reserve corpus and other replacements); a replacement that would require changing any unlisted unit or cluster is not permitted (listed unit removed, replaced by passing text, or halt); QC overlap rerun; superseded M0 preserved and disclosed",
+    "after_salt_round": "no in-protocol re-randomization: a defect means removal (X1-X5) or halt (S13); new canonical text requires a new protocol version with a new locked test set from clusters not in this M0",
+    "salt": "SHA-256('e001-salt-v1:' + M0_hash_hex + ':' + randomness_hex(R*)); R* = first round of drand default chain 8990e7a9aaed2ffed73dbd7092123d6f289930540d7651336225dc172e51b2ce (genesis 1595431050, period 30 s) released >= M0-commitment timestamp + 24 h; no re-salting",
+    "hash_rule": "b = int(SHA-256(salt + ':' + cluster_id)[0:8 hex], 16) mod 100",
+    "main": "b<55 train; 55<=b<70 dev; b>=70 test",
+    "BND_ADV_SR": "b<40 dev-visible; b>=40 locked",
+    "SHF": "all locked",
+    "reserve_activation": ">= 20% of active main clusters prepared before M0 with fixed ranks; activated only for G4, in ascending rank, complete batches of 10, each into its own hashed bucket; before data freeze; excluded from RS"
+  },
+  "quarantine_rules": {
+    "integrity_register": "A13 units and custodian-registered ADV units requiring label/status tokens: exempt from label-leak rewrite; ADV pool only; dev-visible ones usable only for capped evaluation and inspection; never training data, few-shot examples or cue/rule/prompt sources; 8-token artifact scan at P3 and U1; hit -> invalidated",
+    "explicit_self_harm_pool_defect": "generated-unit review rejects explicit self-harm; custodian screens non-SR units before M0; any non-SR unit either annotator marks EXPLICIT_SELF_HARM is quarantined from all pools and metrics before data freeze, symmetrically across splits, from raw annotation only"
+  },
+  "required_arms": {
+    "B0": {"class": "INFRASTRUCTURE (B0 role)", "candidates": ["tfidf_multinomial_logreg", "nbsvm"], "selection": "rule J with dev Q as criterion (joint Q/S/R envelope; both candidates designated if the envelope is empty)"},
+    "C_A": {"class": "CONTROL_A", "candidates": [
+      {"id": "Qwen/Qwen3.5-9B", "revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a", "license": "apache-2.0"},
+      {"id": "google/gemma-4-12B-it", "revision": "707f0a3b8a3c7ad586ed01e27eafbad8a27dd0f7", "license": "apache-2.0"},
+      {"id": "microsoft/Phi-4-mini-instruct", "revision": "cfbefacb99257ffa30c83adab238a50856ac3083", "license": "mit"}],
+      "fallback": {"id": "mistralai/Mistral-7B-Instruct-v0.3", "revision": "c170c708c41dac9275d15a8fff4eca08d52bab71", "license": "apache-2.0"},
+      "quantization": "4-bit (MLX-LM or llama.cpp), artifact hash recorded", "decoding": "greedy, single pass, reasoning modes off, no retries", "few_shot_source": "main-pool train only, excluding quarantine-register units", "selection": "rule J over all full-dev-evaluated model x prompt configurations (single designation, or a designated set if the joint envelope is empty)"},
+    "C_B": {"class": "CONTROL_B", "base": {"id": "microsoft/deberta-v3-base", "revision": "8ccc9b6f36199bec6961081d44eb72fb3f7353f3", "license": "mit"},
+      "fallback": {"id": "answerdotai/ModernBERT-base", "revision": "8949b909ec900327062f0ebf497f51aef5e6f0c8", "license": "apache-2.0"},
+      "early_stopping": "inner-validation fold, never dev",
+      "seeds": 3, "selection": "rule J over all full-dev-evaluated (hyperparameters, seed) configurations; seeds 2-3 trained at the leading (primary) hyperparameters; median-dev-Q seed rule removed"},
+    "T": {"class": "MASI_TARGET", "ladder": ["T0 rules", "T1 sparse clause scorers", "T2 + frozen all-MiniLM-L6-v2@1110a243fdf4706b3f48f1d95db1a4f5529b4d41 (apache-2.0)"], "max_rung": "T2",
+      "escalation": "dev only, after B0/C_A/C_B frozen: (a) some checked metric M (Q; S if G5 passed) is short: rung-best M < tau_M = max over designated control configurations (K) of M_dev - delta_M; AND (b) for every short M, closure (M with only NO_CANDIDATE_MENTION errors corrected >= tau_M) and dominance (that gain >= gain from correcting all NO_OUTPUT, NO_GOLD_SPAN and MENTION_PRESENT errors)",
+      "configuration_selection": "rule J within the designated rung"}
+  },
+  "optional_arms": {
+    "F1": "descriptive only; operator activation; written provider-terms check permits publication; not generator family; <= USD 150",
+    "S_H2A": "estimation only; LoRA of the base model of C_A's primary designation on main-pool train; operator activation before implementation"
+  },
+  "selection_rule_J": {
+    "applies_to": ["B0 (criterion dev Q)", "C_A", "C_B", "T within designated rung", "S_H2A"],
+    "candidates": "full-dev-evaluated configurations passing sanity gates (a)-(d)",
+    "anchors": "independent per-metric maxima Q^max, R^max and, if G5 passed, S^max over the arm's configurations",
+    "joint_envelope": "Q >= Q^max - delta_Q; R >= R^max - delta_Q; S >= S^max - delta_S if G5 passed",
+    "designation_nonempty": "highest criterion in the joint envelope (EVCP for C_A, C_B, T, S-H2A; dev Q for B0); tie: Q, S, R, earliest ledger; undefined EVCP ranks last",
+    "designation_empty": "controls: designated set {best criterion within each single-metric envelope M >= M^max - delta_M}, duplicates merged, each a comparator facing every component; T and S-H2A: single designation phi*_Q",
+    "primary": "single designation or phi*_Q of a set; runs all locked pools; C_A primary supplies S-H2A base and F1 prompt; other set members run the locked main test only; all within the arm's locked-inference cap, else S7",
+    "failure": "designated configuration fails gate (e) -> removed, J re-applied; empty -> fallback model or halt",
+    "margins": "no selection-dependent margins; NI margins are delta_Q / delta_S for every comparator",
+    "arithmetic": "exact rational"
+  },
+  "competence_sanity_gates": {
+    "all_arms": ["format valid >= 98% of dev", "dev Q >= R0 dev Q", "reproducible dev-mini predictions (deterministic arms identical; MPS-trained heads >= 99% identical statuses)"],
+    "learned_arms_and_rungs": ["no NaN/Inf in any loss, gradient or parameter (numerical divergence)", "convex solvers converge within declared iteration limit; gradient training completes its declared schedule or stops by the inner-validation rule", "inner-validation-fold Q >= R0 Q on the same fold"],
+    "diagnostic_only": "per-epoch training and inner-validation loss curves reported; no loss-based pass/fail, halt or fallback",
+    "removed_from_v1_0": "train-fold F1 >= dev F1 (not a valid competence invariant)",
+    "removed_from_v1_1": "final-epoch loss <= 0.5 x first-epoch loss (not a valid competence invariant)"
+  },
+  "deterministic_subsets": {
+    "dev_mini": "dev clusters in ascending SHA-256('devmini:'+cluster_id) until >= 100 units",
+    "inner_validation_fold": "train clusters in ascending SHA-256('innerval:'+cluster_id) until >= 10% of train units"
+  },
+  "generator": {"id": "allenai/Olmo-3-7B-Instruct", "revision": "6e5971d9eba42665f5bd5a0fcf047f299ce1dccc", "license": "apache-2.0", "status": "[BIND] reverify at P0"},
+  "allowed_development_data": "development material: train + dev + dev-visible portions of BND/ADV/SR (texts, gold, spans); never the QC pool or its key; fitting of learned parameters: main-pool train only; per arm <=60 dev-mini and <=12 full-dev evaluations; unlimited CV and inner-fold use inside train",
+  "locked_artifacts": ["main test texts and gold", "60% of BND/ADV/SR", "all SHF", "locked mapping of M0", "locked-pool agreement", "all locked-set metrics"],
+  "unlock_sequence": ["P3 pre-unlock independent check", "U1 locked inputs only after artifact hashes committed", "U2 gold, locked agreement and locked M0 mapping only after raw predictions committed"],
+  "resource_ceilings": {
+    "hardware": "Mac mini M4, 16 GB unified memory, local (except optional F1)",
+    "peak_memory_gib": 13,
+    "model_artifact_storage_gb": 40,
+    "training_wall_clock_hours": {"B0": 2, "T_all_rungs": 6, "C_B": 24, "S_H2A": 24},
+    "locked_inference_wall_clock_hours_per_arm": 24,
+    "retries": 0,
+    "external_api_usd": {"default": 0, "F1": 150},
+    "energy": "not measured; no energy claims permitted"
+  },
+  "adversarial_integrity_cases": "included: 14 families A1-A14, >=15 units each; A13 on the integrity quarantine register",
+  "stop_conditions": ["S1 >2 dims fail G1 on RS", "S2 G2 fails on RS", "S3 privacy/provenance", "S4 G4 unmet after reserve exhausted", "S5 contamination or quarantine-register leak", "S6 competent control infeasible", "S7 resource fit", "S8 complexity beyond T2", "S9 evidence contract unsupported", "S10 cannot separate H2B from prompting/adaptation", "S11 evaluator defect", "S12 authorization/terms withdrawn", "S13 M0/salt violation, post-M0 text-hash mismatch, restart notice not strictly before the original R* release, restart M0 changing an unlisted unit/cluster or containing an unscreened replacement, or a defect removal cannot handle / new text needed after the salt round"],
+  "publication_restrictions": "no private/sensitive data; ADCP text not imported (no ADCP license); F1 results unpublished unless terms permit; frontier generation prohibited unless terms permit training use of outputs; corpus release license [BIND before release]",
+  "blocking_items_before_implementation": ["B1 custodian", "B2 writers/annotators/adjudicator/QC team + budget (incl. reserve and QC pool)", "B3 generator pin/terms reverification", "B4 F1 and S-H2A activation decisions", "B5 independent auditor for P3/P4", "independent verification acceptance of this protocol (v1.4, A1 restart-replacement screening)", "separate operator execution authorization"]
+}
