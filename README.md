@@ -134,6 +134,8 @@ The active implementation plan is [`docs/IMPLEMENTATION_SPRINT_001.md`](docs/IMP
 
 This repository is public because the long-term goal is collaborative research, not a closed product roadmap.
 
+Before investing substantial time, expertise, code, data, reputation, or other resources, read [`PARTICIPATION.md`](PARTICIPATION.md). It explains what participation in this public research program means, what it does **not** confer, how contribution decisions are recorded, how licensing/reuse works at a practical level, and which governance questions remain intentionally unsettled.
+
 Useful contributions include:
 
 - reproductions;
@@ -149,12 +151,13 @@ Useful contributions include:
 - evidence that a module should be split, merged, replaced, or removed;
 - evidence that the MASI thesis itself should be narrowed or rejected.
 
-Please read [`CONTRIBUTING.md`](CONTRIBUTING.md) before proposing implementation work.
+Please read both [`PARTICIPATION.md`](PARTICIPATION.md) and [`CONTRIBUTING.md`](CONTRIBUTING.md) before proposing substantial implementation work.
 
 ## Repository map
 
 - [`STATUS.md`](STATUS.md) — current research state and next action
 - [`AGENTS.md`](AGENTS.md) — operating and audit rules for AI-assisted work
+- [`PARTICIPATION.md`](PARTICIPATION.md) — what participation means, rights/expectations, and the boundary between contribution and governance
 - [`CONTRIBUTING.md`](CONTRIBUTING.md) — contribution and evidence standards
 - [`docs/CONSTRUCTION_DOCTRINE.md`](docs/CONSTRUCTION_DOCTRINE.md) — non-negotiable specialization-by-construction doctrine
 - [`docs/RESEARCH_THESIS.md`](docs/RESEARCH_THESIS.md) — hypotheses and falsification criteria
@@ -177,6 +180,8 @@ This repository does not relicense external material:
 - previously published MASI defensive disclosures retain the terms attached to those publications;
 - third-party models, datasets, libraries, artifacts, and services retain their own licenses and terms;
 - contributed material must be compatible with this repository's licensing and contribution requirements.
+
+See [`PARTICIPATION.md`](PARTICIPATION.md) for the practical participation expectations around contribution rights, attribution, reuse, commercial relationships, and exit/fork rights.
 
 ## Research posture
 
