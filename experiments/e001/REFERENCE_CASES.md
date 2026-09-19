@@ -1,6 +1,13 @@
 # MASI-E001 — Independent reference cases (E1)
 
-**Status:** frozen with `e001-protocol-v1.2`, pending an independent re-audit.
+**Status:** frozen with `e001-protocol-v1.3`, pending final independent verification of A1 and A6.
+
+**Changes in v1.3 (re-audit findings A1 and A6):**
+
+- **R4:** the Δ-reduced margins are gone, so every NI margin is δ again. Case N is replaced by a designated-set case.
+- **R5d:** restart-window timing cases added (d7 and d8 rewritten).
+- **R8:** the thresholds are described as designated control configurations. All values are unchanged.
+- **R13:** rewritten. Independent per-metric anchors, the re-audit's counterexample, an empty envelope that yields a designated set, and B0 under rule J.
 
 **Changes in v1.2 (findings A1–A6):**
 
@@ -169,12 +176,12 @@ Invalid spans are dropped first. A span is invalid if `start < 0`, `end > len`, 
 
 ## R4 — H2B classification (intersection–union test)
 
-**Rules** (δ_Q = 0.030, δ_S = 0.050, δ_P = 0.10). Per-control NI margins are m^M_k = δ_M − Δ^M_k (§R13); for B0, Δ = 0.
+**Rules** (δ_Q = 0.030, δ_S = 0.050, δ_P = 0.10). Each designated control configuration is a separate comparator (§R13).
 
 | Component | PASS | FAIL | Otherwise |
 | --- | --- | --- | --- |
-| Q-NI, R-NI | lower > −m | upper < −m | UNDECIDED |
-| S-NI | lower > −m^S | upper < −m^S | UNDECIDED |
+| Q-NI, R-NI | lower > −δ_Q | upper < −δ_Q | UNDECIDED |
+| S-NI | lower > −δ_S | upper < −δ_S | UNDECIDED |
 | P-SUP | **lower > δ_P** | upper < δ_P | UNDECIDED |
 
 **Overall:**
@@ -183,7 +190,7 @@ Invalid spans are dropped first. A span is invalid if `start < 0`, `end > len`, 
 - `not_supported` = any FAIL;
 - `inconclusive` = no FAIL, and ≥ 1 UNDECIDED or UNDEFINED.
 
-**Base case A.** Rule J designated every control's quality anchor, so every Δ = 0 and every m equals δ. Every component PASSes, so the outcome is **`supported`**.
+**Base case A.** Rule J designated one configuration per control. Every component PASSes, so the outcome is **`supported`**.
 
 | Component | Comparator | Interval / estimate |
 | --- | --- | --- |
@@ -215,7 +222,7 @@ Invalid spans are dropped first. A span is invalid if `start < 0`, `end > len`, 
 | **K** | P-SUP C_A 0.16 [0.10, 0.22]; the lower bound equals δ_P, and the inequality is strict | UNDECIDED | `inconclusive` |
 | **L** | S-NI C_A [−0.080, −0.055]: state confusion | FAIL (upper < −0.05) | `not_supported` |
 | **M** | Case A with G5 failed before implementation: S-NI is removed, and the remaining components PASS | — | `supported`, using the **narrowed** H2B wording |
-| **N** | Q-NI C_A interval unchanged at [−0.020, 0.030], but rule J designated a C_A configuration with Δ^Q = 0.020 (§R13a), so m^Q = 0.010 | UNDECIDED (−0.020 is not > −0.010) | `inconclusive` |
+| **N** | C_A has an empty joint envelope, so rule J designates the set {ψ3, ψ4} (§R13d). Against ψ3, every component is as in case A. Against ψ4: Q-NI [−0.020, 0.030], R-NI [−0.015, 0.035], P-SUP 0.15 [0.11, 0.19], but S-NI [−0.070, −0.010] | S-NI ψ4 UNDECIDED; everything else PASS | `inconclusive`. Designating ψ3 alone would have given `supported`: the S-strong configuration would have disappeared |
 | **O** | T makes no E claim on the locked main test | P-SUP FAIL against C_A and C_B, with no bootstrap (§R12e) | `not_supported` |
 | **P** | C_B makes no E claim on the locked main test; everything else as case A | P-SUP C_B UNDEFINED (§R12e) | `inconclusive`; the control defect is reported |
 | **V** | Case P plus case G's R-NI B0 FAIL | UNDEFINED and FAIL | `not_supported` (a FAIL decides) |
@@ -292,7 +299,20 @@ The committed M0 is the one in §R5b (hash `5324a7c7…fafd`). Hashes are SHA-25
 | d5 | replacement text `Work is fine, mostly.` is added to c0001 as u0004, without a restart | a post-M0 addition outside reserve activation | **S13** |
 | d6 | a unit committed as NFC `I skipped lunch at the café.` (28 characters, 29 bytes, `4f866ee2b56198cb3a95c7cc5af3d454261007bd765347ee141761f648469a6b`) is delivered in NFD (29 characters, 30 bytes) | `dfb0adb59cf1828cd4a92ad79dde56771375102283b9bd8df08ef42d85005103` ≠ M0 entry | **S13**; renormalizing is not a defense |
 
-**d7 — the single restart.** Before the P1 exit, with the operator's authorization recorded on Issue #3, u0002 is replaced by a **new** unit u0004, `Work is fine, mostly.` (`98292a0d973721657c4ab6e7d713fedeb261191334ecad4d809666c75dfeddaa`).
+**d7 — the restart window.** The original M0 is committed at 2026-10-01T00:00:00Z, so the original R\* is round 6515606, released at 2026-10-02T00:00:00Z (§R5c).
+
+| Restart notice (Issue #3 server time) | Strictly before 2026-10-02T00:00:00Z? | Result |
+| --- | --- | --- |
+| 2026-10-01T18:00:00Z | yes | restart permitted |
+| 2026-10-01T23:59:59Z | yes | restart permitted |
+| 2026-10-02T00:00:00Z | no (equal) | no restart: removal (X1–X5) or halt (S13) |
+| any later time, for example after annotation, RS gates or G4 | no | no restart: removal or halt |
+
+**d8 — a permitted restart.**
+
+- **Notice:** posted at 2026-10-01T18:00:00Z, listing u0002, with the operator's authorization.
+- **Replacement:** u0002 is replaced by a **new** unit u0004, `Work is fine, mostly.` (`98292a0d973721657c4ab6e7d713fedeb261191334ecad4d809666c75dfeddaa`).
+- **New round:** the restart M0 is committed at 2026-10-01T20:00:00Z. The new R\* is round 6518006, released at 2026-10-02T20:00:00Z, exactly the target. Round 6515606 is never used to derive a salt.
 
 Restart M0 bytes (252 bytes, same format):
 
@@ -303,16 +323,17 @@ c0002\tmain\treserve:1\tu0003:fcd695727597a17a40bcb2f2477c68358cbc5466c8b18ddca3
 
 - Restart M0 hash: `ea40007438d7aaaa8cef8b02e6ac7ffd192b3032baf347216a9dbcd3b060d643`.
 - The new round's reference randomness is 64 × `1` (**not** a real drand value).
-- New salt = SHA-256(`"e001-salt-v1:" + restart_M0_hash + ":" + randomness`) = `728f10636274d658d6ecfdf5f82c505cec316fa217cd57458a50e7ce7202f9cd`.
+- Salt = SHA-256(`"e001-salt-v1:" + restart_M0_hash + ":" + randomness`) = `728f10636274d658d6ecfdf5f82c505cec316fa217cd57458a50e7ce7202f9cd`.
 
-| cluster_id | First 8 hex | int | b | Bucket (main) | Under the superseded salt |
-| --- | --- | --- | --- | --- | --- |
-| c0001 | dced2f5a | 3706531674 | 74 | test | 79, test |
-| c0002 | a4173089 | 2752983177 | 77 | test, if activated | 4, train |
+| cluster_id | First 8 hex | int | b | Bucket (main) |
+| --- | --- | --- | --- | --- |
+| c0001 | dced2f5a | 3706531674 | 74 | test |
+| c0002 | a4173089 | 2752983177 | 77 | test, if activated |
 
-A restart re-draws the split. That is why exactly one restart is allowed, only before the P1 exit, and always disclosed.
+- The restart M0 may differ from the superseded M0 only in u0002, the unit the notice listed. Any other difference is S13.
+- This is the only split this experiment ever draws. No salt was derived for the superseded M0.
 
-**d8.** A second need for new text, or any such need after the P1 exit → **halted** (S13).
+**d9 — after the salt round.** A second restart, a notice after the original R\* release, or a need for new text after the salt round → **no re-randomization**. The unit is removed (X1–X5), or the experiment halts (S13). New text needs a new protocol version with a genuinely new locked test set.
 
 ## R6 — Margins δ_Q and δ_S
 
@@ -366,8 +387,8 @@ A restart re-draws the split. That is why exactly one restart is allowed, only b
 **Settings (all cases):**
 
 - δ_Q = 0.04 and δ_S = 0.05.
-- Controls' quality anchors, dev Q: B0 0.64, C_A 0.66, C_B 0.70. So τ_Q = 0.70 − 0.04 = **0.66**.
-- The same anchors' dev S: B0 0.62, C_A 0.66, C_B 0.70. So τ_S = 0.70 − 0.05 = **0.65**.
+- Designated control configurations (one per control), dev Q: B0 0.64, C_A 0.66, C_B 0.70. So τ_Q = 0.70 − 0.04 = **0.66**.
+- The same configurations' dev S: B0 0.62, C_A 0.66, C_B 0.70. So τ_S = 0.70 − 0.05 = **0.65**.
 - Inputs are given per metric. A short metric gets its full error breakdown on φ_M(r); a metric that is not short gets only its best value. The cases test the rule's arithmetic.
 - **Category abbreviations:** NCM = `NO_CANDIDATE_MENTION`, MP = `MENTION_PRESENT`, NGS = `NO_GOLD_SPAN`, NO = `NO_OUTPUT`.
 - **Correcting** an error pair sets its prediction to gold: a false negative becomes a true positive, and a false positive becomes a true negative.
@@ -585,6 +606,13 @@ m = ⌊0.025·B⌋. The lower bound is the (m+1)-th smallest value of v⁻, and 
 
 **Settings:** δ_Q = 0.030 and δ_S = 0.050, and G5 passed. Every configuration listed passes sanity gates (a)–(d). The dev values are exact.
 
+**Rule:**
+
+1. **Per-metric anchors:** Q^max, S^max and R^max, each the maximum over all configurations. They may come from different configurations.
+2. **Joint envelope:** Q ≥ Q^max − 0.030, S ≥ S^max − 0.050 and R ≥ R^max − 0.030.
+3. **Non-empty envelope:** designate its highest-ranked configuration. The criterion is EVCP for C_A, C_B and T, and dev Q for B0.
+4. **Empty envelope:** a control gets the designated set {φ\*_Q, φ\*_S, φ\*_R}, one per single-metric envelope. T and S-H2A get φ\*_Q.
+
 ### R13a — C_A (model × prompt)
 
 | Config | Ledger # | Model / prompt | dev Q | dev S | dev R | dev EVCP |
@@ -594,14 +622,24 @@ m = ⌊0.025·B⌋. The lower bound is the (m+1)-th smallest value of v⁻, and 
 | φ3 | 5 | Phi-4-mini / P2 | 0.650 | 0.560 | 0.640 | 0.900 |
 | φ4 | 6 | Qwen3.5-9B / P2 | 0.715 | 0.520 | 0.710 | 0.820 |
 
-1. **Anchor:** φ1, the highest dev Q.
-2. **Envelope:** Q ≥ 0.690, R ≥ 0.670 and S ≥ 0.550, which gives {φ1, φ2}. φ3 is out on Q (0.650), and φ4 is out on S (0.520).
+1. **Anchors:** Q^max = 0.720 (φ1), S^max = 0.600 (φ1) and R^max = 0.710 (φ4).
+2. **Envelope:** Q ≥ 0.690, S ≥ 0.550 and R ≥ 0.680, which gives {φ1, φ2}. φ3 is out on Q (0.650), and φ4 is out on S (0.520).
 3. **Designated:** φ2, with EVCP 0.800 against φ1's 0.550.
-4. **Give-up:** Δ^Q = 0.720 − 0.700 = 0.020, Δ^S = 0.600 − 0.590 = 0.010 and Δ^R = 0.700 − 0.690 = 0.010. So the NI margins against C_A are m^Q = 0.010, m^S = 0.040 and m^R = 0.020.
 
-**Contrast.** Selecting by dev Q alone would designate φ1, whose EVCP is 0.250 lower. A T with dev EVCP 0.70 would clear δ_P against φ1 (by 0.15) but not against φ2 (by −0.10). Rule J blocks that manufactured P-SUP, and the reduced margins stop the choice of φ2 from easing non-inferiority (§R4, case N).
+**Contrast.** Selecting by dev Q alone would designate φ1, whose EVCP is 0.250 lower. A T with dev EVCP 0.70 would clear δ_P against φ1 (by 0.15) but not against φ2 (by −0.10). Rule J blocks that manufactured P-SUP.
 
-### R13b — C_B (hyperparameters × seed)
+### R13b — The re-audit's counterexample (A6)
+
+| Config | dev Q | dev S | dev R | dev EVCP |
+| --- | --- | --- | --- | --- |
+| φ1 | 0.800 | 0.500 | 0.800 | 0.600 |
+| φ2 | 0.790 | 0.800 | 0.800 | 0.800 |
+| φ3 | 0.790 | 0.510 | 0.800 | 0.900 |
+
+- **v1.2 rule (anchored on the Q-best configuration, φ1):** the S bound is 0.500 − 0.050 = 0.450, so all three enter. φ3 is designated, with S = 0.510, while φ2's S = 0.800 disappears. This is a **defect**.
+- **v1.3 rule (independent anchors):** Q^max = 0.800, S^max = 0.800 and R^max = 0.800. The envelope (Q ≥ 0.770, S ≥ 0.750, R ≥ 0.770) is {φ2}, so **φ2** is designated.
+
+### R13c — C_B (hyperparameters × seed)
 
 | Config | Ledger # | (hyperparameters, seed) | dev Q | dev S | dev R | dev EVCP |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -611,17 +649,51 @@ m = ⌊0.025·B⌋. The lower bound is the (m+1)-th smallest value of v⁻, and 
 | κ4 | 4 | (h3, 2) | 0.705 | 0.600 | 0.695 | 0.740 |
 | κ5 | 5 | (h3, 3) | 0.675 | 0.570 | 0.665 | 0.790 |
 
-1. **First application, over κ1–κ3:** the anchor is κ2. The envelope (Q ≥ 0.680, R ≥ 0.670, S ≥ 0.560) is {κ1, κ2, κ3}. κ3 has the highest EVCP, so the leading hyperparameters are h3, and seeds 2 and 3 of h3 are trained (κ4, κ5).
-2. **Second application, over κ1–κ5:** the anchor is still κ2, and the envelope is the same. κ5 is out on Q (0.675) and R (0.665), which leaves {κ1, κ2, κ3, κ4}. The designated configuration is **κ3** (EVCP 0.760).
-3. **Give-up:** Δ^Q = 0.020, Δ^S = 0.030 and Δ^R = 0.020. So m^Q = 0.010, m^S = 0.020 and m^R = 0.010.
+1. **First application, over κ1–κ3:** the anchors are Q^max = 0.710, S^max = 0.610 and R^max = 0.700, all from κ2. The envelope (Q ≥ 0.680, S ≥ 0.560, R ≥ 0.670) is {κ1, κ2, κ3}. κ3 has the highest EVCP, so the leading hyperparameters are h3, and seeds 2 and 3 of h3 are trained (κ4, κ5).
+2. **Second application, over κ1–κ5:** the anchors are unchanged, so the envelope is the same. κ5 is out on Q (0.675) and R (0.665), which leaves {κ1, κ2, κ3, κ4}. The designated configuration is **κ3** (EVCP 0.760).
 
-### R13c — Tie-breaks and edge cases
+### R13d — An empty envelope gives a designated set (C_A)
+
+| Config | Ledger # | dev Q | dev S | dev R | dev EVCP |
+| --- | --- | --- | --- | --- | --- |
+| ψ1 | 1 | 0.760 | 0.560 | 0.760 | 0.700 |
+| ψ2 | 2 | 0.700 | 0.680 | 0.700 | 0.750 |
+| ψ3 | 3 | 0.750 | 0.600 | 0.755 | 0.780 |
+| ψ4 | 4 | 0.705 | 0.670 | 0.690 | 0.820 |
+
+1. **Anchors:** Q^max = 0.760, S^max = 0.680 and R^max = 0.760.
+2. **Joint envelope** (Q ≥ 0.730, S ≥ 0.630, R ≥ 0.730): **empty**. ψ1 and ψ3 fail on S; ψ2 and ψ4 fail on Q.
+3. **Single-metric envelopes:**
+   - E_Q = {ψ1, ψ3}, so φ\*_Q = ψ3 (EVCP 0.780);
+   - E_S = {ψ2, ψ4}, so φ\*_S = ψ4 (EVCP 0.820);
+   - E_R = {ψ1, ψ3}, so φ\*_R = ψ3.
+4. **Designated set:** {ψ3, ψ4}. Both are comparators in K and G and face every component (§R4, case N).
+5. **Primary:** ψ3. It runs every locked pool; ψ4 runs the locked main test only.
+
+### R13e — B0 under rule J (criterion: dev Q)
+
+| Case | TF-IDF logistic regression (Q / S / R) | NB-SVM (Q / S / R) | Envelope | Designated B0 |
+| --- | --- | --- | --- | --- |
+| b1 | 0.640 / 0.400 / 0.620 | 0.630 / 0.550 / 0.640 | Q ≥ 0.610, S ≥ 0.500, R ≥ 0.610 → {NB-SVM} | **NB-SVM**. Selecting by Q alone would pick the S-weak TF-IDF model. |
+| b2 | 0.640 / 0.540 / 0.620 | 0.630 / 0.550 / 0.640 | both | **TF-IDF logistic regression** (higher Q) |
+| b3 | 0.640 / 0.400 / 0.640 | 0.580 / 0.550 / 0.580 | empty | **both**: the set {TF-IDF logistic regression (φ\*_Q, φ\*_R), NB-SVM (φ\*_S)} |
+
+B0's EVCP plays no role in any case.
+
+### R13f — T with an empty envelope
+
+T's configurations are θ1 (Q 0.700, S 0.500, R 0.700, EVCP 0.850) and θ2 (Q 0.600, S 0.620, R 0.600, EVCP 0.900).
+
+- The anchors are 0.700 / 0.620 / 0.700. The joint envelope is empty: θ1 fails on S (0.500 < 0.570), and θ2 fails on Q.
+- T gets a **single** designation, φ\*_Q = θ1. T's choice can only affect T, so no set is formed.
+
+### R13g — Tie-breaks and edge cases
 
 | Case | Situation | Result |
 | --- | --- | --- |
 | t1 | Two envelope configurations have EVCP 160/200 and 4/5 (exactly equal), with dev Q 0.705 and 0.700 | the one with Q 0.705 |
 | t2 | Equal EVCP, Q, S and R | the earlier ledger entry |
 | t3 | A configuration makes zero dev E claims | its EVCP is undefined, and it ranks below every defined value |
-| t4 | The designated configuration fails reproducibility (gate e) | it is removed from Φ and J is re-applied |
+| t4 | A designated configuration fails reproducibility (gate e) | it is removed from Φ and J is re-applied from step 1 |
 | t5 | Φ is empty after removals | §11 item 7: the fallback model, else halt |
-| t6 | B0 candidates: TF-IDF logistic regression, Q 0.640 and EVCP 0.900; NB-SVM, Q 0.630 and EVCP 0.950 | TF-IDF logistic regression. B0 is selected on quality only and rule J does not apply, so Δ = 0 |
+| t6 | A designated set's extra locked main-test runs cannot fit the arm's §15.1 cap | S7 (resource halt); no member is dropped to fit |

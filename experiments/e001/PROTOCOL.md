@@ -1,12 +1,13 @@
-# MASI-E001 — Preregistered protocol v1.2
+# MASI-E001 — Preregistered protocol v1.3
 
-- **Protocol ID:** `e001-protocol-v1.2`
-- **Status:** **repaired freeze submitted for an independent re-audit of A1–A6. Not accepted. Not authorized for execution.** No data, labels, model runs or results exist for this protocol.
+- **Protocol ID:** `e001-protocol-v1.3`
+- **Status:** **repaired freeze submitted for final independent verification of A1 and A6. Not accepted. Not authorized for execution.** No data, labels, model runs or results exist for this protocol.
 - **Revision:**
   - v1.0 was frozen at commit `d1d9bfc40c40e607f0a476bb620bb665c3b8830a`. Its [independent audit](https://github.com/JosephJMWalker-MBA/masi-research/pull/17#issuecomment-5735626914) returned `REPAIR_REQUIRED` (R1–R7).
   - v1.1 was frozen at commit `b13daa94a608ef075474f6ac35cdd59650478423`. It repaired R1–R7 and closed the non-blocking EVCP-citation observation (§27).
-  - The independent GPT-5.6 Sol audit of v1.1, relayed by the operator on 2026-09-19, returned six blocking findings, A1–A6. v1.2 repairs exactly those findings and their direct consequences (§28).
-  - The v1.0 and v1.1 texts (git history) and the v1.0 audit comment (on the PR) are preserved unchanged.
+  - The independent GPT-5.6 Sol audit of v1.1, relayed by the operator on 2026-09-19, returned six blocking findings, A1–A6. v1.2 repaired them (§28).
+  - v1.2 was frozen at commit `00783025e65ead1acc6da5b2183040fc576411ed`. Its independent re-audit returned `REPAIR_REQUIRED`: A2–A5 pass; A1 and A6 remain blocking. v1.3 repairs only A1 and A6 and their direct consequences (§29).
+  - The v1.0, v1.1 and v1.2 texts (git history) and the v1.0 audit comment (on the PR) are preserved unchanged.
 - **Issue:** [#3](https://github.com/JosephJMWalker-MBA/masi-research/issues/3), under the operator authorization on Issue #3 and PR #16.
 - **Governing main:** `904bd9bc1c482c5b552b4a2e7075d685d73a1748`
 - **Substrate inspected:** `JosephJMWalker-MBA/Accumulated-Distress-Care-Protocol @ eb7ac37f79511c90e25ff613ee78e9123d653d60` (refetched 2026-09-18)
@@ -463,7 +464,7 @@ QC-team members may also write main, BND, ADV or SR units. The §3 ADCP leakage 
 
 **No overlap with any experimental pool:**
 
-- After M0 is frozen, the custodian runs the §8.1 near-duplicate check (exact normalized duplicates, and character 5-gram Jaccard ≥ 0.6) between every QC unit and every M0 unit, across all pools, active and reserve.
+- After M0 is frozen, the custodian runs the §8.1 near-duplicate check (exact normalized duplicates, and character 5-gram Jaccard ≥ 0.6) between every QC unit and every M0 unit, across all pools, active and reserve. It is rerun against any restart M0's new units (§8.1).
 - Any hit drops the QC unit. M0 is never changed for the QC pool.
 
 **Freeze, version and hash:**
@@ -523,7 +524,7 @@ cluster_id <TAB> pool <TAB> role(active | reserve:<rank>) <TAB> member unit_id:s
 **Commitment.** The custodian posts `SHA-256(M0 bytes)` as a comment on Issue #3. This is the **M0 commitment**, and its server timestamp is authoritative.
 
 - The first such comment is binding.
-- A later, different M0 is a protocol violation (S13), except for the single restart M0 permitted below.
+- A later, different M0 is a protocol violation (S13), except for the single pre-salt restart M0 permitted below.
 
 **After M0: canonical text is immutable [FROZEN].**
 
@@ -547,16 +548,28 @@ cluster_id <TAB> pool <TAB> role(active | reserve:<rank>) <TAB> member unit_id:s
 - Every removal is prediction-blind. None uses adjudicated locked gold.
 - A removed unit keeps its M0 line unchanged. It is excluded from every pool, RS and every metric. Its cluster keeps its ID and bucket.
 - Removals happen before data freeze. After data freeze only X3 is permitted; it applies identically to every arm, and the count per split is reported.
-- Removals may lower G4 counts. The only remedy is reserve activation (§8.2); otherwise S4.
+- Removals may lower G4 counts. The only remedy is reserve activation (§8.2); otherwise S4. Removal never triggers a new draw.
 
-**Replacement text requires a restart, never a repair [FROZEN].** A defect whose remedy needs *different* canonical text cannot be fixed inside the committed experiment. The only path is **one restart** of the data freeze:
+**Replacement text: one restart, only before any salt can exist [FROZEN].** A defect whose remedy needs *different* canonical text cannot be fixed inside the committed experiment. The randomization is single-shot: once a split can be known, it is never redrawn.
 
-1. **Timing.** It is permitted only before train/dev are released to implementers (the P1 exit, §21).
-2. **Authorization.** The custodian posts a restart notice on Issue #3 with the reason, the affected unit IDs and the superseded M0 hash. The operator's written authorization is recorded before the new M0 is committed.
-3. **New identity.** Each replacement unit gets a **new** unit ID. A unit ID never maps to two different hashes. Unchanged units keep their IDs and bytes.
-4. **New M0, then a new salt.** The restart M0 is committed on Issue #3, citing the superseded M0 hash and the authorization. A new salt is then derived from the new M0 hash and a new drand round, under §8.2 in full. No split under the superseded M0 is reused.
-5. **Disclosure.** The superseded M0, its salt, its split and all logs are preserved. The restart is reported in the result headline.
-6. **Limit.** At most one restart. Any further need for new text, or any such need after the P1 exit, **halts** the experiment (S13). A redesign then needs a new protocol version and a new locked test set.
+**The restart window.** A restart is possible only while no salt from the committed M0 can exist.
+
+- The restart notice's Issue #3 server timestamp must be **strictly earlier** than the release time of the original R\* (§8.2).
+- The window therefore closes, irrevocably, when R\* is released. That is before any split, annotation, gate result or locked count exists, so nothing about the first assignment can inform the decision.
+
+**Restart procedure:**
+
+1. **Irrevocable notice.** The custodian posts on Issue #3 the reason, the affected unit IDs, the superseded M0 hash and the operator's written authorization. From that moment the original M0 is superseded permanently. Its salt is never derived or used, even after its round becomes public.
+2. **Scope.** The restart M0 differs from the superseded M0 only in the units the notice lists. Each listed unit is removed, or replaced by a unit with a **new** unit ID. A unit ID never maps to two different hashes. All other units keep their IDs and bytes.
+3. **New M0, then a new salt.** The restart M0 is committed on Issue #3, citing the notice. Its salt comes from a new round R\*, the first round released ≥ the restart M0 commitment + 24 h, under §8.2 in full.
+4. **QC overlap.** The §7.7 overlap check is rerun against the new units. A hit retires the QC item.
+5. **Disclosure.** The superseded M0, the notice and all logs are preserved. The restart is reported in the result headline.
+6. **Limit.** At most one restart.
+
+**After the salt round is released** (the original R\*, or the restart's R\*), there is **no in-protocol re-randomization**:
+
+- A defect is handled by a permitted removal (X1–X5). If removal cannot handle it, the experiment is **halted** (S13).
+- Different canonical text can enter only a **new protocol version with a genuinely new locked evaluation**: a new locked test set built from clusters not in this M0.
 
 **Custodian log.** Every attempted addition, activation, removal, restart and hash verification is preserved in an append-only custodian log.
 
@@ -688,7 +701,7 @@ All arms receive the same rubric, the same unit text at inference, and the same 
   - (b) NB-SVM per dimension.
 - **Spans:** the clause from the shared deterministic segmenter with the highest summed positive feature contribution for the predicted status.
 - **Safety field:** one more multinomial model of the same kind.
-- **Selection:** the candidate with the higher full-dev Q. B0 is not a P-SUP comparator, so its selection stays quality-only and rule J (§11.1) does not apply.
+- **Selection:** rule J (§11.1) with dev Q as the designation criterion. B0 is not a P-SUP comparator, so its EVCP plays no role, but its designation must be quality-competitive on Q, S and R jointly. If the two candidates trade off beyond the margins, both are designated B0 comparators.
 
 ### 10.2 C_A [FROZEN candidate list and rule; DEV selection]
 
@@ -721,7 +734,7 @@ All arms receive the same rubric, the same unit text at inference, and the same 
 - ≤ 700 output tokens; context ≤ 8k tokens;
 - a 120 s per-unit timeout produces `ERROR`, with no retries.
 
-**Selection:** model × prompt are screened on dev-mini, and finalists are evaluated on full dev. The designated configuration is chosen by **rule J** (§11.1) over all full-dev-evaluated configurations, never by dev Q alone.
+**Selection:** model × prompt are screened on dev-mini, and finalists are evaluated on full dev. The designated configuration, or designated set, is chosen by **rule J** (§11.1) over all full-dev-evaluated configurations, never by a single metric alone.
 
 ### 10.3 C_B [FROZEN recipe; DEV hyperparameters]
 
@@ -737,8 +750,8 @@ All arms receive the same rubric, the same unit text at inference, and the same 
   - every dev evaluation counts against the §11 caps.
 - **Configurations and seeds.** Each (hyperparameters, seed) pair evaluated on full dev is one configuration.
   1. Hyperparameter candidates are trained with seed 1 and evaluated on full dev.
-  2. Rule J (§11.1) picks the leading hyperparameters. Seeds 2 and 3 are then trained at those hyperparameters and evaluated on full dev.
-  3. Rule J is applied again over **all** full-dev-evaluated configurations. Its choice is the designated configuration and the confirmatory seed.
+  2. Rule J (§11.1) picks the leading hyperparameters: those of its designation, or of its primary designation if it designates a set. Seeds 2 and 3 are then trained at those hyperparameters and evaluated on full dev.
+  3. Rule J is applied again over **all** full-dev-evaluated configurations. Its result is the designated configuration (or set), and so the confirmatory seed or seeds.
   - All three seeds of the leading hyperparameters are reported on test, descriptively.
 
 ### 10.4 T — see §12
@@ -749,7 +762,7 @@ All arms receive the same rubric, the same unit text at inference, and the same 
 
 - the provider's terms permit publishing results, verified in writing before the run;
 - the provider is not the generator family;
-- the same final C_A prompt is used;
+- the same final C_A prompt is used: that of C_A's primary designation (§11.1);
 - spend ≤ USD 150.
 
 **Role:** descriptive only; outside the H2B decision.
@@ -760,7 +773,7 @@ All arms receive the same rubric, the same unit text at inference, and the same 
 
 **Design:**
 
-- LoRA/QLoRA of the selected C_A base (MLX-LM, MIT), on main-pool train, with the identical prompt and output contract;
+- LoRA/QLoRA (MLX-LM, MIT) of the base model of C_A's primary designation (§11.1), on main-pool train, with the identical prompt and output contract;
 - compared with C_A, its exact unadapted base.
 
 **Limits:** ≤ 24 h training; estimation with a 95 % CI only.
@@ -781,8 +794,7 @@ A control is **competent** only if every item below holds. The auditor verifies 
    - unlimited cross-validation and inner-fold use inside train.
 3. **Established recipe:** each arm follows the declared standard method (§10). Its hyperparameter space is declared before tuning.
 4. **Stopping rule:** development ends when the caps are reached or the developer declares the arm final.
-   - **B0:** the designated configuration is the one with the highest full-dev Q (§10.1).
-   - **C_A, C_B and T** (within its designated rung): the designated configuration is chosen by rule J (§11.1).
+   - **B0, C_A, C_B and T** (T within its designated rung): the designation is made by rule J (§11.1). B0's criterion is dev Q; the others' is dev EVCP.
    - There is no test access.
 5. **Sanity gates.** These replace v1.0's invalid "train-fold F1 ≥ dev F1" (§27, R6) and v1.1's loss-reduction ratio (§28, A2). A failure indicates a broken implementation, not ordinary variance.
    - **(a) All arms, format:** ≥ 98 % of dev outputs are valid records.
@@ -801,49 +813,59 @@ A control is **competent** only if every item below holds. The auditor verifies 
    - **C_A / C_B:** the fallback model is used.
    - A control may never be left weak. A failed competence gate that cannot be fixed means **halt**, not "T wins".
 
-**Learned complexity is justified only from T's own ladder** (§12.3), whose first rung (T0) is a full-budget, transparent, purpose-built system. The escalation threshold is the *maximum* over competent controls' quality anchors (§11.1), so a weak B0 can never lower the bar or manufacture a deficit; only a strong control can raise it.
+**Learned complexity is justified only from T's own ladder** (§12.3), whose first rung (T0) is a full-budget, transparent, purpose-built system. The escalation threshold is the *maximum* over the designated control configurations (§11.1), so a weak B0 can never lower the bar or manufacture a deficit; only a strong control can raise it.
 
 ### 11.1 Dev selection rule J for the conjunctive H2B [FROZEN]
 
-H2B requires T to be quality non-inferior **and** EVCP-superior. A control chosen for dev Q alone could therefore be a property-weak configuration while a better-grounded, equally competitive one was discarded. Rule J closes that path.
+H2B requires T to be quality non-inferior on Q, S **and** R, **and** EVCP-superior. A control chosen on one metric alone could therefore be weak on another quality metric or on EVCP, while a stronger, equally competitive configuration was discarded. Rule J closes both paths: every quality metric gets its own anchor, and among configurations competitive on all of them the best-grounded is chosen.
 
 **Applies to:**
 
-- C_A and C_B, the P-SUP comparators G;
+- the competent controls B0, C_A and C_B;
 - T's configurations within its designated rung;
-- S-H2A, like C_A.
+- S-H2A.
 
-B0 is not a P-SUP comparator and keeps quality-only selection (§10.1).
+**Inputs.** Φ_a is every configuration of arm a that was evaluated on full dev within the §11 caps and passes sanity gates (a)–(d).
 
-**Inputs.** Φ_a is every configuration of arm a that was evaluated on full dev within the §11 caps and passes sanity gates (a)–(d). Each C_B (hyperparameters, seed) pair is one configuration. All values are full-dev values, computed in exact rational arithmetic.
+- Each C_B (hyperparameters, seed) pair is one configuration. B0's configurations are its two candidates (§10.1).
+- The checked quality metrics are Q, R and, if G5 passed, S.
+- All values are full-dev values, computed in exact rational arithmetic.
+
+**Designation criterion c_a:**
+
+- **dev EVCP** for C_A, C_B, T and S-H2A. A configuration with zero dev E claims has undefined EVCP and ranks below every defined value.
+- **dev Q** for B0, which is not a P-SUP comparator.
+- **Tie-break:** higher Q, then higher S (if G5 passed), then higher R, then earliest in the run ledger.
 
 **Steps:**
 
-1. **Quality anchor.** φ_Q(a) is the configuration in Φ_a with the highest dev Q.
-   - Tie-break: higher S (if G5 passed), then higher R, then earliest in the run ledger.
-2. **Competitive envelope.** E_a is every φ ∈ Φ_a with all of:
-   - Q(φ) ≥ Q(φ_Q) − δ_Q;
-   - R(φ) ≥ R(φ_Q) − δ_Q;
-   - if G5 passed, S(φ) ≥ S(φ_Q) − δ_S.
+1. **Independent per-metric anchors.** Q^max(a), R^max(a) and, if G5 passed, S^max(a) are the maxima over Φ_a. Each metric has its own anchor; they may come from different configurations.
+2. **Joint quality envelope.** E_a is every φ ∈ Φ_a with all of:
+   - Q(φ) ≥ Q^max(a) − δ_Q;
+   - R(φ) ≥ R^max(a) − δ_Q;
+   - if G5 passed, S(φ) ≥ S^max(a) − δ_S.
+3. **Designation when E_a is non-empty.** The single designated configuration φ\*(a) is the configuration in E_a that ranks highest on c_a.
+4. **Designation when E_a is empty** (the arm has a genuine quality tradeoff larger than the margins). For each checked metric M, E_M(a) is every φ with M(φ) ≥ M^max(a) − δ_M, and φ\*_M(a) is its highest-ranked configuration on c_a.
+   - **Controls (B0, C_A, C_B):** the designated **set** D_a is {φ\*_M(a)} over the checked metrics, with duplicates merged. It has at most three members.
+     - Every member is a comparator in K, and, for C_A and C_B, in G.
+     - Every member faces every H2B component (§14.1).
+   - **T and S-H2A:** the single designation is φ\*_Q(a). Their choice can only affect themselves; no comparator needs protecting.
+5. **Primary designation.** The single designation, or φ\*_Q(a) of a set.
+   - It runs the descriptive locked pools. C_A's primary also supplies S-H2A's base model (§10.6) and F1's prompt (§10.5).
+   - Every other member of a set runs on the locked main test only.
+   - All of an arm's locked runs share its §15.1 locked-inference cap. If they cannot fit, S7 applies.
+6. **Competence.** If a designated configuration then fails gate (e), it is removed from Φ_a and J is re-applied from step 1. If Φ_a becomes empty, §11 item 7 applies: the fallback model, or **halt**.
 
-   The anchor is always in E_a.
-3. **Designation.** φ\*(a) is the configuration in E_a with the **highest dev EVCP**.
-   - Tie-break: higher Q, then higher S (if G5 passed), then higher R, then earliest in the run ledger.
-   - A configuration with zero dev E claims has undefined EVCP and ranks below every defined value.
-4. **Quality give-up.** For M ∈ {Q, R, S}: Δ^M(a) = max(0, M(φ_Q) − M(φ\*)).
-   - By construction, Δ^Q and Δ^R ≤ δ_Q, and Δ^S ≤ δ_S.
-   - For C_A and C_B, the NI margins against that control are reduced by Δ (§14.1). Choosing a better-grounded configuration therefore never makes non-inferiority easier for T: on dev terms, T must still be non-inferior to the anchor's quality. For T, Δ has no role.
-5. **Competence.** If φ\*(a) then fails gate (e), it is removed from Φ_a and J is re-applied. If Φ_a becomes empty, §11 item 7 applies: the fallback model, or **halt**.
+**Record.** Φ_a, the per-metric anchors, E_a (and each E_M where used), the designation or designated set, and every configuration's dev Q, S, R and EVCP are recorded and hash-committed with the arm's artifacts before U1.
 
-**Record.** Φ_a, φ_Q(a), E_a, φ\*(a), every configuration's dev Q, S, R and EVCP, and Δ^Q, Δ^S, Δ^R are recorded and hash-committed with the arm's artifacts before U1.
-
-**Quality anchors for escalation (§12.3).** For each k ∈ K, the anchor values are Q(φ_Q(k)) and S(φ_Q(k)). For B0, the anchor is its designated configuration.
+**Escalation thresholds (§12.3)** use the dev values of all designated control configurations, the members of K.
 
 **Why this is sufficient:**
 
-- A configuration with better dev EVCP that is quality-competitive with the anchor is always designated over a weaker-grounded one. P-SUP cannot be manufactured by discarding it.
-- A configuration outside the envelope is not quality-competitive with the arm's best, so it is not a competitive general-model solution to this job.
-- Every step is deterministic, uses dev only, and is committed before U1.
+- **No metric is anchored to another.** A configuration strong on S or R cannot disappear because another had slightly higher Q. A designated control is within the NI margin of the family's best on every checked metric. When no single configuration achieves that, a configuration competitive on each metric is itself a comparator (§R13b, §R13d).
+- **The property cannot be manufactured.** Among quality-competitive configurations, the best-grounded is designated, so P-SUP cannot be won by discarding a better-grounded competitive configuration.
+- **Disclosed tolerance.** A single designation may sit up to δ below the family's best on a metric. That δ is the preregistered meaning of "quality-competitive", the same margin the NI test uses. v1.2's Δ-reduced margins are removed (§29).
+- **Determinism.** Every step is deterministic, uses dev only, and is committed before U1.
 
 Worked cases: [`REFERENCE_CASES.md`](REFERENCE_CASES.md) §R13.
 
@@ -897,7 +919,7 @@ The pipeline runs in fixed stages. Every intermediate is typed and logged as a t
 
 **When it is evaluated:**
 
-- only after B0, C_A and C_B are frozen, so their quality anchors are fixed (§11.1);
+- only after B0, C_A and C_B are frozen, so their designations are fixed (§11.1);
 - whenever T's developer requests escalation from rung r. The check uses dev results already obtained and consumes no evaluation.
 - If a request is refused, the developer may revise rung r within the remaining §11 caps and request again.
 
@@ -905,7 +927,7 @@ The pipeline runs in fixed stages. Every intermediate is typed and logged as a t
 
 - **Metrics checked:** Q, and S if G5 passed.
 - **Rung capacity:** M^best(r) is the maximum dev value of M over rung r's full-dev-evaluated configurations that pass sanity gates (a)–(d). φ_M(r) is the configuration attaining it; ties go to the earliest in the run ledger.
-- **Threshold:** τ_M = max over k ∈ K of M(φ_Q(k)) − δ_M, using the controls' quality anchors (§11.1). The margin is δ_Q for Q and δ_S for S.
+- **Threshold:** τ_M = max over k ∈ K of M_dev(k) − δ_M, where K is every designated control configuration (§11.1, §14.1). The margin is δ_Q for Q and δ_S for S.
 - **Error pairs of M**, for φ_M(r):
   - for Q, the (unit, d ∈ D\*) pairs whose predicted E status differs from gold;
   - for S, the pairs whose predicted four-class state (including `NONE_OUTPUT`) differs from gold.
@@ -1059,16 +1081,16 @@ None of these carries **confirmatory status**.
 
 ### 14.1 Components (intersection–union test) [FROZEN]
 
-- **G** = {C_A, C_B} (general-model controls); **K** = G ∪ {B0} (competent controls).
+- **G** is every designated configuration of C_A and C_B (the general-model controls). **K** is G plus every designated configuration of B0 (the competent controls).
+  - Normally each control has one designated configuration. Where rule J designates a set (§11.1), every member is a separate comparator.
+  - More comparators can only make a PASS harder, so the intersection–union test needs no adjustment.
 - **CI(x)** is the two-sided 95 % paired cluster-bootstrap interval of the difference T − control.
-
-- **Per-control NI margins** (§14.2): m^Q_k = δ_Q − Δ^Q_k, m^S_k = δ_S − Δ^S_k and m^R_k = δ_Q − Δ^R_k. Δ is the rule-J quality give-up (§11.1); for B0, Δ = 0.
 
 | Component | PASS | FAIL | Otherwise |
 | --- | --- | --- | --- |
-| **Q-NI**, each k ∈ K | lower CI(Q_T − Q_k) > −m^Q_k | upper CI < −m^Q_k | UNDECIDED |
-| **S-NI**, each k ∈ K (removed if G5 failed) | lower CI(S_T − S_k) > −m^S_k | upper CI < −m^S_k | UNDECIDED |
-| **R-NI**, each k ∈ K | lower CI(R_T − R_k) > −m^R_k | upper CI < −m^R_k | UNDECIDED |
+| **Q-NI**, each k ∈ K | lower CI(Q_T − Q_k) > −δ_Q | upper CI < −δ_Q | UNDECIDED |
+| **S-NI**, each k ∈ K (removed if G5 failed) | lower CI(S_T − S_k) > −δ_S | upper CI < −δ_S | UNDECIDED |
+| **R-NI**, each k ∈ K | lower CI(R_T − R_k) > −δ_Q | upper CI < −δ_Q | UNDECIDED |
 | **P-SUP**, each g ∈ G | lower CI(EVCP_T − EVCP_g) **> δ_P** | upper CI < δ_P | UNDECIDED |
 
 - P-SUP is **superiority by margin δ_P**, repaired from v1.0 (§27, R2). The data must establish an improvement greater than 0.10 at one-sided 0.025.
@@ -1103,12 +1125,7 @@ Both values are recorded to three decimals.
 
 **EVCP_h:** each annotator's E claims and spans are verified against the other annotator's labels and spans under the full §13.3 rule. This is done in both directions and pooled on RS.
 
-**Selection-neutral NI margins for C_A and C_B [FROZEN rule; values fixed at P2].**
-
-- Rule J (§11.1) may designate a control configuration that gives up up to δ of dev quality to its quality anchor, in exchange for stronger EVCP.
-- To keep that choice from easing non-inferiority, each NI margin against g ∈ G is reduced by g's give-up: m^M_g = δ_M − Δ^M_g, where δ_M is δ_Q for Q and R and δ_S for S.
-- Each m lies in [0, δ]. For B0, m = δ.
-- Each Δ is recorded when the control is frozen, as its exact dev value rounded **up** to three decimals, so rounding never eases non-inferiority. It is hash-committed before U1.
+**No selection-dependent margins.** Every NI margin is δ_Q (for Q and R) or δ_S (for S), against every comparator. v1.2's Δ-reduced margins are removed (§29): they altered a held-out margin by a dev-set gap, which is not equivalent to testing against the discarded configuration. Rule J's per-metric anchors and designated sets address the selection problem directly (§11.1).
 
 ### 14.3 CI method and undefined values [FROZEN]
 
@@ -1285,7 +1302,7 @@ Consequential fields are deferred to later composition and outcome experiments. 
 - tokenization, span precision and span coverage;
 - EVCP;
 - F1, Q, R and S with withheld units;
-- IUT classification, including Δ-reduced margins and undefined components;
+- IUT classification, including designated comparator sets and undefined components;
 - M0-based salt derivation and split hashing;
 - M0 immutability checks and the restart path;
 - δ_Q and δ_S;
@@ -1313,7 +1330,7 @@ Consequential fields are deferred to later composition and outcome experiments. 
 - best-seed or best-configuration selection on test (selection is by rule J on dev, §11.1);
 - template or label-name leakage (§8.4);
 - ADCP threshold leakage (§3);
-- post-M0 additions other than reserve activation, any re-salting outside the single restart, and any post-M0 edit to canonical text (§8.1–§8.2);
+- post-M0 additions other than reserve activation, any re-salting outside the single pre-salt restart, and any post-M0 edit to canonical text (§8.1–§8.2);
 - the QC pool or its key as development material, or as a source of gold (§7.7).
 
 **Human error analysis of locked outputs:** happens only after U2, with arm identities replaced by random codes.
@@ -1340,7 +1357,7 @@ Consequential fields are deferred to later composition and outcome experiments. 
 | S10 | The protocol can no longer separate H2B from prompting or adaptation (for example, C_A or C_B is dropped) | any | halted |
 | S11 | An evaluator defect is found (E1 case failure or scoring bug) | any | fix before U1; found after U2 → invalidated, with the defect reported |
 | S12 | The operator or auditor withdraws authorization, or a license or terms change blocks a required arm | any | halted |
-| S13 | An M0 or salt violation: a post-M0 canonical-text hash mismatch; a second M0 outside the single restart (§8.1); a post-M0 addition outside reserve activation; or a salt not derived per §8.2. Also: a need for new canonical text after the P1 exit or after the one permitted restart | data / any | halted (if found before U1) / invalidated (violations found after U1) |
+| S13 | An M0 or salt violation: a post-M0 canonical-text hash mismatch; a second M0 outside the single pre-salt restart (§8.1); a restart notice not strictly before the original R\* release; a post-M0 addition outside reserve activation; or a salt not derived per §8.2. Also: a defect that removal cannot handle, or a need for new canonical text, after the salt round is released | data / any | halted (if found before U1) / invalidated (violations found after U1) |
 
 A G5 failure is **not** a stop condition. It narrows H2B before implementation (§1, §7.5).
 
@@ -1369,7 +1386,7 @@ A G5 failure is **not** a stop condition. It narrows H2B before implementation (
 9. G4 on locked data (custodian-only), with reserve activation if needed.
 10. Data freeze v1.0 (hashes, verified against M0).
 
-The P1 exit is the release of train/dev to implementers. The single permitted restart (§8.1) returns to step 4 and is possible only before this exit.
+The P1 exit is the release of train/dev to implementers. The single permitted restart (§8.1) returns to step 4. Its notice must precede the release of the original R\* (step 6). After that release there is no re-randomization: removal or halt only.
 
 ## 22. Interpretation matrix (written before any result) [FROZEN]
 
@@ -1429,10 +1446,9 @@ A supported H2B supports only the bounded claim, on this corpus and task.
 
 **[DEV]:**
 
-- the B0 candidate;
 - the C_A model and prompt;
 - C_B hyperparameters and seed, by rule J (§11.1);
-- the C_A and C_B designated configurations and their Δ values, by rule J (§11.1);
+- the designated configurations, or designated sets, of B0, C_A and C_B, by rule J (§11.1);
 - T's cue lists, rules and rung development;
 - the rung designation, by the §12.3 rule only, and T's configuration within it, by rule J.
 
@@ -1535,15 +1551,15 @@ After applying A1–A6, the author re-checked each repair against the rest of th
 
 - **A1 and the reserve.** Reserve units are hashed in M0, so activation never introduces text. Immutability and activation are consistent.
 - **A1 and earlier repairs.** The §7.6 quarantine (R7) is removal trigger X2, with unchanged logic. Label-leak rewrites (R3) happen only before M0; after M0 a missed leak is removal X4, and registered units stay exempt.
-- **A1 and the salt (R4).** The single restart derives a new salt from a new M0 and a new drand round. It is authorized, public, disclosed, limited to one, and closed at the P1 exit. No implementer has seen any data before that exit, so a restart cannot be aimed at any arm's behavior.
+- **A1 and the salt (R4).** The single restart derives a new salt from a new M0 and a new drand round. It is authorized, public, disclosed, limited to one, and closed at the P1 exit. No implementer has seen any data before that exit, so a restart cannot be aimed at any arm's behavior. *(Superseded in v1.3: the re-audit showed that partition shopping needs no implementer access. The restart window now closes at the original R\* release; see §29, A1.)*
 - **A2.** No loss-based halt or fallback remains. Competence rests on the R0 floors (gates b and d), integrity (c) and reproducibility (e).
-- **A3 and rule J.** The shortfall uses the rung's best dev value per metric, so designating a weaker configuration cannot manufacture a shortfall. The thresholds use the controls' quality anchors, which are the configurations v1.1 used for B0 and C_A.
+- **A3 and rule J.** The shortfall uses the rung's best dev value per metric, so designating a weaker configuration cannot manufacture a shortfall. The thresholds use the controls' quality anchors, which are the configurations v1.1 used for B0 and C_A. *(v1.3: thresholds now use the designated control configurations; see §29, A6.)*
 - **A3 regression.** Reference cases e2, e3a and e3b are escalations that v1.1's 50 % rule would have permitted and v1.2 refuses (§R8).
 - **A4 and the boundary cases.** Exact rational arithmetic and exact order statistics make §R4's equality cases H and K implementation-independent.
 - **A4 and S (R5).** Class omission is now gold-based and identical for every arm, so S differences are always paired. §R3b's values are unchanged because all four classes have gold there.
 - **A5 and G3.** The QC key's only consumers are qualification and G3. It never touches RS, gold, metrics or arms.
-- **A6 and non-inferiority.** Without a correction, rule J could have eased NI by up to δ. The Δ-reduced margins remove that, so v1.2 is never easier than an anchor comparison on NI, and it is harder on P-SUP.
-- **A6 and B0.** B0 is not a P-SUP comparator. Its quality-only selection is unchanged.
+- **A6 and non-inferiority.** Without a correction, rule J could have eased NI by up to δ. The Δ-reduced margins remove that, so v1.2 is never easier than an anchor comparison on NI, and it is harder on P-SUP. *(Superseded in v1.3: the Δ-reduced margins are removed; see §29, A6.)*
+- **A6 and B0.** B0 is not a P-SUP comparator. Its quality-only selection is unchanged. *(Superseded in v1.3: B0 now uses rule J with dev Q as its criterion; see §29, A6.)*
 
 **Additional residual risks, accepted and disclosed:**
 
@@ -1551,6 +1567,24 @@ After applying A1–A6, the author re-checked each repair against the rest of th
 - the §12.3 counterfactual is an upper bound on what the next rung can recover, so a permitted escalation may still fall short (T2 then goes to final evaluation);
 - the QC team adds about 40 h and at least three contributors to B2;
 - one data-freeze restart is permitted, and it is disclosed if used.
+
+### v1.3 author-side re-review (not an independent audit)
+
+After repairing A1 and A6, the author re-checked both repairs against the rest of the protocol:
+
+- **A1 and R4.** The restart window now closes when the original R\* is released. Before that moment no salt exists, so no split, annotation, gate result or locked count can inform the decision. After it, the only responses to a defect are removal and halt. No path yields a second partition.
+- **A1 and timing.** "Strictly before the release time" is decidable from the Issue #3 server timestamp and the drand schedule alone (§R5d).
+- **A1 and A5.** A restart can add new units after the QC key is committed, so the QC overlap check is rerun against them, and a hit retires the QC item.
+- **A6 and the auditor's counterexample.** With independent anchors, a configuration that is strong on S can no longer be displaced by one that is S-weak but anchored on Q (§R13b).
+- **A6 and empty envelopes.** A genuine tradeoff produces a designated set, and each member faces every component. No strong configuration disappears, and the extra runs stay inside the existing §15.1 caps (S7 if they cannot fit).
+- **A6 and B0.** The same multi-metric hole existed for B0 on S-NI and R-NI, so B0 now uses rule J with dev Q as its criterion.
+- **A6 and escalation.** The thresholds use every designated control configuration, which is exactly the set the final NI test uses.
+- **Δ removal.** Every NI margin is again the plain δ. The one tolerance left is that a single designation may sit up to δ below the family's best on a metric. That tolerance is disclosed, and it equals the preregistered meaning of "quality-competitive".
+
+**Additional residual risks, accepted and disclosed:**
+
+- a designated set adds locked main-test runs, which may exhaust an arm's locked-inference cap (S7);
+- the restart window is short (at least 24 h), so a defect found later can only be removed or halt the experiment.
 
 ## 26. Prior-art record (focused)
 
@@ -1622,6 +1656,22 @@ This table is the v1.1 record and is kept as written. v1.2 supersedes two parts 
 | **A5** | The provenance of the qualification and QC reference key was undefined. | **QC pool (§7.7).** Human-authored by a separate QC team; two independent non-author key labels; a key value only where they agree; the adjudicator can drop but never re-key; role exclusions; an overlap check against every M0 unit; `qc-key v1.0` committed on Issue #3 before any annotation; retire-only corrections with recomputation; raw disagreement preserved; operator ownership under B2. | §7.1, §7.2, §7.5 (G3), §7.7, §16, §19, §21, §24 |
 | **A6** | C_A and C_B were selected by dev Q alone, so a better-grounded, equally competitive configuration could be discarded. | **Rule J:** quality anchor → competitive Q/S/R envelope → highest dev EVCP, with deterministic tie-breaks. It applies to C_A (model × prompt), C_B (hyperparameters × seed; the median-Q seed rule is removed), T within its rung, and S-H2A. **Δ-reduced NI margins** stop J from easing non-inferiority. B0 is unchanged. | §10.1–§10.3, §11 item 4, §11.1, §12.3, §14.1, §14.2, §19, §24, §25, §R4, §R13 |
 
+This table is the v1.2 record and is kept as written. v1.3 supersedes two parts of it: A1's restart timing (the window now closes at the original R\* release) and A6's Q-anchored envelope and Δ-reduced margins. See §29.
+
+## 29. Revision record — v1.2 → v1.3 (independent re-audit: A1 and A6)
+
+**Source:** the independent GPT-5.6 Sol re-audit of v1.2 head `00783025e65ead1acc6da5b2183040fc576411ed`, relayed by the operator on 2026-09-19. Disposition `REPAIR_REQUIRED`: A2, A3, A4 and A5 pass; A1 and A6 remain blocking. The v1.0, v1.1 and v1.2 texts remain in git history, and the v1.0 audit comment on PR #17 is unchanged.
+
+**Scope of change.** v1.3 repairs only A1 and A6, with their direct reference and manifest consequences.
+
+- **Unchanged:** A2–A5 are not reopened. Also unchanged: the research question, the ontology, H2B's components, δ_Q, δ_S, δ_P, G5, the R1, R2, R3, R5 and R7 logic, the EVCP thresholds, the resource budgets, Reality Audit scope and the ADCP boundary.
+- **One direct consequence, disclosed:** v1.2's Δ-reduced NI margins are removed, so every NI margin is again the plain δ. The re-audit noted that a dev-set gap altering a held-out margin is not equivalent to testing against the discarded configuration, and the corrected rule J makes the mechanism unnecessary.
+
+| Finding | Re-audit defect (summary) | Repair in v1.3 | Where |
+| --- | --- | --- | --- |
+| **A1** | The single restart was permitted until the P1 exit. By then the first salt, split, annotation, RS gates, G5 and G4 counts could be known, so a second partition could be drawn after seeing the first. | The restart notice must be committed **strictly before the original R\* is released**, while no salt can exist. The notice is irrevocable, and the restart M0 may differ only in the listed units. After the salt round is released there is **no in-protocol re-randomization**: a defect means removal (X1–X5) or halt, and new text needs a new protocol version with a genuinely new locked test set. | §8.1, §7.7, §19, §20 (S13), §21, §25, §R5d |
+| **A6** | Rule J anchored the S and R envelope to the Q-best configuration's own S and R, so an S- or R-strong configuration could be displaced by an S- or R-weak one. The Δ correction did not catch this (Δ^S = 0 in the counterexample). | **Independent per-metric anchors:** Q ≥ Q^max − δ_Q, R ≥ R^max − δ_Q, S ≥ S^max − δ_S, then the highest dev EVCP. **An empty envelope** (a genuine tradeoff) designates a **set** of per-metric-competitive configurations, each a comparator facing every component, within the existing caps. B0 uses the same rule with dev Q as its criterion. Escalation thresholds use the designated configurations. **Δ margins removed.** | §10.1–§10.3, §11 item 4, §11, §11.1, §12.3, §14.1, §14.2, §24, §25, §R4, §R8, §R13 |
+
 ---
 
-**Exact next action:** an **independent GPT-5.6 Sol re-audit of A1–A6**, plus regression and scope checks, of this repaired freeze (v1.2). No implementation, annotation, training, inference, unlock or merge happens until that audit is accepted **and** the operator separately authorizes execution. The protocol author does not accept this protocol.
+**Exact next action:** **final independent GPT-5.6 Sol verification of A1 and A6**, plus regression and scope checks, of this repaired freeze (v1.3). No implementation, annotation, training, inference, unlock or merge happens until that audit is accepted **and** the operator separately authorizes execution. The protocol author does not accept this protocol.
