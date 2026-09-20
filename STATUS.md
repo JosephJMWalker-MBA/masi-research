@@ -1,136 +1,177 @@
 # Status
 
-**Current phase:** WP1 **accepted only as narrowed** after Audit Addendum B. WP0 research gates for Issues #1/#2 are **accepted by Audit Addendum C for the bounded purpose of enabling design of the next experiment**. No experiment protocol or implementation is yet authorized.
+**Current phase:** deliberate plateau after acceptance and merge of MASI-E001 protocol v1.4.
 
-**Primary objective:** turn MASI from a conceptual/disclosure lineage into falsifiable executable research while preserving model interchangeability, explicit governance, fair baselines, claim discipline, and the project's original specialization-by-construction thesis.
+MASI-E001 is now a durable, independently accepted preregistered experiment. It is **not authorized for execution** and is intentionally allowed to remain dormant while cheaper experiments reduce uncertainty first.
 
-## Construction doctrine — now explicit and mandatory
+The repository currently has no open pull requests.
 
-[`docs/CONSTRUCTION_DOCTRINE.md`](docs/CONSTRUCTION_DOCTRINE.md) is a governing research document.
+## Current authority and operating reality
 
-MASI does **not** presume that specialized intelligence should be created by taking a general-purpose model and narrowing, prompting, pruning, or fine-tuning it into a role.
+For now, the repository has one human maintainer/operator: **Joseph J. M. Walker**.
 
-The default target is:
+AI systems may assist with research, implementation, verification, documentation, long-running experiments, and independent review when explicitly assigned those roles. They do not self-grant repository, scientific, or execution authority. Durable state belongs in GitHub rather than in any model session.
 
-> **Start with the smallest cognitive ambition actually required. Engineer the representation, learning objective, state, feedback, uncertainty, and interfaces specifically for that bounded responsibility. Generality belongs to the governed composition, not to each component.**
-
-Prompted and fine-tuned general models remain useful controls, baselines, tools, translators, and transitional implementations. They are not presumed end-state MASI specialists.
-
-Every substantive implementation should be classified as:
+Working reality:
 
 ```text
-CONTROL_A      general-purpose model + role prompt
-CONTROL_B      general/pretrained base + role-specific adaptation / fine-tuning
-MASI_TARGET    purpose-built bounded intelligence designed from the responsibility outward
-INFRASTRUCTURE supporting routing, logging, evaluation, governance, transport, etc.
+human maintainer/operator
+        +
+AI research/engineering/audit assistance
+        ↓
+explicit bounded work
+        ↓
+GitHub durable record
 ```
 
-## WP1 acceptance checkpoint
+No artificial organizational structure should be invented merely to imitate a larger team before one exists.
 
-The first Astra block began before the doctrine was explicit enough. Claude's [independent audit](docs/AUDIT_WP0_WP1_2026-09-17.md) found that the later freeze and runs still used the older branch governance. Implementation and evidence survived audit; the required corrections were documentation-only R1–R7.
+## E001 — accepted and intentionally dormant
 
-Astra recorded the [R1–R7 reconciliation](docs/RECONCILIATION_WP1_R1_R7.md), including implementation classes, superseded thesis/E001 framing, the absence of a demonstrated capability deficit, closed-set invocation limits, and the historical validation erratum.
+**Experiment:** MASI-E001 — Empathy speaker-observation specialist.
 
-Claude's scoped re-check, preserved as **Audit Addendum B**, returned `ACCEPT`.
+**Accepted protocol:** `e001-protocol-v1.4`
 
-> **WP1 is accepted only as narrowed.**
+**Accepted audited commit:** `9edd737764815a49929bfe60f104ff7b5a0e40e9`
 
-The construction-doctrine reconciliation hold is therefore cleared. This does **not** merge the frozen builder packet or authorize WP2, E001, training, new candidates, or runtime expansion. The next work packet is separately bounded below.
+**Protocol PR:** #17 — merged.
 
-## Current decisions
+The independent audit history ended in `ACCEPT` at v1.4. Acceptance means the experimental design/preregistration is sound enough to execute as written. It does **not** mean the scientific hypothesis is supported.
 
-- `masi-research` is the public experimental home for ongoing MASI work.
-- `masi-bus` remains the communication/reference artifact; it is not replaced by this repository.
-- No model is canonical merely because it implements a named MASI responsibility.
-- Precision, Foresight, Empathy, and Wisdom are current architectural responsibility abstractions whose boundaries remain revisable.
-- **Specialization by construction, not subtraction, is the default target.**
-- Prompt-only role decomposition is an experimental baseline, not the intended definition of specialization.
-- Fine-tuning/adapting a pretrained general model is also a useful control/transitional path, not the presumed end state.
-- Generality belongs at the governed system level; it should not be replicated inside every specialist by default.
-- Telos is a leading **candidate** for governance/control-plane orchestration, especially intent/authority/permission continuity; it is not thereby a mandatory dependency or the learned task router.
-- The candidate fleet should be heterogeneous: language models, classifiers, forecasters, reward models, bandits, deterministic systems, causal systems, simulators, and hybrids may all compete for bounded responsibilities.
-- New complexity must be justified by a measured capability deficit or a frozen experiment/interface need.
-- Existing AI systems are research specimens: sources of useful primitives, adaptable implementations, baselines, and cautionary evidence.
+The accepted protocol should not be edited merely to update status language. If E001 is executed later, it should use the accepted v1.4 freeze unless a genuinely new protocol version is deliberately created and audited.
 
-## Candidate landscape
+### Why E001 is not being rushed
 
-The working registry is maintained in [`docs/CANDIDATE_IMPLEMENTATIONS.md`](docs/CANDIDATE_IMPLEMENTATIONS.md).
+E001 is now closer to a serious validation experiment than a cheap first proof of concept.
 
-Initial high-priority probes include:
+Its main cost is human coordination, not compute.
 
-- **Routing:** vLLM Semantic Router / RouteLLM plus a deterministic routing baseline;
-- **Precision:** HHEM-2.1-Open, NLI classifiers, Jev as an external comparator where terms permit;
-- **Foresight:** Chronos / TimesFM-class numerical forecasters plus explicit causal/simulation alternatives;
-- **Empathy:** an ADCP-derived semantic observer plus bounded auxiliary sensors and explicit ontology/state modeling;
-- **Wisdom:** simple explicit weighting, Bayesian approaches, MABWiser / Vowpal Wabbit contextual-bandit baselines before assuming Wisdom should be a neural language model;
-- **Governance/control:** Telos plus a simpler deterministic governance baseline.
+Approximate frozen human-work budget:
 
-These systems do not define the final module architectures. They are candidates, comparators, components, or cautionary evidence.
+- ~60 h writing/review;
+- ~130 h annotation/adjudication;
+- ~40 h QC-pool work;
+- ~230 h baseline human work before reserve effects;
+- roughly ~20% additional burden if reserve activation is needed.
 
-## Active implementation sprint
+It also requires independent role boundaries that cannot truthfully be collapsed into one maintainer plus AI:
 
-[`docs/IMPLEMENTATION_SPRINT_001.md`](docs/IMPLEMENTATION_SPRINT_001.md) defines the current execution plan.
+- B1 — independent custodian;
+- B2 — writers, annotators, adjudicator, QC team, budget and contributor protections;
+- B3 — generator pin / terms reverification;
+- B4 — F1 and S-H2A activation decisions;
+- B5 — independent P3/P4 auditor;
+- separate explicit operator execution authorization after those bindings.
 
-Current operator cadence:
+The compute portion is comparatively modest and was frozen around the Mac mini M4 environment. Do not silently migrate E001 to the Jetson Orin without a new protocol decision.
+
+## Strategic decision at this plateau
+
+**Run a smaller, human-light experiment before deciding whether to spend the human resources required by E001.**
+
+This is a prioritization decision, not a rejection of E001.
+
+The smaller experiment should exploit the project's currently abundant resource:
+
+> a small amount of human design attention followed by long unattended local compute.
+
+The Jetson Orin is a good candidate execution substrate for that experiment because unattended multi-day runs are acceptable and desirable.
+
+### What the smaller experiment should answer
+
+The next experiment should reduce one upstream uncertainty:
+
+> **Does specialization-by-construction show a measurable operating region at all before we pay the human cost required to test it on a difficult human-semantic boundary?**
+
+The preferred shape is:
+
+- mechanically known ground truth rather than human adjudication;
+- bounded semantic responsibility;
+- synthetic but controlled scenario generation;
+- transparent deterministic specialist first;
+- learned complexity only if a measured deficit justifies it;
+- a small general-purpose control;
+- large unattended perturbation/stress sweeps on the Orin.
+
+Candidate controlled factors may include:
+
+- speaker vs. other-person attribution;
+- current vs. past state;
+- actual vs. hypothetical;
+- affirmation vs. negation;
+- support vs. counter-evidence;
+- retraction / supersession;
+- signal vs. distractor;
+- paraphrase and lexical shift;
+- longer context and noise;
+- adversarial wording;
+- class imbalance.
+
+A minimal comparison could eventually include:
 
 ```text
-Astra on Ultra — primary implementation/research block
-        ↓
-commit + tests + evidence + unknowns
-        ↓
-Claude — independent audit at ~5-hour / work-packet boundary
-        ↓
-accept / repair / narrow / mark inconclusive
-        ↓
-next Astra block
+R0   trivial / naive reference
+T0   transparent deterministic specialist
+T1   small learned specialist, only if justified
+C_A  small prompted general-purpose control
 ```
 
-GitHub is the durable state boundary. No model session is the system of record.
+The exact task, metrics, model set, and architecture are **not yet frozen**.
 
-WP1 is complete **as narrowed**. The frozen builder artifact remains `codex/wp0-wp1-candidate-probe @ 81adfff`; its code and evidence are still not merged into `main`.
+## Firewall around E001
 
-## Observed WP1 scope
+The smaller experiment may influence **whether or when E001 is worth executing**.
 
-Three pre-registered implementations — `exact-match-v1` (`INFRASTRUCTURE`/B0 floor), `hhem-2.1` and `nli-deberta-small` (externally adapted `CONTROL_B`-class specimens) — used uniform invocation by changing the candidate identifier and reproduced bit-identically on one host. The probe and adapters are `INFRASTRUCTURE`; no `CONTROL_A` or `MASI_TARGET` was tested. See [implementation classes](experiments/wp1/IMPLEMENTATION_CLASSES.md).
+It may **not** retroactively modify E001 v1.4 after seeing results.
 
-Substitution is demonstrated only for that closed set: normalization is caller-resident and candidate-keyed, and both learned candidates share one classifier stack and adapter class. The protocol's inference-branching condition was not triggered; the contract's broader caller-branch condition holds only for invocation, not normalization. Open-set or cross-paradigm interchangeability is unestablished. WP1 identified no capability deficit in transparent Precision approaches and does not justify learned complexity.
+If the smaller experiment reveals a better design, that belongs in:
 
-The historical WP1-local thesis matrix is superseded for thesis purposes by current H2A/H2B, `C_A/C_B/T` controls and falsifiers 1–10 in [RESEARCH_THESIS.md](docs/RESEARCH_THESIS.md). The accepted [WP0 research gates](docs/WP0_RESEARCH_GATES.md) satisfy Issues #1/#2 at gate level without selecting a benchmark, task-specific protocol, transport, or implementation. Issue #4 remains broader than WP1.
+- a later experiment;
+- an E001 successor;
+- or a deliberately new E001 protocol version with fresh audit.
 
-## Immediate sequence
+Do not mutate the accepted v1.4 freeze to accommodate pilot findings.
 
-1. Treat WP1 as accepted **only as narrowed**; preserve the builder packet at `81adfff` as immutable historical evidence.
-2. Treat the [WP0 research-gates packet](docs/WP0_RESEARCH_GATES.md) as independently accepted **only for bounded experiment design** under Audit Addendum C.
-3. **Authorize MASI-E001 as the single named experiment for a protocol-binding packet.** The packet is design/preregistration only and must stop for independent audit before any implementation, training, model run, runtime expansion, or final-result observation.
+## What not to do next
 
-The accepted packet retains H2A/H2B and falsifiers 1–10, requires claim-linked comparisons and future independent reference checks (E1), and documents the current Bus v1.0 confidence/cost/native-output gaps without changing Bus. Task-specific metrics/margins, inputs, family profile, outcome horizon/rule and resource caps remain unselected by design. The next protocol must also (a) operationally define a competent control, (b) declare an energy-measurement method if energy is claimed or mark energy unmeasured, and (c) state whether adversarial epistemic-integrity cases are included. WP1's historical records and all frozen/code/evidence artifacts remain untouched.
+Do not:
 
-## First specialization experiment
+- recruit an E001 human team merely because the protocol is now accepted;
+- spend money on B2 before deciding E001 is the next best use of resources;
+- start E001 annotation, training, inference, unlock, or result observation;
+- invent a new MASI organization or governance hierarchy just to fill empty roles;
+- let the smaller experiment grow into another sprawling architecture project;
+- create a new repository before the smaller experiment has a crisp research question;
+- treat long-running compute as a reason to add unnecessary complexity.
 
-**MASI-E001 — Empathy semantic-observation specialist**
+## Resume point
 
-Revised research pressure:
+When MASI work resumes, start here.
 
-> Can a purpose-built bounded intelligence infer an evidence-grounded human-impact / care observation state competitively with general-model controls while providing stronger inspectability, state discipline, uncertainty handling, efficiency, or failure localization?
+The next task is **not implementation**.
 
-ADCP remains useful because it separates human-authored observations from deterministic downstream policy. E001 targets the observation layer only; it must not train a model to imitate ADCP's policy thresholds.
+Write a short design note for the smaller pre-E001 experiment that answers only:
 
-A pretrained base selection or fine-tuning path is an **optional `CONTROL_B` arm**. The target remains purpose-built bounded Empathy-observation intelligence designed from the responsibility outward. **E001 protocol preparation is now authorized**, including bounded prior-art review, ontology/task definition, labeling procedure, candidate/control eligibility rules, split logic, metrics/margins, resource budgets and target design constraints. Implementation, training, inference runs and final evaluation remain unauthorized until that protocol is independently audited and separately authorized.
+1. What single MASI uncertainty will this experiment reduce?
+2. Why is the Jetson Orin the right substrate?
+3. How is ground truth generated mechanically and independently of the tested systems?
+4. What is the minimum comparison set?
+5. What observations would justify:
+   - proceeding toward E001,
+   - running another smaller experiment,
+   - or revising the construction doctrine?
 
-## Not yet authorized
+Then stop and review that design before creating code, a branch, a new repo, training anything, or committing to a long run.
 
-- beginning E001 implementation/training/model runs before the authorized E001 protocol-binding packet is independently audited and separately approved for execution;
-- building a general-purpose MASI platform before bounded experiments require it;
-- creating separate repositories for individual MASI modules;
-- treating Telos, Jev, ADCP, any router, or any local model as canonical MASI;
-- treating a pretrained/fine-tuned general model as the target specialist without explicit evidence and architectural justification;
-- allowing routing convenience to become governance authority;
-- training a Wisdom language model before an auditable outcome record and simpler baselines exist;
-- publishing third-party performance benchmarks where provider terms prohibit publication;
-- prohibited reverse engineering, distillation, imitation training, source extraction, or other use inconsistent with provider/model terms;
-- installing the entire candidate registry at once;
-- changing held-out evaluation criteria after observing results.
+## Durable historical state
 
-## Next durable action
+- WP1 remains accepted only as narrowed.
+- WP0 research gates remain accepted for bounded experiment design.
+- The frozen WP1 builder artifact remains `codex/wp0-wp1-candidate-probe @ 81adfffa2d28e4a40a0b36fe1a21baa567d402ec`.
+- E001 protocol v1.4 is accepted and merged.
+- The public participation compact is merged.
+- The MASI governance working theory is merged.
+- The DeepSeek V4.1 MASI research note is merged.
+- No open PR backlog remains at this handoff.
 
-**Authorized next durable action:** author the bounded **MASI-E001 protocol-binding packet** under Issue #3. Freeze the experiment-specific responsibility/task, ontology/state, allowed inputs, labeling/provenance rules, competent controls, candidate eligibility, split logic, metrics/margins, uncertainty/abstention semantics, negative/adversarial cases, resource budgets, outcome rules where applicable, and the smallest credible `MASI_TARGET` design constraints. Then stop for independent audit. Do not implement, train, run models, finalize outcomes, expand runtime infrastructure, or infer broader WP2/K001 authority.
+**Current posture:** no rush. Preserve E001, design the cheaper experiment deliberately, and use unattended compute where it buys real information.
