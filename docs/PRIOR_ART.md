@@ -74,6 +74,23 @@ Reference:
 
 **MASI lesson:** retaining an LLM as a language/generalization component while delegating bounded work to specialists is strong prior art. MASI should not claim that idea alone. The sharper research question is whether the LLM can be treated as broad prior/proposal/translation intelligence while bounded specialists, governance, and outcome history retain independent authority.
 
+### Decision-native System One models: Jev and Laya
+
+TypeSafe AI publicly introduced Jev on 2026-09-15 as a decision-native "System One" model: unstructured state in, typed probabilistic decisions out, with bounded answer schemas rather than autoregressive string generation.
+
+Within days, open Laya implementations made the same broad interface pattern locally inspectable. The public Laya stack exposes `choice`, `score`, and binary-probability (`noul`) questions in one non-autoregressive forward pass; open Python checkpoints are accompanied by an ONNX/Node runtime. Public project documentation reports Apache-2.0 model weights, while the Receptron Node wrapper is MIT-licensed. Exact licenses and revisions still require per-experiment verification.
+
+Relevant sources:
+
+- TypeSafe AI, *Introducing System One Models & Jev* (2026-09-15): `https://typesafe.ai/blog/introducing-system-one-models-and-jev`
+- Laya reference / research repository: `https://github.com/NandhaKishorM/laya`
+- Laya benchmark record: `https://github.com/NandhaKishorM/laya/blob/main/BENCHMARKS.md`
+- Receptron ONNX / Node implementation: `https://github.com/receptron/laya`
+
+The public Laya evidence is especially useful because it exposes both strengths and limitations. It reports very fast batched local inference, but also substantial task/checkpoint variance, overconfidence before domain calibration, confident failures under language shift, option-budget pressure on high-cardinality choices, and large gains from task-specific fine-tuning. Published Laya-versus-Jev figures are not a single controlled MASI head-to-head and should not be imported as comparative evidence without reproduction.
+
+**MASI lesson:** typed probabilistic decision models are rapidly becoming a reusable implementation class rather than a proprietary one-off. That narrows MASI's claim surface: "use bounded typed decisions instead of prose" is useful prior art, not a sufficient MASI contribution. The research contribution must remain in responsibility-first construction, heterogeneous specialist composition, explicit governance/authority, preserved disagreement, independently measured calibration, provenance, and outcome-grounded influence. Laya is therefore valuable both as an adaptable local comparator and as cautionary evidence against treating confidence-shaped output as authority.
+
 ### FlexOlmo
 
 FlexOlmo independently trains domain experts and later integrates them through domain-informed routing, supporting flexible inclusion/exclusion without joint expert training.
@@ -132,7 +149,7 @@ That gives MASI a balanced posture:
 
 > **Do not ask specialists to reproduce generality, and do not throw away general-purpose models when they provide useful breadth, translation, hypothesis generation, or integration.**
 
-General-purpose models are components. Purpose-built specialists are components. Decision-native systems such as Jev are components. Governance, provenance, and outcome learning determine how those components may participate and how much authority they earn.
+General-purpose models are components. Purpose-built specialists are components. Decision-native systems such as Jev and Laya are components. Governance, provenance, and outcome learning determine how those components may participate and how much authority they earn.
 
 ## Relevant neighboring fields
 

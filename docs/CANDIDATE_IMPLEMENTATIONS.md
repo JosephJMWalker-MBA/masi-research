@@ -1,7 +1,7 @@
 # Candidate Implementation Registry
 
 **Status:** exploratory registry  
-**Last reviewed:** 2026-09-17
+**Last reviewed:** 2026-09-21
 
 This document tracks candidate implementations, substrates, baselines, reusable primitives, and cautionary evidence for MASI responsibilities. It is intentionally inclusive. Inclusion is **not** endorsement, qualification, architectural authority, or evidence that the candidate should become part of the target architecture.
 
@@ -79,11 +79,26 @@ Precision should not mean "a model prompted to sound precise." Research should i
 | Candidate | What it can teach / test | Initial posture |
 | --- | --- | --- |
 | **Jev / TypeSafe AI** | Decision-native bounded outputs, scores/probabilities, repeated judgments; useful evidence that intelligence can be designed around decision primitives rather than chat. | External comparator / primitive source only within provider terms |
+| **Laya / Convai Innovations** | Open-weight, Jev-compatible non-autoregressive typed decisions (`choice`, `score`, `noul`) with local Python and ONNX/Node runtimes. Useful for testing decision-native specialization, calibration, batching, resource cost, and domain adaptation without requiring a remote proprietary service. Public project evidence also exposes important failure modes: large checkpoint/task variance, confident distribution-shift failures, option-budget limits, and strong dependence on fine-tuning for some workflows. | Adaptable implementation / comparator / primitive source; usually `CONTROL_B` when a pretrained checkpoint is adapted, not a presumed `MASI_TARGET` |
 | [Vectara HHEM-2.1-Open](https://huggingface.co/vectara/hallucination_evaluation_model) | Evidence-premise vs generated-claim factual consistency. | Adaptable verifier / benchmark; inspect architecture and limitations |
 | [DeBERTa-v3 Tasksource NLI](https://huggingface.co/sileod/deberta-v3-base-tasksource-nli) | Entailment / contradiction / zero-shot bounded classification. | Adaptable baseline / primitive source |
 | [DeBERTa-v3 large MNLI/FEVER/ANLI/WANLI](https://huggingface.co/MoritzLaurer/DeBERTa-v3-large-mnli-fever-anli-ling-wanli) | Claim support and adversarial NLI exposure. | Comparator / primitive source |
 | [Skywork Reward V2 Qwen3 family](https://huggingface.co/Skywork/Skywork-Reward-V2-Qwen3-0.6B) | Small reward/judgment models; useful for ranking/evaluation experiments. | Comparator / CONTROL_B-family research specimen |
 | Fine-tuned small general base | Tests whether ordinary adaptation is enough. | **CONTROL_B, not presumed target** |
+
+### Decision-native convergence: Jev and Laya
+
+The appearance of Laya shortly after Jev's public launch changes the research interpretation of this primitive. Typed probabilistic decisions should not be treated as a vendor-specific architectural feature. An open-weight implementation can now be inspected, run locally, adapted, and compared under MASI's own frozen protocols.
+
+This strengthens several MASI obligations rather than weakening them:
+
+- **Interface compatibility is not semantic interchangeability.** Jev-compatible request/response shapes do not establish equal calibration, robustness, ontology fit, or task competence.
+- **Probability output is not evidence of calibration.** Any calibration claim must be measured on the experiment's own held-out distribution.
+- **Adaptation can dominate apparent capability.** Public Laya evidence reports a large gap between base checkpoints and a workflow-specialized checkpoint, so MASI should classify adapted Laya as `CONTROL_B` unless a future responsibility-first target is independently justified.
+- **Confidence gating is not sufficient governance.** Publicly reported confident failures under language/distribution shift show why routing, abstention, provenance, and independent evidence remain external architectural responsibilities.
+- **Local/open execution is scientifically valuable.** Laya can be pinned, instrumented, stress-tested, and reproduced on local hardware, making it a cleaner comparator for some MASI experiments than a remote-only service.
+
+The immediate research question is therefore not whether MASI should "use Laya." It is which bounded responsibility, if any, is well served by this decision-native construction and what independent baseline or purpose-built target can test whether the primitive actually adds value.
 
 ### WP1 record reconciled with the independent audit — R1 / R6
 
@@ -219,6 +234,7 @@ PRECISION SPECIMENS
   HHEM-2.1-Open
   DeBERTa NLI
   Jev as external comparator where terms permit
+  Laya as local/open decision-native comparator and adaptation substrate
 
 FORESIGHT SPECIMENS
   Chronos or TimesFM for quantitative forecasting
