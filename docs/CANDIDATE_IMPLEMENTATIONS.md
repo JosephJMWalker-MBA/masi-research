@@ -72,6 +72,38 @@ Telos is a candidate, not a mandatory MASI dependency. A simpler governance base
 | [Salesforce xRouter](https://huggingface.co/Salesforce/xRouter) | Learned routing with quality/cost tradeoff objective. | Comparator / primitive source; verify current noncommercial terms |
 | [Aurelio Semantic Router](https://github.com/aurelio-labs/semantic-router) | Cheap embedding-space routing baseline. | Baseline MASI should beat where routing is claimed to matter |
 
+## Observability and execution-evidence infrastructure
+
+### OpenTelemetry GenAI + MCP semantic conventions
+
+OpenTelemetry's GenAI semantic-conventions work now provides development-stage vocabulary for agent invocation, workflows, planning, inference, retrieval/memory operations, tool execution, tool-call metrics, and Model Context Protocol (MCP) client/server tracing.
+
+Primary sources:
+
+- https://github.com/open-telemetry/semantic-conventions-genai
+- https://github.com/open-telemetry/semantic-conventions-genai/blob/main/docs/gen-ai/gen-ai-agent-spans.md
+- https://github.com/open-telemetry/semantic-conventions-genai/blob/main/docs/gen-ai/gen-ai-spans.md
+- https://github.com/open-telemetry/semantic-conventions-genai/blob/main/docs/gen-ai/mcp.md
+
+Initial posture: **INFRASTRUCTURE / adaptable implementation / primitive source**.
+
+MASI should not invent a proprietary tracing vocabulary merely to preserve which agent, workflow, model, tool, or MCP operation ran. OpenTelemetry may be sufficient for much of that mechanical execution evidence.
+
+The architectural boundary remains strict:
+
+```text
+OpenTelemetry span / metric
+!= semantic correctness
+!= calibrated judgment
+!= governance authority
+!= permission to execute
+!= successful real-world outcome
+```
+
+Trace data should therefore feed MASI evidence and audit machinery rather than become an authority source. Content-bearing attributes also require explicit privacy/data-minimization decisions; maximal tracing is not automatically better tracing.
+
+A future MASI experiment or runtime should prefer OpenTelemetry-compatible instrumentation where practical, then add MASI-specific semantic records only for distinctions the standard telemetry layer cannot express.
+
 ## Precision research specimens
 
 Precision should not mean "a model prompted to sound precise." Research should identify the minimum machinery required for bounded judgment, evidence support, contradiction, constraint satisfaction, abstention, calibration, and verification.
