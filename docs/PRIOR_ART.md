@@ -91,6 +91,23 @@ The public Laya evidence is especially useful because it exposes both strengths 
 
 **MASI lesson:** typed probabilistic decision models are rapidly becoming a reusable implementation class rather than a proprietary one-off. That narrows MASI's claim surface: "use bounded typed decisions instead of prose" is useful prior art, not a sufficient MASI contribution. The research contribution must remain in responsibility-first construction, heterogeneous specialist composition, explicit governance/authority, preserved disagreement, independently measured calibration, provenance, and outcome-grounded influence. Laya is therefore valuable both as an adaptable local comparator and as cautionary evidence against treating confidence-shaped output as authority.
 
+### OpenTelemetry GenAI / MCP observability
+
+OpenTelemetry's current GenAI semantic-conventions work includes development-stage conventions for agent invocation, workflow execution, planning, inference, retrieval/memory operations, tool execution, tool-call metrics, and Model Context Protocol (MCP) tracing.
+
+Primary sources:
+
+- https://github.com/open-telemetry/semantic-conventions-genai
+- https://github.com/open-telemetry/semantic-conventions-genai/blob/main/docs/gen-ai/gen-ai-agent-spans.md
+- https://github.com/open-telemetry/semantic-conventions-genai/blob/main/docs/gen-ai/gen-ai-spans.md
+- https://github.com/open-telemetry/semantic-conventions-genai/blob/main/docs/gen-ai/mcp.md
+
+This matters because MASI does not need a bespoke observability protocol merely to preserve mechanical facts such as which agent/workflow ran, which tool was called, which MCP operation occurred, how long it took, or where an execution error surfaced.
+
+**MASI lesson:** execution observability is rapidly becoming commodity infrastructure. MASI-specific work should focus on the semantics that ordinary tracing does not establish: evidence meaning, calibration, disagreement, authority, legitimate execution, governing basis, outcome accountability, and how later outcomes change future influence. A trace is evidence about execution, not epistemic or governance authority.
+
+The privacy boundary is also important. Some OpenTelemetry GenAI attributes that may contain tool arguments or model content are opt-in or sensitive. MASI should preserve enough execution evidence for reproducibility and audit without treating maximal capture as a default.
+
 ### FlexOlmo
 
 FlexOlmo independently trains domain experts and later integrates them through domain-informed routing, supporting flexible inclusion/exclusion without joint expert training.
