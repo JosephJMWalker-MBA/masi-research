@@ -74,6 +74,20 @@ Reference:
 
 **MASI lesson:** retaining an LLM as a language/generalization component while delegating bounded work to specialists is strong prior art. MASI should not claim that idea alone. The sharper research question is whether the LLM can be treated as broad prior/proposal/translation intelligence while bounded specialists, governance, and outcome history retain independent authority.
 
+### Universe Routing / explicit epistemic control
+
+Wang (2026), *Universe Routing: Why Self-Evolving Agents Need Epistemic Control*, formalizes a routing problem in which a system first classifies a question into a reasoning framework or "belief space" and then invokes the corresponding heterogeneous solver rather than averaging incompatible frameworks inside one soft mixture.
+
+Reference:
+
+- Wang, Z. G. (2026), *Universe Routing: Why Self-Evolving Agents Need Epistemic Control*, arXiv:2603.14799, https://arxiv.org/abs/2603.14799
+
+The paper reports a 465M-parameter router over seven epistemic universes, compares hard routing with soft MoE, tests out-of-distribution routing, and studies expansion to new universes under continual learning. These are author-reported results and should be independently reproduced before being imported as MASI evidence.
+
+**MASI lesson:** routing can be an epistemic-control responsibility rather than merely a cost/latency optimization. This is strong convergence with MASI's separation between bounded specialists and a control/routing layer. However, MASI should not inherit the assumption that every real task belongs to exactly one mutually exclusive universe. Many consequential tasks may legitimately require composition across statistical, legal, engineering, human, or other responsibilities.
+
+The highest-value experiment is therefore adversarial rather than confirmatory: reproduce a hard-routing baseline, then construct cross-responsibility tasks where single-universe routing should fail and compare it with typed multi-specialist composition plus explicit disagreement/abstention.
+
 ### Decision-native System One models: Jev and Laya
 
 TypeSafe AI publicly introduced Jev on 2026-09-15 as a decision-native "System One" model: unstructured state in, typed probabilistic decisions out, with bounded answer schemas rather than autoregressive string generation.
