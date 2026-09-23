@@ -82,6 +82,52 @@ For composed systems, preserve:
 
 Cross-module correction is a candidate MASI mechanism and should be measured directly rather than inferred from final score alone.
 
+## Causal modularity / specialist ablation
+
+A named responsibility contract is not evidence that an implementation is genuinely modular. When MASI claims that a specialist has a bounded functional role, prefer a causal intervention test rather than inferring modularity from routing frequency, prompt labels, architecture diagrams, or final system accuracy.
+
+The basic question is:
+
+> **If specialist X is removed, neutralized, or replaced, does performance degrade primarily on X's declared responsibility rather than broadly across unrelated responsibilities?**
+
+A claim-bearing modularity test should preregister:
+
+- the specialist and exact declared responsibility being tested;
+- one or more **on-target** task axes where that specialist should matter;
+- credible **off-target** axes where it should not be necessary;
+- the intervention: removal, bypass, neutral stub, frozen substitute, or another semantically justified ablation;
+- a null/control intervention, such as a size/resource-matched random removal, irrelevant-module removal, or contract-preserving substitute where applicable;
+- metrics and selectivity rule before seeing the intervention result;
+- held-out or independently constructed evaluation material;
+- uncertainty/statistical procedure where stochasticity matters;
+- resource effects introduced by the ablation itself.
+
+Useful evidence for bounded modularity has the qualitative form:
+
+```text
+large reproducible on-target degradation
++
+materially smaller off-target degradation
++
+stability across justified metrics / held-out material
++
+no hidden change to evidence, routing, budget, or authority
+```
+
+Failure modes are scientifically useful:
+
+- no meaningful degradation after removal → the specialist may be unnecessary, redundant, bypassed, or poorly tested;
+- broad degradation across unrelated axes → the specialist may carry hidden general/shared state or the decomposition may be wrong;
+- verdict flips across metric/corpus choices → the modularity claim is measurement-dependent and must be narrowed;
+- another specialist silently absorbs the role → test composition/routing adaptation separately rather than calling the original component causally isolated;
+- system failure caused only by interface breakage → repair the ablation design; do not misreport plumbing failure as cognitive modularity.
+
+Where feasible, include a **positive control** whose selective role is already known or mechanically constructed so the evaluation can demonstrate that it is capable of detecting modularity when present.
+
+This methodology is adapted from preregistered causal expert-ablation work on sparse MoE systems (Salomone, Gandhi & Asaria 2026, arXiv:2606.25092) but applies to MASI at the responsibility/component level. Their particular selectivity threshold is not imported as a universal MASI rule.
+
+For H4 interchangeability, pair ablation with substitution: after showing that removing X selectively matters, replace X with a different implementation of the same frozen responsibility contract and test whether on-target capability returns without changing downstream consumer semantics.
+
 ## Calibration
 
 Do not label a numeric confidence value as calibrated merely because it falls between 0 and 1.
