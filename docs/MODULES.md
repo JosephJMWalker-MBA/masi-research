@@ -171,6 +171,8 @@ stakeholder A's factual interpretation is established
 
 ### Candidate implementations
 
+The broader [Empathy Research Program](EMPATHY_RESEARCH_PROGRAM.md) treats Empathy as bounded other-regarding intelligence rather than emotion recognition alone. The current successor sequence separates evidence-grounded observation, stakeholder representation, perspective counterfactuals, missing-perspective detection, and governed composition so that each capability can be falsified independently.
+
 The Accumulated Distress Care Protocol (ADCP) provides one possible research substrate for a narrow Empathy-related capability: mapping conversational evidence into bounded observations while leaving downstream care policy deterministic. ADCP is not the Empathy module and need not become a MASI dependency.
 
 Other implementations may focus on stakeholder impact, agency, relational dynamics, or different domains entirely.
