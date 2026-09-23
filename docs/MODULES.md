@@ -20,6 +20,8 @@ Any MASI-compatible implementation should make its output inspectable enough to 
 
 A module output is evidence for the system, not truth.
 
+A responsibility boundary is also an **empirical claim**, not merely documentation. Where MASI claims genuine modularity, the implementation should eventually survive causal intervention: removing or substituting that specialist should affect its declared responsibility substantially more than unrelated responsibilities, subject to a preregistered test. See [EVALUATION.md](EVALUATION.md#causal-modularity--specialist-ablation). Broad degradation after one specialist is removed is evidence of hidden coupling, shared-state dependence, an incorrect responsibility boundary, or an invalid ablation—not proof of modularity.
+
 ## Minimum semantic boundary — WP0 gate
 
 **Role contract != model identity. Common boundary != common internal representation.** These are semantic obligations for the next authorized contract, not a new wire schema or runtime. The [WP0 ownership record](WP0_RESEARCH_GATES.md#masi-bus-ownership-and-gaps) maps them to current MASI Bus and identifies gaps. A small experiment manifest plus linked input/output records may satisfy them; every item need not be repeated in every response.

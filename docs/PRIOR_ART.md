@@ -64,6 +64,37 @@ References:
 
 **MASI lesson:** learned modularity and routing are established research areas. MASI-specific work must distinguish purpose-built responsibility contracts, heterogeneous computational paradigms, governance, disagreement, and outcome-grounded influence from generic modular neural computation.
 
+### Causal modularity tests in sparse MoE systems
+
+Salomone, Gandhi, and Asaria (2026) directly test whether apparent sparse-MoE "experts" behave like stable functional modules rather than assuming that routing structure implies modularity.
+
+Reference:
+
+- Salomone, T., Gandhi, D., & Asaria, A. (2026), *How Modular Is a Frontier Mixture-of-Experts? A Pre-registered Causal Test in Which Apparent Expert Modularity Mostly Dissolves*, arXiv:2606.25092, https://arxiv.org/abs/2606.25092
+
+The study preregisters family-to-capability hypotheses, then intervenes by ablating candidate expert families and comparing the resulting on-target degradation with off-target degradation and a size-matched random-expert null. It repeats the analysis across multiple metrics and an independent corpus, with bootstrap uncertainty. The authors report that most apparent expert families have causal effects but fail robust selectivity: the modularity verdict often changes with corpus, metric, or statistical threshold. One preregistered family survives the conservative selectivity test cleanly. A positive control recovers previously published disjoint structure in another MoE, showing that the method can detect modularity when present.
+
+This is particularly useful for MASI because it supplies a falsifiable answer to a question that interface design alone cannot settle:
+
+> **Does removing a purported specialist selectively damage the responsibility it claims to own, or does it produce broad/global degradation?**
+
+**MASI lesson:** a component should not be called a meaningful specialist merely because it has a name, route, prompt, expert ID, or apparently coherent behavior. Modularity is a causal claim. MASI can inherit the intervention logic while applying it at a higher architectural level: remove, neutralize, or substitute one declared specialist and measure whether the damage is concentrated on its declared responsibility boundary.
+
+The exact selectivity threshold used by the MoE paper is not a MASI standard. Future MASI experiments must preregister their own on-target/off-target axes, intervention, null, metric set, held-out data, uncertainty method, and decision rule.
+
+### EMO / modularity by construction
+
+Wang, Bhagia, and Min (2026) introduce EMO, a sparse MoE explicitly pretrained so subsets of experts can be used and composed independently. Their central observation is itself relevant prior art: ordinary sparse MoEs can route sparsely without yielding independently usable modules, so modularity must be treated as an objective rather than inferred from the existence of experts.
+
+References:
+
+- Wang, R., Bhagia, A., & Min, S. (2026), *EMO: Pretraining Mixture of Experts for Emergent Modularity*, arXiv:2605.06663, https://arxiv.org/abs/2605.06663
+- Code: https://github.com/allenai/EMO
+
+The authors release the EMO model, a matched standard-MoE baseline, and training code. Their reported selective-expert results should be treated as source-reported until independently reproduced.
+
+**MASI lesson:** this is complementary evidence for **specialization by construction**. Sparse routing alone does not create the kind of modular responsibility MASI cares about. If independent use, replacement, isolation, or composition matters, those properties must be designed for and then tested causally.
+
 ### MRKL systems
 
 MRKL explicitly argues for a systems approach combining large language models with external knowledge sources, neural modules, and discrete reasoning rather than treating the language model as the whole intelligence system.
