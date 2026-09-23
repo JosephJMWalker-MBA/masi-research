@@ -113,7 +113,7 @@ Role in the larger program:
 
 > E001 tests whether we can build a trustworthy observation layer before asking the system to reason over multiple stakeholders.
 
-### MASI-E002 — Stakeholder and perspective representation
+### MASI-E002 — Stakeholder and perspective representation ([#20](https://github.com/JosephJMWalker-MBA/masi-research/issues/20))
 
 Research question:
 
@@ -129,7 +129,7 @@ Key failure modes to test:
 - failure to preserve conflicts;
 - treating nonhuman affected beings as mere environmental objects where the task ontology says their welfare matters.
 
-### MASI-E003 — Perspective counterfactuals
+### MASI-E003 — Perspective counterfactuals ([#21](https://github.com/JosephJMWalker-MBA/masi-research/issues/21))
 
 Research question:
 
@@ -144,7 +144,7 @@ This experiment should test:
 - irreversible versus recoverable consequences;
 - uncertainty propagation from Foresight into Empathy.
 
-### MASI-E004 — Missing-perspective detection
+### MASI-E004 — Missing-perspective detection ([#22](https://github.com/JosephJMWalker-MBA/masi-research/issues/22))
 
 Research question:
 
@@ -160,7 +160,7 @@ Candidate outputs include:
 - reason current representation may be incomplete;
 - escalation request.
 
-### MASI-E005 — Empathy-governed composition
+### MASI-E005 — Empathy-governed composition ([#23](https://github.com/JosephJMWalker-MBA/masi-research/issues/23))
 
 Research question:
 
