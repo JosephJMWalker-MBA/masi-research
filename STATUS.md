@@ -65,6 +65,32 @@ It also requires independent role boundaries that cannot truthfully be collapsed
 
 The compute portion is comparatively modest and was frozen around the Mac mini M4 environment. Do not silently migrate E001 to the Jetson Orin without a new protocol decision.
 
+## Long-horizon Empathy research program
+
+The broader Empathy direction has now been recorded in [`docs/EMPATHY_RESEARCH_PROGRAM.md`](docs/EMPATHY_RESEARCH_PROGRAM.md).
+
+The approved successor research sequence is:
+
+```text
+E001 evidence-grounded observation
+  -> E002 stakeholder and perspective representation (#20)
+  -> E003 perspective counterfactuals (#21)
+  -> E004 missing-perspective detection (#22)
+  -> E005 Empathy-governed composition (#23)
+```
+
+This sequence formalizes Empathy as bounded **other-regarding intelligence**: explicit representation of affected stakeholders, evidence and uncertainty, agency/consent, burdens and benefits, relational consequences, and eventually missing-perspective detection.
+
+It does **not** change the current execution priority. E002-E005 are research questions only. They are not authorized for implementation, and they do not expand or amend accepted E001 v1.4.
+
+A core invariant for later Empathy work is:
+
+```text
+inference about another being != fact about that being
+```
+
+The program also preserves a second architectural boundary: improved social modeling can support cooperation but can also improve manipulation, so Empathy capability must remain bounded by explicit governance and authority.
+
 ## Strategic decision at this plateau
 
 **Run a smaller, human-light experiment before deciding whether to spend the human resources required by E001.**
