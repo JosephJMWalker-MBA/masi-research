@@ -71,6 +71,7 @@ Telos is a candidate, not a mandatory MASI dependency. A simpler governance base
 | [Arch-Router-1.5B](https://huggingface.co/katanemo/Arch-Router-1.5B) | Small learned router aligned to user-defined preferences/domains. | Comparator / primitive source; verify license constraints |
 | [Salesforce xRouter](https://huggingface.co/Salesforce/xRouter) | Learned routing with quality/cost tradeoff objective. | Comparator / primitive source; verify current noncommercial terms |
 | [Aurelio Semantic Router](https://github.com/aurelio-labs/semantic-router) | Cheap embedding-space routing baseline. | Baseline MASI should beat where routing is claimed to matter |
+| [Universe Routing](https://arxiv.org/abs/2603.14799) | Explicit epistemic-control router that classifies a query into a reasoning framework before invoking heterogeneous solvers; useful convergence evidence and a hard-routing/OOD/continual-expansion benchmark. | Comparator / routing primitive source; its mutually-exclusive-universe assumption is not a MASI requirement |
 
 ## Observability and execution-evidence infrastructure
 
