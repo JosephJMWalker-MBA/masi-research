@@ -75,7 +75,7 @@ The historical MASI lineage includes four recurring responsibilities:
 
 - **Precision** — calibrated bounded judgment, constraint satisfaction, contradiction detection, evidence consistency, classification, abstention, and escalation.
 - **Foresight** — conditional future-state modeling, scenario branching, delayed consequences, second-order effects, and tail risks.
-- **Empathy** — stakeholder representation, burden, agency, relational consequences, care-sensitive interpretation, and uncertainty about inferred human states.
+- **Empathy** — stakeholder discovery and representation, evidence-grounded perspective/state inference, burden/benefit asymmetry, agency and consent, relational consequences, missing-perspective detection, and explicit uncertainty about inferred states.
 - **Wisdom** — outcome-grounded meta-learning: comparing predictions with consequences and updating the conditional influence of models, evidence, assumptions, and reasoning patterns over time.
 
 These are architectural abstractions, not canonical model identities. Their boundaries, multiplicity, implementations, and necessity remain experimentally revisable.
@@ -114,21 +114,25 @@ The registry is a search surface, not a canonical fleet. Candidates must earn in
 
 ## Current phase
 
-**WP1 accepted only as narrowed; WP0 research gates independently accepted for bounded experiment design.**
+**Deliberate plateau after independent acceptance and merge of MASI-E001 protocol v1.4.**
 
-The first Astra implementation block began before the specialization-by-construction doctrine was explicit enough in the repository. Its classification and reconciliation against [`docs/CONSTRUCTION_DOCTRINE.md`](docs/CONSTRUCTION_DOCTRINE.md) are complete; the remaining gates concern future work.
+E001 is a durable preregistered Empathy speaker-observation experiment. It is **not authorized for execution** and is intentionally dormant while a cheaper, human-light pre-E001 experiment is designed to test whether specialization-by-construction shows a measurable operating region before committing the substantial human coordination required by E001.
 
-**WP1 audit checkpoint:** Claude's [independent audit](docs/AUDIT_WP0_WP1_2026-09-17.md) of the frozen builder packet `81adfff` initially returned `CLAIM_NARROWING_REQUIRED`. Astra's documentation-only [R1–R7 reconciliation](docs/RECONCILIATION_WP1_R1_R7.md) was then independently re-checked in Audit Addendum B and received `ACCEPT`. **WP1 is accepted only as narrowed.** The reconciliation does not merge the builder's code, frozen files, or evidence; the immutable builder packet remains pinned at `81adfff`.
+The accepted E001 protocol remains frozen. Smaller experiments may inform whether or when it is worth executing, but may not retroactively modify v1.4.
 
-The observed result is uniform invocation of a **closed, pre-registered set**: an `INFRASTRUCTURE`/B0 equality floor and two externally adapted pretrained transformer classifiers (`CONTROL_B`-class specimens), repeated bit-identically on one host. Normalization remains caller-resident and candidate-keyed. The protocol's inference-branching condition was not triggered; the broader contract's caller-branch condition holds only for invocation, not normalization. Neither arbitrary new implementations, purpose-built targets nor cross-paradigm interchangeability were demonstrated. [Results](experiments/wp1/RESULTS.md) record no capability deficit justifying learned complexity. Issue #1's gate-level thesis/falsification criteria are now satisfied by the accepted WP0 packet; task-specific bindings remain provisional.
+A broader [`Empathy Research Program`](docs/EMPATHY_RESEARCH_PROGRAM.md) now records the approved successor sequence without expanding E001:
 
-The [WP0 research-gates packet](docs/WP0_RESEARCH_GATES.md) records claim-linked controls, the minimum semantic responsibility boundary, Reality Audit record, current MASI Bus ownership/gaps, resource observations and the future independent-reference-check requirement. H2A/H2B and existing falsifiers are retained. Audit Addendum C independently accepted these gates **only for the bounded purpose of enabling design of the next experiment**; this is not demonstrated implementation conformance or permission to start an experiment.
+```text
+E001 evidence-grounded observation
+  -> E002 stakeholder and perspective representation
+  -> E003 perspective counterfactuals
+  -> E004 missing-perspective detection
+  -> E005 governed composition
+```
 
-The operator has selected **MASI-E001** as the first named experiment for a protocol-binding packet. The authorized work is design/preregistration only: bind the task, metrics/margins, competent controls, family-specific semantics, budgets and applicable integrity checks, then stop for independent audit before implementation. E001 implementation/training, K001 execution, new runtime work and builder-branch merging remain unauthorized.
+E002-E005 are durable research questions only. They carry no implementation or execution authority. The immediate resume point remains the smaller pre-E001 experiment described in [`STATUS.md`](STATUS.md).
 
-The first specialization experiment remains `MASI-E001`, but a fine-tuned local language model is now explicitly a control condition rather than the presumed target. The target is the smallest credible Empathy-observation intelligence designed from the responsibility outward.
-
-The active implementation plan is [`docs/IMPLEMENTATION_SPRINT_001.md`](docs/IMPLEMENTATION_SPRINT_001.md).
+WP1 remains accepted only as narrowed; WP0 research gates remain accepted for bounded experiment design. The frozen WP1 builder packet remains pinned at `81adfff`.
 
 ## How to contribute
 
@@ -162,6 +166,7 @@ Please read both [`PARTICIPATION.md`](PARTICIPATION.md) and [`CONTRIBUTING.md`](
 - [`docs/CONSTRUCTION_DOCTRINE.md`](docs/CONSTRUCTION_DOCTRINE.md) — non-negotiable specialization-by-construction doctrine
 - [`docs/RESEARCH_THESIS.md`](docs/RESEARCH_THESIS.md) — hypotheses and falsification criteria
 - [`docs/MODULES.md`](docs/MODULES.md) — candidate responsibility contracts
+- [`docs/EMPATHY_RESEARCH_PROGRAM.md`](docs/EMPATHY_RESEARCH_PROGRAM.md) — bounded Empathy research direction and E001-E005 successor sequence
 - [`docs/EVALUATION.md`](docs/EVALUATION.md) — baseline and comparison rules
 - [`docs/WP0_RESEARCH_GATES.md`](docs/WP0_RESEARCH_GATES.md) — bounded WP0 decisions, Bus ownership, provisional choices and audit handoff
 - [`docs/PRIOR_ART.md`](docs/PRIOR_ART.md) — focused prior-art lineage and research obligations
