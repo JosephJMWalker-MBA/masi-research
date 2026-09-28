@@ -78,6 +78,10 @@ Different implementations can satisfy the same responsibility contract and be su
 
 A governed router can reduce unnecessary specialist invocation, improve escalation, or preserve performance under lower resource use compared with always-on composition.
 
+A candidate mechanism within H5 is **generative orchestration governance**. Classic orchestration obtains much of its governability by pre-enumerating valid paths. MASI asks a narrower question: whether route, context, specialist, and tool selection can remain generative while authority, evidence, permissions, provenance, and decision lineage remain externally governed and inspectable. This does not remove deterministic controls; authentication, permission enforcement, irreversible-action gates, schema validation, hard limits, and audit persistence may remain classic even when orientation and routing are generative.
+
+This mechanism requires its own controls. A future attribution should distinguish classic routing, unconstrained generative routing, and MASI-governed generative routing rather than crediting MASI for capabilities common to contemporary agentic systems. See [GENERATIVE_ORCHESTRATION_GOVERNANCE.md](GENERATIVE_ORCHESTRATION_GOVERNANCE.md).
+
 ### H6 — Reality-grounded adaptation value
 
 Outcome records from prior decisions improve later weighting, routing, calibration, or module selection on materially comparable tasks without hiding repeated error behind general capability.
