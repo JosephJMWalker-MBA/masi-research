@@ -165,6 +165,7 @@ Please read both [`PARTICIPATION.md`](PARTICIPATION.md) and [`CONTRIBUTING.md`](
 - [`CONTRIBUTING.md`](CONTRIBUTING.md) — contribution and evidence standards
 - [`docs/CONSTRUCTION_DOCTRINE.md`](docs/CONSTRUCTION_DOCTRINE.md) — non-negotiable specialization-by-construction doctrine
 - [`docs/RESEARCH_THESIS.md`](docs/RESEARCH_THESIS.md) — hypotheses and falsification criteria
+- [`docs/GENERATIVE_ORCHESTRATION_GOVERNANCE.md`](docs/GENERATIVE_ORCHESTRATION_GOVERNANCE.md) — working hypothesis for governing dynamic route/tool selection without pre-enumerating every path
 - [`docs/MODULES.md`](docs/MODULES.md) — candidate responsibility contracts
 - [`docs/EMPATHY_RESEARCH_PROGRAM.md`](docs/EMPATHY_RESEARCH_PROGRAM.md) — bounded Empathy research direction and E001-E005 successor sequence
 - [`docs/EVALUATION.md`](docs/EVALUATION.md) — baseline and comparison rules
