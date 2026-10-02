@@ -26,6 +26,8 @@ GitHub durable record
 
 No artificial organizational structure should be invented merely to imitate a larger team before one exists.
 
+Separate from current repository operations, the long-term institutional hypothesis is now documented in [`docs/CONTRIBUTION_DAO.md`](docs/CONTRIBUTION_DAO.md): contribution-based membership/standing, same-role plurality and cooperation, evidence-not-reward learning boundaries, and typed authority. **This DAO is not yet implemented and does not alter current repository permissions or legal ownership.**
+
 ## E001 — accepted and intentionally dormant
 
 **Experiment:** MASI-E001 — Empathy speaker-observation specialist.
@@ -197,6 +199,7 @@ Then stop and review that design before creating code, a branch, a new repo, tra
 - E001 protocol v1.4 is accepted and merged.
 - The public participation compact is merged.
 - The MASI governance working theory is merged.
+- The MASI contribution-DAO working institutional model is merged, including the corrections that roles are not assumed to be incentive-seeking agents, measurement is not reinforcement, same-role swarms may cooperate without making agreement the target, and contribution standing remains distinct from universal authority.
 - The DeepSeek V4.1 MASI research note is merged.
 - No open PR backlog remains at this handoff.
 
