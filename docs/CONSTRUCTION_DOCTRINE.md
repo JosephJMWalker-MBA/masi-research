@@ -112,6 +112,14 @@ Examples:
 
 These examples are illustrative, not canonical implementations.
 
+### Roles are not interests
+
+A bounded responsibility does not imply an agent with political or economic motives. Do not assume that a specialist seeks consensus, reward, throughput, institutional power, or avoidance of disagreement unless its actual update/optimization mechanism creates that incentive.
+
+MASI may measure a specialist's performance and change system-level routing or influence without retraining that specialist. **Measurement is not reinforcement.** Reinforcement learning may be a contributor's chosen construction method; it is not a shared objective imposed by MASI on every component.
+
+Multiple independently developed implementations may occupy one responsibility and may use ensemble, critique, verification, or swarm-like cooperation. Preserve their independently attributable outputs and, where practical, independent first passes. Conclusions may converge when evidence warrants it without requiring the participating intelligences to converge into one policy or model identity.
+
 ## General-purpose models are components, not discarded competitors
 
 The construction doctrine is **not anti-LLM** and does not require removing general-purpose models from MASI.
@@ -197,6 +205,10 @@ A responsibility contract should expose semantic state that is independent of a 
 
 A specialist that cannot be replaced without rewriting the surrounding architecture has failed the interchangeability objective, regardless of its benchmark score.
 
+Interchangeability also permits plurality within a role. University A's Precision implementation and University B's Precision implementation may coexist, compete, or cooperate without either becoming the canonical definition of Precision. Role-level agreement should be treated as evidence to verify, not as a reward target to maximize.
+
+Where consequential external capability is involved, authority should be enforced outside model prose through credentials, permissions, schemas, hard gates, or other inspectable controls. A role description or system prompt is not itself an execution boundary.
+
 ## Agent instruction
 
 Astra, Claude, GPT, or any other agent assisting this repository may use general-purpose models to research, code, critique, translate, generate fixtures, establish baselines, generate proposals, or bridge human language and typed system state.
@@ -211,7 +223,7 @@ allowed inputs:
 native state / ontology:
 outputs:
 uncertainty / abstention semantics:
-learning or update signal:
+learning / update behavior (including none):
 transparent baseline:
 why additional complexity is necessary:
 implementation class: CONTROL_A | CONTROL_B | MASI_TARGET | INFRASTRUCTURE
