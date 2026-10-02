@@ -82,6 +82,24 @@ For composed systems, preserve:
 
 Cross-module correction is a candidate MASI mechanism and should be measured directly rather than inferred from final score alone.
 
+## Convergence, independence, and same-role cooperation
+
+When multiple implementations occupy the same responsibility, record whether their first-pass outputs were independent or whether one implementation saw another's conclusion before responding.
+
+Measure at least:
+
+- independent agreement rate;
+- post-consultation agreement rate;
+- disagreement cases in which the minority or dissenting implementation was externally validated;
+- correlated-error rate;
+- cases where reconciliation corrected an error;
+- cases where reconciliation introduced an error;
+- incremental contribution of each implementation after controlling for simpler voting or best-of-N baselines.
+
+Do not treat agreement as the target variable. **Agreement is evidence only when it tracks externally supported success.** A role-level swarm that converges by anchoring, copying, or optimizing toward the same evaluator is not equivalent to independent evidential convergence.
+
+Cross-role evaluation should separately test whether distinct responsibilities retain causal specialization. Rising agreement across roles is not automatically improvement and may indicate homogenization.
+
 ## Causal modularity / specialist ablation
 
 A named responsibility contract is not evidence that an implementation is genuinely modular. When MASI claims that a specialist has a bounded functional role, prefer a causal intervention test rather than inferring modularity from routing frequency, prompt labels, architecture diagrams, or final system accuracy.
@@ -166,6 +184,18 @@ A frontier model should not be treated as ground truth merely because it is stro
 Freeze and identify the runner, mapping, evaluator/reference check, protocol and evaluation assets for every reported run; changes create a new attributable version without overwriting earlier evidence. Shared helpers may still check integrity/drift, but cannot be the sole correctness check for their own semantics. For non-deterministic quality labels, use a frozen independently reviewed rubric and blinded assessment rather than pretending a deterministic table supplies ground truth.
 
 WP1 remains accepted only as narrowed. E1 identifies shared runner/verifier helpers there; this decision applies to the next authorized contract and authorizes no WP1 code, evidence or evaluator repair.
+
+## Evaluation is not reinforcement
+
+A benchmark, outcome record, calibration estimate, or contribution score measures the system under a stated protocol. It does not by itself authorize retraining, weight updates, reward shaping, or any other change to the evaluated specialist.
+
+If later research uses MASI evidence to train a new specialist version, record that as a separate intervention with its own lineage. This keeps system-level learning about which implementation to trust distinct from model-level learning inside that implementation.
+
+## Benchmark and membership integrity
+
+If evaluation later informs contribution-DAO membership or role-level standing, the benchmark becomes part of the governance attack surface. Do not assume that mathematical criteria are ungameable.
+
+Freeze and version the applicable metrics, thresholds, hidden/held-out assets, evaluator version, and mapping from evidence to standing before the claim-bearing evaluation where practical. Preserve negative results and evaluator changes. A participant must not be able to redefine the success function after observing its own result and then treat the new score as objective authority.
 
 ## Publication boundaries
 
