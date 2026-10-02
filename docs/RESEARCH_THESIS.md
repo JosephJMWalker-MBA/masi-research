@@ -24,10 +24,13 @@ Candidate mechanisms include:
 - explicit decomposition of responsibilities;
 - preserved disagreement;
 - cross-module error correction;
+- same-responsibility cooperation among independently developed implementations;
 - dynamic composition;
 - confidence-aware escalation;
 - conditional influence weighting;
 - outcome-grounded updating over time.
+
+MASI does **not** assume that participating specialists are reward-seeking agents with incentives to converge. A specialist may simply perform its bounded responsibility while the surrounding system measures performance, calibration, disagreement, marginal contribution, and later outcomes. Conclusions may converge when evidence warrants it without requiring the underlying intelligences to converge toward one policy or objective. See [`CONTRIBUTION_DAO.md`](CONTRIBUTION_DAO.md).
 
 ## Construction classes
 
@@ -70,6 +73,8 @@ The purpose-built system should begin with the minimum sufficient representation
 
 A composition of specialist implementations outperforms the constituent specialists operating independently or a simple aggregation baseline.
 
+Multiple implementations may occupy the same responsibility. Same-role ensemble, critique, verification, or swarm-like cooperation is therefore a legitimate candidate mechanism and also an important simpler baseline. Agreement among those implementations is not itself the objective: preserve independent first-pass outputs where practical, retain dissent, and test whether later reconciliation improves externally evaluated performance. A dissenting implementation that catches a shared error is positive evidence of useful non-redundancy.
+
 ### H4 — Interchangeability value
 
 Different implementations can satisfy the same responsibility contract and be substituted without rewriting the overall system architecture or leaking implementation-specific hidden representations across boundaries.
@@ -85,6 +90,8 @@ This mechanism requires its own controls. A future attribution should distinguis
 ### H6 — Reality-grounded adaptation value
 
 Outcome records from prior decisions improve later weighting, routing, calibration, or module selection on materially comparable tasks without hiding repeated error behind general capability.
+
+This is a system-level learning claim, not a requirement that MASI reinforce or retrain the underlying specialist. **Measurement is not reinforcement.** Evidence may change routing or influence while the contributed implementation remains unchanged. Whether a contributor later uses MASI evidence for reinforcement learning, supervised training, distillation where permitted, or another development method is a separate model-development decision.
 
 ### H7 — Local-system competitiveness
 
