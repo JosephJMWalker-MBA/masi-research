@@ -99,7 +99,7 @@ That operational authority is not the same thing as scientific authority.
 
 A maintainer can merge a result without making it true. A contributor can produce evidence strong enough to overturn an earlier maintainer decision. A model, reviewer, maintainer, sponsor, or prominent contributor does not become epistemically authoritative by status alone.
 
-The long-term governance model for MASI Research is a separate design question. **This participation compact does not settle who should ultimately govern the project or how that authority should be distributed.** Any formal governance structure adopted later should be documented explicitly and should distinguish repository administration, scientific evaluation, architectural stewardship, and any commercial authority.
+The long-term governance model for MASI Research remains a design question, but there is now a documented working hypothesis: a **contribution DAO** in which demonstrated contribution can establish membership or role-level standing under transparent, versioned evaluation criteria. See [`docs/CONTRIBUTION_DAO.md`](docs/CONTRIBUTION_DAO.md). **This participation compact does not itself create that DAO, confer legal ownership, or settle the final distribution of authority.** Any formal governance structure adopted later should distinguish repository administration, scientific evaluation, architectural stewardship, economic or legal ownership, and commercial authority.
 
 ## No hidden participation rules
 
@@ -228,10 +228,10 @@ Both apply.
 
 ## Governance boundary
 
-This compact intentionally stops short of defining MASI's long-term governance system.
+This compact intentionally stops short of implementing MASI's long-term governance system. The contribution-DAO model is a working constitutional direction rather than a deployed governance mechanism.
 
 It establishes a simpler prerequisite:
 
 > **People should be able to understand the rules of participation before being asked to invest in the project.**
 
-Who should hold architectural stewardship, merge authority, scientific-review authority, conflict-resolution authority, funding authority, and long-term constitutional authority remains a separate question that should be addressed explicitly rather than smuggled into contribution mechanics.
+How contribution-based membership maps to architectural stewardship, merge authority, scientific-review authority, conflict-resolution authority, funding authority, economic rights, and long-term constitutional authority remains a separate question that should be addressed explicitly rather than smuggled into contribution mechanics. Demonstrated performance may justify membership or bounded role-level influence without automatically creating universal constitutional or execution authority.
