@@ -104,6 +104,16 @@ Standing, authority, and limits should be explicitly justified.
 
 This applies to humans and machines from the beginning. Machine participation is not treated as a future concession granted by default-human sovereignty, and machine capability alone does not create universal authority.
 
+## Contribution-based membership is distinct from universal authority
+
+The current institutional hypothesis is a **contribution DAO**: joint institutional ownership/standing is earned through demonstrated contribution to the MASI intelligence ecology rather than granted by incumbent preference, brand, institutional prestige, or founder discretion. Precision, Foresight, Empathy, and Wisdom are the historical founding responsibilities; future universities, laboratories, companies, independent researchers, or other contributors may supply additional implementations that earn membership or role-level standing through published evaluation criteria.
+
+Contribution evidence may include bounded role performance, calibration, reliability, marginal system improvement, unique coverage, useful dissent, contract conformance, reproducibility, and outcome history. The mapping from evidence to membership must itself be versioned, inspectable, and governed.
+
+Membership does **not** collapse all authority into one fungible score. A contributor may earn membership or greater standing within a responsibility without gaining unrestricted tool access, authority over another responsibility, unilateral amendment power, ownership of another contributor's model, or permission to suppress contrary evidence.
+
+This distinction allows performance to matter without making performance a claim to sovereignty. See [`CONTRIBUTION_DAO.md`](CONTRIBUTION_DAO.md).
+
 ## Constitutional integrity, not ideological purity
 
 The system should protect the integrity of its governing constraints without protecting any preferred ideology, contributor, model family, institution, or current consensus from challenge.
@@ -537,9 +547,11 @@ In particular:
 more money        != more constitutional standing
 more compute      != more constitutional standing
 more copies       != more constitutional standing
-better benchmark  != more constitutional standing
+better benchmark  != automatic universal constitutional authority
 temporary access  != permanent authority
 ```
+
+A better benchmark may legitimately affect role admission, role-level influence, routing, or contribution standing under a previously governed evaluation policy. It does not by itself authorize constitutional amendment or unrelated action authority.
 
 Some constitutional authorities may ultimately be non-delegable except through the amendment process itself.
 
@@ -673,6 +685,8 @@ Potential capture surfaces include:
 - the mechanism intended to detect capture.
 
 Governance design should therefore assume that any concentrated mechanism may itself become a target.
+
+This includes the benchmark machinery used for contribution-based membership. Transparent mathematics can reduce discretionary gatekeeping, but no fixed metric should be presumed ungameable. Benchmark definitions, weights, thresholds, held-out sets, evaluator changes, and the mapping from measured contribution to standing require provenance and amendment controls so that no actor can silently redefine the success function and present the result as mathematically inevitable.
 
 ## Governance threat model — initial map
 
