@@ -45,10 +45,12 @@ Before making consequential changes, read in this order:
 3. `README.md`
 4. `STATUS.md`
 5. `docs/RESEARCH_THESIS.md`
-6. `docs/MODULES.md`
-7. `docs/EVALUATION.md`
-8. `docs/CANDIDATE_IMPLEMENTATIONS.md`
-9. the active experiment / sprint protocol
+6. `docs/GOVERNANCE_WORKING_THEORY.md`
+7. `docs/CONTRIBUTION_DAO.md`
+8. `docs/MODULES.md`
+9. `docs/EVALUATION.md`
+10. `docs/CANDIDATE_IMPLEMENTATIONS.md`
+11. the active experiment / sprint protocol
 
 ## Specialist implementation gate
 
@@ -60,7 +62,7 @@ allowed inputs:
 native state / ontology:
 outputs:
 uncertainty / abstention semantics:
-learning or update signal:
+learning / update behavior (including none):
 transparent baseline:
 why additional complexity is necessary:
 implementation class: CONTROL_A | CONTROL_B | MASI_TARGET | INFRASTRUCTURE
@@ -89,6 +91,11 @@ what provenance is preserved:
 - **Prompting != specialization.** Prompt-only role decomposition is a valid control condition, not sufficient evidence of a specialized learned module.
 - **No complexity without a demonstrated deficit.** Add architectural complexity only when measured failure shows why the simpler system is insufficient.
 - **Generality belongs to composition.** Do not replicate broad general intelligence inside each module merely because pretrained LLMs make that convenient.
+- **Roles are not interests.** Do not assume a specialist wants power, agreement, throughput, reward, or consensus unless the implementation actually contains an optimization/update mechanism that creates that incentive.
+- **Measurement is not reinforcement.** Evaluation, contribution scoring, routing, and influence updates do not imply retraining the underlying specialist. RL may exist inside a contributor's implementation; it is not a MASI constitutional default.
+- **Conclusions may converge; intelligences need not.** Preserve cross-role differentiation and useful disagreement. Same-role implementations may cooperate or swarm, but preserve independent first-pass outputs where practical and never optimize agreement as a substitute for externally supported success.
+- **Contribution standing is typed.** Under the working contribution-DAO hypothesis, demonstrated performance may establish membership or bounded role-level standing; it does not automatically create tool authority, cross-role authority, constitutional amendment power, or ownership of another contributor's model.
+- **Capabilities must be structurally enforced.** Do not rely on system-prompt prose as the sole boundary for consequential execution authority when credentials, permissions, schemas, or external authorization checks can enforce the restriction.
 - **Typed semantic boundaries.** Every semantically meaningful state crossing a MASI boundary should be named, typed, inspectable, testable, and where practical causally intervenable.
 - **Freeze before observation.** Evaluation criteria, baselines, data splits, and major success/failure conditions should be fixed before inspecting final results.
 - **Evidence != interpretation.** Preserve raw outputs and measurements separately from conclusions.
@@ -144,9 +151,11 @@ The independent auditor should review the durable repository state rather than r
 7. evidence/interpretation separation;
 8. preservation of negative or inconclusive results;
 9. accidental promotion of one implementation into authority;
-10. accidental promotion of a general-model adaptation into the target architecture;
-11. accidental removal of useful general-purpose capability for architectural purity rather than measured reason;
-12. reproducibility of the claimed observation.
+10. accidental import of a shared-reward, consensus-seeking, or power-seeking multi-agent assumption that the actual architecture does not implement;
+11. contamination of same-role independence through premature cross-exposure or evaluator-target optimization;
+12. accidental promotion of a general-model adaptation into the target architecture;
+13. accidental removal of useful general-purpose capability for architectural purity rather than measured reason;
+14. reproducibility of the claimed observation.
 
 An audit outcome should be one of:
 
