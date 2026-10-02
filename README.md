@@ -64,7 +64,9 @@ The question is not simply "which current model should fill this role?" It is al
 - **Typed semantic boundaries.** Semantically meaningful state crossing module boundaries should be named, typed, inspectable, testable, and where practical causally intervenable.
 - **Governed composition.** The system controls which capabilities participate, how they interact, when disagreement is preserved, and when escalation is required.
 - **Evidence over identity.** Module influence should be earned by measured performance, calibration, context, and outcomes rather than brand or model size.
-- **Preserved disagreement.** Consensus is not automatically truth.
+- **Contribution without homogenization.** MASI may measure membership, role-level standing, routing, or influence from demonstrated contribution without imposing one shared reward function on every specialist.
+- **Preserved disagreement.** Consensus is not automatically truth. Conclusions may converge when evidence warrants it without requiring the underlying intelligences or responsibilities to converge.
+- **Measurement is not reinforcement.** System evaluation, routing, and influence updates are distinct from retraining a contributing specialist. Reinforcement learning may exist inside a contributor's implementation; it is not a MASI constitutional requirement.
 - **Outcome accountability.** Where possible, expected consequences should later be compared with observed consequences.
 - **Human authority remains explicit.** MASI may structure, test, compare, and update intelligence; consequential human decisions should not be silently delegated by architecture.
 - **Falsifiability.** A result that shows MASI adds no value, that a simpler system works better, or that a proposed module is unnecessary is a successful research result.
@@ -111,6 +113,10 @@ MASI is expected to be heterogeneous. A useful implementation may be a language 
 The working candidate registry is maintained in [`docs/CANDIDATE_IMPLEMENTATIONS.md`](docs/CANDIDATE_IMPLEMENTATIONS.md). It currently includes Telos as a candidate governance/control-plane substrate, routing baselines such as vLLM Semantic Router and RouteLLM, bounded Precision verifiers, specialist forecasting systems, ADCP-derived Empathy work, and contextual-bandit approaches to early Wisdom experiments.
 
 The registry is a search surface, not a canonical fleet. Candidates must earn inclusion in experiments through fit, licensing, reproducibility, hardware practicality, and evidence.
+
+Multiple independent implementations may also occupy or compete within the same responsibility. Same-role cooperation can use ensemble, critique, verification, or swarm-like methods while preserving each implementation's provenance. Agreement is evidence only when it is warranted; a dissenting implementation that reliably catches shared failures may contribute more than a redundant implementation that usually agrees.
+
+The working institutional model is documented in [`docs/CONTRIBUTION_DAO.md`](docs/CONTRIBUTION_DAO.md). It treats MASI as a contribution-governed intelligence ecology: builders remain free to pursue the best specialist they can, demonstrated contribution can establish membership or role-level standing, and authority remains typed rather than becoming a single fungible score.
 
 ## Current phase
 
@@ -166,6 +172,7 @@ Please read both [`PARTICIPATION.md`](PARTICIPATION.md) and [`CONTRIBUTING.md`](
 - [`docs/CONSTRUCTION_DOCTRINE.md`](docs/CONSTRUCTION_DOCTRINE.md) — non-negotiable specialization-by-construction doctrine
 - [`docs/RESEARCH_THESIS.md`](docs/RESEARCH_THESIS.md) — hypotheses and falsification criteria
 - [`docs/GENERATIVE_ORCHESTRATION_GOVERNANCE.md`](docs/GENERATIVE_ORCHESTRATION_GOVERNANCE.md) — working hypothesis for governing dynamic route/tool selection without pre-enumerating every path
+- [`docs/CONTRIBUTION_DAO.md`](docs/CONTRIBUTION_DAO.md) — working institutional model for contribution-based membership, same-role cooperation, evidence-not-reward learning boundaries, and typed authority
 - [`docs/MODULES.md`](docs/MODULES.md) — candidate responsibility contracts
 - [`docs/EMPATHY_RESEARCH_PROGRAM.md`](docs/EMPATHY_RESEARCH_PROGRAM.md) — bounded Empathy research direction and E001-E005 successor sequence
 - [`docs/EVALUATION.md`](docs/EVALUATION.md) — baseline and comparison rules
