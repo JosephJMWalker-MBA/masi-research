@@ -210,6 +210,23 @@ module × task family × evidence regime × horizon -> conditional influence
 
 Influence updates should be distinguishable from retraining the underlying specialist. A system may first learn that one specialist deserves less weight in a context; later research may test whether that evidence should also contribute to deliberate specialist retraining.
 
+This distinction is constitutional as well as experimental: **measurement is not reinforcement**. MASI may learn about an implementation, change routing or influence, and preserve outcome evidence without sending a reward signal back into that implementation. A university or laboratory may independently decide how to use the resulting evidence in a future model version.
+
+## Multiple implementations within one responsibility
+
+A responsibility may contain multiple independently developed implementations. These implementations may operate independently, compete, critique one another, verify one another, or cooperate through ensemble or swarm-like procedures.
+
+Where practical, preserve independent first-pass outputs before cross-exposure. This makes it possible to distinguish genuine evidential convergence from anchoring, imitation, or sequential contamination.
+
+Agreement is not itself a success condition. A dissenting implementation that reliably catches a shared failure may have high marginal contribution even when its average agreement rate is low.
+
+MASI should therefore distinguish:
+
+- **intra-role evidential convergence** — independent implementations of the same responsibility resolve toward a common result because evidence supports it;
+- **cross-role homogenization** — distinct responsibilities increasingly behave as though they share one objective or policy.
+
+The first may strengthen a role-level result. The second may indicate loss of specialization.
+
 ## Composition is also tunable
 
 MASI should support several independent forms of tuning:
