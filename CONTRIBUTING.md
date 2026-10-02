@@ -91,11 +91,13 @@ A contribution that demonstrates MASI is unnecessary, inferior, overcomplicated,
 
 ## Participation and governance boundary
 
-A contribution can be scientifically valuable without conferring governance authority.
+A contribution can be scientifically valuable without automatically conferring governance authority.
 
-Repository merge permissions, scientific support for a claim, architectural stewardship, and any future commercial authority are distinct questions. See [`PARTICIPATION.md`](PARTICIPATION.md) for the current participation compact.
+Under the working contribution-DAO hypothesis, demonstrated contribution may later establish **membership or bounded role-level standing** under transparent, versioned criteria. That does not automatically grant repository merge permissions, unrestricted execution authority, constitutional amendment power, cross-role authority, or legal ownership of another contributor's work.
 
-The long-term governance model is intentionally not defined by this file.
+Repository merge permissions, scientific support for a claim, DAO membership, architectural stewardship, economic/legal ownership, and any future commercial authority are distinct questions. See [`PARTICIPATION.md`](PARTICIPATION.md) for the current participation compact and [`docs/CONTRIBUTION_DAO.md`](docs/CONTRIBUTION_DAO.md) for the working institutional model.
+
+The long-term governance implementation is intentionally not defined by this file.
 
 ## Pull requests
 
